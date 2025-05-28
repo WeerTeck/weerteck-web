@@ -405,7 +405,7 @@
         <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
           <path d="M7 10l5 5 5-5H7z"/>
         </svg>
-        Dirección: Av. Argentina 1234, Patagonia, Argentina
+        Dirección: San Isidro, Buenos Aires, Argentina
       </p>
     </section>
   </main>
