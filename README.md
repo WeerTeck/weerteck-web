@@ -392,7 +392,7 @@
         <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
           <path d="M6.62 10.79a15.091 15.091 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.11-.21 11.36 11.36 0 0 0 3.58.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.36 11.36 0 0 0 .57 3.58 1 1 0 0 1-.21 1.11l-2.24 2.1z"/>
         </svg>
-        Teléfono: <a href="tel:+5491156320963">+54 9 11 5632-0963</a>
+        Teléfono: <a href="tel:+5491125216302">+54 9 11 5632-0963</a>
       </p>
       <p class="contacto">
         <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
