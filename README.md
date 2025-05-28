@@ -60,6 +60,87 @@
     </section>
   </main>
 
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: #f9fbfc;
+  color: #222;
+}
+
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 40px 20px;
+}
+
+header {
+  background: linear-gradient(to right, #0077cc, #004d99);
+  color: white;
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.logo {
+  max-width: 100px;
+  margin-bottom: 20px;
+}
+
+h1 {
+  margin: 0;
+  font-size: 36px;
+  font-weight: 800;
+}
+
+.subtitulo {
+  font-size: 18px;
+  font-weight: 400;
+  margin-top: 10px;
+}
+
+h2 {
+  color: #0077cc;
+  font-size: 28px;
+  margin-top: 50px;
+}
+
+p {
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+.galeria {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.galeria img {
+  width: 280px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  object-fit: cover;
+}
+
+.contacto a {
+  color: #004d99;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.contacto a:hover {
+  text-decoration: underline;
+}
+
+footer {
+  text-align: center;
+  background-color: #eee;
+  padding: 25px;
+  font-size: 14px;
+  margin-top: 60px;
+}
+
 
 
 
