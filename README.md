@@ -96,7 +96,7 @@
     }
 
     /* Galería de imágenes */
-    .galeria {
+    .Prototipos {
       display: flex;
       justify-content: space-between;
       gap: 1rem;
@@ -365,15 +365,15 @@
 
     <section class="contadores" aria-label="Estadísticas de WeerTeck">
       <div class="contador">
-        <div class="numero" data-numero="150">0</div>
+        <div class="numero" data-numero="0">0</div>
         <div class="descripcion">Torres instaladas</div>
       </div>
       <div class="contador">
-        <div class="numero" data-numero="20">0</div>
+        <div class="numero" data-numero="0">0</div>
         <div class="descripcion">Municipios adheridos</div>
       </div>
       <div class="contador">
-        <div class="numero" data-numero="85">0</div>
+        <div class="numero" data-numero="">0</div>
         <div class="descripcion">Alertas activadas</div>
       </div>
     </section>
