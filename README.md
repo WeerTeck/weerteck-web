@@ -5,7 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>WeerTeck | Tecnología ambiental contra incendios</title>
   <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <!-- Fuente moderna Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet" />
+  <style>
+    /* Aplica Poppins a todo el body */
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -62,4 +69,6 @@
 
   <footer>
     <p>© 2025 WeerTeck. Todos los derechos reservados.</p>
-  
+  </footer>
+</body>
+</html>
