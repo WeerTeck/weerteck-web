@@ -95,7 +95,7 @@
     }
 
     /* Galería de imágenes */
-    .Prototipos {
+    .Galería {
       display: flex;
       justify-content: space-between;
       gap: 1rem;
@@ -372,7 +372,7 @@
         <div class="descripcion">Municipios adheridos</div>
       </div>
       <div class="contador">
-        <div class="numero" data-numero="">0</div>
+        <div class="numero" data-numero="0">0</div>
         <div class="descripcion">Alertas activadas</div>
       </div>
     </section>
