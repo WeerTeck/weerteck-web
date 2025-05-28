@@ -60,6 +60,11 @@
     </section>
   </main>
 
+  <footer>
+    <p>© 2025 WeerTeck. Todos los derechos reservados.</p>
+  </footer>
+</body>
+</html>
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
@@ -140,8 +145,3 @@ footer {
   font-size: 14px;
   margin-top: 60px;
 }
-
-
-
-
-      
