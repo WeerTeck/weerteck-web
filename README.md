@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-logo.png
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
@@ -146,4 +145,5 @@ footer {
   font-size: 14px;
   margin-top: 60px;
 }
+
       
