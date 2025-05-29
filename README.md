@@ -31,13 +31,13 @@
       padding-top: 70px;
     }
 
-    /* Navbar - Verde moderno */
+    /* Navbar - Azul oscuro */
     .navbar {
       position: fixed;
       top: 0; left: 0; width: 100%;
-      background: rgba(67,160,71,0.97); /* #43a047 */
+      background: rgba(13,36,66,0.97); /* Azul oscuro */
       z-index: 2000;
-      box-shadow: 0 2px 10px #43a04755;
+      box-shadow: 0 2px 10px #0d244288;
     }
     .navbar ul { display: flex; justify-content: center; gap: 2rem; list-style: none; padding: 1rem 0;}
     .navbar a {
@@ -48,7 +48,7 @@
       font-size: 1rem;
     }
     .navbar a:hover,
-    .navbar a:focus { color: #b9f6ca; }
+    .navbar a:focus { color: #4dd0e1; }
 
     header, main, footer {
       max-width: 950px;
@@ -61,32 +61,32 @@
     .logo {
       max-width: 120px;
       margin-bottom: 1rem;
-      filter: drop-shadow(0 0 5px #43a047);
+      filter: drop-shadow(0 0 5px #00bcd4);
     }
     h1 {
       font-weight: 800; font-size: 2.8rem;
-      color: #43a047;
+      color: #00bcd4;
       margin-bottom: 0.3rem;
-      text-shadow: 0 0 8px #43a04777;
+      text-shadow: 0 0 8px #00bcd4aa;
     }
     .subtitulo {
-      font-weight: 600; font-size: 1.2rem; color: #b9f6ca;
+      font-weight: 600; font-size: 1.2rem; color: #80deea;
       margin-bottom: 3rem;
-      text-shadow: 0 0 6px #b9f6ca33;
+      text-shadow: 0 0 6px #80deea88;
     }
     h2 {
-      color: #43a047;
+      color: #00bcd4;
       margin-bottom: 1rem;
       font-weight: 700;
       font-size: 1.8rem;
-      text-shadow: 0 0 6px #43a04744;
+      text-shadow: 0 0 6px #00bcd4bb;
     }
     p {
       font-weight: 400; font-size: 1rem;
       margin-bottom: 1.25rem;
       max-width: 800px;
     }
-    strong { color: #b9f6ca; }
+    strong { color: #4dd0e1; }
 
     /* Galería de imágenes */
     .galeria {
@@ -99,7 +99,7 @@
     .galeria img {
       width: 32%;
       border-radius: 10px;
-      box-shadow: 0 0 10px #43a04777;
+      box-shadow: 0 0 10px #00bcd4aa;
       cursor: pointer;
       transition: transform 0.3s, box-shadow 0.3s;
       border: 2px solid transparent;
@@ -108,9 +108,9 @@
     .galeria img:hover,
     .galeria img:focus {
       transform: scale(1.05);
-      box-shadow: 0 0 15px #43a047cc;
+      box-shadow: 0 0 15px #00bcd4ff;
       filter: brightness(1);
-      border-color: #43a047;
+      border-color: #00bcd4;
       outline: none;
     }
 
@@ -124,16 +124,16 @@
     }
     blockquote {
       background: #111;
-      border-left: 5px solid #43a047;
+      border-left: 5px solid #00bcd4;
       padding: 1rem 1.5rem;
       border-radius: 8px;
       color: #eee;
       margin: 0 0 1rem 0;
       max-width: 370px;
       font-size: 1.1rem;
-      box-shadow: 0 0 10px #43a04733;
+      box-shadow: 0 0 10px #00bcd433;
     }
-    blockquote footer { color: #b9f6ca; font-size: 0.95rem; margin-top: 0.5rem; }
+    blockquote footer { color: #80deea; font-size: 0.95rem; margin-top: 0.5rem; }
 
     /* FAQ */
     #faq details {
@@ -143,26 +143,26 @@
       margin-bottom: 1rem;
       padding: 1rem;
       cursor: pointer;
-      border-left: 4px solid #43a047;
+      border-left: 4px solid #00bcd4;
     }
     #faq summary { font-weight: 600; font-size: 1.1rem; margin-bottom: 0.5rem;}
     #faq details[open] { background: #222; }
 
     /* CTA */
     .cta-btn {
-      background: linear-gradient(90deg,#43a047,#66bb6a);
+      background: linear-gradient(90deg,#00bcd4,#26c6da);
       color: #fff;
       padding: 1rem 2.1rem;
       border-radius: 30px;
       font-weight: 700;
       font-size: 1.1rem;
-      box-shadow: 0 2px 10px #43a04755;
+      box-shadow: 0 2px 10px #00bcd455;
       transition: background 0.2s, transform 0.2s;
       display: inline-block;
       margin: 2rem 0;
       text-align:center;
     }
-    .cta-btn:hover { background: #2e7031; transform: scale(1.05); }
+    .cta-btn:hover { background: #00796b; transform: scale(1.05); }
 
     /* Contadores animados */
     .contadores {
@@ -174,39 +174,39 @@
     }
     .contador {
       background: #111;
-      border: 2px solid #43a047;
+      border: 2px solid #00bcd4;
       border-radius: 15px;
       padding: 1rem 2rem;
       text-align: center;
       flex: 1 1 150px;
-      box-shadow: 0 0 10px #43a04755;
+      box-shadow: 0 0 10px #00bcd4aa;
       transition: box-shadow 0.3s;
     }
-    .contador:hover { box-shadow: 0 0 20px #43a047aa; }
+    .contador:hover { box-shadow: 0 0 20px #00bcd4ff; }
     .numero {
       font-size: 2.5rem;
       font-weight: 800;
-      color: #43a047;
+      color: #00bcd4;
       margin-bottom: 0.5rem;
     }
     .descripcion {
       font-size: 1rem;
       font-weight: 600;
-      color: #b9f6ca;
+      color: #80deea;
     }
 
     /* Mapa */
     #mapa { margin: 3rem 0; }
-    #map { height: 350px; border-radius: 15px; box-shadow: 0 0 10px #43a04777; margin-bottom: 1rem; }
+    #map { height: 350px; border-radius: 15px; box-shadow: 0 0 10px #00bcd4aa; margin-bottom: 1rem; }
 
     .contacto { font-size: 1rem; line-height: 1.6; }
     .contacto svg {
       vertical-align: middle;
       margin-right: 0.5rem;
-      fill: #b9f6ca;
+      fill: #4dd0e1;
       width: 20px;
       height: 20px;
-      filter: drop-shadow(0 0 2px #b9f6ca);
+      filter: drop-shadow(0 0 2px #4dd0e1);
     }
 
     /* Footer mejorado */
@@ -223,12 +223,12 @@
       margin-bottom: 0.7rem;
     }
     .footer-links a, .footer-social a {
-      color: #43a047;
+      color: #00bcd4;
       margin: 0 0.3rem;
       font-size: 1rem;
       text-decoration: none;
     }
-    .footer-links a:hover, .footer-social a:hover { color: #b9f6ca; text-decoration: underline; }
+    .footer-links a:hover, .footer-social a:hover { color: #80deea; text-decoration: underline; }
 
     /* Botón flotante WhatsApp */
     #btnWhatsApp {
@@ -239,7 +239,7 @@
       border-radius: 50%;
       width: 60px;
       height: 60px;
-      box-shadow: 0 4px 10px rgba(67,160,71,0.4);
+      box-shadow: 0 4px 10px rgba(37, 211, 102, 0.6);
       display: flex;
       justify-content: center;
       align-items: center;
@@ -255,33 +255,33 @@
       position: fixed;
       top: 20px;
       right: 20px;
-      background: #43a047;
+      background: #00bcd4;
       border-radius: 50%;
       width: 40px;
       height: 40px;
       cursor: pointer;
-      box-shadow: 0 0 10px #43a04799;
+      box-shadow: 0 0 10px #00bcd4aa;
       display: flex;
       justify-content: center;
       align-items: center;
       z-index: 1001;
       transition: background-color 0.3s;
     }
-    #toggleModo:hover { background: #66bb6a; }
+    #toggleModo:hover { background: #26c6da; }
     #toggleModo svg { fill: #000; width: 22px; height: 22px; }
 
     /* Modo claro */
     body.light { background-color: #f5f5f5; color: #222;}
-    body.light h1, body.light h2, body.light strong { color: #388e3c; text-shadow: none; }
+    body.light h1, body.light h2, body.light strong { color: #00796b; text-shadow: none; }
     body.light .subtitulo { color: #004d40; }
-    body.light a { color: #388e3c; }
+    body.light a { color: #00796b; }
     body.light a:hover { color: #004d40; }
     body.light header, body.light main, body.light footer { color: #222; }
     body.light footer { border-top-color: #ccc; color: #555; background: #e0f2f1;}
-    body.light .galeria img { box-shadow: 0 0 10px #388e3c55; filter: brightness(1); border-color: transparent;}
-    body.light .galeria img:hover, body.light .galeria img:focus { box-shadow: 0 0 15px #388e3caa; border-color: #388e3c;}
-    body.light .contador { background: #e0f2f1; border-color: #388e3c; box-shadow: 0 0 10px #388e3c55; color: #004d40; }
-    body.light .contador:hover { box-shadow: 0 0 20px #388e3cbb;}
+    body.light .galeria img { box-shadow: 0 0 10px #00796baa; filter: brightness(1); border-color: transparent;}
+    body.light .galeria img:hover, body.light .galeria img:focus { box-shadow: 0 0 15px #00796bff; border-color: #00796b;}
+    body.light .contador { background: #e0f2f1; border-color: #00796b; box-shadow: 0 0 10px #00796baa; color: #004d40; }
+    body.light .contador:hover { box-shadow: 0 0 20px #00796bff;}
     body.light #faq details { background: #e0f2f1; color: #222;}
     body.light #faq details[open] { background: #b2dfdb; }
 
@@ -473,7 +473,59 @@
   <!-- BOTÓN FLOTANTE WHATSAPP -->
   <a href="https://wa.me/5491125216302?text=Hola%20WeerTeck%2C%20quiero%20m%C3%A1s%20info" target="_blank" rel="noopener" id="btnWhatsApp" aria-label="Contactar por WhatsApp">
     <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-      <path d="M20.52 3.48A11.86 11.86 0 0 0 12 0C5.37 0 0 5.37 0 12a11.93 11.93 0 0 0 2.07 *
-
+      <path d="M20.52 3.48A11.86 11.86 0 0 0 12 0C5.37 0 0 5.37 0 12a11.93 11.93 0 0 0 2.07 6.57L0 24l5.6-2.07A11.9 11.9 0 0 0 12 24c6.63 0 12-5.37 12-12a11.84 11.84 0 0 0-3.48-8.52zM12 21.4a9.4 9.4 0 0 1-4.78-1.41l-.34-.21-3.32 1.23 1.2-3.23-.22-.34A9.44 9.44 0 1 1 21.4 12a9.37 9.37 0 0 1-9.4 9.4zm5.32-7.21c-.29-.15-1.71-.84-1.97-.94-.26-.11-.45-.15-.64.15s-.74.94-.9 1.13c-.16.19-.32.21-.6.07a6.71 6.71 0 0 1-1.97-1.21 7.32 7.32 0 0 1-1.36-1.68c-.14-.25-.02-.38.11-.53.12-.12.26-.32.39-.48a.72.72 0 0 0 .11-.3.43.43 0 0 0-.06-.3c-.2-.45-.57-1.18-.8-1.6-.21-.4-.43-.34-.6-.34a1.36 1.36 0 0 0-.65.06c-.23.1-.89.86-.89 2.1s.91 2.43 1.03 2.6c.11.18 1.78 2.71 4.3 3.8a13.61 13.61 0 0 0 1.89.66c.8.27 1.53.23 2.11.14a6.69 6.69 0 0 0 2.03-.82 7.7 7.7 0 0 0 2.72-2.47 9.56 9.56 0 0 0-3.41-2.55z"/>
+    </svg>
+  </a>
+
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    // Animación contador numérico
+    function animarContador(element, numeroFinal, duracion = 2000) {
+      let start = 0;
+      const stepTime = Math.max(30, Math.abs(Math.floor(duracion / Math.max(1, numeroFinal))));
+      const increment = 1;
+      const timer = setInterval(() => {
+        start += increment;
+        element.textContent = start;
+        if (start >= numeroFinal) {
+          clearInterval(timer);
+        }
+      }, stepTime);
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+      // Animar todos los contadores
+      const numeros = document.querySelectorAll('.numero');
+      numeros.forEach((numElem) => {
+        const numeroFinal = parseInt(numElem.getAttribute('data-numero'), 10);
+        animarContador(numElem, numeroFinal);
+      });
+
+      // Toggle modo oscuro/claro
+      const btnToggle = document.getElementById('toggleModo');
+      btnToggle.addEventListener('click', () => {
+        document.body.classList.toggle('light');
+      });
+      btnToggle.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          document.body.classList.toggle('light');
+        }
+      });
+
+      // Iniciar AOS (animaciones)
+      AOS.init({ duration: 800, once: true });
+
+      // Iniciar mapa Leaflet
+      if (document.getElementById('map')) {
+        var map = L.map('map').setView([-42.0, -71.5], 7); // Patagonia
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+        L.marker([-42, -71.5]).addTo(map)
+          .bindPopup('Torre instalada en Lago Puelo').openPopup();
+        // Puedes agregar más marcadores aquí:
+        // L.marker([lat, lng]).addTo(map).bindPopup('Texto');
+      }
+    });
+  </script>
 </body>
 </html>
