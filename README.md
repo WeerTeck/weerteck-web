@@ -437,7 +437,7 @@
       <a href="#">Términos y Condiciones</a>
     </div>
     <div class="footer-social">
-      <a href="https://instagram.com/weer.teck" target="_blank" aria-label="Instagram">Instagram</a>
+      <a href="https://instagram.com/weerteck" target="_blank" aria-label="Instagram">@weerteck</a>
       <a href="https://wa.me/5491125216302" target="_blank" aria-label="WhatsApp">WhatsApp</a>
     </div>
     <p>&copy; 2025 WeerTeck - Todos los derechos reservados</p>
@@ -493,5 +493,7 @@
       }
     });
   </script>
+</body>
+</html>
 </body>
 </html>
