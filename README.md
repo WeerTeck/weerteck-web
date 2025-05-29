@@ -4,9 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>WeerTeck | Tecnología ambiental contra incendios</title>
-  <meta name="description" content="Soluciones tecnológicas para anticipar y combatir incendios forestales en la Patagonia. Torres inteligentes, alertas automáticas y más.">
+  <meta name="description" content="Soluciones tecnológicas para anticipar y combatir incendios forestales. Torres inteligentes, alertas automáticas y más.">
   <meta property="og:title" content="WeerTeck | Tecnología ambiental contra incendios">
-  <meta property="og:description" content="Soluciones tecnológicas para anticipar y combatir incendios forestales en la Patagonia. Torres inteligentes, alertas automáticas y más.">
+  <meta property="og:description" content="Soluciones tecnológicas para anticipar y combatir incendios forestales. Torres inteligentes, alertas automáticas y más.">
   <meta property="og:image" content="img/logo.png">
   <meta property="og:type" content="website">
 
@@ -31,7 +31,6 @@
       padding-top: 70px;
     }
 
-    /* Navbar - Azul oscuro */
     .navbar {
       position: fixed;
       top: 0; left: 0; width: 100%;
@@ -88,7 +87,6 @@
     }
     strong { color: #4dd0e1; }
 
-    /* Galería de imágenes */
     .galeria {
       display: flex;
       justify-content: space-between;
@@ -114,7 +112,6 @@
       outline: none;
     }
 
-    /* Testimonios */
     #testimonios { margin: 3rem 0; }
     .testimonios-grid {
       display: flex;
@@ -135,7 +132,6 @@
     }
     blockquote footer { color: #80deea; font-size: 0.95rem; margin-top: 0.5rem; }
 
-    /* FAQ */
     #faq details {
       background: #111;
       color: #fff;
@@ -148,7 +144,6 @@
     #faq summary { font-weight: 600; font-size: 1.1rem; margin-bottom: 0.5rem;}
     #faq details[open] { background: #222; }
 
-    /* CTA */
     .cta-btn {
       background: linear-gradient(90deg,#00bcd4,#26c6da);
       color: #fff;
@@ -164,7 +159,6 @@
     }
     .cta-btn:hover { background: #00796b; transform: scale(1.05); }
 
-    /* Contadores animados */
     .contadores {
       display: flex;
       justify-content: space-around;
@@ -195,7 +189,6 @@
       color: #80deea;
     }
 
-    /* Mapa */
     #mapa { margin: 3rem 0; }
     #map { height: 350px; border-radius: 15px; box-shadow: 0 0 10px #00bcd4aa; margin-bottom: 1rem; }
 
@@ -209,7 +202,6 @@
       filter: drop-shadow(0 0 2px #4dd0e1);
     }
 
-    /* Footer mejorado */
     footer {
       text-align: center;
       font-size: 0.9rem;
@@ -230,7 +222,6 @@
     }
     .footer-links a:hover, .footer-social a:hover { color: #80deea; text-decoration: underline; }
 
-    /* Botón flotante WhatsApp */
     #btnWhatsApp {
       position: fixed;
       bottom: 25px;
@@ -250,7 +241,6 @@
     #btnWhatsApp:hover { background-color: #1ebe5b; transform: scale(1.1);}
     #btnWhatsApp svg { width: 30px; height: 30px; fill: white; }
 
-    /* Toggle modo oscuro/claro */
     #toggleModo {
       position: fixed;
       top: 20px;
@@ -270,7 +260,6 @@
     #toggleModo:hover { background: #26c6da; }
     #toggleModo svg { fill: #000; width: 22px; height: 22px; }
 
-    /* Modo claro */
     body.light { background-color: #f5f5f5; color: #222;}
     body.light h1, body.light h2, body.light strong { color: #00796b; text-shadow: none; }
     body.light .subtitulo { color: #004d40; }
@@ -285,7 +274,6 @@
     body.light #faq details { background: #e0f2f1; color: #222;}
     body.light #faq details[open] { background: #b2dfdb; }
 
-    /* Responsive */
     @media (max-width: 900px) { header, main, footer { width: 98%; } }
     @media (max-width: 768px) {
       .navbar ul { gap: 1rem; }
@@ -303,7 +291,6 @@
   </style>
 </head>
 <body>
-  <!-- NAVBAR -->
   <nav class="navbar">
     <ul>
       <li><a href="#quienes-somos">¿Quiénes somos?</a></li>
@@ -372,23 +359,23 @@
     </section>
 
     <section id="testimonios" data-aos="fade-up">
-      <h2>Testimonios</h2>
+      <h2>Testimonios (futuros)</h2>
       <div class="testimonios-grid">
         <blockquote>
-          <p>“Gracias a WeerTeck, pudimos actuar en minutos y evitar una tragedia.”</p>
-          <footer>- Brigada de Lago Puelo</footer>
+          <p>“Esperamos que WeerTeck marque un antes y un después en la prevención de incendios en la Patagonia. Con tecnología accesible, el futuro de los bosques puede ser mucho más seguro.”</p>
+          <footer>- Proyección de brigadistas de la región</footer>
         </blockquote>
         <blockquote>
-          <p>“La instalación fue sencilla y el monitoreo nos da tranquilidad.”</p>
-          <footer>- Municipio de El Bolsón</footer>
+          <p>“Si logramos instalar estas torres en zonas críticas, podríamos anticiparnos a los focos y evitar tragedias ambientales a gran escala.”</p>
+          <footer>- Opinión de referentes ambientales</footer>
         </blockquote>
       </div>
     </section>
 
     <section id="mapa" data-aos="fade-up">
-      <h2>Mapa de Cobertura</h2>
+      <h2>Mapa de Cobertura (proyectado)</h2>
       <div id="map"></div>
-      <p>Visualiza dónde ya estamos protegiendo los bosques.</p>
+      <p>Estamos proyectando nuestra primera instalación en la Patagonia argentina, una región muy afectada por incendios forestales. Nuestro objetivo es expandir la cobertura a nivel nacional en el futuro.</p>
     </section>
 
     <section id="faq" data-aos="fade-up">
@@ -407,31 +394,19 @@
       </details>
       <details>
         <summary>¿Qué sucede cuando se detecta un posible incendio?</summary>
-        <p>Al detectar condiciones anormales (humo, gases, temperatura), la torre envía automáticamente alertas por WhatsApp a los contactos definidos: brigadas, autoridades y vecinos. Esto permite una reacción rápida y coordinada, muchas veces antes de que el fuego se propague.</p>
+        <p>Al detectar condiciones anormales (humo, gases, temperatura), la torre enviará automáticamente alertas por WhatsApp a los contactos definidos: brigadas, autoridades y vecinos. Esto permitirá una reacción rápida y coordinada, muchas veces antes de que el fuego se propague.</p>
       </details>
       <details>
         <summary>¿Requiere mantenimiento frecuente?</summary>
-        <p>No. Las torres están diseñadas para requerir un mantenimiento mínimo, y la mayoría de las verificaciones se pueden realizar de manera remota. No obstante, recomendamos una inspección anual para asegurar el óptimo funcionamiento de sensores y sistemas de energía.</p>
+        <p>No. Las torres están pensadas para requerir un mantenimiento mínimo, y la mayoría de las verificaciones podrán realizarse de forma remota. Se recomendará una inspección anual para asegurar el óptimo funcionamiento de sensores y sistemas de energía.</p>
       </details>
       <details>
-        <summary>¿Qué tan rápido emite la alerta?</summary>
-        <p>La transmisión de la alerta es prácticamente instantánea una vez que los sensores detectan una amenaza. El sistema está optimizado para enviar las notificaciones en segundos, minimizando el tiempo de respuesta.</p>
+        <summary>¿Qué tan rápido se emitirán las alertas?</summary>
+        <p>La transmisión de la alerta será prácticamente instantánea una vez que los sensores detecten una amenaza. El sistema está optimizado para enviar las notificaciones en cuestión de segundos, minimizando el tiempo de respuesta.</p>
       </details>
       <details>
-        <summary>¿Se pueden monitorear varias torres desde un mismo lugar?</summary>
-        <p>Sí. Nuestra plataforma permite visualizar el estado y las alertas de todas las torres instaladas en una misma región o municipio desde un panel centralizado, accesible vía web.</p>
-      </details>
-      <details>
-        <summary>¿Qué experiencia tienen?</summary>
-        <p>Somos pioneros en la aplicación de IoT y tecnología ambiental en la Patagonia. Nuestro equipo cuenta con experiencia en desarrollo electrónico, software y protección forestal, colaborando con instituciones locales para seguir innovando.</p>
-      </details>
-      <details>
-        <summary>¿Brindan capacitación para brigadas?</summary>
-        <p>Actualmente no ofrecemos capacitaciones directas para brigadas, pero entregamos manuales completos y soporte técnico para la correcta integración de las torres con los sistemas de emergencia locales.</p>
-      </details>
-      <details>
-        <summary>¿Cómo puedo sumarme o ser parte del proyecto?</summary>
-        <p>Puedes contactarnos para conocer las distintas formas de colaboración, ya sea como municipio, organización ambiental, empresa o voluntario. ¡Creemos que la protección del bosque es una tarea colectiva!</p>
+        <summary>¿Cómo puedo sumarme o colaborar con el proyecto?</summary>
+        <p>Puedes acompañar el desarrollo de WeerTeck desde el inicio y ser parte de la comunidad que protegerá los bosques. Es posible colaborar con una mínima transacción utilizando nuestra cripto WeerCoin (WEER), ayudar en la difusión o sumarte como voluntario/a. ¡Contactanos para ser parte de la prevención de incendios en Argentina!</p>
       </details>
     </section>
 
@@ -470,7 +445,6 @@
     <p>&copy; 2025 WeerTeck - Todos los derechos reservados</p>
   </footer>
 
-  <!-- BOTÓN FLOTANTE WHATSAPP -->
   <a href="https://wa.me/5491125216302?text=Hola%20WeerTeck%2C%20quiero%20m%C3%A1s%20info" target="_blank" rel="noopener" id="btnWhatsApp" aria-label="Contactar por WhatsApp">
     <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
       <path d="M20.52 3.48A11.86 11.86 0 0 0 12 0C5.37 0 0 5.37 0 12a11.93 11.93 0 0 0 2.07 6.57L0 24l5.6-2.07A11.9 11.9 0 0 0 12 24c6.63 0 12-5.37 12-12a11.84 11.84 0 0 0-3.48-8.52zM12 21.4a9.4 9.4 0 0 1-4.78-1.41l-.34-.21-3.32 1.23 1.2-3.23-.22-.34A9.44 9.44 0 1 1 21.4 12a9.37 9.37 0 0 1-9.4 9.4zm5.32-7.21c-.29-.15-1.71-.84-1.97-.94-.26-.11-.45-.15-.64.15s-.74.94-.9 1.13c-.16.19-.32.21-.6.07a6.71 6.71 0 0 1-1.97-1.21 7.32 7.32 0 0 1-1.36-1.68c-.14-.25-.02-.38.11-.53.12-.12.26-.32.39-.48a.72.72 0 0 0 .11-.3.43.43 0 0 0-.06-.3c-.2-.45-.57-1.18-.8-1.6-.21-.4-.43-.34-.6-.34a1.36 1.36 0 0 0-.65.06c-.23.1-.89.86-.89 2.1s.91 2.43 1.03 2.6c.11.18 1.78 2.71 4.3 3.8a13.61 13.61 0 0 0 1.89.66c.8.27 1.53.23 2.11.14a6.69 6.69 0 0 0 2.03-.82 7.7 7.7 0 0 0 2.72-2.47 9.56 9.56 0 0 0-3.41-2.55z"/>
@@ -480,7 +454,6 @@
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
   <script>
-    // Animación contador numérico
     function animarContador(element, numeroFinal, duracion = 2000) {
       let start = 0;
       const stepTime = Math.max(30, Math.abs(Math.floor(duracion / Math.max(1, numeroFinal))));
@@ -494,14 +467,12 @@
       }, stepTime);
     }
     document.addEventListener('DOMContentLoaded', () => {
-      // Animar todos los contadores
       const numeros = document.querySelectorAll('.numero');
       numeros.forEach((numElem) => {
         const numeroFinal = parseInt(numElem.getAttribute('data-numero'), 10);
         animarContador(numElem, numeroFinal);
       });
 
-      // Toggle modo oscuro/claro
       const btnToggle = document.getElementById('toggleModo');
       btnToggle.addEventListener('click', () => {
         document.body.classList.toggle('light');
@@ -513,17 +484,13 @@
         }
       });
 
-      // Iniciar AOS (animaciones)
       AOS.init({ duration: 800, once: true });
 
-      // Iniciar mapa Leaflet
       if (document.getElementById('map')) {
         var map = L.map('map').setView([-42.0, -71.5], 7); // Patagonia
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
         L.marker([-42, -71.5]).addTo(map)
-          .bindPopup('Torre instalada en Lago Puelo').openPopup();
-        // Puedes agregar más marcadores aquí:
-        // L.marker([lat, lng]).addTo(map).bindPopup('Texto');
+          .bindPopup('Proyección de primera torre en la Patagonia');
       }
     });
   </script>
