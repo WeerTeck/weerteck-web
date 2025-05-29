@@ -4,14 +4,21 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>WeerTeck | Tecnología ambiental contra incendios</title>
-  <meta name="description" content="Soluciones tecnológicas para anticipar y combatir incendios forestales. Torres inteligentes, alertas automáticas y más.">
+  
+  <!-- Fuente moderna Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet" />
+
+  <!-- SEO y Social -->
+  <meta name="description" content="Soluciones tecnológicas ambientales para prevenir incendios en la Patagonia Argentina. Torres inteligentes, sensores y alertas para proteger nuestros bosques.">
   <meta property="og:title" content="WeerTeck | Tecnología ambiental contra incendios">
-  <meta property="og:description" content="Soluciones tecnológicas para anticipar y combatir incendios forestales. Torres inteligentes, alertas automáticas y más.">
+  <meta property="og:description" content="Soluciones tecnológicas para anticipar y combatir incendios en la Patagonia argentina.">
   <meta property="og:image" content="img/logo.png">
   <meta property="og:type" content="website">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <meta property="og:url" content="https://weerteck.com">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Favicon -->
+  <link rel="icon" href="img/logo.png" type="image/png">
 
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -24,50 +31,59 @@
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-      padding-top: 70px;
+      transition: background-color 0.5s, color 0.5s;
     }
 
-    .navbar {
-      position: fixed;
-      top: 0; left: 0; width: 100%;
-      background: rgba(13,36,66,0.97);
-      z-index: 2000;
-      box-shadow: 0 2px 10px #0d244288;
+    a {
+      color: #4dd0e1;
+      text-decoration: none;
+      transition: color 0.3s ease;
     }
-    .navbar ul { display: flex; justify-content: center; gap: 2rem; list-style: none; padding: 1rem 0;}
-    .navbar a {
-      color: #fff;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-      transition: color 0.2s;
-      font-size: 1rem;
-    }
-    .navbar a:hover, .navbar a:focus { color: #4dd0e1; }
+    a:hover, a:focus { color: #81d4fa; text-decoration: underline; outline: none; }
 
     header, main, footer {
-      max-width: 950px;
-      width: 94%;
+      max-width: 900px;
+      width: 90%;
       margin: auto;
       padding: 1.5rem 0;
+      background: transparent;
+      transition: background 0.5s;
     }
-    header { text-align: center; }
+
+    header {
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+    header.con-sombra {
+      box-shadow: 0 4px 14px #00bcd477;
+      background: rgba(0,0,0,0.85);
+      border-radius: 0 0 20px 20px;
+      transition: box-shadow 0.3s, background 0.3s;
+    }
 
     .logo {
       max-width: 120px;
       margin-bottom: 1rem;
       filter: drop-shadow(0 0 5px #00bcd4);
     }
+
     h1 {
-      font-weight: 800; font-size: 2.8rem;
+      font-weight: 800;
+      font-size: 2.8rem;
       color: #00bcd4;
       margin-bottom: 0.3rem;
       text-shadow: 0 0 8px #00bcd4aa;
     }
+
     .subtitulo {
-      font-weight: 600; font-size: 1.2rem; color: #80deea;
+      font-weight: 600;
+      font-size: 1.2rem;
+      color: #80deea;
       margin-bottom: 3rem;
       text-shadow: 0 0 6px #80deea88;
     }
+
     h2 {
       color: #00bcd4;
       margin-bottom: 1rem;
@@ -75,13 +91,17 @@
       font-size: 1.8rem;
       text-shadow: 0 0 6px #00bcd4bb;
     }
+
     p {
-      font-weight: 400; font-size: 1rem;
+      font-weight: 400;
+      font-size: 1rem;
       margin-bottom: 1.25rem;
       max-width: 800px;
     }
+
     strong { color: #4dd0e1; }
 
+    /* Galería de imágenes */
     .galeria {
       display: flex;
       justify-content: space-between;
@@ -91,69 +111,30 @@
     }
     .galeria img {
       width: 32%;
-      border-radius: 10px;
+      border-radius: 8px;
       box-shadow: 0 0 10px #00bcd4aa;
       cursor: pointer;
-      transition: transform 0.3s, box-shadow 0.3s;
+      transition: transform 0.3s cubic-bezier(.23,1.15,.5,1), box-shadow 0.3s, filter 0.3s, border-color 0.3s;
       border: 2px solid transparent;
       filter: brightness(0.95);
+      border-radius: 10px;
+      opacity: 0;
+      transform: translateY(40px) scale(0.97);
     }
-    .galeria img:hover,
-    .galeria img:focus {
-      transform: scale(1.05);
+    .galeria img.visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      transition-delay: 0.2s;
+    }
+    .galeria img:hover, .galeria img:focus {
+      transform: scale(1.08) rotate(-1deg);
       box-shadow: 0 0 15px #00bcd4ff;
       filter: brightness(1);
       border-color: #00bcd4;
       outline: none;
     }
 
-    #testimonios { margin: 3rem 0; }
-    .testimonios-grid {
-      display: flex;
-      gap: 2rem;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    blockquote {
-      background: #111;
-      border-left: 5px solid #00bcd4;
-      padding: 1rem 1.5rem;
-      border-radius: 8px;
-      color: #eee;
-      margin: 0 0 1rem 0;
-      max-width: 370px;
-      font-size: 1.1rem;
-      box-shadow: 0 0 10px #00bcd433;
-    }
-    blockquote footer { color: #80deea; font-size: 0.95rem; margin-top: 0.5rem; }
-
-    #faq details {
-      background: #111;
-      color: #fff;
-      border-radius: 8px;
-      margin-bottom: 1rem;
-      padding: 1rem;
-      cursor: pointer;
-      border-left: 4px solid #00bcd4;
-    }
-    #faq summary { font-weight: 600; font-size: 1.1rem; margin-bottom: 0.5rem;}
-    #faq details[open] { background: #222; }
-
-    .cta-btn {
-      background: linear-gradient(90deg,#00bcd4,#26c6da);
-      color: #fff;
-      padding: 1rem 2.1rem;
-      border-radius: 30px;
-      font-weight: 700;
-      font-size: 1.1rem;
-      box-shadow: 0 2px 10px #00bcd455;
-      transition: background 0.2s, transform 0.2s;
-      display: inline-block;
-      margin: 2rem 0;
-      text-align:center;
-    }
-    .cta-btn:hover { background: #00796b; transform: scale(1.05); }
-
+    /* Glassmorphism en contadores */
     .contadores {
       display: flex;
       justify-content: space-around;
@@ -162,21 +143,25 @@
       flex-wrap: wrap;
     }
     .contador {
-      background: #111;
-      border: 2px solid #00bcd4;
+      background: rgba(20,30,40,0.55);
+      backdrop-filter: blur(6px);
+      border: 2px solid #00bcd488;
       border-radius: 15px;
       padding: 1rem 2rem;
       text-align: center;
       flex: 1 1 150px;
       box-shadow: 0 0 10px #00bcd4aa;
-      transition: box-shadow 0.3s;
+      transition: box-shadow 0.3s, background 0.5s;
     }
-    .contador:hover { box-shadow: 0 0 20px #00bcd4ff; }
+    .contador:hover {
+      box-shadow: 0 0 20px #00bcd4ff;
+    }
     .numero {
       font-size: 2.5rem;
       font-weight: 800;
       color: #00bcd4;
       margin-bottom: 0.5rem;
+      transition: color 0.5s;
     }
     .descripcion {
       font-size: 1rem;
@@ -184,10 +169,11 @@
       color: #80deea;
     }
 
-    #mapa { margin: 3rem 0; }
-    #map { height: 350px; border-radius: 15px; box-shadow: 0 0 10px #00bcd4aa; margin-bottom: 1rem; }
-
-    .contacto { font-size: 1rem; line-height: 1.6; }
+    /* Contacto con íconos SVG */
+    .contacto {
+      font-size: 1rem;
+      line-height: 1.6;
+    }
     .contacto svg {
       vertical-align: middle;
       margin-right: 0.5rem;
@@ -197,26 +183,18 @@
       filter: drop-shadow(0 0 2px #4dd0e1);
     }
 
+    /* Footer */
     footer {
       text-align: center;
       font-size: 0.9rem;
       color: #555;
-      padding: 2rem 0 1.5rem 0;
+      padding: 1.5rem 0;
       border-top: 1px solid #222;
       margin-top: auto;
-      background: #0a0a0a;
+      background: transparent;
     }
-    .footer-links, .footer-social {
-      margin-bottom: 0.7rem;
-    }
-    .footer-links a, .footer-social a {
-      color: #00bcd4;
-      margin: 0 0.3rem;
-      font-size: 1rem;
-      text-decoration: none;
-    }
-    .footer-links a:hover, .footer-social a:hover { color: #80deea; text-decoration: underline; }
 
+    /* Botón flotante WhatsApp con animación pulse */
     #btnWhatsApp {
       position: fixed;
       bottom: 25px;
@@ -232,10 +210,24 @@
       cursor: pointer;
       transition: background-color 0.3s, transform 0.3s;
       z-index: 1000;
+      animation: pulse 2.2s infinite;
     }
-    #btnWhatsApp:hover { background-color: #1ebe5b; transform: scale(1.1);}
-    #btnWhatsApp svg { width: 30px; height: 30px; fill: white; }
+    #btnWhatsApp:hover {
+      background-color: #1ebe5b;
+      transform: scale(1.1);
+    }
+    #btnWhatsApp svg {
+      width: 30px;
+      height: 30px;
+      fill: white;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1);}
+      50% { transform: scale(1.1);}
+      100% { transform: scale(1);}
+    }
 
+    /* Toggle modo oscuro/claro */
     #toggleModo {
       position: fixed;
       top: 20px;
@@ -254,49 +246,95 @@
     }
     #toggleModo:hover { background: #26c6da; }
     #toggleModo svg { fill: #000; width: 22px; height: 22px; }
+    #toggleModo[aria-label]:after {
+      content: attr(aria-label);
+      font-size: 0.7rem;
+      color: #222;
+      background: #fff;
+      padding: 3px 10px;
+      border-radius: 10px;
+      position: absolute;
+      top: 120%;
+      right: 0;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+    #toggleModo:focus:after, #toggleModo:hover:after { opacity: 1; }
 
-    body.light { background-color: #f5f5f5; color: #222;}
-    body.light h1, body.light h2, body.light strong { color: #00796b; text-shadow: none; }
+    /* Tooltips accesibles */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0,0,0,0);
+      border: 0;
+    }
+
+    /* Modo claro */
+    body.light {
+      background-color: #f5f5f5;
+      color: #222;
+      transition: background-color 0.5s, color 0.5s;
+    }
+    body.light h1, body.light h2, body.light strong {
+      color: #00796b;
+      text-shadow: none;
+    }
     body.light .subtitulo { color: #004d40; }
     body.light a { color: #00796b; }
     body.light a:hover { color: #004d40; }
     body.light header, body.light main, body.light footer { color: #222; }
-    body.light footer { border-top-color: #ccc; color: #555; background: #e0f2f1;}
-    body.light .galeria img { box-shadow: 0 0 10px #00796baa; filter: brightness(1); border-color: transparent;}
-    body.light .galeria img:hover, body.light .galeria img:focus { box-shadow: 0 0 15px #00796bff; border-color: #00796b;}
-    body.light .contador { background: #e0f2f1; border-color: #00796b; box-shadow: 0 0 10px #00796baa; color: #004d40; }
-    body.light .contador:hover { box-shadow: 0 0 20px #00796bff;}
-    body.light #faq details { background: #e0f2f1; color: #222;}
-    body.light #faq details[open] { background: #b2dfdb; }
+    body.light footer { border-top-color: #ccc; color: #555; }
+    body.light .galeria img {
+      box-shadow: 0 0 10px #00796baa;
+      filter: brightness(1);
+      border-color: transparent;
+    }
+    body.light .galeria img:hover, body.light .galeria img:focus {
+      box-shadow: 0 0 15px #00796bff;
+      border-color: #00796b;
+    }
+    body.light .contador {
+      background: rgba(224,242,241,0.7);
+      border-color: #00796b;
+      box-shadow: 0 0 10px #00796baa;
+      color: #004d40;
+    }
+    body.light .contador:hover {
+      box-shadow: 0 0 20px #00796bff;
+    }
+    body.light .numero { color: #00796b; }
 
-    @media (max-width: 900px) { header, main, footer { width: 98%; } }
+    /* Responsive */
     @media (max-width: 768px) {
-      .navbar ul { gap: 1rem; }
       .galeria img { width: 48%; margin-bottom: 1rem; }
       .contadores { flex-direction: column; align-items: center; }
-      .contador { width: 80%; margin-bottom: 1.5rem;}
+      .contador { width: 80%; margin-bottom: 1.5rem; }
       h1 { font-size: 2.2rem; }
-      h2 { font-size: 1.5rem;}
-      .testimonios-grid { flex-direction: column; align-items: center;}
+      h2 { font-size: 1.5rem; }
     }
     @media (max-width: 480px) {
       .galeria img { width: 100%; }
-      .navbar ul { flex-direction: column; gap: 0.5rem; }
+    }
+
+    /* Animación de entrada para secciones */
+    section {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s, transform 0.8s;
+    }
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
   </style>
 </head>
 <body>
-  <nav class="navbar">
-    <ul>
-      <li><a href="#quienes-somos">¿Quiénes somos?</a></li>
-      <li><a href="#que-hacemos">¿Qué hacemos?</a></li>
-      <li><a href="#galeria">Galería</a></li>
-      <li><a href="#testimonios">Testimonios</a></li>
-      <li><a href="#faq">FAQ</a></li>
-      <li><a href="#contacto">Contacto</a></li>
-    </ul>
-  </nav>
-
   <div id="toggleModo" aria-label="Cambiar modo oscuro/claro" role="button" tabindex="0" title="Cambiar modo oscuro/claro">
     <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
       <path d="M12 3a9 9 0 0 0 0 18 9 9 0 0 1 0-18z"/>
@@ -310,16 +348,14 @@
   </header>
 
   <main>
-    <a href="#contacto" class="cta-btn" data-aos="zoom-in">Solicitar Información</a>
-
-    <section id="quienes-somos" data-aos="fade-up">
+    <section>
       <h2>¿Quiénes somos?</h2>
       <p>
         Somos un grupo de jóvenes desarrolladores y emprendedores comprometidos con la protección del medio ambiente. Creamos soluciones tecnológicas accesibles para anticiparnos a los incendios forestales y reducir su impacto en la Patagonia argentina.
       </p>
     </section>
 
-    <section id="que-hacemos" data-aos="fade-up">
+    <section>
       <h2>¿Qué hacemos?</h2>
       <p>
         Diseñamos <strong>torres inteligentes autosustentables</strong> equipadas con sensores de humo, gases inflamables y temperatura, capaces de detectar incendios en su fase inicial. Al identificar riesgo, envían <strong>alertas automáticas por WhatsApp</strong> a brigadas y vecinos de la zona.
@@ -329,7 +365,7 @@
       </p>
     </section>
 
-    <section class="contadores" aria-label="Estadísticas de WeerTeck" data-aos="fade-up">
+    <section class="contadores" aria-label="Estadísticas de WeerTeck">
       <div class="contador">
         <div class="numero" data-numero="0">0</div>
         <div class="descripcion">Torres instaladas</div>
@@ -344,71 +380,16 @@
       </div>
     </section>
 
-    <section id="galeria" data-aos="fade-up">
+    <section>
       <h2>Galería</h2>
       <div class="galeria" aria-label="Galería de imágenes de WeerTeck">
-        <img src="img/torre1.jpg" alt="Render de torre inteligente en bosque patagónico" loading="lazy" tabindex="0" />
-        <img src="img/sensor.jpg" alt="Sensor ambiental de humo y gases" loading="lazy" tabindex="0" />
-        <img src="img/brigada.jpg" alt="Equipo humano simulando recepción de alerta" loading="lazy" tabindex="0" />
-        <img src="img/bosque.jpg" alt="Bosque argentino en riesgo de incendio" loading="lazy" tabindex="0" />
-        <img src="img/prototipo-torre.jpg" alt="Prototipo inicial de torre WeerTeck" loading="lazy" tabindex="0" />
-        <img src="img/equipo-desarollo.jpg" alt="Equipo de desarrollo de WeerTeck trabajando" loading="lazy" tabindex="0" />
+        <img src="img/torre1.jpg" alt="Torre inteligente en el bosque" loading="lazy" tabindex="0" />
+        <img src="img/sensor.jpg" alt="Sensor de humo instalado en la torre" loading="lazy" tabindex="0" />
+        <img src="img/brigada.jpg" alt="Brigada recibiendo alerta y actuando" loading="lazy" tabindex="0" />
       </div>
     </section>
 
-    <section id="testimonios" data-aos="fade-up">
-      <h2>Testimonios (futuros)</h2>
-      <div class="testimonios-grid">
-        <blockquote>
-          <p>“Esperamos que WeerTeck marque un antes y un después en la prevención de incendios en la Patagonia. Con tecnología accesible, el futuro de los bosques puede ser mucho más seguro.”</p>
-          <footer>- Proyección de brigadistas de la región</footer>
-        </blockquote>
-        <blockquote>
-          <p>“Si logramos instalar estas torres en zonas críticas, podríamos anticiparnos a los focos y evitar tragedias ambientales a gran escala.”</p>
-          <footer>- Opinión de referentes ambientales</footer>
-        </blockquote>
-      </div>
-    </section>
-
-    <section id="mapa" data-aos="fade-up">
-      <h2>Mapa de Cobertura (proyectado)</h2>
-      <div id="map"></div>
-      <p>Estamos proyectando nuestra primera instalación en la Patagonia argentina, una región muy afectada por incendios forestales. Nuestro objetivo es expandir la cobertura a nivel nacional en el futuro.</p>
-    </section>
-
-    <section id="faq" data-aos="fade-up">
-      <h2>Preguntas Frecuentes</h2>
-      <details>
-        <summary>¿Las torres funcionan todo el año?</summary>
-        <p>Sí, nuestras torres están diseñadas para operar los 365 días del año, sin importar las condiciones meteorológicas. Son autosustentables y cuentan con sistemas de energía renovable para garantizar su funcionamiento continuo.</p>
-      </details>
-      <details>
-        <summary>¿El sistema de rociado ecológico es seguro para el ambiente?</summary>
-        <p>Absolutamente. Utilizamos soluciones biodegradables y no tóxicas, desarrolladas para no afectar la flora, la fauna ni los cuerpos de agua cercanos. Nuestro objetivo es prevenir el avance del fuego sin dañar el ecosistema.</p>
-      </details>
-      <details>
-        <summary>¿Quién puede solicitar una torre?</summary>
-        <p>Las torres pueden ser solicitadas tanto por municipios, organismos públicos, ONGs como por vecinos organizados. Cuantos más actores se sumen, mayor será la protección para toda la comunidad.</p>
-      </details>
-      <details>
-        <summary>¿Qué sucede cuando se detecta un posible incendio?</summary>
-        <p>Al detectar condiciones anormales (humo, gases, temperatura), la torre enviará automáticamente alertas por WhatsApp a los contactos definidos: brigadas, autoridades y vecinos. Esto permitirá una reacción rápida y coordinada, muchas veces antes de que el fuego se propague.</p>
-      </details>
-      <details>
-        <summary>¿Requiere mantenimiento frecuente?</summary>
-        <p>No. Las torres están pensadas para requerir un mantenimiento mínimo, y la mayoría de las verificaciones podrán realizarse de forma remota. Se recomendará una inspección anual para asegurar el óptimo funcionamiento de sensores y sistemas de energía.</p>
-      </details>
-      <details>
-        <summary>¿Qué tan rápido se emitirán las alertas?</summary>
-        <p>La transmisión de la alerta será prácticamente instantánea una vez que los sensores detecten una amenaza. El sistema está optimizado para enviar las notificaciones en cuestión de segundos, minimizando el tiempo de respuesta.</p>
-      </details>
-      <details>
-        <summary>¿Cómo puedo sumarme o colaborar con el proyecto?</summary>
-        <p>Puedes acompañar el desarrollo de WeerTeck desde el inicio y ser parte de la comunidad que protegerá los bosques. Es posible colaborar con una mínima transacción utilizando nuestra cripto WeerCoin (WEER), ayudar en la difusión o sumarte como voluntario/a. ¡Contactanos para ser parte de la prevención de incendios en Argentina!</p>
-      </details>
-    </section>
-
-    <section id="contacto" data-aos="fade-up">
+    <section>
       <h2>Contacto</h2>
       <p class="contacto">
         <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
@@ -432,68 +413,108 @@
   </main>
 
   <footer>
-    <div class="footer-links">
-      <a href="#">Política de Privacidad</a> |
-      <a href="#">Términos y Condiciones</a>
-    </div>
-    <div class="footer-social">
-      <a href="https://instagram.com/weerteck" target="_blank" aria-label="Instagram">@weerteck</a>
-      <a href="https://wa.me/5491125216302" target="_blank" aria-label="WhatsApp">WhatsApp</a>
-    </div>
     <p>&copy; 2025 WeerTeck - Todos los derechos reservados</p>
-    <small>Sitio creado por Lucas De Cesare</small>
   </footer>
 
+  <!-- BOTÓN FLOTANTE WHATSAPP con número corregido -->
   <a href="https://wa.me/5491125216302?text=Hola%20WeerTeck%2C%20quiero%20m%C3%A1s%20info" target="_blank" rel="noopener" id="btnWhatsApp" aria-label="Contactar por WhatsApp">
     <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
       <path d="M20.52 3.48A11.86 11.86 0 0 0 12 0C5.37 0 0 5.37 0 12a11.93 11.93 0 0 0 2.07 6.57L0 24l5.6-2.07A11.9 11.9 0 0 0 12 24c6.63 0 12-5.37 12-12a11.84 11.84 0 0 0-3.48-8.52zM12 21.4a9.4 9.4 0 0 1-4.78-1.41l-.34-.21-3.32 1.23 1.2-3.23-.22-.34A9.44 9.44 0 1 1 21.4 12a9.37 9.37 0 0 1-9.4 9.4zm5.32-7.21c-.29-.15-1.71-.84-1.97-.94-.26-.11-.45-.15-.64.15s-.74.94-.9 1.13c-.16.19-.32.21-.6.07a6.71 6.71 0 0 1-1.97-1.21 7.32 7.32 0 0 1-1.36-1.68c-.14-.25-.02-.38.11-.53.12-.12.26-.32.39-.48a.72.72 0 0 0 .11-.3.43.43 0 0 0-.06-.3c-.2-.45-.57-1.18-.8-1.6-.21-.4-.43-.34-.6-.34a1.36 1.36 0 0 0-.65.06c-.23.1-.89.86-.89 2.1s.91 2.43 1.03 2.6c.11.18 1.78 2.71 4.3 3.8a13.61 13.61 0 0 0 1.89.66c.8.27 1.53.23 2.11.14a6.69 6.69 0 0 0 2.03-.82 7.7 7.7 0 0 0 2.72-2.47 9.56 9.56 0 0 0-3.41-2.55z"/>
     </svg>
+    <span class="sr-only">Chatear por WhatsApp</span>
   </a>
 
-  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
   <script>
+    // Animación contador numérico mejorada con requestAnimationFrame
     function animarContador(element, numeroFinal, duracion = 2000) {
       let start = 0;
-      const stepTime = Math.max(30, Math.abs(Math.floor(duracion / Math.max(1, numeroFinal))));
-      const increment = 1;
-      const timer = setInterval(() => {
-        start += increment;
-        element.textContent = start;
-        if (start >= numeroFinal) {
-          clearInterval(timer);
+      const now = performance.now();
+      function actualizarContador(timestamp) {
+        const progreso = Math.min((timestamp - now) / duracion, 1);
+        element.textContent = Math.floor(progreso * numeroFinal);
+        if (progreso < 1) {
+          requestAnimationFrame(actualizarContador);
+        } else {
+          element.textContent = numeroFinal;
         }
-      }, stepTime);
+      }
+      requestAnimationFrame(actualizarContador);
     }
+
+    // Animación de entrada de secciones al hacer scroll
+    function revelarAlScroll(selector, clase = 'visible', umbral = 0.15) {
+      const elementos = document.querySelectorAll(selector);
+      const obs = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if(entry.isIntersecting) {
+            entry.target.classList.add(clase);
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {threshold: umbral});
+      elementos.forEach(e => obs.observe(e));
+    }
+
+    // Animación de imágenes de galería al hacer scroll
+    function revelarGaleria() {
+      const imgs = document.querySelectorAll('.galeria img');
+      const obs = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if(entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {threshold: 0.1});
+      imgs.forEach(img => obs.observe(img));
+    }
+
+    // Modo claro/oscuro con localStorage y transición suave
+    function setModo(modo) {
+      if(modo === 'light') {
+        document.body.classList.add('light');
+      } else {
+        document.body.classList.remove('light');
+      }
+      localStorage.setItem('modo', modo);
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
+      // Animar todos los contadores (puedes cambiar los valores aquí)
+      const valores = [8, 12, 21]; // Ejemplo: Torres, Municipios, Alertas
       const numeros = document.querySelectorAll('.numero');
-      numeros.forEach((numElem) => {
-        const numeroFinal = parseInt(numElem.getAttribute('data-numero'), 10);
-        animarContador(numElem, numeroFinal);
+      numeros.forEach((numElem, i) => {
+        numElem.setAttribute('data-numero', valores[i] ?? 0);
+        animarContador(numElem, valores[i] ?? 0);
       });
 
+      // Scroll reveal para secciones y galería
+      revelarAlScroll('section');
+      revelarGaleria();
+
+      // Toggle modo oscuro/claro con preferencia guardada
       const btnToggle = document.getElementById('toggleModo');
+      // Carga el modo guardado
+      if(localStorage.getItem('modo') === 'light') {
+        document.body.classList.add('light');
+      }
       btnToggle.addEventListener('click', () => {
-        document.body.classList.toggle('light');
+        const nuevoModo = document.body.classList.toggle('light') ? 'light' : 'dark';
+        setModo(nuevoModo);
       });
       btnToggle.addEventListener('keydown', (e) => {
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
-          document.body.classList.toggle('light');
+          const nuevoModo = document.body.classList.toggle('light') ? 'light' : 'dark';
+          setModo(nuevoModo);
         }
       });
 
-      AOS.init({ duration: 800, once: true });
-
-      if (document.getElementById('map')) {
-        var map = L.map('map').setView([-42.0, -71.5], 7); // Patagonia
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
-        L.marker([-42, -71.5]).addTo(map)
-          .bindPopup('Proyección de primera torre en la Patagonia');
-      }
+      // Sombra dinámica en el header al hacer scroll
+      window.addEventListener('scroll', () => {
+        document.querySelector('header').classList.toggle('con-sombra', window.scrollY > 10);
+      });
     });
   </script>
-</body>
-</html>
 </body>
 </html>
