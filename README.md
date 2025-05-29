@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
@@ -7,22 +6,19 @@
   
   <!-- Fuente moderna Poppins -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet" />
-
-  <!-- SEO y Social -->
-  <meta name="description" content="Soluciones tecnológicas ambientales para prevenir incendios en la Patagonia Argentina. Torres inteligentes, sensores y alertas para proteger nuestros bosques.">
-  <meta property="og:title" content="WeerTeck | Tecnología ambiental contra incendios">
-  <meta property="og:description" content="Soluciones tecnológicas para anticipar y combatir incendios en la Patagonia argentina.">
-  <meta property="og:image" content="img/logo.png">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://weerteck.com">
-  <meta name="twitter:card" content="summary_large_image">
-
-  <!-- Favicon -->
-  <link rel="icon" href="img/logo.png" type="image/png">
-
+  
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    /* Reset básico */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: 'Poppins', sans-serif;
       background-color: #000;
@@ -31,7 +27,6 @@
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-      transition: background-color 0.5s, color 0.5s;
     }
 
     a {
@@ -39,27 +34,23 @@
       text-decoration: none;
       transition: color 0.3s ease;
     }
-    a:hover, a:focus { color: #81d4fa; text-decoration: underline; outline: none; }
+
+    a:hover,
+    a:focus {
+      color: #81d4fa;
+      text-decoration: underline;
+      outline: none;
+    }
 
     header, main, footer {
       max-width: 900px;
       width: 90%;
       margin: auto;
       padding: 1.5rem 0;
-      background: transparent;
-      transition: background 0.5s;
     }
 
     header {
       text-align: center;
-      position: relative;
-      z-index: 2;
-    }
-    header.con-sombra {
-      box-shadow: 0 4px 14px #00bcd477;
-      background: rgba(0,0,0,0.85);
-      border-radius: 0 0 20px 20px;
-      transition: box-shadow 0.3s, background 0.3s;
     }
 
     .logo {
@@ -99,74 +90,37 @@
       max-width: 800px;
     }
 
-    strong { color: #4dd0e1; }
+    strong {
+      color: #4dd0e1;
+    }
 
     /* Galería de imágenes */
-    .galeria {
+    .Galería {
       display: flex;
       justify-content: space-between;
       gap: 1rem;
       flex-wrap: wrap;
       margin-bottom: 2rem;
     }
+
     .galeria img {
       width: 32%;
       border-radius: 8px;
       box-shadow: 0 0 10px #00bcd4aa;
       cursor: pointer;
-      transition: transform 0.3s cubic-bezier(.23,1.15,.5,1), box-shadow 0.3s, filter 0.3s, border-color 0.3s;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
       border: 2px solid transparent;
       filter: brightness(0.95);
       border-radius: 10px;
-      opacity: 0;
-      transform: translateY(40px) scale(0.97);
     }
-    .galeria img.visible {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-      transition-delay: 0.2s;
-    }
-    .galeria img:hover, .galeria img:focus {
-      transform: scale(1.08) rotate(-1deg);
+
+    .galeria img:hover,
+    .galeria img:focus {
+      transform: scale(1.05);
       box-shadow: 0 0 15px #00bcd4ff;
       filter: brightness(1);
       border-color: #00bcd4;
       outline: none;
-    }
-
-    /* Glassmorphism en contadores */
-    .contadores {
-      display: flex;
-      justify-content: space-around;
-      margin: 3rem 0;
-      gap: 2rem;
-      flex-wrap: wrap;
-    }
-    .contador {
-      background: rgba(20,30,40,0.55);
-      backdrop-filter: blur(6px);
-      border: 2px solid #00bcd488;
-      border-radius: 15px;
-      padding: 1rem 2rem;
-      text-align: center;
-      flex: 1 1 150px;
-      box-shadow: 0 0 10px #00bcd4aa;
-      transition: box-shadow 0.3s, background 0.5s;
-    }
-    .contador:hover {
-      box-shadow: 0 0 20px #00bcd4ff;
-    }
-    .numero {
-      font-size: 2.5rem;
-      font-weight: 800;
-      color: #00bcd4;
-      margin-bottom: 0.5rem;
-      transition: color 0.5s;
-    }
-    .descripcion {
-      font-size: 1rem;
-      font-weight: 600;
-      color: #80deea;
     }
 
     /* Contacto con íconos SVG */
@@ -174,6 +128,7 @@
       font-size: 1rem;
       line-height: 1.6;
     }
+
     .contacto svg {
       vertical-align: middle;
       margin-right: 0.5rem;
@@ -191,10 +146,9 @@
       padding: 1.5rem 0;
       border-top: 1px solid #222;
       margin-top: auto;
-      background: transparent;
     }
 
-    /* Botón flotante WhatsApp con animación pulse */
+    /* Botón flotante WhatsApp */
     #btnWhatsApp {
       position: fixed;
       bottom: 25px;
@@ -208,23 +162,56 @@
       justify-content: center;
       align-items: center;
       cursor: pointer;
-      transition: background-color 0.3s, transform 0.3s;
+      transition: background-color 0.3s ease, transform 0.3s ease;
       z-index: 1000;
-      animation: pulse 2.2s infinite;
     }
+
     #btnWhatsApp:hover {
       background-color: #1ebe5b;
       transform: scale(1.1);
     }
+
     #btnWhatsApp svg {
       width: 30px;
       height: 30px;
       fill: white;
     }
-    @keyframes pulse {
-      0% { transform: scale(1);}
-      50% { transform: scale(1.1);}
-      100% { transform: scale(1);}
+
+    /* Contadores animados */
+    .contadores {
+      display: flex;
+      justify-content: space-around;
+      margin: 3rem 0;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .contador {
+      background: #111;
+      border: 2px solid #00bcd4;
+      border-radius: 15px;
+      padding: 1rem 2rem;
+      text-align: center;
+      flex: 1 1 150px;
+      box-shadow: 0 0 10px #00bcd4aa;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .contador:hover {
+      box-shadow: 0 0 20px #00bcd4ff;
+    }
+
+    .numero {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: #00bcd4;
+      margin-bottom: 0.5rem;
+    }
+
+    .descripcion {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #80deea;
     }
 
     /* Toggle modo oscuro/claro */
@@ -242,96 +229,106 @@
       justify-content: center;
       align-items: center;
       z-index: 1001;
-      transition: background-color 0.3s;
+      transition: background-color 0.3s ease;
     }
-    #toggleModo:hover { background: #26c6da; }
-    #toggleModo svg { fill: #000; width: 22px; height: 22px; }
-    #toggleModo[aria-label]:after {
-      content: attr(aria-label);
-      font-size: 0.7rem;
-      color: #222;
-      background: #fff;
-      padding: 3px 10px;
-      border-radius: 10px;
-      position: absolute;
-      top: 120%;
-      right: 0;
-      white-space: nowrap;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s;
-    }
-    #toggleModo:focus:after, #toggleModo:hover:after { opacity: 1; }
 
-    /* Tooltips accesibles */
-    .sr-only {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0,0,0,0);
-      border: 0;
+    #toggleModo:hover {
+      background: #26c6da;
+    }
+
+    #toggleModo svg {
+      fill: #000;
+      width: 22px;
+      height: 22px;
     }
 
     /* Modo claro */
     body.light {
       background-color: #f5f5f5;
       color: #222;
-      transition: background-color 0.5s, color 0.5s;
     }
-    body.light h1, body.light h2, body.light strong {
+
+    body.light h1,
+    body.light h2,
+    body.light strong {
       color: #00796b;
       text-shadow: none;
     }
-    body.light .subtitulo { color: #004d40; }
-    body.light a { color: #00796b; }
-    body.light a:hover { color: #004d40; }
-    body.light header, body.light main, body.light footer { color: #222; }
-    body.light footer { border-top-color: #ccc; color: #555; }
+
+    body.light .subtitulo {
+      color: #004d40;
+    }
+
+    body.light a {
+      color: #00796b;
+    }
+
+    body.light a:hover {
+      color: #004d40;
+    }
+
+    body.light header,
+    body.light main,
+    body.light footer {
+      color: #222;
+    }
+
+    body.light footer {
+      border-top-color: #ccc;
+      color: #555;
+    }
+
     body.light .galeria img {
       box-shadow: 0 0 10px #00796baa;
       filter: brightness(1);
       border-color: transparent;
     }
-    body.light .galeria img:hover, body.light .galeria img:focus {
+
+    body.light .galeria img:hover,
+    body.light .galeria img:focus {
       box-shadow: 0 0 15px #00796bff;
       border-color: #00796b;
     }
+
     body.light .contador {
-      background: rgba(224,242,241,0.7);
+      background: #e0f2f1;
       border-color: #00796b;
       box-shadow: 0 0 10px #00796baa;
       color: #004d40;
     }
+
     body.light .contador:hover {
       box-shadow: 0 0 20px #00796bff;
     }
-    body.light .numero { color: #00796b; }
 
     /* Responsive */
     @media (max-width: 768px) {
-      .galeria img { width: 48%; margin-bottom: 1rem; }
-      .contadores { flex-direction: column; align-items: center; }
-      .contador { width: 80%; margin-bottom: 1.5rem; }
-      h1 { font-size: 2.2rem; }
-      h2 { font-size: 1.5rem; }
-    }
-    @media (max-width: 480px) {
-      .galeria img { width: 100%; }
+      .galeria img {
+        width: 48%;
+        margin-bottom: 1rem;
+      }
+      .contadores {
+        flex-direction: column;
+        align-items: center;
+      }
+      .contador {
+        width: 80%;
+        margin-bottom: 1.5rem;
+      }
+      h1 {
+        font-size: 2.2rem;
+      }
+      h2 {
+        font-size: 1.5rem;
+      }
     }
 
-    /* Animación de entrada para secciones */
-    section {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: opacity 0.8s, transform 0.8s;
+    @media (max-width: 480px) {
+      .galeria img {
+        width: 100%;
+      }
     }
-    section.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+
   </style>
 </head>
 <body>
@@ -421,100 +418,40 @@
     <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
       <path d="M20.52 3.48A11.86 11.86 0 0 0 12 0C5.37 0 0 5.37 0 12a11.93 11.93 0 0 0 2.07 6.57L0 24l5.6-2.07A11.9 11.9 0 0 0 12 24c6.63 0 12-5.37 12-12a11.84 11.84 0 0 0-3.48-8.52zM12 21.4a9.4 9.4 0 0 1-4.78-1.41l-.34-.21-3.32 1.23 1.2-3.23-.22-.34A9.44 9.44 0 1 1 21.4 12a9.37 9.37 0 0 1-9.4 9.4zm5.32-7.21c-.29-.15-1.71-.84-1.97-.94-.26-.11-.45-.15-.64.15s-.74.94-.9 1.13c-.16.19-.32.21-.6.07a6.71 6.71 0 0 1-1.97-1.21 7.32 7.32 0 0 1-1.36-1.68c-.14-.25-.02-.38.11-.53.12-.12.26-.32.39-.48a.72.72 0 0 0 .11-.3.43.43 0 0 0-.06-.3c-.2-.45-.57-1.18-.8-1.6-.21-.4-.43-.34-.6-.34a1.36 1.36 0 0 0-.65.06c-.23.1-.89.86-.89 2.1s.91 2.43 1.03 2.6c.11.18 1.78 2.71 4.3 3.8a13.61 13.61 0 0 0 1.89.66c.8.27 1.53.23 2.11.14a6.69 6.69 0 0 0 2.03-.82 7.7 7.7 0 0 0 2.72-2.47 9.56 9.56 0 0 0-3.41-2.55z"/>
     </svg>
-    <span class="sr-only">Chatear por WhatsApp</span>
   </a>
 
   <script>
-    // Animación contador numérico mejorada con requestAnimationFrame
+    // Animación contador numérico
     function animarContador(element, numeroFinal, duracion = 2000) {
       let start = 0;
-      const now = performance.now();
-      function actualizarContador(timestamp) {
-        const progreso = Math.min((timestamp - now) / duracion, 1);
-        element.textContent = Math.floor(progreso * numeroFinal);
-        if (progreso < 1) {
-          requestAnimationFrame(actualizarContador);
-        } else {
-          element.textContent = numeroFinal;
+      const stepTime = Math.abs(Math.floor(duracion / numeroFinal));
+      const increment = 1;
+      const timer = setInterval(() => {
+        start += increment;
+        element.textContent = start;
+        if (start >= numeroFinal) {
+          clearInterval(timer);
         }
-      }
-      requestAnimationFrame(actualizarContador);
-    }
-
-    // Animación de entrada de secciones al hacer scroll
-    function revelarAlScroll(selector, clase = 'visible', umbral = 0.15) {
-      const elementos = document.querySelectorAll(selector);
-      const obs = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-          if(entry.isIntersecting) {
-            entry.target.classList.add(clase);
-            observer.unobserve(entry.target);
-          }
-        });
-      }, {threshold: umbral});
-      elementos.forEach(e => obs.observe(e));
-    }
-
-    // Animación de imágenes de galería al hacer scroll
-    function revelarGaleria() {
-      const imgs = document.querySelectorAll('.galeria img');
-      const obs = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-          if(entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, {threshold: 0.1});
-      imgs.forEach(img => obs.observe(img));
-    }
-
-    // Modo claro/oscuro con localStorage y transición suave
-    function setModo(modo) {
-      if(modo === 'light') {
-        document.body.classList.add('light');
-      } else {
-        document.body.classList.remove('light');
-      }
-      localStorage.setItem('modo', modo);
+      }, stepTime);
     }
 
     document.addEventListener('DOMContentLoaded', () => {
-      // Animar todos los contadores (puedes cambiar los valores aquí)
-      const valores = [8, 12, 21]; // Ejemplo: Torres, Municipios, Alertas
+      // Animar todos los contadores
       const numeros = document.querySelectorAll('.numero');
-      numeros.forEach((numElem, i) => {
-        numElem.setAttribute('data-numero', valores[i] ?? 0);
-        animarContador(numElem, valores[i] ?? 0);
+      numeros.forEach((numElem) => {
+        const numeroFinal = parseInt(numElem.getAttribute('data-numero'), 10);
+        animarContador(numElem, numeroFinal);
       });
 
-      // Scroll reveal para secciones y galería
-      revelarAlScroll('section');
-      revelarGaleria();
-
-      // Toggle modo oscuro/claro con preferencia guardada
+      // Toggle modo oscuro/claro
       const btnToggle = document.getElementById('toggleModo');
-      // Carga el modo guardado
-      if(localStorage.getItem('modo') === 'light') {
-        document.body.classList.add('light');
-      }
       btnToggle.addEventListener('click', () => {
-        const nuevoModo = document.body.classList.toggle('light') ? 'light' : 'dark';
-        setModo(nuevoModo);
+        document.body.classList.toggle('light');
       });
       btnToggle.addEventListener('keydown', (e) => {
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
-          const nuevoModo = document.body.classList.toggle('light') ? 'light' : 'dark';
-          setModo(nuevoModo);
+          document.body.classList.toggle('light');
         }
       });
-
-      // Sombra dinámica en el header al hacer scroll
-      window.addEventListener('scroll', () => {
-        document.querySelector('header').classList.toggle('con-sombra', window.scrollY > 10);
-      });
     });
-  </script>
-</body>
-</html>
