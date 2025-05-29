@@ -9,12 +9,8 @@
   <meta property="og:description" content="Soluciones tecnológicas para anticipar y combatir incendios forestales. Torres inteligentes, alertas automáticas y más.">
   <meta property="og:image" content="img/logo.png">
   <meta property="og:type" content="website">
-
-  <!-- Fuente moderna Poppins -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet" />
-  <!-- Leaflet CSS para el mapa -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-  <!-- AOS Animations -->
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
   <style>
@@ -34,7 +30,7 @@
     .navbar {
       position: fixed;
       top: 0; left: 0; width: 100%;
-      background: rgba(13,36,66,0.97); /* Azul oscuro */
+      background: rgba(13,36,66,0.97);
       z-index: 2000;
       box-shadow: 0 2px 10px #0d244288;
     }
@@ -46,8 +42,7 @@
       transition: color 0.2s;
       font-size: 1rem;
     }
-    .navbar a:hover,
-    .navbar a:focus { color: #4dd0e1; }
+    .navbar a:hover, .navbar a:focus { color: #4dd0e1; }
 
     header, main, footer {
       max-width: 950px;
@@ -352,9 +347,12 @@
     <section id="galeria" data-aos="fade-up">
       <h2>Galería</h2>
       <div class="galeria" aria-label="Galería de imágenes de WeerTeck">
-        <img src="img/torre1.jpg" alt="Torre inteligente en el bosque" loading="lazy" tabindex="0" />
-        <img src="img/sensor.jpg" alt="Sensor de humo instalado en la torre" loading="lazy" tabindex="0" />
-        <img src="img/brigada.jpg" alt="Brigada recibiendo alerta y actuando" loading="lazy" tabindex="0" />
+        <img src="img/torre1.jpg" alt="Render de torre inteligente en bosque patagónico" loading="lazy" tabindex="0" />
+        <img src="img/sensor.jpg" alt="Sensor ambiental de humo y gases" loading="lazy" tabindex="0" />
+        <img src="img/brigada.jpg" alt="Equipo humano simulando recepción de alerta" loading="lazy" tabindex="0" />
+        <img src="img/bosque.jpg" alt="Bosque argentino en riesgo de incendio" loading="lazy" tabindex="0" />
+        <img src="img/prototipo-torre.jpg" alt="Prototipo inicial de torre WeerTeck" loading="lazy" tabindex="0" />
+        <img src="img/equipo-desarollo.jpg" alt="Equipo de desarrollo de WeerTeck trabajando" loading="lazy" tabindex="0" />
       </div>
     </section>
 
@@ -443,6 +441,7 @@
       <a href="https://wa.me/5491125216302" target="_blank" aria-label="WhatsApp">WhatsApp</a>
     </div>
     <p>&copy; 2025 WeerTeck - Todos los derechos reservados</p>
+    <small>Sitio creado por Lucas De Cesare</small>
   </footer>
 
   <a href="https://wa.me/5491125216302?text=Hola%20WeerTeck%2C%20quiero%20m%C3%A1s%20info" target="_blank" rel="noopener" id="btnWhatsApp" aria-label="Contactar por WhatsApp">
