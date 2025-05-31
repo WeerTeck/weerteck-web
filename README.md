@@ -49,7 +49,6 @@
       display: flex;
       align-items: center;
     }
-    nav .nav-logo::after { content: ""; }
     @keyframes navLogoHue {
       0% { filter: hue-rotate(0deg);}
       100%{ filter: hue-rotate(40deg);}
@@ -425,13 +424,39 @@
   </style>
 </head>
 <body>
-  <div id="particles-js"></div>
-  <!-- ...el resto del HTML es igual al que ya te envié, manteniendo la estructura, secciones, galería y caja de comentarios públicos... -->
-  <!-- ...por límite de espacio aquí va el script IA y la integración, el resto del HTML lo pegaste igual antes... -->
+  <!-- El resto del HTML (header, main, galería, comentarios, contacto, etc.) debe ir aquí igual que en tus versiones anteriores -->
+  <!-- Por espacio y claridad, aquí se muestra la integración del chatbot con IA y comentarios públicos -->
+  <div id="chatbot-btn" aria-label="Abrir chat con WeerBot" title="¿Necesitás ayuda?">
+    <svg viewBox="0 0 32 32"><path d="M16 3C8.27 3 2 8.48 2 15c0 2.94 1.47 5.63 4 7.76V29a1 1 0 0 0 1.51.86l5.1-3.06c.42.05.85.08 1.39.08 7.73 0 14-5.48 14-12S23.73 3 16 3zm0 22c-.61 0-1.19-.04-1.77-.11a1 1 0 0 0-.62.13L7 27.13V24.7a1 1 0 0 0-.39-.79C4.44 21.95 3 18.63 3 15c0-5.52 5.82-10 13-10s13 4.48 13 10-5.82 10-13 10z"/></svg>
+  </div>
+  <div id="chatbot-box" role="dialog" aria-modal="true" aria-label="Chatbot WeerBot">
+    <div id="chatbot-header">
+      <span>WeerBot 🤖</span>
+      <button id="chatbot-close" aria-label="Cerrar chat">&times;</button>
+    </div>
+    <div id="chatbot-messages">
+      <div class="chatbot-message">¡Hola! Soy WeerBot con inteligencia artificial. Preguntame lo que quieras sobre el proyecto, ambiente, tecnología o cualquier otra cosa.</div>
+    </div>
+    <form id="chatbot-input-box" autocomplete="off">
+      <input type="text" id="chatbot-input" placeholder="Escribí tu pregunta..." autocomplete="off" required />
+      <button id="chatbot-send" type="submit">Enviar</button>
+    </form>
+  </div>
+  <section class="public-comments-section sr" id="comentarios">
+    <h2>Dejanos tu opinión o recomendación</h2>
+    <form id="comment-form">
+      <input type="text" id="comment-author" placeholder="Tu nombre (opcional)" maxlength="40" autocomplete="off"/>
+      <textarea id="comment-text" placeholder="Escribí tu comentario, opinión o recomendación..." rows="3" required maxlength="400"></textarea>
+      <button type="submit">Publicar comentario</button>
+    </form>
+    <ul class="comments-list" id="comments-list"></ul>
+    <div style="text-align:center;margin-top:1em;color:#80deea;">
+      También podés escribirnos directo por <a href="https://wa.me/541125216302?text=Hola%20WeerTeck%2C%20tengo%20una%20consulta%20o%20opinión" target="_blank" rel="noopener">WhatsApp</a>.
+    </div>
+  </section>
   <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
   <script>
-    // ...otros scripts igual que antes (particles, contadores, reveal, modales, comentarios, etc)...
-    // CHATBOT CON INTELIGENCIA ARTIFICIAL (usando OpenAI GPT)
+    // Chatbot con OpenAI GPT
     async function obtenerRespuestaIA(pregunta) {
       const apiKey = "TU_API_KEY_AQUI"; // ← PONÉ TU API KEY AQUÍ
       const endpoint = "https://api.openai.com/v1/chat/completions";
@@ -462,6 +487,7 @@
       }
     }
     document.addEventListener('DOMContentLoaded', () => {
+      // Chatbot
       const chatbotBtn = document.getElementById('chatbot-btn');
       const chatbotBox = document.getElementById('chatbot-box');
       const chatbotClose = document.getElementById('chatbot-close');
@@ -497,8 +523,7 @@
       window.addEventListener('keydown', (e) => {
         if(e.key === "Escape") chatbotBox.classList.remove('active');
       });
-      // ...el resto de scripts de la web...
-      // Comentarios públicos
+      // Caja de comentarios públicos
       const commentsList = document.getElementById('comments-list');
       function loadComments() {
         commentsList.innerHTML = '';
@@ -536,7 +561,6 @@
         document.getElementById('comment-text').value = '';
         loadComments();
       });
-      // ...otros scripts (newsletter, modales, etc)...
     });
   </script>
 </body>
