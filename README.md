@@ -40,7 +40,7 @@
       font-weight: 900;
       font-size: 1.28em;
       letter-spacing: 2px;
-      background: linear-gradient(90deg,#00bcd4,#80deea,#fff0,#ff6f91 80%);
+      background: linear-gradient(90deg,#00bcd4,#80deea,#fff0);
       background-clip: text;
       -webkit-background-clip: text;
       color: transparent;
@@ -49,12 +49,7 @@
       display: flex;
       align-items: center;
     }
-    nav .nav-logo::after {
-      content: " ";
-      font-size: 1.1em;
-      margin-left: 6px;
-      filter: drop-shadow(0 0 5px #fff7);
-    }
+    nav .nav-logo::after { content: ""; }
     @keyframes navLogoHue {
       0% { filter: hue-rotate(0deg);}
       100%{ filter: hue-rotate(40deg);}
@@ -72,15 +67,15 @@
       box-shadow: 0 0 8px #00bcd4bb;
     }
     nav .nav-actions button {
-      background: linear-gradient(90deg,#00bcd4,#ff6f91);
+      background: linear-gradient(90deg,#00bcd4,#80deea);
       color: #fff; border: none; border-radius: 18px;
       padding: 6px 14px; font-weight: 700; cursor: pointer; box-shadow: 0 2px 8px #00bcd4aa;
       transition: background 0.2s, box-shadow 0.2s, scale 0.2s;
       letter-spacing: 0.5px;
     }
     nav .nav-actions button:hover {
-      background: linear-gradient(90deg,#ff6f91,#00bcd4 60%);
-      box-shadow: 0 0 16px #ff6f91cc;
+      background: linear-gradient(90deg,#80deea,#00bcd4 60%);
+      box-shadow: 0 0 16px #00bcd4cc;
       scale:1.08;
     }
     @media (max-width: 700px) { nav ul { gap: 1em; } nav .nav-logo { font-size: 1em; } }
@@ -110,7 +105,7 @@
       margin-bottom: 0.3rem;
       text-shadow: 0 0 18px #00bcd4cc, 0 0 6px #00bcd466;
       letter-spacing: 2px;
-      background: linear-gradient(90deg,#00bcd4,#ff6f91 80%,#fff0);
+      background: linear-gradient(90deg,#00bcd4,#80deea 80%,#fff0);
       background-clip: text;
       -webkit-background-clip: text;
       color: transparent;
@@ -118,9 +113,9 @@
       filter: drop-shadow(0 0 30px #00bcd4cc);
     }
     .subtitulo {
-      font-weight: 600; font-size: 1.3rem; color: #ff6f91;
+      font-weight: 600; font-size: 1.3rem; color: #80deea;
       margin-bottom: 3rem;
-      text-shadow: 0 0 6px #ff90d588; letter-spacing: 1px; animation: fadeIn 2s 0.5s both;
+      text-shadow: 0 0 6px #80deea88; letter-spacing: 1px; animation: fadeIn 2s 0.5s both;
     }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(40px);} to { opacity: 1; transform: translateY(0);} }
     h2 {
@@ -135,7 +130,7 @@
       display:block;
       width: 100%;
       height: 4px;
-      background: linear-gradient(90deg, #00bcd4 20%, #80deea 70%, #ff6f91 100%, transparent);
+      background: linear-gradient(90deg, #00bcd4 20%, #80deea 70%, transparent);
       border-radius: 6px;
       margin-top: 35px;
       filter: blur(0.7px);
@@ -224,12 +219,8 @@
     footer {
       text-align: center; font-size: 1.05rem; color: #888; padding: 1.5rem 0; border-top: 1px solid #222;
       margin-top: auto; background: linear-gradient(90deg, #24243e, #0f2027); letter-spacing: 1px; z-index: 2;
-      box-shadow: 0 -3px 18px #ff6f91aa;
+      box-shadow: 0 -3px 18px #00bcd4aa;
       border-top: 1.5px solid #00bcd4cc;
-    }
-    footer .frase-chique {
-      color: #ff6f91; font-weight: bold; margin: 1em 0 0.5em 0; font-size: 1.08em; letter-spacing: 0.5px;
-      display:inline-block; text-shadow: 0 0 6px #ff90d588;
     }
     #btnWhatsApp {
       position: fixed; bottom: 25px; right: 25px;
@@ -240,7 +231,7 @@
       animation: floatWA 2.2s infinite alternate cubic-bezier(.6,0,.4,1);
     }
     @keyframes floatWA { to { transform: translateY(-10px) scale(1.07);} }
-    #btnWhatsApp:hover { background: #ff6f91; transform: scale(1.13) rotate(-10deg);}
+    #btnWhatsApp:hover { background: #1ebe5b; transform: scale(1.13) rotate(-10deg);}
     #btnWhatsApp svg { width: 30px; height: 30px; fill: white; }
     .contadores {
       display: flex; justify-content: space-around; margin: 3rem 0; gap: 2rem; flex-wrap: wrap;
@@ -251,11 +242,11 @@
       box-shadow: 0 0 18px #00bcd4aa; transition: box-shadow 0.3s, transform 0.3s; position: relative; overflow: hidden;
       filter: drop-shadow(0 0 18px #00bcd4aa);
     }
-    .contador:hover { box-shadow: 0 0 30px #ff6f91ff, 0 0 10px #fff4; transform: translateY(-7px) scale(1.04);}
+    .contador:hover { box-shadow: 0 0 30px #00bcd4ff, 0 0 10px #fff4; transform: translateY(-7px) scale(1.04);}
     .numero {
       font-size: 2.7rem; font-weight: 900; color: #00bcd4; margin-bottom: 0.5rem;
       text-shadow: 0 0 7px #4dd0e1; letter-spacing: 1px;
-      background: linear-gradient(90deg,#00bcd4,#ff6f91,#fff0);
+      background: linear-gradient(90deg,#00bcd4,#80deea,#fff0);
       background-clip: text;
       -webkit-background-clip: text;
       color: transparent;
@@ -269,18 +260,18 @@
       width: 40px; height: 40px; cursor: pointer; box-shadow: 0 0 12px #00bcd4cc;
       display: flex; justify-content: center; align-items: center; z-index: 1101; transition: background 0.3s, transform 0.3s;
     }
-    #toggleModo:hover { background: #ff6f91; transform: rotate(16deg) scale(1.09);}
+    #toggleModo:hover { background: #26c6da; transform: rotate(16deg) scale(1.09);}
     #toggleModo svg { fill: #000; width: 22px; height: 22px; }
     #chatbot-btn {
       position: fixed; bottom: 105px; right: 30px; width: 54px; height: 54px;
-      background: linear-gradient(135deg, #00bcd4 70%, #ff6f91 100%);
+      background: linear-gradient(135deg, #00bcd4 70%, #80deea 100%);
       border-radius: 50%; box-shadow: 0 4px 14px #00bcd4aa;
       display: flex; align-items: center; justify-content: center; z-index: 1050;
       cursor: pointer; transition: background 0.3s, transform 0.3s;
       border: 2px solid #fff;
       animation: floatWA 2.2s infinite alternate cubic-bezier(.6,0,.4,1);
     }
-    #chatbot-btn:hover { background: #ff6f91; transform: scale(1.09);}
+    #chatbot-btn:hover { background: #80deea; transform: scale(1.09);}
     #chatbot-btn svg { width: 32px; height: 32px; fill: #fff; }
     #chatbot-box {
       display: none; position: fixed; bottom: 8px; right: 32px; width: 340px; max-width: 96vw;
@@ -322,7 +313,7 @@
       background: #e0f7fa; color: #222;
     }
     #chatbot-send {
-      background: #ff6f91; color: #fff; border: none; border-radius: 12px;
+      background: #004d40; color: #fff; border: none; border-radius: 12px;
       padding: 0.6em 1.2em; cursor: pointer; font-weight: 700; font-size: 1em; transition: background 0.2s;
     }
     #chatbot-send:hover { background: #00796b; }
@@ -337,11 +328,87 @@
     body.light .faq-section { background: #e0f7fa; }
     body.light .faq-a { color: #222; }
     body.light .faq-q { color: #00796b;}
+    /* Comentarios públicos */
+    .public-comments-section {
+      margin-top: 3em;
+      margin-bottom: 2em;
+      background: linear-gradient(120deg,#00bcd4aa,#80deea44,#2226);
+      border-radius: 15px;
+      padding: 2em 1em;
+      box-shadow: 0 2px 32px #00bcd455;
+      border: 2px solid #00bcd4cc;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .public-comments-section h2 {
+      text-align: center;
+      margin-bottom: 1.2em;
+      color: #00bcd4;
+    }
+    #comment-form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8em;
+      margin-bottom: 1.5em;
+      align-items: center;
+    }
+    #comment-form input, #comment-form textarea {
+      width: 95%;
+      max-width: 480px;
+      padding: 0.6em 1em;
+      border-radius: 8px;
+      border: 1px solid #00bcd4aa;
+      font-size: 1em;
+      background: #e0f7fa;
+      color: #222;
+    }
+    #comment-form button {
+      background: linear-gradient(90deg, #00bcd4, #80deea);
+      color: #fff;
+      padding: 0.6em 1.5em;
+      border: none;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 1em;
+      cursor: pointer;
+      box-shadow: 0 2px 8px #00bcd4aa;
+      transition: background 0.2s;
+    }
+    #comment-form button:hover { background: #00bcd4; }
+    .comments-list {
+      margin-top: 0.7em;
+      list-style: none;
+      padding: 0;
+      max-width: 650px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .comments-list li {
+      background: #fff3;
+      border-radius: 8px;
+      margin-bottom: 1.2em;
+      padding: 1em 1.2em;
+      color: #e0e0e0;
+      box-shadow: 0 2px 10px #00bcd433;
+      border-left: 4px solid #00bcd4;
+    }
+    .comments-list .comment-author {
+      font-weight: bold;
+      color: #00bcd4;
+      margin-bottom: 0.2em;
+    }
+    .comments-list .comment-date {
+      font-size: 0.93em;
+      color: #80deea;
+      float: right;
+    }
     @media (max-width: 520px) {
       #chatbot-box {
         right: 0; left: 0; width: 100vw; border-radius: 0; min-height: 60vh; max-height: 94vh;
       }
       .modal-img .close-modal { right: 12px; top: 74px;}
+      .public-comments-section { padding: 1.3em 0.2em;}
     }
     @media (max-width: 900px) { header, main, footer { width: 98%; } }
     @media (max-width: 768px) {
@@ -390,7 +457,7 @@
       <button id="chatbot-close" aria-label="Cerrar chat">&times;</button>
     </div>
     <div id="chatbot-messages">
-      <div class="chatbot-message">¡Hola! Soy WeerBot. Consultame todo sobre tecnología, detección de incendios, sensores, funcionamiento de la torre y cómo nuestro proyecto puede ayudar a nivel nacional.</div>
+      <div class="chatbot-message">¡Hola! Soy WeerBot. Consultame todo sobre tecnología, detección de incendios, sensores, funcionamiento de la torre, expansión nacional, impacto ambiental, y mucho más.</div>
     </div>
     <form id="chatbot-input-box" autocomplete="off">
       <input type="text" id="chatbot-input" placeholder="Escribí tu pregunta..." autocomplete="off" required />
@@ -411,7 +478,7 @@
     <section class="sr" id="quehacemos">
       <h2>¿Qué hacemos?</h2>
       <p>
-        Desarrollamos <strong>torres inteligentes autosustentables</strong> que detectan incendios en etapa temprana mediante sensores de humo, gases inflamables y temperatura. Las torres envían <strong>alertas automáticas por WhatsApp</strong> a brigadas, municipios y vecinos para una respuesta rápida.
+        Desarrollamos <strong>torres inteligentes autosustentables</strong> que detectan incendios en etapa temprana mediante sensores de humo, gases inflamables y temperatura. Las alertas ya no serán simples notificaciones de WhatsApp, sino que ahora se enviarán a bomberos, brigadas y vecinos a través de <strong>notificaciones push en el celular</strong> y <strong>alarmas sonoras tradicionales</strong> para una respuesta rápida y efectiva.
       </p>
       <p>
         Además, las torres pueden incluir un sistema de <strong>rociado preventivo</strong> con soluciones ecológicas para contener focos de fuego de manera inmediata y minimizar el impacto ambiental.
@@ -487,7 +554,7 @@
       <ul class="faq-list">
         <li class="faq-item">
           <div class="faq-q">¿Qué es una torre WeerTeck?</div>
-          <div class="faq-a">Es una torre autosustentable equipada con sensores ambientales, cámaras y conectividad IoT para detectar incendios forestales en etapas tempranas y enviar alertas automáticas a los responsables.</div>
+          <div class="faq-a">Es una torre autosustentable equipada con sensores ambientales, cámaras y conectividad IoT para detectar incendios forestales en etapas tempranas y enviar alertas automáticas mediante notificaciones push y alarmas sonoras.</div>
         </li>
         <li class="faq-item">
           <div class="faq-q">¿Cómo detectan los incendios?</div>
@@ -495,7 +562,7 @@
         </li>
         <li class="faq-item">
           <div class="faq-q">¿A quiénes llegan las alertas?</div>
-          <div class="faq-a">A brigadas de emergencia, municipios, bomberos y vecinos registrados, a través de WhatsApp y otros canales configurables.</div>
+          <div class="faq-a">A bomberos, brigadas, municipios, y vecinos registrados, a través de notificaciones push en el celular y alarmas sonoras tradicionales.</div>
         </li>
         <li class="faq-item">
           <div class="faq-q">¿En qué zonas se pueden instalar?</div>
@@ -526,6 +593,20 @@
           <div class="faq-a">Completá el formulario de contacto, escribinos por WhatsApp al +54 11 2521-6302 o enviá un mail a weerteck@gmail.com.</div>
         </li>
       </ul>
+    </section>
+
+    <!-- Caja de comentarios públicos -->
+    <section class="public-comments-section sr" id="comentarios">
+      <h2>Dejanos tu opinión o recomendación</h2>
+      <form id="comment-form">
+        <input type="text" id="comment-author" placeholder="Tu nombre (opcional)" maxlength="40" autocomplete="off"/>
+        <textarea id="comment-text" placeholder="Escribí tu comentario, opinión o recomendación..." rows="3" required maxlength="400"></textarea>
+        <button type="submit">Publicar comentario</button>
+      </form>
+      <ul class="comments-list" id="comments-list"></ul>
+      <div style="text-align:center;margin-top:1em;color:#80deea;">
+        También podés escribirnos directo por <a href="https://wa.me/541125216302?text=Hola%20WeerTeck%2C%20tengo%20una%20consulta%20o%20opinión" target="_blank" rel="noopener">WhatsApp</a>.
+      </div>
     </section>
   </main>
   <footer>
@@ -715,7 +796,7 @@
       updateHora();
       setInterval(updateHora, 60000);
 
-      // Chatbot profesional y centrado en el proyecto
+      // Chatbot profesional y expandido
       const chatbotBtn = document.getElementById('chatbot-btn');
       const chatbotBox = document.getElementById('chatbot-box');
       const chatbotClose = document.getElementById('chatbot-close');
@@ -749,23 +830,89 @@
         }, 600);
       });
 
+      // Caja de comentarios públicos (localStorage)
+      const commentsList = document.getElementById('comments-list');
+      function loadComments() {
+        commentsList.innerHTML = '';
+        let comments = [];
+        try {
+          comments = JSON.parse(localStorage.getItem('weer-comments') || '[]');
+        } catch {}
+        if (comments.length === 0) {
+          commentsList.innerHTML = "<li style='text-align:center;color:#80deea;'>Sé el primero en dejar tu comentario.</li>";
+          return;
+        }
+        comments.slice().reverse().forEach(c => {
+          const li = document.createElement('li');
+          li.innerHTML = `<span class="comment-author">${c.author ? c.author : "Anónimo"}</span> <span class="comment-date">${c.date}</span><br>${c.text}`;
+          commentsList.appendChild(li);
+        });
+      }
+      loadComments();
+      document.getElementById('comment-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const author = document.getElementById('comment-author').value.trim();
+        const text = document.getElementById('comment-text').value.trim();
+        if (!text) return;
+        let comments = [];
+        try {
+          comments = JSON.parse(localStorage.getItem('weer-comments') || '[]');
+        } catch {}
+        comments.push({
+          author,
+          text,
+          date: new Date().toLocaleString('es-AR')
+        });
+        localStorage.setItem('weer-comments', JSON.stringify(comments));
+        document.getElementById('comment-author').value = '';
+        document.getElementById('comment-text').value = '';
+        loadComments();
+      });
+
+      // Chatbot respuestas expandidas (más del triple de respuestas)
       function chatbotRespuesta(m) {
         m = m.toLowerCase();
-        if(m.includes("quiénes son") || m.includes("quien sos")) return "Somos un grupo de jóvenes desarrollando este proyecto para presentarlo en UDESA y también queremos llevarlo a nivel nacional. Buscamos aportar soluciones tecnológicas para prevenir incendios y proteger el ambiente.";
-        if(m.includes("udesa")) return "Este proyecto está pensado para presentarse en UDESA, pero también queremos que llegue a más lugares del país.";
-        if(m.includes("nacional") || m.includes("argentina")) return "Buscamos que la tecnología de prevención llegue a nivel nacional para ayudar en todas las regiones vulnerables a incendios.";
-        if(m.includes("tecnología") || m.includes("sensor")) return "El sistema usa sensores de humo, temperatura y gases, además de un módulo de alertas automáticas para una respuesta rápida ante incendios.";
-        if(m.includes("objetivo")) return "El objetivo es detectar incendios de forma temprana y ayudar a proteger los bosques y comunidades.";
-        if(m.includes("contacto") || m.includes("mail")) return "Podés contactarnos por WhatsApp (+54 11 2521-6302), mail (weerteck@gmail.com) o Instagram (@weerteck).";
-        if(m.includes("rociado")) return "El sistema de rociado puede incluir soluciones ecológicas para contener el fuego de forma inmediata.";
-        if(m.includes("mantenimiento")) return "El sistema es autosustentable y requiere un mantenimiento mínimo, principalmente una revisión anual presencial.";
-        if(m.includes("instalar")) return "Las torres pueden instalarse en bosques, áreas rurales, reservas, parques industriales y zonas periurbanas.";
-        if(m.includes("alerta")) return "El sistema envía alertas automáticas por WhatsApp a brigadas, municipios y vecinos para una respuesta rápida.";
-        if(m.includes("cost") || m.includes("precio") || m.includes("cuánto vale")) return "El costo depende de la configuración y cantidad de sensores. Consultanos por WhatsApp o mail para una cotización personalizada.";
-        if(m.includes("integración") || m.includes("municipio")) return "Ofrecemos integración para sistemas municipales, protección civil y apps de gestión de emergencias.";
-        if(m.includes("reporte") || m.includes("estadística")) return "Generamos reportes periódicos sobre el estado, alertas y estadísticas, adaptados para municipios u organizaciones.";
+        // IDENTIDAD Y OBJETIVO
+        if(m.includes("quiénes son") || m.includes("quien sos") || m.includes("equipo")) return "Somos un grupo de jóvenes que desarrolla este proyecto para presentarlo en UDESA y también buscamos que llegue a nivel nacional. Queremos aportar soluciones tecnológicas reales para prevenir incendios y proteger el ambiente.";
+        if(m.includes("udesa")) return "Este proyecto está pensado para presentarse en UDESA, pero también queremos que llegue a todo el país.";
+        if(m.includes("nacional") || m.includes("argentina")) return "Buscamos que la tecnología llegue a nivel nacional para ayudar en todas las regiones vulnerables a incendios.";
+        if(m.includes("cómo participar") || m.includes("sumar") || m.includes("colaborar")) return "Podés dejar tu recomendación en la caja de comentarios pública al final de la página o escribirnos por WhatsApp. ¡Queremos sumar más ideas y personas!";
+        // TECNOLOGÍA Y FUNCIONAMIENTO
+        if(m.includes("tecnología") || m.includes("cómo funciona") || m.includes("funcionamiento")) return "La torre utiliza sensores de humo, temperatura y gases, inteligencia artificial y sistemas de comunicación IoT para enviar alertas tempranas. El sistema puede incluir rociado preventivo y alarmas sonoras.";
+        if(m.includes("sensor") || m.includes("sensores")) return "Usamos sensores de humo, temperatura, gases inflamables y cámaras, conectados a un microcontrolador y software propio.";
+        if(m.includes("alerta") || m.includes("notificación") || m.includes("alarma")) return "Las alertas se envían por notificaciones push al celular y mediante alarmas sonoras tradicionales para bomberos, brigadas y vecinos.";
+        if(m.includes("rociado") || m.includes("ecológico") || m.includes("agua") || m.includes("químico")) return "El sistema de rociado puede usar soluciones ecológicas, agua o retardantes según configuración. El objetivo es contener el fuego apenas se detecta.";
+        if(m.includes("app") && m.includes("móvil")) return "Planeamos una app móvil donde se puedan recibir alertas, ver el estado de la torre y estadísticas en tiempo real.";
+        if(m.includes("panel") || m.includes("dashboard") || m.includes("web")) return "Contamos con un panel web donde se monitorean todas las torres, alertas, estadísticas y estado de sensores.";
+        // USO, INSTALACIÓN Y EXPANSIÓN
+        if(m.includes("instalar") || m.includes("dónde") || m.includes("zonas")) return "Las torres pueden instalarse en bosques, reservas, zonas rurales, parques industriales y zonas periurbanas. El alcance es flexible y escalable.";
+        if(m.includes("municipio") || m.includes("gobierno")) return "Ofrecemos integración para municipios, sistemas de monitoreo local y apps de gestión de emergencias.";
+        if(m.includes("vecino") || m.includes("comunidad")) return "Los vecinos pueden registrarse para recibir alertas y reportes. Queremos que toda la comunidad participe de la prevención.";
+        if(m.includes("bombero") || m.includes("brigada")) return "Las brigadas y bomberos reciben alertas automáticas y pueden acceder a información detallada del incidente desde el panel o la app.";
+        if(m.includes("mantenimiento")) return "El sistema es autosustentable con panel solar y batería, requiere sólo una revisión anual presencial.";
+        if(m.includes("reporte") || m.includes("estadística")) return "Generamos reportes periódicos sobre alertas, estado y funcionamiento, adaptados para municipios o entidades interesadas.";
+        // COSTOS Y COTIZACIONES
+        if(m.includes("precio") || m.includes("costo") || m.includes("vale")) return "El costo depende de la configuración y cantidad de sensores. Escribinos por WhatsApp o mail y preparamos una cotización personalizada.";
+        // FAQ Y PREGUNTAS FRECUENTES
+        if(m.includes("faq") || m.includes("preguntas frecuentes")) return "En la sección FAQ de la página respondemos las preguntas más comunes sobre el proyecto, funcionamiento y contacto.";
+        // CONTACTO
+        if(m.includes("contacto") || m.includes("mail") || m.includes("correo") || m.includes("whatsapp")) return "Podés contactarnos por WhatsApp (+54 11 2521-6302), mail (weerteck@gmail.com) o dejar tu mensaje en la caja de comentarios pública.";
+        if(m.includes("instagram") || m.includes("redes")) return "Seguinos en Instagram: <a href='https://instagram.com/weerteck' target='_blank'>@weerteck</a>";
+        // EVENTOS, DEMOS Y PRESENTACIONES
+        if(m.includes("evento") || m.includes("presentación") || m.includes("demo")) return "Publicamos los próximos eventos y presentaciones en la sección de eventos. ¡Sumate o escribinos si querés una demo!";
+        // CURIOSIDADES, EDUCACIÓN, AMBIENTE
+        if(m.includes("dato curioso") || m.includes("sabías")) return "¿Sabías que en Argentina hay más de 1 millón de hectáreas de bosques nativos quemadas en los últimos 10 años? Por eso creemos que la prevención y la tecnología son clave.";
+        if(m.includes("tip ambiental") || m.includes("consejo")) return "Tip: No hagas fuego en zonas prohibidas, nunca dejes brasas encendidas y si ves humo o fuego avisá a las autoridades inmediatamente.";
+        if(m.includes("por qué existe")) return "El proyecto existe porque los incendios forestales son un problema grave y creemos que la prevención tecnológica puede salvar miles de hectáreas y vidas.";
+        // MENSAJES MOTIVACIONALES Y DE UNIÓN
+        if(m.includes("por qué sumarse") || m.includes("para qué sirve") || m.includes("importancia")) return "Sumarse es importante porque la prevención de incendios y el cuidado del ambiente es tarea de todos. La tecnología nos ayuda a responder más rápido y proteger lo que más importa.";
+        // PREGUNTAS SOBRE LA CAJA DE COMENTARIOS
+        if(m.includes("comentario") || m.includes("opinión") || m.includes("recomendación")) return "Podés dejar tu comentario, opinión o recomendación en la caja de comentarios pública al final de la página. ¡Leemos todas!";
+        // PREGUNTAS RANDOM Y RESPUESTAS POR DEFECTO
+        if(m.includes("hola") || m.includes("buenas") || m.includes("buenos días") || m.includes("buenas tardes") || m.includes("buenas noches")) return "¡Hola! Consultame sobre el proyecto, tecnología, prevención, ambiente, o dejá tu comentario al final de la página.";
         if(m.trim().length < 5) return "Por favor, detallá mejor tu consulta para poder ayudarte.";
-        return "¿Querés saber cómo funciona la torre, para qué sirve, o cómo se puede implementar en tu zona? Consultame sobre el proyecto.";
+        // Mensaje por defecto
+        return "¿Querés saber cómo funciona la torre, cómo recibir alertas, cómo sumarte al proyecto o cómo podemos ayudar en tu zona? Consultame sobre cualquier aspecto del proyecto, la tecnología, el impacto ambiental o dejanos tu comentario público al final de la página.";
       }
       window.addEventListener('keydown', (e) => {
         if(e.key === "Escape") chatbotBox.classList.remove('active');
