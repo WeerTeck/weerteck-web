@@ -50,7 +50,7 @@
       align-items: center;
     }
     nav .nav-logo::after {
-      content: " 🌈✨";
+      content: " ";
       font-size: 1.1em;
       margin-left: 6px;
       filter: drop-shadow(0 0 5px #fff7);
@@ -373,7 +373,7 @@
       <li><a href="#faq">FAQ</a></li>
     </ul>
     <div class="nav-actions">
-      <button onclick="document.getElementById('newsletterBtn').click()">Newsletter 🌈</button>
+      <button onclick="document.getElementById('newsletterBtn').click()">Newsletter</button>
     </div>
   </nav>
   <div id="toggleModo" aria-label="Cambiar modo oscuro/claro" role="button" tabindex="0" title="Cambiar modo oscuro/claro">
@@ -386,35 +386,35 @@
   </div>
   <div id="chatbot-box" role="dialog" aria-modal="true" aria-label="Chatbot WeerBot">
     <div id="chatbot-header">
-      <span>WeerBot 🤖🌱</span>
+      <span>WeerBot 🤖</span>
       <button id="chatbot-close" aria-label="Cerrar chat">&times;</button>
     </div>
     <div id="chatbot-messages">
-      <div class="chatbot-message">¡Hola! Soy WeerBot, tu compa virtual para consultas de tecnología, ambiente, datos random, chistes verdes y más. ¿En qué te ayudo hoy? 🌈🌎</div>
+      <div class="chatbot-message">¡Hola! Soy WeerBot. Consultame todo sobre tecnología, detección de incendios, sensores, funcionamiento de la torre y cómo nuestro proyecto puede ayudar a nivel nacional.</div>
     </div>
     <form id="chatbot-input-box" autocomplete="off">
-      <input type="text" id="chatbot-input" placeholder="Escribí tu pregunta o pedí un chiste..." autocomplete="off" required />
+      <input type="text" id="chatbot-input" placeholder="Escribí tu pregunta..." autocomplete="off" required />
       <button id="chatbot-send" type="submit">Enviar</button>
     </form>
   </div>
   <header>
     <h1 id="top">WeerTeck</h1>
-    <p class="subtitulo">Tecnología joven, inclusiva y ecológica para cambiar el mundo 🌱✨</p>
+    <p class="subtitulo">Tecnología para prevenir incendios y proteger el ambiente</p>
   </header>
   <main>
     <section class="sr" id="quienes">
       <h2>¿Quiénes somos?</h2>
       <p>
-        Somos un grupo de jóvenes de UDESA soñando con innovar y cuidar el ambiente 💚. WeerTeck nació como proyecto para Ingenia 2025 y acá estamos: sin títulos de ingenierxs pero con muchísima curiosidad, ganas de aprender y dejar una huella positiva. Si sos chique, tenés ideas locas y te interesa la tecnología para el bien común, ¡sumate a la movida!
+        Somos un grupo de jóvenes con ganas de innovar y aportar soluciones reales para prevenir incendios forestales y cuidar el medio ambiente. Este proyecto lo estamos desarrollando para presentarlo en UDESA y también buscamos que llegue a nivel nacional. No somos ingenieros ni técnicos, pero creemos que la tecnología puede marcar una diferencia muy grande si se aplica bien.
       </p>
     </section>
     <section class="sr" id="quehacemos">
       <h2>¿Qué hacemos?</h2>
       <p>
-        Estamos desarrollando <strong>torres inteligentes autosustentables</strong> para detectar incendios temprano usando sensores y tecnología abierta. Buscamos alertar a lxs vecinxs, brigadas y municipios por WhatsApp o la app que elijan, para que nadie llegue tarde a cuidar el bosque. 
+        Desarrollamos <strong>torres inteligentes autosustentables</strong> que detectan incendios en etapa temprana mediante sensores de humo, gases inflamables y temperatura. Las torres envían <strong>alertas automáticas por WhatsApp</strong> a brigadas, municipios y vecinos para una respuesta rápida.
       </p>
       <p>
-        Si pinta, agregamos rociado ecológico y otras ideas que vayan surgiendo. Todo lo que ayude a frenar el fuego y cuidar el planeta entra en la lista 💡🔥.
+        Además, las torres pueden incluir un sistema de <strong>rociado preventivo</strong> con soluciones ecológicas para contener focos de fuego de manera inmediata y minimizar el impacto ambiental.
       </p>
     </section>
     <section class="contadores sr" id="estadisticas" aria-label="Estadísticas de WeerTeck">
@@ -424,7 +424,7 @@
       </div>
       <div class="contador">
         <div class="numero" data-numero="2">0</div>
-        <div class="descripcion">Municipios curiosxs</div>
+        <div class="descripcion">Municipios interesados</div>
       </div>
       <div class="contador">
         <div class="numero" data-numero="7">0</div>
@@ -487,7 +487,7 @@
       <ul class="faq-list">
         <li class="faq-item">
           <div class="faq-q">¿Qué es una torre WeerTeck?</div>
-          <div class="faq-a">Es una torre autosustentable equipada con sensores ambientales, cámaras y conectividad IoT para detectar incendios forestales en etapas tempranas y enviar alertas automáticas a lxs responsables.</div>
+          <div class="faq-a">Es una torre autosustentable equipada con sensores ambientales, cámaras y conectividad IoT para detectar incendios forestales en etapas tempranas y enviar alertas automáticas a los responsables.</div>
         </li>
         <li class="faq-item">
           <div class="faq-q">¿Cómo detectan los incendios?</div>
@@ -495,7 +495,7 @@
         </li>
         <li class="faq-item">
           <div class="faq-q">¿A quiénes llegan las alertas?</div>
-          <div class="faq-a">A brigadas de emergencia, municipios, bomberos y vecinxs registradxs, a través de WhatsApp y otros canales configurables.</div>
+          <div class="faq-a">A brigadas de emergencia, municipios, bomberos y vecinos registrados, a través de WhatsApp y otros canales configurables.</div>
         </li>
         <li class="faq-item">
           <div class="faq-q">¿En qué zonas se pueden instalar?</div>
@@ -529,9 +529,10 @@
     </section>
   </main>
   <footer>
-    <span class="frase-chique">🌈 Cuidar el planeta es el futuro más top. ¡Sumate y hacé historia con nosotrxs! 🚀</span>
-    <p>&copy; 2025 WeerTeck - Todxs los derechos reservados</p>
-    <p><a href="#top" style="color: #ff6f91;">↑ Volver arriba</a></p>
+    <p>&copy; 2025 WeerTeck - Todos los derechos reservados</p>
+    <p>
+      <a href="#top" style="color: #4dd0e1;">↑ Volver arriba</a>
+    </p>
     <p id="footer-hora"></p>
   </footer>
   <a href="https://wa.me/541125216302?text=Hola%20WeerTeck%2C%20quiero%20más%20info" target="_blank" rel="noopener" id="btnWhatsApp" aria-label="Contactar por WhatsApp">
@@ -714,7 +715,7 @@
       updateHora();
       setInterval(updateHora, 60000);
 
-      // --- Chatbot chique e inclusivo ---
+      // Chatbot profesional y centrado en el proyecto
       const chatbotBtn = document.getElementById('chatbot-btn');
       const chatbotBox = document.getElementById('chatbot-box');
       const chatbotClose = document.getElementById('chatbot-close');
@@ -750,45 +751,21 @@
 
       function chatbotRespuesta(m) {
         m = m.toLowerCase();
-        const datos = [
-          "¿Sabías que un solo árbol puede absorber hasta 150 kg de CO₂ por año? 🌳",
-          "La Patagonia tiene más de 3 millones de hectáreas de bosque nativo. ¡A cuidar! 🏞️",
-          "El reciclaje de una lata ahorra la energía suficiente para escuchar música todo un día. 🎶"
-        ];
-        const chistes = [
-          "¿Por qué el pasto nunca pierde? Porque siempre tiene la raíz del asunto 😄",
-          "¿Qué hace un volcán en el gimnasio? ¡Erup-ciones! 💪🌋",
-          "¿Por qué el planeta fue al médico? Porque tenía fiebre global 🌡️🌎"
-        ];
-        const tips = [
-          "Tip eco: Apagá la compu si no la usás, ¡el planeta lo agradece! 🌱",
-          "Separá la basura y dale una segunda vida a tus residuos ♻️",
-          "Andá en bici o caminá cuando puedas, tu salud y el ambiente te lo van a agradecer 🚲"
-        ];
-
-        if(m.includes("cambio climático")) return "¡El cambio climático es real y urgente! Si querés saber cómo ayudar, preguntame por tips ecológicos 🌱✨";
-        if(m.includes("dato") && m.includes("curioso")) return datos[Math.floor(Math.random()*datos.length)];
-        if(m.includes("chiste")) return chistes[Math.floor(Math.random()*chistes.length)];
-        if(m.includes("hola") || m.includes("buenos")) return "¡Hola chique! ¿En qué te puedo ayudar hoy? Preguntame sobre tecnología, ambiente, memes verdes o lo que quieras 🌈🦾";
-        if(m.includes("tecnología") || m.includes("sensor") || m.includes("torre")) return "¡Nuestra torre es 100% experimental y hecha con amor estudiantil! Usa sensores, código abierto y energía solar para ayudar a prevenir incendios.";
-        if(m.includes("equipo") || m.includes("quiénes son")) return "Somos un grupo de estudiantes de UDESA, con muchas ganas de innovar y aprender. ¡Sumate si querés!";
-        if(m.includes("tips") || m.includes("eco")) return tips[Math.floor(Math.random()*tips.length)];
-        if(m.includes("proyecto") || m.includes("ingenia")) return "Este proyecto nació en el marco de Ingenia 2025 en UDESA. Si querés sumarte o proponer ideas, ¡mandanos un mensaje!";
-        if(m.includes("sumar") || m.includes("colaborar")) return "¡Siempre hay lugar para más chiques con ganas de transformar el ambiente! Escribinos por WhatsApp, mail o Instagram.";
+        if(m.includes("quiénes son") || m.includes("quien sos")) return "Somos un grupo de jóvenes desarrollando este proyecto para presentarlo en UDESA y también queremos llevarlo a nivel nacional. Buscamos aportar soluciones tecnológicas para prevenir incendios y proteger el ambiente.";
+        if(m.includes("udesa")) return "Este proyecto está pensado para presentarse en UDESA, pero también queremos que llegue a más lugares del país.";
+        if(m.includes("nacional") || m.includes("argentina")) return "Buscamos que la tecnología de prevención llegue a nivel nacional para ayudar en todas las regiones vulnerables a incendios.";
+        if(m.includes("tecnología") || m.includes("sensor")) return "El sistema usa sensores de humo, temperatura y gases, además de un módulo de alertas automáticas para una respuesta rápida ante incendios.";
+        if(m.includes("objetivo")) return "El objetivo es detectar incendios de forma temprana y ayudar a proteger los bosques y comunidades.";
         if(m.includes("contacto") || m.includes("mail")) return "Podés contactarnos por WhatsApp (+54 11 2521-6302), mail (weerteck@gmail.com) o Instagram (@weerteck).";
-        if(m.includes("instagram") || m.includes("redes")) return "Seguinos en Instagram: <a href='https://instagram.com/weerteck' target='_blank'>@weerteck</a>";
-        if(m.includes("municipio")) return "¡Sí! Los municipios pueden sumarse, proponer ideas o pedir una demo. Escribinos y charlamos 🏛️";
-        if(m.includes("rociado")) return "El sistema de rociado utiliza líquidos biodegradables y ecológicos que ayudan a contener el fuego en la etapa inicial.";
-        if(m.includes("integrar") || m.includes("dashboard") || m.includes("panel")) return "Ofrecemos integración con dashboards web y sistemas de monitoreo municipales.";
-        if(m.includes("energía") || m.includes("solar")) return "Las torres son autosustentables y operan con energía solar y baterías de respaldo.";
-        if(m.includes("reporte") || m.includes("estadisticas")) return "Se generan reportes periódicos de alertas, estado y funcionamiento, adaptados a municipios o privados.";
-        if(m.includes("faq") || m.includes("preguntas frecuentes")) return "Consultá las preguntas frecuentes en la sección FAQ al pie de página.";
-        if(m.includes("random")) {
-          const all = [...datos, ...chistes, ...tips];
-          return all[Math.floor(Math.random()*all.length)];
-        }
-        if(m.trim().length < 5) return "Porfa, detallá mejor tu consulta para poder ayudarte 😊";
-        return "¡Gracias por escribir! Soy WeerBot, tu compa para preguntas de ambiente, tecnología, memes verdes y más. ¿Querés que te cuente un dato random, un tip o un chiste? 🌱😄";
+        if(m.includes("rociado")) return "El sistema de rociado puede incluir soluciones ecológicas para contener el fuego de forma inmediata.";
+        if(m.includes("mantenimiento")) return "El sistema es autosustentable y requiere un mantenimiento mínimo, principalmente una revisión anual presencial.";
+        if(m.includes("instalar")) return "Las torres pueden instalarse en bosques, áreas rurales, reservas, parques industriales y zonas periurbanas.";
+        if(m.includes("alerta")) return "El sistema envía alertas automáticas por WhatsApp a brigadas, municipios y vecinos para una respuesta rápida.";
+        if(m.includes("cost") || m.includes("precio") || m.includes("cuánto vale")) return "El costo depende de la configuración y cantidad de sensores. Consultanos por WhatsApp o mail para una cotización personalizada.";
+        if(m.includes("integración") || m.includes("municipio")) return "Ofrecemos integración para sistemas municipales, protección civil y apps de gestión de emergencias.";
+        if(m.includes("reporte") || m.includes("estadística")) return "Generamos reportes periódicos sobre el estado, alertas y estadísticas, adaptados para municipios u organizaciones.";
+        if(m.trim().length < 5) return "Por favor, detallá mejor tu consulta para poder ayudarte.";
+        return "¿Querés saber cómo funciona la torre, para qué sirve, o cómo se puede implementar en tu zona? Consultame sobre el proyecto.";
       }
       window.addEventListener('keydown', (e) => {
         if(e.key === "Escape") chatbotBox.classList.remove('active');
