@@ -169,8 +169,169 @@
     .modal-img .close-modal:hover { color: #fff; }
     .contacto { font-size: 1rem; line-height: 1.6; margin-bottom: 0.5rem; }
     .public-comments-section h2 { color: #00bcd4;}
-    /* ... resto del CSS igual que la versión anterior ... */
-    /* Por motivos de espacio, el CSS está resumido, pero incluye todo el look azul/celeste, menú, galería, footer, comentarios, etc.*/
+    #btnWhatsApp {
+      position: fixed; bottom: 25px; right: 25px;
+      background: linear-gradient(135deg, #25d366 60%, #128c7e 100%);
+      border-radius: 50%; width: 60px; height: 60px; box-shadow: 0 4px 20px rgba(37, 211, 102, 0.7);
+      display: flex; justify-content: center; align-items: center; cursor: pointer;
+      transition: background 0.3s, transform 0.3s; z-index: 1050;
+      animation: floatWA 2.2s infinite alternate cubic-bezier(.6,0,.4,1);
+    }
+    @keyframes floatWA { to { transform: translateY(-10px) scale(1.07);} }
+    #btnWhatsApp:hover { background: #1ebe5b; transform: scale(1.13) rotate(-10deg);}
+    #btnWhatsApp svg { width: 30px; height: 30px; fill: white; }
+    #chatbot-btn {
+      position: fixed; bottom: 105px; right: 30px; width: 54px; height: 54px;
+      background: linear-gradient(135deg, #00bcd4 70%, #80deea 100%);
+      border-radius: 50%; box-shadow: 0 4px 14px #00bcd4aa;
+      display: flex; align-items: center; justify-content: center; z-index: 1050;
+      cursor: pointer; transition: background 0.3s, transform 0.3s;
+      border: 2px solid #fff;
+      animation: floatWA 2.2s infinite alternate cubic-bezier(.6,0,.4,1);
+    }
+    #chatbot-btn:hover { background: #80deea; transform: scale(1.09);}
+    #chatbot-btn svg { width: 32px; height: 32px; fill: #fff; }
+    #chatbot-box {
+      display: none; position: fixed; bottom: 8px; right: 32px; width: 340px; max-width: 96vw;
+      background: rgba(0, 188, 212, 0.98); border-radius: 20px; box-shadow: 0 8px 60px #00bcd4cc, 0 2px 16px #0008;
+      padding: 0.7em 0.9em 1em 0.9em; z-index: 2103; flex-direction: column; animation: fadeIn 0.2s;
+      backdrop-filter: blur(6px);
+      border: 1.5px solid #fff;
+      min-height: 340px;
+      max-height: 88vh;
+    }
+    #chatbot-box.active { display: flex; }
+    #chatbot-header {
+      display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.7em;
+      position: sticky; top: 0; z-index: 3;
+    }
+    #chatbot-header span { font-weight: 700; color: #fff; font-size: 1.12em; letter-spacing: 0.7px; }
+    #chatbot-close {
+      background: transparent; border: none; color: #fff; font-size: 1.6em; cursor: pointer; line-height: 1; transition: color 0.2s;
+      margin-left: 1em;
+      margin-top: 0.1em;
+      z-index: 4;
+    }
+    #chatbot-close:hover { color: #263238; }
+    #chatbot-messages {
+      flex: 1; overflow-y: auto; max-height: 270px; margin-bottom: 0.7em; scrollbar-width: thin;
+      background: linear-gradient(108deg,#fff4,#00bcd422);
+      border-radius: 12px;
+      padding: 0.4em 0.2em;
+    }
+    .chatbot-message {
+      margin-bottom: 0.6em; padding: 0.5em 0.8em; border-radius: 15px; background: #fff; color: #222; font-size: 0.98em;
+      max-width: 90%; align-self: flex-start; box-shadow: 0 2px 8px #00bcd466;
+      animation: fadeIn 0.39s;
+    }
+    .chatbot-message.user { background: #00bcd4; color: #fff; align-self: flex-end; box-shadow: 0 2px 8px #004d4066; }
+    #chatbot-input-box { display: flex; align-items: center; }
+    #chatbot-select {
+      width: 100%; padding: 0.7em 1em; border-radius: 8px; font-size: 1em;
+      margin-bottom: 0.5em; background: #e0f7fa; color: #222; border: 1px solid #00bcd4aa;
+    }
+    #chatbot-send {
+      background: #004d40; color: #fff; border: none; border-radius: 12px;
+      padding: 0.6em 1.2em; cursor: pointer; font-weight: 700; font-size: 1em; transition: background 0.2s;
+    }
+    #chatbot-send:hover { background: #00796b; }
+    .public-comments-section {
+      margin-top: 3em;
+      margin-bottom: 2em;
+      background: linear-gradient(120deg,#00bcd4aa,#80deea44,#2226);
+      border-radius: 15px;
+      padding: 2em 1em;
+      box-shadow: 0 2px 32px #00bcd455;
+      border: 2px solid #00bcd4cc;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .public-comments-section h2 {
+      text-align: center;
+      margin-bottom: 1.2em;
+      color: #00bcd4;
+    }
+    #comment-form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8em;
+      margin-bottom: 1.5em;
+      align-items: center;
+    }
+    #comment-form input, #comment-form textarea {
+      width: 95%;
+      max-width: 480px;
+      padding: 0.6em 1em;
+      border-radius: 8px;
+      border: 1px solid #00bcd4aa;
+      font-size: 1em;
+      background: #e0f7fa;
+      color: #222;
+    }
+    #comment-form button {
+      background: linear-gradient(90deg, #00bcd4, #80deea);
+      color: #fff;
+      padding: 0.6em 1.5em;
+      border: none;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 1em;
+      cursor: pointer;
+      box-shadow: 0 2px 8px #00bcd4aa;
+      transition: background 0.2s;
+    }
+    #comment-form button:hover { background: #00bcd4; }
+    .comments-list {
+      margin-top: 0.7em;
+      list-style: none;
+      padding: 0;
+      max-width: 650px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .comments-list li {
+      background: #fff3;
+      border-radius: 8px;
+      margin-bottom: 1.2em;
+      padding: 1em 1.2em;
+      color: #e0e0e0;
+      box-shadow: 0 2px 10px #00bcd433;
+      border-left: 4px solid #00bcd4;
+    }
+    .comments-list .comment-author {
+      font-weight: bold;
+      color: #00bcd4;
+      margin-bottom: 0.2em;
+    }
+    .comments-list .comment-date {
+      font-size: 0.93em;
+      color: #80deea;
+      float: right;
+    }
+    footer {
+      text-align: center; font-size: 1.05rem; color: #888; padding: 1.5rem 0; border-top: 1px solid #222;
+      margin-top: auto; background: linear-gradient(90deg, #24243e, #0f2027); letter-spacing: 1px; z-index: 2;
+      box-shadow: 0 -3px 18px #00bcd4aa;
+      border-top: 1.5px solid #00bcd4cc;
+    }
+    @media (max-width: 520px) {
+      #chatbot-box {
+        right: 0; left: 0; width: 100vw; border-radius: 0; min-height: 60vh; max-height: 94vh;
+      }
+      .public-comments-section { padding: 1.3em 0.2em;}
+    }
+    @media (max-width: 900px) { header, main, footer { width: 98%; } }
+    @media (max-width: 768px) {
+      .galeria img { width: 48%; margin-bottom: 1rem;}
+      h1 { font-size: 2.2rem;}
+      h2 { font-size: 1.5rem;}
+      #chatbot-box { right: 8px; width: 98vw;}
+    }
+    @media (max-width: 480px) {
+      .galeria img { width: 100%; }
+      #btnWhatsApp, #chatbot-btn { right: 12px;}
+    }
   </style>
 </head>
 <body>
@@ -195,22 +356,22 @@
     <p class="subtitulo">Tecnología para prevenir incendios y proteger el ambiente</p>
   </header>
   <main>
-    <section class="sr" id="quienes">
+    <section id="quienes">
       <h2>¿Quiénes somos?</h2>
       <p>
-        Somos un grupo de jóvenes con ganas de innovar y aportar soluciones reales para prevenir incendios forestales y cuidar el medio ambiente. Este proyecto lo estamos desarrollando para presentarlo en UDESA y también buscamos que llegue a nivel nacional. No somos ingenieros ni técnicos, pero creemos que la tecnología puede marcar una diferencia muy grande si se aplica bien.
+        Somos un grupo de jóvenes con ganas de innovar y aportar soluciones reales para prevenir incendios forestales y cuidar el medio ambiente. Este proyecto lo estamos desarrollando para presentarlo en UDESA y también buscamos que llegue a nivel nacional.
       </p>
     </section>
-    <section class="sr" id="quehacemos">
+    <section id="quehacemos">
       <h2>¿Qué hacemos?</h2>
       <p>
         Desarrollamos <strong>torres inteligentes autosustentables</strong> que detectan incendios en etapa temprana mediante sensores de humo, gases inflamables y temperatura. Las alertas ya no serán simples notificaciones de WhatsApp, sino que ahora se enviarán a bomberos, brigadas y vecinos a través de <strong>notificaciones push en el celular</strong> y <strong>alarmas sonoras tradicionales</strong> para una respuesta rápida y efectiva.
       </p>
       <p>
-        Además, las torres pueden incluir un sistema de <strong>rociado preventivo</strong> con soluciones ecológicas para contener focos de fuego de manera inmediata y minimizar el impacto ambiental.
+        Además, las torres pueden incluir un sistema de <strong>rociado preventivo</strong> con soluciones ecológicas para contener focos de fuego y minimizar el impacto ambiental.
       </p>
     </section>
-    <section class="contadores sr" id="estadisticas" aria-label="Estadísticas de WeerTeck">
+    <section class="contadores" id="estadisticas" aria-label="Estadísticas de WeerTeck">
       <div class="contador">
         <div class="numero" data-numero="3">0</div>
         <div class="descripcion">Torres prototipo</div>
@@ -224,7 +385,7 @@
         <div class="descripcion">Alertas de prueba</div>
       </div>
     </section>
-    <section class="sr" id="galeria">
+    <section id="galeria">
       <h2>Galería</h2>
       <div class="galeria" aria-label="Galería de imágenes de WeerTeck">
         <img src="img/torre1.jpg" alt="Torre inteligente en el bosque" loading="lazy" tabindex="0" />
@@ -232,28 +393,14 @@
         <img src="img/brigada.jpg" alt="Brigada recibiendo alerta y actuando" loading="lazy" tabindex="0" />
       </div>
     </section>
-    <section class="ig-section" id="instagram">
-      <div class="ig-logo">
-        <svg width="36" height="36" viewBox="0 0 448 448"><defs><radialGradient id="iggrad" cx="50%" cy="50%" r="80%"><stop offset="0%" stop-color="#fff"/><stop offset="100%" stop-color="#00bcd4"/></radialGradient></defs>
-          <rect width="100%" height="100%" rx="20%" fill="url(#iggrad)"/>
-          <path d="M224 126a98 98 0 1 0 0 196 98 98 0 0 0 0-196zm0 162a64 64 0 1 1 0-128 64 64 0 0 1 0 128zm112-166a22 22 0 1 1 0-44 22 22 0 0 1 0 44zm76 22c-1-27-7-51-25-70s-43-24-70-25C295 16 251 16 224 16s-71 0-93 1c-27 1-51 7-70 25S37 87 36 114C35 137 35 181 35 208s0 71 1 93c1 27 7 51 25 70s43 24 70 25c22 1 66 1 93 1s71 0 93-1c27-1 51-7 70-25s24-43 25-70c1-22 1-66 1-93s0-71-1-93zm-48 206c-7 17-19 29-36 36-25 10-85 8-113 8s-88 2-113-8c-17-7-29-19-36-36-10-25-8-85-8-113s-2-88 8-113c7-17 19-29 36-36 25-10 85-8 113-8s88-2 113 8c17 7 29 19 36 36 10 25 8 85 8 113s2 88-8 113z" fill="#222"/>
-        </svg>
-      </div>
-      <div>
-        <a class="ig-link" href="https://instagram.com/weerteck" target="_blank" rel="noopener">@weerteck</a>
-        <button class="ig-follow" onclick="window.open('https://instagram.com/weerteck','_blank')">Seguir</button>
-      </div>
-    </section>
-    <section class="sr" id="eventos">
+    <section id="eventos">
       <h2>Próximos Eventos</h2>
-      <div>
-        <ul id="eventos-lista">
-          <li>Demo en UDESA: 15/07/2025</li>
-          <li>Charla online de prevención: 30/07/2025</li>
-        </ul>
-      </div>
+      <ul id="eventos-lista">
+        <li>Demo en UDESA: 15/07/2025</li>
+        <li>Charla online de prevención: 30/07/2025</li>
+      </ul>
     </section>
-    <section class="sr" id="contacto">
+    <section id="contacto">
       <h2>Contacto</h2>
       <p class="contacto">
         Teléfono: <a href="tel:+541125216302">+54 11 2521-6302</a>
@@ -265,7 +412,7 @@
         Dirección: San Isidro, Buenos Aires, Argentina
       </p>
     </section>
-    <section class="faq-section sr" id="faq">
+    <section class="faq-section" id="faq">
       <h2>Preguntas Frecuentes</h2>
       <ul class="faq-list">
         <li class="faq-item">
@@ -280,10 +427,8 @@
           <div class="faq-q">¿A quiénes llegan las alertas?</div>
           <div class="faq-a">A bomberos, brigadas, municipios, y vecinos registrados, a través de notificaciones push en el celular y alarmas sonoras tradicionales.</div>
         </li>
-        <!-- ... Más preguntas frecuentes ... -->
       </ul>
     </section>
-    <!-- WeerBot CHATBOT MENU -->
     <div id="chatbot-btn" aria-label="Abrir chat con WeerBot" title="¿Necesitás ayuda?">
       <svg viewBox="0 0 32 32"><path d="M16 3C8.27 3 2 8.48 2 15c0 2.94 1.47 5.63 4 7.76V29a1 1 0 0 0 1.51.86l5.1-3.06c.42.05.85.08 1.39.08 7.73 0 14-5.48 14-12S23.73 3 16 3zm0 22c-.61 0-1.19-.04-1.77-.11a1 1 0 0 0-.62.13L7 27.13V24.7a1 1 0 0 0-.39-.79C4.44 21.95 3 18.63 3 15c0-5.52 5.82-10 13-10s13 4.48 13 10-5.82 10-13 10z"/></svg>
     </div>
@@ -298,7 +443,7 @@
         </div>
       </div>
       <form id="chatbot-input-box" autocomplete="off" style="flex-direction:column;gap:0.5em;">
-        <select id="chatbot-select" style="width:100%;padding:0.7em 1em;border-radius:8px;font-size:1em;">
+        <select id="chatbot-select" class="chatbot-select">
           <option value="" disabled selected>Elegí una pregunta o tema...</option>
           <optgroup label="Sobre el proyecto">
             <option value="quienes">¿Quiénes son ustedes?</option>
@@ -343,7 +488,7 @@
         <button id="chatbot-send" type="submit">Ver respuesta</button>
       </form>
     </div>
-    <section class="public-comments-section sr" id="comentarios">
+    <section class="public-comments-section" id="comentarios">
       <h2>Dejanos tu opinión o recomendación</h2>
       <form id="comment-form">
         <input type="text" id="comment-author" placeholder="Tu nombre (opcional)" maxlength="40" autocomplete="off"/>
@@ -362,13 +507,12 @@
       <a href="#top" style="color: #4dd0e1;">↑ Volver arriba</a>
     </p>
   </footer>
-  <a href="https://wa.me/541125216302?text=Hola%20WeerTeck%2C%20quiero%20más%20info" target="_blank" rel="noopener" id="btnWhatsApp" aria-label="Contactar por WhatsApp" style="position:fixed;bottom:25px;right:25px;">
+  <a href="https://wa.me/541125216302?text=Hola%20WeerTeck%2C%20quiero%20más%20info" target="_blank" rel="noopener" id="btnWhatsApp" aria-label="Contactar por WhatsApp">
     <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
       <path d="M20.52 3.48A11.86 11.86 0 0 0 12 0C5.37 0 0 5.37 0 12a11.93 11.93 0 0 0 2.07 6.57L0 24l5.6-2.07A11.9 11.9 0 0 0 12 24c6.63 0 12-5.37 12-12a11.84 11.84 0 0 0-3.48-8.52zM12 21.4a9.4 9.4 0 0 1-4.78-1.41l-.34-.21-3.32 1.23 1.2-3.23-.22-.34A9.44 9.44 0 1 1 21.4 12a9.37 9.37 0 0 1-9.4 9.4zm5.32-7.21c-.29-.15-1.71-.84-1.97-.94-.26-.11-.45-.15-.64.15s-.74.94-.9 1.13c-.16.19-.32.21-.6.07a6.71 6.71 0 0 1-1.97-1.21 7.32 7.32 0 0 1-1.36-1.68c-.14-.25-.02-.38.11-.53.12-.12.26-.32.39-.48a.72.72 0 0 0 .11-.3.43.43 0 0 0-.06-.3c-.2-.45-.57-1.18-.8-1.6-.21-.4-.43-.34-.6-.34a1.36 1.36 0 0 0-.65.06c-.23.1-.89.86-.89 2.1s.91 2.43 1.03 2.6c.11.18 1.78 2.71 4.3 3.8a13.61 13.61 0 0 0 1.89.66c.8.27 1.53.23 2.11.14a6.69 6.69 0 0 0 2.03-.82 7.7 7.7 0 0 0 2.72-2.47 9.56 9.56 0 0 0-3.41-2.55z"/>
     </svg>
   </a>
   <script>
-    // WeerBot menú
     const respuestasWeerBot = {
       quienes: "Somos un grupo de jóvenes con ganas de innovar y aportar soluciones reales para prevenir incendios forestales y cuidar el medio ambiente. Estamos desarrollando el proyecto para presentarlo en UDESA y buscar que llegue a nivel nacional.",
       objetivo: "Buscamos prevenir incendios forestales, proteger el ambiente y ayudar a las brigadas, municipios y vecinos con tecnología accesible.",
@@ -431,7 +575,7 @@
       window.addEventListener('keydown', (e) => {
         if(e.key === "Escape") chatbotBox.classList.remove('active');
       });
-      // Caja de comentarios públicos
+      // Comentarios públicos
       const commentsList = document.getElementById('comments-list');
       function loadComments() {
         commentsList.innerHTML = '';
@@ -473,4 +617,3 @@
   </script>
 </body>
 </html>
-
