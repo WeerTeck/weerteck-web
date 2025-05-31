@@ -307,9 +307,9 @@
     }
     .chatbot-message.user { background: #00bcd4; color: #fff; align-self: flex-end; box-shadow: 0 2px 8px #004d4066; }
     #chatbot-input-box { display: flex; align-items: center; }
-    #chatbot-input {
-      flex: 1; border: none; border-radius: 12px; padding: 0.65em 1em; font-size: 1em; margin-right: 0.5em; outline: none;
-      background: #e0f7fa; color: #222;
+    #chatbot-select {
+      width: 100%; padding: 0.7em 1em; border-radius: 8px; font-size: 1em;
+      margin-bottom: 0.5em;
     }
     #chatbot-send {
       background: #004d40; color: #fff; border: none; border-radius: 12px;
@@ -422,10 +422,8 @@
       #toggleModo, #btnWhatsApp, #chatbot-btn { right: 12px;}
     }
   </style>
-</head>
+  </head>
 <body>
-  <!-- El resto del HTML (header, main, galería, comentarios, contacto, etc.) debe ir aquí igual que en tus versiones anteriores -->
-  <!-- Por espacio y claridad, aquí se muestra la integración del chatbot con IA y comentarios públicos -->
   <div id="chatbot-btn" aria-label="Abrir chat con WeerBot" title="¿Necesitás ayuda?">
     <svg viewBox="0 0 32 32"><path d="M16 3C8.27 3 2 8.48 2 15c0 2.94 1.47 5.63 4 7.76V29a1 1 0 0 0 1.51.86l5.1-3.06c.42.05.85.08 1.39.08 7.73 0 14-5.48 14-12S23.73 3 16 3zm0 22c-.61 0-1.19-.04-1.77-.11a1 1 0 0 0-.62.13L7 27.13V24.7a1 1 0 0 0-.39-.79C4.44 21.95 3 18.63 3 15c0-5.52 5.82-10 13-10s13 4.48 13 10-5.82 10-13 10z"/></svg>
   </div>
@@ -435,11 +433,54 @@
       <button id="chatbot-close" aria-label="Cerrar chat">&times;</button>
     </div>
     <div id="chatbot-messages">
-      <div class="chatbot-message">¡Hola! Soy WeerBot con inteligencia artificial. Preguntame lo que quieras sobre el proyecto, ambiente, tecnología o cualquier otra cosa.</div>
+      <div class="chatbot-message">
+        ¡Hola! Soy WeerBot. Elegí una pregunta o tema de la lista para saber más:
+      </div>
     </div>
-    <form id="chatbot-input-box" autocomplete="off">
-      <input type="text" id="chatbot-input" placeholder="Escribí tu pregunta..." autocomplete="off" required />
-      <button id="chatbot-send" type="submit">Enviar</button>
+    <form id="chatbot-input-box" autocomplete="off" style="flex-direction:column;gap:0.5em;">
+      <select id="chatbot-select" style="width:100%;padding:0.7em 1em;border-radius:8px;font-size:1em;">
+        <option value="" disabled selected>Elegí una pregunta o tema...</option>
+        <optgroup label="Sobre el proyecto">
+          <option value="quienes">¿Quiénes son ustedes?</option>
+          <option value="objetivo">¿Cuál es el objetivo del proyecto?</option>
+          <option value="udesa">¿Por qué lo presentan en UDESA?</option>
+          <option value="nacional">¿Por qué quieren llegar a nivel nacional?</option>
+        </optgroup>
+        <optgroup label="Tecnología y funcionamiento">
+          <option value="tecnologia">¿Cómo funciona la torre?</option>
+          <option value="sensores">¿Qué sensores usan?</option>
+          <option value="alertas">¿Cómo avisa la torre si detecta un incendio?</option>
+          <option value="rociado">¿El sistema puede apagar el fuego?</option>
+          <option value="autosustentable">¿La torre necesita electricidad?</option>
+          <option value="panel">¿Hay panel o dashboard web?</option>
+          <option value="app">¿Hay una app para celulares?</option>
+        </optgroup>
+        <optgroup label="Instalación y uso">
+          <option value="instalar">¿Dónde se puede instalar una torre?</option>
+          <option value="mantenimiento">¿Qué mantenimiento requiere?</option>
+          <option value="municipio">¿Pueden integrarse con municipios?</option>
+          <option value="vecinos">¿Los vecinos pueden recibir alertas?</option>
+          <option value="bomberos">¿Cómo se avisa a bomberos y brigadas?</option>
+        </optgroup>
+        <optgroup label="Costos y contacto">
+          <option value="costo">¿Cuánto cuesta una torre?</option>
+          <option value="cotizacion">¿Cómo pido una cotización?</option>
+          <option value="contacto">¿Cómo los contacto?</option>
+          <option value="instagram">¿Tienen Instagram?</option>
+          <option value="whatsapp">¿Tienen WhatsApp?</option>
+        </optgroup>
+        <optgroup label="Educación y ambiente">
+          <option value="dato">Dame un dato curioso sobre incendios</option>
+          <option value="tip">Dame un tip ambiental</option>
+          <option value="importancia">¿Por qué es importante prevenir incendios?</option>
+        </optgroup>
+        <optgroup label="Otras preguntas">
+          <option value="faq">Ver preguntas frecuentes</option>
+          <option value="comentario">¿Cómo puedo dejar un comentario?</option>
+          <option value="evento">¿Hay eventos o presentaciones?</option>
+        </optgroup>
+      </select>
+      <button id="chatbot-send" type="submit">Ver respuesta</button>
     </form>
   </div>
   <section class="public-comments-section sr" id="comentarios">
@@ -454,70 +495,64 @@
       También podés escribirnos directo por <a href="https://wa.me/541125216302?text=Hola%20WeerTeck%2C%20tengo%20una%20consulta%20o%20opinión" target="_blank" rel="noopener">WhatsApp</a>.
     </div>
   </section>
-  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
   <script>
-    // Chatbot con OpenAI GPT
-    async function obtenerRespuestaIA(pregunta) {
-      const apiKey = "TU_API_KEY_AQUI"; // ← PONÉ TU API KEY AQUÍ
-      const endpoint = "https://api.openai.com/v1/chat/completions";
-      try {
-        const response = await fetch(endpoint, {
-          method: "POST",
-          headers: {
-            "Authorization": "Bearer " + apiKey,
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({
-            model: "gpt-3.5-turbo",
-            messages: [
-              {role: "system", content: "Sos WeerBot, un asistente de la web WeerTeck. Respondé sobre tecnología ambiental, prevención de incendios, sensores, impacto ambiental, el proyecto WeerTeck y dudas generales de ciencia y tecnología. Si no tenés la respuesta, respondé de manera clara, positiva y educativa."},
-              {role: "user", content: pregunta}
-            ],
-            max_tokens: 250,
-            temperature: 0.7
-          })
-        });
-        const data = await response.json();
-        if (data && data.choices && data.choices.length > 0) {
-          return data.choices[0].message.content.trim();
-        }
-        return "Perdón, no pude procesar tu pregunta. ¿Podés intentarlo de nuevo?";
-      } catch (e) {
-        return "Ocurrió un error al contactar a la IA. Por favor, intentá más tarde.";
-      }
-    }
+    const respuestasWeerBot = {
+      quienes: "Somos un grupo de jóvenes con ganas de innovar y aportar soluciones reales para prevenir incendios forestales y cuidar el medio ambiente. Estamos desarrollando el proyecto para presentarlo en UDESA y buscar que llegue a nivel nacional.",
+      objetivo: "Buscamos prevenir incendios forestales, proteger el ambiente y ayudar a las brigadas, municipios y vecinos con tecnología accesible.",
+      udesa: "Presentamos el proyecto en UDESA porque creemos que allí podemos mostrar el valor de la tecnología aplicada a problemas ambientales importantes y buscar alianzas para expandirlo.",
+      nacional: "Queremos que la solución llegue a todo el país porque los incendios afectan a miles de hectáreas y comunidades en muchas provincias.",
+      tecnologia: "La torre funciona con sensores de humo, temperatura y gases, alimentada por panel solar. Detecta focos de incendio y activa alertas automáticas.",
+      sensores: "Utilizamos sensores de humo, temperatura y gases inflamables, además de módulos de comunicación y alarma.",
+      alertas: "Al detectar peligro, la torre envía notificaciones push al celular de bomberos, brigadas y vecinos, y activa alarmas sonoras tradicionales.",
+      rociado: "Algunas versiones de la torre pueden activar un rociador con soluciones ecológicas para contener el fuego de inmediato.",
+      autosustentable: "La torre es autosustentable con panel solar y batería. No depende de la red eléctrica.",
+      panel: "Hay un panel web para monitorear todas las torres, recibir alertas, ver estadísticas y estado de sensores.",
+      app: "Se está desarrollando una app móvil para que vecinos, brigadas y municipios reciban alertas y accedan a información en tiempo real.",
+      instalar: "Podés instalar una torre en bosques, reservas, zonas rurales, parques industriales y áreas periurbanas.",
+      mantenimiento: "El mantenimiento es mínimo: solo se recomienda una revisión anual presencial. El resto se monitorea en remoto.",
+      municipio: "Sí, podemos integrarnos con sistemas municipales y de protección civil para alertas y gestión de emergencias.",
+      vecinos: "Los vecinos pueden registrarse para recibir alertas y reportes sobre el estado de sus zonas.",
+      bomberos: "Bomberos y brigadas reciben notificaciones push y alarmas sonoras inmediatas ante cualquier señal de incendio.",
+      costo: "El costo depende de la cantidad de sensores y las opciones elegidas. Consultanos para una cotización personalizada.",
+      cotizacion: "Podés pedir cotización escribiéndonos por WhatsApp, mail o dejando tus datos en la web.",
+      contacto: "WhatsApp: +54 11 2521-6302 / Mail: weerteck@gmail.com / Instagram: @weerteck",
+      instagram: "Nuestro Instagram es <a href='https://instagram.com/weerteck' target='_blank'>@weerteck</a>. Seguinos para novedades y tips ambientales.",
+      whatsapp: "Podés escribirnos al WhatsApp: <a href='https://wa.me/541125216302' target='_blank'>+54 11 2521-6302</a>.",
+      dato: "¿Sabías que en Argentina se queman más de 100.000 hectáreas de bosques por año debido a incendios? La mayoría podrían evitarse con prevención y alerta temprana.",
+      tip: "Nunca hagas fuego en zonas prohibidas. Si hacés un asado, asegurate de apagar bien las brasas. Si ves humo, avisá rápido a las autoridades.",
+      importancia: "Prevenir incendios es fundamental para cuidar la biodiversidad, la calidad del aire y el futuro de las comunidades.",
+      faq: "Podés leer todas las preguntas frecuentes en la sección FAQ de la web. Si te queda alguna duda, escribinos.",
+      comentario: "Para dejar tu comentario, completá la caja de comentarios públicos al final de la página. ¡Leemos y respondemos todas las opiniones!",
+      evento: "Publicamos los eventos y presentaciones en la sección eventos. Si querés que presentemos en tu zona, escribinos."
+    };
     document.addEventListener('DOMContentLoaded', () => {
-      // Chatbot
+      // Chatbot menú
       const chatbotBtn = document.getElementById('chatbot-btn');
       const chatbotBox = document.getElementById('chatbot-box');
       const chatbotClose = document.getElementById('chatbot-close');
       const chatbotForm = document.getElementById('chatbot-input-box');
-      const chatbotInput = document.getElementById('chatbot-input');
+      const chatbotSelect = document.getElementById('chatbot-select');
       const chatbotMessages = document.getElementById('chatbot-messages');
       chatbotBtn.addEventListener('click', () => {
-        chatbotBox.classList.add('active'); chatbotInput.focus();
+        chatbotBox.classList.add('active');
+        chatbotSelect.focus();
         setTimeout(()=>{chatbotBox.scrollIntoView({behavior:"smooth",block:"center"});},20);
       });
       chatbotClose.addEventListener('click', () => {
         chatbotBox.classList.remove('active');
       });
-      chatbotForm.addEventListener('submit', async function(e) {
+      chatbotForm.addEventListener('submit', function(e) {
         e.preventDefault();
-        const msg = chatbotInput.value.trim();
-        if(!msg) return;
+        const value = chatbotSelect.value;
+        if(!value || !respuestasWeerBot[value]) return;
         const userMsg = document.createElement('div');
         userMsg.className = 'chatbot-message user';
-        userMsg.textContent = msg;
+        userMsg.textContent = chatbotSelect.options[chatbotSelect.selectedIndex].text;
         chatbotMessages.appendChild(userMsg);
-        chatbotInput.value = '';
-        chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
         const botMsg = document.createElement('div');
         botMsg.className = 'chatbot-message';
-        botMsg.textContent = "Pensando...";
+        botMsg.innerHTML = respuestasWeerBot[value];
         chatbotMessages.appendChild(botMsg);
-        chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
-        const respuesta = await obtenerRespuestaIA(msg);
-        botMsg.textContent = respuesta;
         chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
       });
       window.addEventListener('keydown', (e) => {
