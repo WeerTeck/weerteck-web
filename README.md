@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -84,13 +85,6 @@
     }
     header, main, footer { margin-top: 56px; }
     @media (max-width: 520px) { header, main, footer { margin-top: 65px;} }
-    #particles-js {
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      z-index: 0; pointer-events: none;
-      width: 100vw; height: 100vh;
-      opacity: 0.75;
-    }
     a { color: #4dd0e1; text-decoration: none; transition: color 0.3s ease; }
     a:hover, a:focus { color: #81d4fa; text-decoration: underline; outline: none; }
     header, main, footer {
@@ -138,6 +132,26 @@
     @keyframes barraNeon {
       to { filter: blur(2px) brightness(2);}
     }
+    .contadores {
+      display: flex; justify-content: space-around; margin: 3rem 0; gap: 2rem; flex-wrap: wrap;
+    }
+    .contador {
+      background: rgba(17,17,17,0.89); border: 2px solid #00bcd4; border-radius: 15px;
+      padding: 1.2rem 2rem; text-align: center; flex: 1 1 170px;
+      box-shadow: 0 0 18px #00bcd4aa; transition: box-shadow 0.3s, transform 0.3s; position: relative; overflow: hidden;
+      filter: drop-shadow(0 0 18px #00bcd4aa);
+    }
+    .contador:hover { box-shadow: 0 0 30px #00bcd4ff, 0 0 10px #fff4; transform: translateY(-7px) scale(1.04);}
+    .numero {
+      font-size: 2.7rem; font-weight: 900; color: #00bcd4; margin-bottom: 0.5rem;
+      text-shadow: 0 0 7px #4dd0e1; letter-spacing: 1px;
+      background: linear-gradient(90deg,#00bcd4,#80deea,#fff0);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+    }
+    .descripcion { font-size: 1.07rem; font-weight: 600; color: #80deea; letter-spacing: 0.5px; }
     .galeria { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem; position: relative; }
     .galeria img {
       width: 32%; border-radius: 12px; box-shadow: 0 0 20px #00bcd4aa, 0 8px 24px #0008;
@@ -154,21 +168,6 @@
       z-index: 3;
       transition: all 0.22s cubic-bezier(.68,.25,.85,1.4);
     }
-    .modal-img { display: none; position: fixed; z-index: 1200; left: 0; top: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.9); justify-content: center; align-items: center; animation: fadeIn 0.2s; }
-    .modal-img.active { display: flex; }
-    .modal-img img {
-      max-width: 90vw; max-height: 80vh; border-radius: 18px; box-shadow: 0 0 50px #00bcd4cc; border: 4px solid #00bcd4; animation: imgpop 0.3s;
-      background:#fff;
-    }
-    @keyframes imgpop { from { transform: scale(0.6);} to { transform: scale(1);} }
-    .modal-img .close-modal {
-      position: fixed; top: 74px; right: 36px; font-size: 2.5rem; color: #80deea;
-      background: transparent; border: none; cursor: pointer; z-index: 1300; transition: color 0.2s;
-      outline: none;
-    }
-    .modal-img .close-modal:hover { color: #fff; }
-    .contacto { font-size: 1rem; line-height: 1.6; margin-bottom: 0.5rem; }
-    .public-comments-section h2 { color: #00bcd4;}
     #btnWhatsApp {
       position: fixed; bottom: 25px; right: 25px;
       background: linear-gradient(135deg, #25d366 60%, #128c7e 100%);
@@ -359,7 +358,7 @@
     <section id="quienes">
       <h2>¿Quiénes somos?</h2>
       <p>
-        Somos un grupo de jóvenes con ganas de innovar y aportar soluciones reales para prevenir incendios forestales y cuidar el medio ambiente. Este proyecto lo estamos desarrollando para presentarlo en UDESA y también buscamos que llegue a nivel nacional.
+        Somos un grupo de jóvenes con ganas de innovar y aportar soluciones reales para prevenir incendios forestales y cuidar el medio ambiente. Este proyecto lo estamos desarrollando para presentarlo en UDESA y buscamos que llegue a nivel nacional.
       </p>
     </section>
     <section id="quehacemos">
@@ -373,16 +372,16 @@
     </section>
     <section class="contadores" id="estadisticas" aria-label="Estadísticas de WeerTeck">
       <div class="contador">
-        <div class="numero" data-numero="3">0</div>
-        <div class="descripcion">Torres prototipo</div>
-      </div>
-      <div class="contador">
         <div class="numero" data-numero="2">0</div>
-        <div class="descripcion">Municipios interesados</div>
+        <div class="descripcion">Torres instaladas</div>
       </div>
       <div class="contador">
-        <div class="numero" data-numero="7">0</div>
-        <div class="descripcion">Alertas de prueba</div>
+        <div class="numero" data-numero="10">0</div>
+        <div class="descripcion">Alertas simuladas</div>
+      </div>
+      <div class="contador">
+        <div class="numero" data-numero="5">0</div>
+        <div class="descripcion">Consultas de municipios</div>
       </div>
     </section>
     <section id="galeria">
@@ -394,10 +393,9 @@
       </div>
     </section>
     <section id="eventos">
-      <h2>Próximos Eventos</h2>
+      <h2>Logros y Presentaciones</h2>
       <ul id="eventos-lista">
-        <li>Demo en UDESA: 15/07/2025</li>
-        <li>Charla online de prevención: 30/07/2025</li>
+        <li>Demo en UDESA (2025): Proyecto seleccionado y presentado ante referentes y docentes universitarios.</li>
       </ul>
     </section>
     <section id="contacto">
@@ -417,15 +415,15 @@
       <ul class="faq-list">
         <li class="faq-item">
           <div class="faq-q">¿Qué es una torre WeerTeck?</div>
-          <div class="faq-a">Es una torre autosustentable equipada con sensores ambientales y conectividad IoT para detectar incendios forestales en etapas tempranas y enviar alertas automáticas mediante notificaciones push y alarmas sonoras.</div>
+          <div class="faq-a">Es una torre autosustentable equipada con sensores para detectar incendios y enviar alertas a celulares o alarmas sonoras.</div>
         </li>
         <li class="faq-item">
           <div class="faq-q">¿Cómo detectan los incendios?</div>
-          <div class="faq-a">Utilizamos sensores de humo, temperatura y gases inflamables junto con inteligencia artificial para identificar señales de riesgo y activar alertas inmediatas.</div>
+          <div class="faq-a">Con sensores de humo, temperatura y gases inflamables. Si hay riesgo, se envía una alerta.</div>
         </li>
         <li class="faq-item">
           <div class="faq-q">¿A quiénes llegan las alertas?</div>
-          <div class="faq-a">A bomberos, brigadas, municipios, y vecinos registrados, a través de notificaciones push en el celular y alarmas sonoras tradicionales.</div>
+          <div class="faq-a">A bomberos, brigadas, municipios y vecinos registrados.</div>
         </li>
       </ul>
     </section>
@@ -437,55 +435,10 @@
         <span>WeerBot 🤖</span>
         <button id="chatbot-close" aria-label="Cerrar chat">&times;</button>
       </div>
-      <div id="chatbot-messages">
-        <div class="chatbot-message">
-          ¡Hola! Soy WeerBot. Elegí una pregunta o tema de la lista para saber más:
-        </div>
-      </div>
-      <form id="chatbot-input-box" autocomplete="off" style="flex-direction:column;gap:0.5em;">
-        <select id="chatbot-select" class="chatbot-select">
-          <option value="" disabled selected>Elegí una pregunta o tema...</option>
-          <optgroup label="Sobre el proyecto">
-            <option value="quienes">¿Quiénes son ustedes?</option>
-            <option value="objetivo">¿Cuál es el objetivo del proyecto?</option>
-            <option value="udesa">¿Por qué lo presentan en UDESA?</option>
-            <option value="nacional">¿Por qué quieren llegar a nivel nacional?</option>
-          </optgroup>
-          <optgroup label="Tecnología y funcionamiento">
-            <option value="tecnologia">¿Cómo funciona la torre?</option>
-            <option value="sensores">¿Qué sensores usan?</option>
-            <option value="alertas">¿Cómo avisa la torre si detecta un incendio?</option>
-            <option value="rociado">¿El sistema puede apagar el fuego?</option>
-            <option value="autosustentable">¿La torre necesita electricidad?</option>
-            <option value="panel">¿Hay panel o dashboard web?</option>
-            <option value="app">¿Hay una app para celulares?</option>
-          </optgroup>
-          <optgroup label="Instalación y uso">
-            <option value="instalar">¿Dónde se puede instalar una torre?</option>
-            <option value="mantenimiento">¿Qué mantenimiento requiere?</option>
-            <option value="municipio">¿Pueden integrarse con municipios?</option>
-            <option value="vecinos">¿Los vecinos pueden recibir alertas?</option>
-            <option value="bomberos">¿Cómo se avisa a bomberos y brigadas?</option>
-          </optgroup>
-          <optgroup label="Costos y contacto">
-            <option value="costo">¿Cuánto cuesta una torre?</option>
-            <option value="cotizacion">¿Cómo pido una cotización?</option>
-            <option value="contacto">¿Cómo los contacto?</option>
-            <option value="instagram">¿Tienen Instagram?</option>
-            <option value="whatsapp">¿Tienen WhatsApp?</option>
-          </optgroup>
-          <optgroup label="Educación y ambiente">
-            <option value="dato">Dame un dato curioso sobre incendios</option>
-            <option value="tip">Dame un tip ambiental</option>
-            <option value="importancia">¿Por qué es importante prevenir incendios?</option>
-          </optgroup>
-          <optgroup label="Otras preguntas">
-            <option value="faq">Ver preguntas frecuentes</option>
-            <option value="comentario">¿Cómo puedo dejar un comentario?</option>
-            <option value="evento">¿Hay eventos o presentaciones?</option>
-          </optgroup>
-        </select>
-        <button id="chatbot-send" type="submit">Ver respuesta</button>
+      <div id="chatbot-messages"></div>
+      <form id="chatbot-input-box" autocomplete="off" style="flex-direction:column;gap:0.5em;display:none;">
+        <select id="chatbot-select" class="chatbot-select"></select>
+        <button id="chatbot-send" type="submit">Siguiente</button>
       </form>
     </div>
     <section class="public-comments-section" id="comentarios">
@@ -513,45 +466,125 @@
     </svg>
   </a>
   <script>
-    const respuestasWeerBot = {
-      quienes: "Somos un grupo de jóvenes con ganas de innovar y aportar soluciones reales para prevenir incendios forestales y cuidar el medio ambiente. Estamos desarrollando el proyecto para presentarlo en UDESA y buscar que llegue a nivel nacional.",
-      objetivo: "Buscamos prevenir incendios forestales, proteger el ambiente y ayudar a las brigadas, municipios y vecinos con tecnología accesible.",
-      udesa: "Presentamos el proyecto en UDESA porque creemos que allí podemos mostrar el valor de la tecnología aplicada a problemas ambientales importantes y buscar alianzas para expandirlo.",
-      nacional: "Queremos que la solución llegue a todo el país porque los incendios afectan a miles de hectáreas y comunidades en muchas provincias.",
-      tecnologia: "La torre funciona con sensores de humo, temperatura y gases, alimentada por panel solar. Detecta focos de incendio y activa alertas automáticas.",
-      sensores: "Utilizamos sensores de humo, temperatura y gases inflamables, además de módulos de comunicación y alarma.",
-      alertas: "Al detectar peligro, la torre envía notificaciones push al celular de bomberos, brigadas y vecinos, y activa alarmas sonoras tradicionales.",
-      rociado: "Algunas versiones de la torre pueden activar un rociador con soluciones ecológicas para contener el fuego de inmediato.",
-      autosustentable: "La torre es autosustentable con panel solar y batería. No depende de la red eléctrica.",
-      panel: "Hay un panel web para monitorear todas las torres, recibir alertas, ver estadísticas y estado de sensores.",
-      app: "Se está desarrollando una app móvil para que vecinos, brigadas y municipios reciban alertas y accedan a información en tiempo real.",
-      instalar: "Podés instalar una torre en bosques, reservas, zonas rurales, parques industriales y áreas periurbanas.",
-      mantenimiento: "El mantenimiento es mínimo: solo se recomienda una revisión anual presencial. El resto se monitorea en remoto.",
-      municipio: "Sí, podemos integrarnos con sistemas municipales y de protección civil para alertas y gestión de emergencias.",
-      vecinos: "Los vecinos pueden registrarse para recibir alertas y reportes sobre el estado de sus zonas.",
-      bomberos: "Bomberos y brigadas reciben notificaciones push y alarmas sonoras inmediatas ante cualquier señal de incendio.",
-      costo: "El costo depende de la cantidad de sensores y las opciones elegidas. Consultanos para una cotización personalizada.",
-      cotizacion: "Podés pedir cotización escribiéndonos por WhatsApp, mail o dejando tus datos en la web.",
-      contacto: "WhatsApp: +54 11 2521-6302 / Mail: weerteck@gmail.com / Instagram: @weerteck",
-      instagram: "Nuestro Instagram es <a href='https://instagram.com/weerteck' target='_blank'>@weerteck</a>. Seguinos para novedades y tips ambientales.",
-      whatsapp: "Podés escribirnos al WhatsApp: <a href='https://wa.me/541125216302' target='_blank'>+54 11 2521-6302</a>.",
-      dato: "¿Sabías que en Argentina se queman más de 100.000 hectáreas de bosques por año debido a incendios? La mayoría podrían evitarse con prevención y alerta temprana.",
-      tip: "Nunca hagas fuego en zonas prohibidas. Si hacés un asado, asegurate de apagar bien las brasas. Si ves humo, avisá rápido a las autoridades.",
-      importancia: "Prevenir incendios es fundamental para cuidar la biodiversidad, la calidad del aire y el futuro de las comunidades.",
-      faq: "Podés leer todas las preguntas frecuentes en la sección FAQ de la web. Si te queda alguna duda, escribinos.",
-      comentario: "Para dejar tu comentario, completá la caja de comentarios públicos al final de la página. ¡Leemos y respondemos todas las opiniones!",
-      evento: "Publicamos los eventos y presentaciones en la sección eventos. Si querés que presentemos en tu zona, escribinos."
-    };
+    // Contadores animados
     document.addEventListener('DOMContentLoaded', () => {
-      // Chatbot menú
+      document.querySelectorAll('.contador .numero').forEach(function(numero) {
+        const total = parseInt(numero.dataset.numero);
+        let actual = 0;
+        const incremento = Math.ceil(total / 50);
+        function subir() {
+          actual += incremento;
+          if (actual >= total) { numero.textContent = total; }
+          else { numero.textContent = actual; setTimeout(subir, 40); }
+        }
+        subir();
+      });
+    });
+
+    // WeerBot guía tipo encuesta
+    const chatbotGuia = [
+      {
+        mensaje: "¿Sobre qué tema te gustaría saber más?",
+        opciones: [
+          { texto: "¿Qué hace WeerTeck?", siguiente: 1 },
+          { texto: "¿Cómo ayudan las torres?", siguiente: 2 },
+          { texto: "¿Dónde se instalan?", siguiente: 3 },
+          { texto: "Quiero contactarlos", siguiente: "fin" }
+        ]
+      },
+      {
+        mensaje: "Desarrollamos torres que detectan incendios y avisan rápido a bomberos y vecinos.<br><br>¿Te gustaría saber cómo funcionan o cómo pedir una torre?",
+        opciones: [
+          { texto: "¿Cómo funciona la torre?", siguiente: 4 },
+          { texto: "¿Cómo puedo pedir una torre?", siguiente: 5 },
+          { texto: "Volver al inicio", siguiente: 0 }
+        ]
+      },
+      {
+        mensaje: "Las torres detectan humo y calor. Si hay peligro, envían alerta al instante.<br><br>¿Te gustaría saber quién recibe las alertas o cómo sumarte?",
+        opciones: [
+          { texto: "¿Quién recibe las alertas?", siguiente: 6 },
+          { texto: "¿Cómo puedo sumarme?", siguiente: 5 },
+          { texto: "Volver al inicio", siguiente: 0 }
+        ]
+      },
+      {
+        mensaje: "Las torres pueden instalarse en zonas verdes, campos, barrios y reservas.<br><br>¿Querés saber si tu zona es apta o cómo instalar una?",
+        opciones: [
+          { texto: "¿Mi zona es apta?", siguiente: 7 },
+          { texto: "¿Cómo instalar una torre?", siguiente: 5 },
+          { texto: "Volver al inicio", siguiente: 0 }
+        ]
+      },
+      {
+        mensaje: "La torre tiene sensores, panel solar y batería. Detecta humo y calor y avisa al celular.<br><br>¿Querés recibir asesoramiento personalizado?",
+        opciones: [
+          { texto: "Contactar a WeerTeck", siguiente: "fin" },
+          { texto: "Volver al inicio", siguiente: 0 }
+        ]
+      },
+      {
+        mensaje: "¡Buenísimo! Te guiamos personalmente.<br><br>¿Preferís WhatsApp o email?",
+        opciones: [
+          { texto: "WhatsApp (respuesta más rápida)", siguiente: "fin" },
+          { texto: "Email", siguiente: "fin-email" },
+          { texto: "Volver al inicio", siguiente: 0 }
+        ]
+      },
+      {
+        mensaje: "Reciben la alerta los bomberos, brigadas municipales y vecinos registrados.<br><br>¿Querés sumarte o que te contactemos?",
+        opciones: [
+          { texto: "Quiero sumarme / recibir info", siguiente: 5 },
+          { texto: "Volver al inicio", siguiente: 0 }
+        ]
+      },
+      {
+        mensaje: "Contactanos y vemos juntos si tu zona es apta para instalar una torre.<br><br>¿Querés que te asesoremos?",
+        opciones: [
+          { texto: "Sí, asesorame", siguiente: "fin" },
+          { texto: "Volver al inicio", siguiente: 0 }
+        ]
+      }
+    ];
+    function mostrarPasoWeerbot(paso) {
+      const box = document.getElementById('chatbot-box');
+      const form = document.getElementById('chatbot-input-box');
+      const select = document.getElementById('chatbot-select');
+      const mensajes = document.getElementById('chatbot-messages');
+      mensajes.innerHTML = '';
+      form.style.display = 'block';
+      if (paso === "fin") {
+        mensajes.innerHTML = '<div class="chatbot-message">¡Perfecto! Escribinos directo por <a href="https://wa.me/541125216302?text=Hola%20WeerTeck%2C%20quiero%20más%20info" target="_blank" style="color:#00796b;font-weight:bold;">WhatsApp</a> para asesorarte y ayudarte en tu caso.<br><br>¡Te esperamos!</div>';
+        form.style.display = 'none';
+        return;
+      }
+      if (paso === "fin-email") {
+        mensajes.innerHTML = '<div class="chatbot-message">¡Genial! Escribinos a <a href="mailto:weerteck@gmail.com" style="color:#00796b;font-weight:bold;">weerteck@gmail.com</a> y te asesoramos a la brevedad.</div>';
+        form.style.display = 'none';
+        return;
+      }
+      const pasoInfo = chatbotGuia[paso];
+      mensajes.innerHTML = `<div class="chatbot-message">${pasoInfo.mensaje}</div>`;
+      select.innerHTML = '';
+      pasoInfo.opciones.forEach(function(op, i){
+        const opt = document.createElement('option');
+        opt.value = op.siguiente;
+        opt.innerHTML = op.texto;
+        if (i === 0) opt.selected = true;
+        select.appendChild(opt);
+      });
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+      // WeerBot (menú ramificado)
       const chatbotBtn = document.getElementById('chatbot-btn');
       const chatbotBox = document.getElementById('chatbot-box');
       const chatbotClose = document.getElementById('chatbot-close');
       const chatbotForm = document.getElementById('chatbot-input-box');
       const chatbotSelect = document.getElementById('chatbot-select');
-      const chatbotMessages = document.getElementById('chatbot-messages');
+      let pasoActual = 0;
       chatbotBtn.addEventListener('click', () => {
         chatbotBox.classList.add('active');
+        mostrarPasoWeerbot(0);
         chatbotSelect.focus();
         setTimeout(()=>{chatbotBox.scrollIntoView({behavior:"smooth",block:"center"});},20);
       });
@@ -561,16 +594,8 @@
       chatbotForm.addEventListener('submit', function(e) {
         e.preventDefault();
         const value = chatbotSelect.value;
-        if(!value || !respuestasWeerBot[value]) return;
-        const userMsg = document.createElement('div');
-        userMsg.className = 'chatbot-message user';
-        userMsg.textContent = chatbotSelect.options[chatbotSelect.selectedIndex].text;
-        chatbotMessages.appendChild(userMsg);
-        const botMsg = document.createElement('div');
-        botMsg.className = 'chatbot-message';
-        botMsg.innerHTML = respuestasWeerBot[value];
-        chatbotMessages.appendChild(botMsg);
-        chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+        pasoActual = value;
+        mostrarPasoWeerbot(value);
       });
       window.addEventListener('keydown', (e) => {
         if(e.key === "Escape") chatbotBox.classList.remove('active');
