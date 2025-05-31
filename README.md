@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -372,7 +371,7 @@
     </section>
     <section class="contadores" id="estadisticas" aria-label="Estadísticas de WeerTeck">
       <div class="contador">
-        <div class="numero" data-numero="2">0</div>
+        <div class="numero" data-numero="0">0</div>
         <div class="descripcion">Torres instaladas</div>
       </div>
       <div class="contador">
@@ -380,7 +379,7 @@
         <div class="descripcion">Alertas simuladas</div>
       </div>
       <div class="contador">
-        <div class="numero" data-numero="5">0</div>
+        <div class="numero" data-numero="0">0</div>
         <div class="descripcion">Consultas de municipios</div>
       </div>
     </section>
@@ -471,7 +470,7 @@
       document.querySelectorAll('.contador .numero').forEach(function(numero) {
         const total = parseInt(numero.dataset.numero);
         let actual = 0;
-        const incremento = Math.ceil(total / 50);
+        const incremento = Math.ceil((total > 0 ? total : 1) / 50);
         function subir() {
           actual += incremento;
           if (actual >= total) { numero.textContent = total; }
