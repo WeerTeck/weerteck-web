@@ -3,461 +3,585 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>WeerTeck | Tecnología ambiental contra incendios</title>
-  
-  <!-- Fuente moderna Poppins -->
+  <title>WeerTeck | Concientización contra incendios en Patagonia</title>
+  <meta name="description" content="Concientización y acción contra incendios forestales en Patagonia. Tecnología, comunidad y prevención. Sumate a la campaña.">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet" />
-  
+  <link rel="icon" type="image/png" href="img/logo.png">
   <style>
-    /* Reset básico */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+    :root {
+      --primary: #00bcd4;
+      --accent: #80deea;
+      --secondary: #263238;
+      --dark: #121a23;
+      --text: #e0e0e0;
+      --light: #fff;
+      --danger: #e57373;
+      --success: #4caf50;
+      --muted: #b0bec5;
     }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
+    * { box-sizing: border-box; margin: 0; padding: 0;}
+    html { scroll-behavior: smooth;}
     body {
       font-family: 'Poppins', sans-serif;
-      background-color: #000;
-      color: #e0e0e0;
-      line-height: 1.6;
+      background: linear-gradient(135deg, var(--dark) 60%, var(--secondary) 100%);
+      color: var(--text);
       min-height: 100vh;
+      line-height: 1.6;
+      position: relative;
+      overflow-x: hidden;
+      display: flex; flex-direction: column;
+    }
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      height: 58px;
+      z-index: 2002;
+      background: rgba(18, 26, 35, 0.95);
+      border-bottom: 2px solid var(--primary);
+      box-shadow: 0 3px 18px var(--primary);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 2vw;
+      font-size: 1.1em;
+      backdrop-filter: blur(5px);
+    }
+    nav .nav-logo {
+      font-weight: 900;
+      font-size: 1.38em;
+      letter-spacing: 2px;
+      background: linear-gradient(90deg, var(--primary), var(--accent) 70%, transparent);
+      background-clip: text; -webkit-background-clip: text;
+      color: transparent; -webkit-text-fill-color: transparent;
+      animation: logoHue 4s linear infinite alternate;
+      display: flex; align-items: center;
+    }
+    @keyframes logoHue {
+      0% { filter: hue-rotate(0deg);}
+      100%{ filter: hue-rotate(40deg);}
+    }
+    nav ul { list-style: none; display: flex; gap: 1.7em;}
+    nav ul li a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 600;
+      padding: 6px 13px;
+      border-radius: 8px;
+      transition: background 0.2s, color 0.2s;
+    }
+    nav ul li a:hover, nav ul li a:focus {
+      background: linear-gradient(90deg,var(--accent) 30%,var(--primary));
+      color: #fff;
+      box-shadow: 0 0 8px var(--primary);
+    }
+    nav .nav-actions {
+      display: flex; gap: 1em;
+    }
+    nav .nav-actions .btn-ig {
+      background: linear-gradient(90deg,#ed4264,#ffedbc 80%);
+      color: #262626; border: none; border-radius: 22px;
+      padding: 7px 16px; font-weight: 700; font-size: 1em;
+      cursor: pointer; box-shadow: 0 2px 8px #ed426455;
+      display: flex; align-items: center; gap: 7px;
+      transition: background 0.2s, scale 0.2s;
+    }
+    nav .nav-actions .btn-ig:hover {
+      background: linear-gradient(90deg,#ffedbc,#ed4264 90%);
+      scale:1.08;
+    }
+    @media (max-width: 780px) {
+      nav ul { gap: 0.7em; font-size: 0.92em;}
+      nav .nav-logo { font-size: 1em; }
+    }
+    @media (max-width: 500px){
+      nav { font-size: 0.91em; padding: 0 1vw;}
+      nav ul { gap: 0.4em;}
+    }
+    header { margin-top: 58px; text-align: center; padding: 2.2em 0 1.2em 0;}
+    .hero {
+      background: linear-gradient(100deg, #222a36 80%, #004d4044 100%);
+      border-radius: 16px;
+      box-shadow: 0 2px 28px #00bcd444;
+      margin: 1.6em auto 1.3em auto;
+      max-width: 750px;
+      padding: 2.3em 1.5em 2em 1.5em;
+      position: relative;
+      z-index: 2;
+      border: 2px solid var(--primary);
+    }
+    .hero h1 {
+      font-weight: 900;
+      font-size: 2.6rem;
+      color: var(--primary);
+      text-shadow: 0 0 18px var(--primary), 0 0 6px #00bcd466;
+      letter-spacing: 2px;
+      background: linear-gradient(90deg,var(--primary), var(--accent) 80%,#fff0);
+      background-clip: text; -webkit-background-clip: text;
+      color: transparent; -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 0 30px var(--primary));
+      margin-bottom: 0.4rem;
+    }
+    .hero .subtitulo {
+      font-weight: 600;
+      font-size: 1.25rem;
+      color: var(--accent);
+      margin-bottom: 1.5em;
+      text-shadow: 0 0 6px var(--accent);
+      letter-spacing: 1px;
+    }
+    .hero .cta {
+      display: inline-block;
+      margin-top: 1em;
+      font-weight: 700;
+      padding: 0.8em 2em;
+      background: linear-gradient(90deg,var(--primary),var(--accent));
+      color: #fff;
+      border: none;
+      border-radius: 20px;
+      font-size: 1.04em;
+      box-shadow: 0 2px 12px var(--primary);
+      transition: background 0.2s, scale 0.2s;
+      cursor: pointer;
+      letter-spacing: 1px;
+    }
+    .hero .cta:hover { background: linear-gradient(90deg,var(--accent),var(--primary) 70%); scale:1.06;}
+    .banner-revision {
+      background: linear-gradient(90deg,var(--primary) 20%,var(--accent) 80%,#fff0);
+      color: #01343a;
+      font-weight: bold;
+      text-align: center;
+      padding: 0.7em 0.2em;
+      margin: 0.5em 0 1.3em 0;
+      border-radius: 7px;
+      font-size: 1em;
+      box-shadow: 0 2px 18px var(--primary);
+      letter-spacing: 1px;
+    }
+    main { max-width: 820px; width: 97%; margin: auto; padding-bottom: 2em;}
+    section { margin-bottom: 2em;}
+    h2 {
+      color: var(--primary);
+      font-size: 1.5em;
+      margin-bottom: 0.7em;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-shadow: 0 0 6px var(--primary);
+    }
+    h3 {
+      color: var(--accent); margin-bottom: 0.3em; font-size: 1.08em;
+    }
+    p { font-size: 1.06rem; margin-bottom: 1.1em;}
+    .team-list, .aliados-list, .news-list { list-style: none; padding: 0; }
+    .team-list li, .aliados-list li {
+      background: #1a2733cc;
+      border-radius: 9px;
+      margin-bottom: 0.7em;
+      padding: 0.5em 1em;
+      color: var(--text);
+      box-shadow: 0 2px 10px #00bcd433;
+      display: flex; align-items: center; gap: 0.7em;
+      border-left: 5px solid var(--primary);
+    }
+    .aliados-list { display:grid; grid-template-columns: repeat(auto-fit,minmax(210px,1fr)); gap:1em;}
+    .aliados-list li { margin-bottom:0; }
+    .aliados-nuevo {
+      background: #4caf5044;
+      border-left: 5px solid var(--success);
+    }
+    .news-list li {
+      background: #222a36cc;
+      border-radius: 7px;
+      margin-bottom: 0.8em;
+      padding: 0.7em 1em;
+      color: var(--accent);
+      border-left: 4px solid var(--accent);
+      font-size: 1.02em;
+    }
+    .mapa-patagonia {
+      width: 100%; max-width: 410px; margin: 1.2em auto 1.1em auto; display: block;
+      border-radius: 12px; box-shadow: 0 2px 18px var(--primary);
+      border: 2px solid var(--primary);
+      filter: grayscale(0.15) brightness(0.93);
+    }
+    .acciones-box {
+      background: linear-gradient(100deg,#263238bb 70%,var(--primary) 100%);
+      border-radius: 14px;
+      box-shadow: 0 2px 18px var(--primary);
+      padding: 1.2em 1.5em;
+      margin-bottom: 1.7em;
+      border-left: 6px solid var(--primary);
+    }
+    .acciones-box ul { margin-top: 0.4em; margin-bottom: 0;}
+    .acciones-box li { margin-bottom: 0.7em; color: var(--accent);}
+    .sumate-section {
+      background: #1a2733cc;
+      border-radius: 15px;
+      padding: 1.7em 1em 1.6em 1em;
+      box-shadow: 0 2px 20px #00bcd444;
+      border: 2px solid var(--primary);
+      margin-bottom: 2.3em;
+    }
+    .sumate-section label { display: block; margin-bottom: 0.4em; color: var(--accent); font-weight: 600;}
+    .sumate-section input, .sumate-section textarea, .sumate-section select {
+      width: 100%; max-width: 420px;
+      padding: 0.6em 1em;
+      border-radius: 8px;
+      border: 1px solid var(--accent);
+      font-size: 1em;
+      background: #e0f7fa;
+      color: #222;
+      margin-bottom: 1em;
+    }
+    .sumate-section button {
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      color: #fff;
+      padding: 0.7em 2em;
+      border: none;
+      border-radius: 9px;
+      font-weight: 700;
+      font-size: 1em;
+      cursor: pointer;
+      box-shadow: 0 2px 8px var(--primary);
+      transition: background 0.2s, scale 0.2s;
+      margin-top: 0.2em;
+    }
+    .sumate-section button:hover { background: var(--primary); scale:1.04;}
+    .msg-exito, .msg-error {
+      text-align:center; font-weight:600; margin-bottom:1em; margin-top:0.1em;
+      border-radius:8px; padding:0.6em 0;
+    }
+    .msg-exito { background: #4caf50cc; color: #fff;}
+    .msg-error { background: #e57373cc; color: #fff;}
+    .public-comments-section {
+      background: linear-gradient(120deg, var(--primary) 60%, var(--accent) 40%, #2226);
+      border-radius: 15px;
+      padding: 2em 1em;
+      box-shadow: 0 2px 32px var(--primary);
+      border: 2px solid var(--primary);
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom:2em;
+    }
+    .public-comments-section h2 {
+      text-align: center;
+      margin-bottom: 1.1em;
+      color: var(--primary);
+    }
+    #comment-form {
       display: flex;
       flex-direction: column;
+      gap: 0.8em;
+      margin-bottom: 1.5em;
+      align-items: center;
     }
-
-    a {
-      color: #4dd0e1;
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-
-    a:hover,
-    a:focus {
-      color: #81d4fa;
-      text-decoration: underline;
-      outline: none;
-    }
-
-    header, main, footer {
-      max-width: 900px;
-      width: 90%;
-      margin: auto;
-      padding: 1.5rem 0;
-    }
-
-    header {
-      text-align: center;
-    }
-
-    .logo {
-      max-width: 120px;
-      margin-bottom: 1rem;
-      filter: drop-shadow(0 0 5px #00bcd4);
-    }
-
-    h1 {
-      font-weight: 800;
-      font-size: 2.8rem;
-      color: #00bcd4;
-      margin-bottom: 0.3rem;
-      text-shadow: 0 0 8px #00bcd4aa;
-    }
-
-    .subtitulo {
-      font-weight: 600;
-      font-size: 1.2rem;
-      color: #80deea;
-      margin-bottom: 3rem;
-      text-shadow: 0 0 6px #80deea88;
-    }
-
-    h2 {
-      color: #00bcd4;
-      margin-bottom: 1rem;
-      font-weight: 700;
-      font-size: 1.8rem;
-      text-shadow: 0 0 6px #00bcd4bb;
-    }
-
-    p {
-      font-weight: 400;
-      font-size: 1rem;
-      margin-bottom: 1.25rem;
-      max-width: 800px;
-    }
-
-    strong {
-      color: #4dd0e1;
-    }
-
-    /* Galería de imágenes */
-    .galeria {
-      display: flex;
-      justify-content: space-between;
-      gap: 1rem;
-      flex-wrap: wrap;
-      margin-bottom: 2rem;
-    }
-
-    .galeria img {
-      width: 32%;
+    #comment-form input, #comment-form textarea {
+      width: 95%;
+      max-width: 480px;
+      padding: 0.6em 1em;
       border-radius: 8px;
-      box-shadow: 0 0 10px #00bcd4aa;
+      border: 1px solid var(--accent);
+      font-size: 1em;
+      background: #e0f7fa;
+      color: #222;
+    }
+    #comment-form button {
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      color: #fff;
+      padding: 0.6em 1.5em;
+      border: none;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 1em;
       cursor: pointer;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      border: 2px solid transparent;
-      filter: brightness(0.95);
-      border-radius: 10px;
+      box-shadow: 0 2px 8px var(--primary);
+      transition: background 0.2s;
     }
-
-    .galeria img:hover,
-    .galeria img:focus {
-      transform: scale(1.05);
-      box-shadow: 0 0 15px #00bcd4ff;
-      filter: brightness(1);
-      border-color: #00bcd4;
-      outline: none;
+    #comment-form button:hover { background: var(--primary);}
+    .comments-list {
+      margin-top: 0.7em;
+      list-style: none;
+      padding: 0;
+      max-width: 650px;
+      margin-left: auto;
+      margin-right: auto;
     }
-
-    /* Contacto con íconos SVG */
-    .contacto {
-      font-size: 1rem;
-      line-height: 1.6;
+    .comments-list li {
+      background: #fff3;
+      border-radius: 8px;
+      margin-bottom: 1.2em;
+      padding: 1em 1.2em;
+      color: var(--text);
+      box-shadow: 0 2px 10px #00bcd433;
+      border-left: 4px solid var(--primary);
     }
-
-    .contacto svg {
-      vertical-align: middle;
-      margin-right: 0.5rem;
-      fill: #4dd0e1;
-      width: 20px;
-      height: 20px;
-      filter: drop-shadow(0 0 2px #4dd0e1);
+    .comments-list .comment-author {
+      font-weight: bold;
+      color: var(--primary);
+      margin-bottom: 0.2em;
     }
-
-    /* Footer */
+    .comments-list .comment-date {
+      font-size: 0.93em;
+      color: var(--accent);
+      float: right;
+    }
+    .ir-comentarios {
+      display:inline-block;
+      margin:.7em auto 1.1em auto;
+      padding:.6em 1.6em;
+      background:linear-gradient(90deg,var(--primary),var(--accent));
+      color:#fff;
+      font-weight:700;
+      border-radius:9px;
+      border:none;
+      font-size:1.06em;
+      box-shadow:0 2px 8px var(--primary);
+      cursor:pointer;
+      transition:background .2s,scale .2s;
+      letter-spacing:1px;
+    }
+    .ir-comentarios:hover {background:var(--primary); scale:1.03;}
+    .btn-instagram-flotante {
+      position: fixed; bottom: 32px; right: 28px;
+      background: linear-gradient(135deg, #ed4264 60%, #ffedbc 100%);
+      border-radius: 50%; width: 62px; height: 62px; box-shadow: 0 4px 24px #ed426466;
+      display: flex; justify-content: center; align-items: center; cursor: pointer;
+      z-index: 1050; border: 2.5px solid #fff;
+      transition: background 0.3s, transform 0.3s;
+      animation: flotar 2.2s infinite alternate cubic-bezier(.6,0,.4,1);
+    }
+    @keyframes flotar { to { transform: translateY(-10px) scale(1.07);} }
+    .btn-instagram-flotante:hover { background: #ed4264; transform: scale(1.11) rotate(-8deg);}
+    .btn-instagram-flotante svg { width: 37px; height: 37px; fill: #fff;}
     footer {
       text-align: center;
-      font-size: 0.9rem;
-      color: #555;
-      padding: 1.5rem 0;
-      border-top: 1px solid #222;
+      font-size: 1.09rem;
+      color: var(--muted);
+      padding: 1.5rem 0 0.7rem 0;
+      border-top: 2px solid var(--primary);
+      background: linear-gradient(90deg, #24243e, #0f2027);
+      letter-spacing: 1px;
       margin-top: auto;
+      box-shadow: 0 -3px 18px var(--primary);
     }
-
-    /* Botón flotante WhatsApp */
-    #btnWhatsApp {
-      position: fixed;
-      bottom: 25px;
-      right: 25px;
-      background-color: #25d366;
-      border-radius: 50%;
-      width: 60px;
-      height: 60px;
-      box-shadow: 0 4px 10px rgba(37, 211, 102, 0.6);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      cursor: pointer;
-      transition: background-color 0.3s ease, transform 0.3s ease;
-      z-index: 1000;
+    .footer-links { margin: 0.5em auto 1em auto;}
+    .footer-links a { color: var(--primary); margin: 0 1.5em; text-decoration: none; font-weight: 600;}
+    .footer-links a:hover { text-decoration: underline; color: var(--accent);}
+    @media (max-width: 930px) { main { width: 99%;} }
+    @media (max-width: 700px) {
+      nav ul { gap: 0.3em; }
+      .hero h1 { font-size:1.5em;}
+      .aliados-list { grid-template-columns:1fr;}
     }
-
-    #btnWhatsApp:hover {
-      background-color: #1ebe5b;
-      transform: scale(1.1);
+    @media (max-width: 520px) {
+      nav, header, main, footer { font-size:0.97em;}
+      .banner-revision { font-size:0.93em;}
+      .hero { padding:1.2em 0.5em 1.1em 0.5em;}
+      .btn-instagram-flotante { right:10px; bottom:12px;}
     }
-
-    #btnWhatsApp svg {
-      width: 30px;
-      height: 30px;
-      fill: white;
-    }
-
-    /* Contadores animados */
-    .contadores {
-      display: flex;
-      justify-content: space-around;
-      margin: 3rem 0;
-      gap: 2rem;
-      flex-wrap: wrap;
-    }
-
-    .contador {
-      background: #111;
-      border: 2px solid #00bcd4;
-      border-radius: 15px;
-      padding: 1rem 2rem;
-      text-align: center;
-      flex: 1 1 150px;
-      box-shadow: 0 0 10px #00bcd4aa;
-      transition: box-shadow 0.3s ease;
-    }
-
-    .contador:hover {
-      box-shadow: 0 0 20px #00bcd4ff;
-    }
-
-    .numero {
-      font-size: 2.5rem;
-      font-weight: 800;
-      color: #00bcd4;
-      margin-bottom: 0.5rem;
-    }
-
-    .descripcion {
-      font-size: 1rem;
-      font-weight: 600;
-      color: #80deea;
-    }
-
-    /* Toggle modo oscuro/claro */
-    #toggleModo {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background: #00bcd4;
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      cursor: pointer;
-      box-shadow: 0 0 10px #00bcd4aa;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 1001;
-      transition: background-color 0.3s ease;
-    }
-
-    #toggleModo:hover {
-      background: #26c6da;
-    }
-
-    #toggleModo svg {
-      fill: #000;
-      width: 22px;
-      height: 22px;
-    }
-
-    /* Modo claro */
-    body.light {
-      background-color: #f5f5f5;
-      color: #222;
-    }
-
-    body.light h1,
-    body.light h2,
-    body.light strong {
-      color: #00796b;
-      text-shadow: none;
-    }
-
-    body.light .subtitulo {
-      color: #004d40;
-    }
-
-    body.light a {
-      color: #00796b;
-    }
-
-    body.light a:hover {
-      color: #004d40;
-    }
-
-    body.light header,
-    body.light main,
-    body.light footer {
-      color: #222;
-    }
-
-    body.light footer {
-      border-top-color: #ccc;
-      color: #555;
-    }
-
-    body.light .galeria img {
-      box-shadow: 0 0 10px #00796baa;
-      filter: brightness(1);
-      border-color: transparent;
-    }
-
-    body.light .galeria img:hover,
-    body.light .galeria img:focus {
-      box-shadow: 0 0 15px #00796bff;
-      border-color: #00796b;
-    }
-
-    body.light .contador {
-      background: #e0f2f1;
-      border-color: #00796b;
-      box-shadow: 0 0 10px #00796baa;
-      color: #004d40;
-    }
-
-    body.light .contador:hover {
-      box-shadow: 0 0 20px #00796bff;
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      .galeria img {
-        width: 48%;
-        margin-bottom: 1rem;
-      }
-      .contadores {
-        flex-direction: column;
-        align-items: center;
-      }
-      .contador {
-        width: 80%;
-        margin-bottom: 1.5rem;
-      }
-      h1 {
-        font-size: 2.2rem;
-      }
-      h2 {
-        font-size: 1.5rem;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .galeria img {
-        width: 100%;
-      }
-    }
-
   </style>
 </head>
 <body>
-  <div id="toggleModo" aria-label="Cambiar modo oscuro/claro" role="button" tabindex="0" title="Cambiar modo oscuro/claro">
-    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-      <path d="M12 3a9 9 0 0 0 0 18 9 9 0 0 1 0-18z"/>
-    </svg>
-  </div>
-
+  <nav>
+    <div class="nav-logo">WeerTeck</div>
+    <ul>
+      <li><a href="#top">Inicio</a></li>
+      <li><a href="#quienes">Quiénes somos</a></li>
+      <li><a href="#patagonia">¿Por qué Patagonia?</a></li>
+      <li><a href="#quehacemos">¿Qué hacemos?</a></li>
+      <li><a href="#aliados">Aliados</a></li>
+      <li><a href="#novedades">Novedades</a></li>
+      <li><a href="#sumate">Sumate</a></li>
+      <li><a href="#comentarios">Opiniones</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="btn-ig" onclick="window.open('https://instagram.com/weerteck','_blank')" title="Seguinos en Instagram">
+        <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.584.012 4.847.07 1.17.055 1.796.24 2.216.403a4.292 4.292 0 0 1 1.593.924c.443.444.73.973.924 1.593.163.42.348 1.046.403 2.216.058 1.263.07 1.646.07 4.847 0 3.2-.012 3.584-.07 4.847-.055 1.17-.24 1.796-.403 2.216a4.292 4.292 0 0 1-.924 1.593 4.292 4.292 0 0 1-1.593.924c-.42.163-1.046.348-2.216.403-1.263.058-1.646.07-4.847.07-3.2 0-3.584-.012-4.847-.07-1.17-.055-1.796-.24-2.216-.403a4.292 4.292 0 0 1-1.593-.924 4.292 4.292 0 0 1-.924-1.593c-.163-.42-.348-1.046-.403-2.216C2.212 15.631 2.2 15.247 2.2 12.047c0-3.2.012-3.584.07-4.847.055-1.17.24-1.796.403-2.216A4.292 4.292 0 0 1 3.597 3.39 4.292 4.292 0 0 1 5.19 2.466c.42-.163 1.046-.348 2.216-.403C8.416 2.212 8.8 2.2 12 2.2zm0-2.2C8.74 0 8.332.014 7.052.072 5.73.13 4.684.325 3.81.637a6.492 6.492 0 0 0-2.36 1.547A6.492 6.492 0 0 0 .637 4.19c-.312.874-.507 1.92-.565 3.242C.014 8.332 0 8.74 0 12c0 3.26.014 3.668.072 4.948.058 1.322.253 2.368.565 3.242a6.492 6.492 0 0 0 1.547 2.36 6.492 6.492 0 0 0 2.36 1.547c.874.312 1.92.507 3.242.565C8.332 23.986 8.74 24 12 24c3.26 0 3.668-.014 4.948-.072 1.322-.058 2.368-.253 3.242-.565a6.492 6.492 0 0 0 2.36-1.547 6.492 6.492 0 0 0 1.547-2.36c.312-.874.507-1.92.565-3.242.058-1.28.072-1.688.072-4.948s-.014-3.668-.072-4.948c-.058-1.322-.253-2.368-.565-3.242a6.492 6.492 0 0 0-1.547-2.36A6.492 6.492 0 0 0 20.19.637c-.874-.312-1.92-.507-3.242-.565C15.668.014 15.26 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a3.999 3.999 0 1 1 0-7.998 3.999 3.999 0 0 1 0 7.998zm7.844-10.406a1.44 1.44 0 1 1-2.88 0 1.44 1.44 0 0 1 2.88 0z"/></svg>
+        Instagram
+      </button>
+    </div>
+  </nav>
   <header>
-    <img src="img/logo.png" alt="Logo WeerTeck" class="logo" />
-    <h1>WeerTeck</h1>
-    <p class="subtitulo">Tecnología accesible para proteger nuestros bosques</p>
+    <a id="top"></a>
+    <div class="hero">
+      <h1>Concientización contra incendios en Patagonia</h1>
+      <div class="subtitulo">
+        Prevenir y actuar juntos por nuestros bosques y comunidades.<br>
+        Tecnología, compromiso y acción desde la Patagonia para el país.
+      </div>
+      <button class="cta" onclick="document.getElementById('sumate').scrollIntoView({behavior:'smooth'})">
+        ¡Sumate a la campaña!
+      </button>
+    </div>
+    <div class="banner-revision">
+      🚀 Esta página está en constante revisión y mejora para ofrecerte la mejor experiencia y recursos actualizados. ¡Gracias por tu visita!
+    </div>
   </header>
-
   <main>
-    <section>
+    <section id="quienes">
       <h2>¿Quiénes somos?</h2>
+      <ul class="team-list">
+        <li><strong>Lucas De Cesare</strong> — CEO y cofundador</li>
+        <li><strong>Santiago Martinez</strong> — Cofundador</li>
+      </ul>
       <p>
-        Somos un grupo de jóvenes desarrolladores y emprendedores comprometidos con la protección del medio ambiente. Creamos soluciones tecnológicas accesibles para anticiparnos a los incendios forestales y reducir su impacto en la Patagonia argentina.
+        Somos un equipo comprometido en crear soluciones tecnológicas y comunitarias para enfrentar los incendios forestales, especialmente en la Patagonia, una de las zonas más afectadas de Argentina.
       </p>
     </section>
-
-    <section>
+    <section id="patagonia">
+      <h2>¿Por qué Patagonia?</h2>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/8/85/Mapa_de_la_Patagonia.svg" class="mapa-patagonia" alt="Mapa de la Patagonia Argentina" loading="lazy"/>
+      <p>
+        La Patagonia es uno de los territorios más golpeados por incendios forestales en el país. Cada año, miles de hectáreas de bosque y vida silvestre se pierden, afectando a comunidades, turismo y biodiversidad. 
+      </p>
+      <p>
+        Concientizar y actuar en esta región es clave para prevenir tragedias, proteger la naturaleza y asegurar un futuro sustentable.
+      </p>
+    </section>
+    <section id="quehacemos">
       <h2>¿Qué hacemos?</h2>
       <p>
-        Diseñamos <strong>torres inteligentes autosustentables</strong> equipadas con sensores de humo, gases inflamables y temperatura, capaces de detectar incendios en su fase inicial. Al identificar riesgo, envían <strong>alertas automáticas por WhatsApp</strong> a brigadas y vecinos de la zona.
+        Desarrollamos <strong>torres inteligentes</strong> y estrategias comunitarias para detectar incendios en etapas tempranas, enviar alertas a brigadas, municipios y vecinos, y facilitar la respuesta rápida.
       </p>
       <p>
-        Estas torres también pueden contar con un sistema de <strong>rociado ecológico preventivo</strong>, que libera una solución biodegradable para contener el fuego antes de que se propague.
+        Además, promovemos la educación y la acción colectiva para prevenir incendios y minimizar impactos.
       </p>
     </section>
-
-    <section class="contadores" aria-label="Estadísticas de WeerTeck">
-      <div class="contador">
-        <div class="numero" data-numero="0">0</div>
-        <div class="descripcion">Torres instaladas</div>
-      </div>
-      <div class="contador">
-        <div class="numero" data-numero="0">0</div>
-        <div class="descripcion">Municipios adheridos</div>
-      </div>
-      <div class="contador">
-        <div class="numero" data-numero="0">0</div>
-        <div class="descripcion">Alertas activadas</div>
+    <section class="acciones-box">
+      <h3>¿Qué podés hacer vos para prevenir incendios?</h3>
+      <ul>
+        <li>Informate y compartí recomendaciones sobre el uso responsable del fuego.</li>
+        <li>Participá en campañas y jornadas de concientización.</li>
+        <li>Alertá a las autoridades ante cualquier columna de humo o situación sospechosa.</li>
+        <li>No dejes basura ni vidrios en zonas naturales.</li>
+        <li>Sumate a proyectos y movimientos ambientales.</li>
+      </ul>
+    </section>
+    <section id="aliados">
+      <h2>Ranking de aliados y apoyos</h2>
+      <ul class="aliados-list">
+        <li><strong>Municipio de San Isidro</strong> <span style="color:var(--success);font-weight:600;">(Próximo a sumarse)</span></li>
+        <li><strong>EcoJóvenes ONG</strong></li>
+        <li class="aliados-nuevo"><strong>¿Tu ONG, municipio o grupo?</strong> <br><span style="color:#fff;">Sumate desde la sección <a href="#sumate" style="color:var(--accent);">Sumate</a></span></li>
+      </ul>
+    </section>
+    <section id="novedades">
+      <h2>Novedades y próximos eventos</h2>
+      <ul class="news-list">
+        <li>01/06/2025 — Lanzamiento de la campaña "Patagonia sin fuego" 🚒</li>
+        <li>18/05/2025 — Charla en UDESA sobre tecnología y prevención de incendios.</li>
+        <li>10/05/2025 — Alianza con EcoJóvenes ONG para difusión digital.</li>
+      </ul>
+    </section>
+    <section id="sumate" class="sumate-section">
+      <h2>Sumate a la campaña</h2>
+      <p>
+        Si querés colaborar, hacer una campaña publicitaria, sumar tu ONG o tu municipio, o simplemente recibir novedades, completá este formulario. ¡Te contactamos!
+      </p>
+      <form id="form-sumate" autocomplete="off">
+        <label for="sumate-nombre">Nombre y apellido</label>
+        <input type="text" id="sumate-nombre" maxlength="60" placeholder="Tu nombre completo" />
+        <label for="sumate-email">Email de contacto <span style="color:var(--danger);">*</span></label>
+        <input type="email" id="sumate-email" required maxlength="60" placeholder="tunombre@email.com" />
+        <label for="sumate-tipo">¿Cómo querés sumarte?</label>
+        <select id="sumate-tipo">
+          <option value="Campaña publicitaria">Campaña publicitaria</option>
+          <option value="ONG / Municipio">ONG / Municipio</option>
+          <option value="Voluntario/a">Voluntario/a</option>
+          <option value="Otro">Otro</option>
+        </select>
+        <label for="sumate-msg">Mensaje</label>
+        <textarea id="sumate-msg" rows="3" maxlength="300" placeholder="Contanos tu idea o consulta"></textarea>
+        <button type="submit">Enviar</button>
+        <div id="sumate-estado"></div>
+      </form>
+      <div style="margin-top:1em;font-size:.98em;color:var(--muted);text-align:center;">
+        CEO: Lucas De Cesare — <span style="color:var(--accent);">weerteck@gmail.com</span>
       </div>
     </section>
-
-    <section>
-      <h2>Galería</h2>
-      <div class="galeria" aria-label="Galería de imágenes de WeerTeck">
-        <img src="img/torre1.jpg" alt="Torre inteligente en el bosque" loading="lazy" tabindex="0" />
-        <img src="img/sensor.jpg" alt="Sensor de humo instalado en la torre" loading="lazy" tabindex="0" />
-        <img src="img/brigada.jpg" alt="Brigada recibiendo alerta y actuando" loading="lazy" tabindex="0" />
+    <button class="ir-comentarios" onclick="document.getElementById('comentarios').scrollIntoView({behavior:'smooth'})">
+      Ir a opiniones de la comunidad
+    </button>
+    <section class="public-comments-section" id="comentarios">
+      <h2>Opiniones y recomendaciones</h2>
+      <form id="comment-form">
+        <input type="text" id="comment-author" placeholder="Tu nombre (opcional)" maxlength="40" autocomplete="off"/>
+        <textarea id="comment-text" placeholder="Escribí tu comentario, opinión o recomendación..." rows="3" required maxlength="400"></textarea>
+        <button type="submit">Publicar comentario</button>
+      </form>
+      <ul class="comments-list" id="comments-list"></ul>
+      <div style="text-align:center;margin-top:1em;color:var(--accent);">
+        También podés escribirnos por <a href="https://wa.me/541125216302?text=Hola%20WeerTeck%2C%20tengo%20una%20consulta%20o%20opinión" target="_blank" rel="noopener">WhatsApp</a> o <a href="https://instagram.com/weerteck" target="_blank" rel="noopener">Instagram</a>.
       </div>
-    </section>
-
-    <section>
-      <h2>Contacto</h2>
-      <p class="contacto">
-        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-          <path d="M6.62 10.79a15.091 15.091 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.11-.21 11.36 11.36 0 0 0 3.58.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.36 11.36 0 0 0 .57 3.58 1 1 0 0 1-.21 1.11l-2.24 2.1z"/>
-        </svg>
-        Teléfono: <a href="tel:+5491125216302">+54 9 11 2521-6302</a>
-      </p>
-      <p class="contacto">
-        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-          <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 2l-8 5-8-5h16z"/>
-        </svg>
-        Email: <a href="mailto:weerteck@gmail.com">weerteck@gmail.com</a>
-      </p>
-      <p class="contacto">
-        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-          <path d="M7 10l5 5 5-5H7z"/>
-        </svg>
-        Dirección: San Isidro, Buenos Aires, Argentina
-      </p>
     </section>
   </main>
-
-  <footer>
-    <p>&copy; 2025 WeerTeck - Todos los derechos reservados</p>
-  </footer>
-
-  <!-- BOTÓN FLOTANTE WHATSAPP con número corregido -->
-  <a href="https://wa.me/5491125216302?text=Hola%20WeerTeck%2C%20quiero%20m%C3%A1s%20info" target="_blank" rel="noopener" id="btnWhatsApp" aria-label="Contactar por WhatsApp">
-    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-      <path d="M20.52 3.48A11.86 11.86 0 0 0 12 0C5.37 0 0 5.37 0 12a11.93 11.93 0 0 0 2.07 6.57L0 24l5.6-2.07A11.9 11.9 0 0 0 12 24c6.63 0 12-5.37 12-12a11.84 11.84 0 0 0-3.48-8.52zM12 21.4a9.4 9.4 0 0 1-4.78-1.41l-.34-.21-3.32 1.23 1.2-3.23-.22-.34A9.44 9.44 0 1 1 21.4 12a9.37 9.37 0 0 1-9.4 9.4zm5.32-7.21c-.29-.15-1.71-.84-1.97-.94-.26-.11-.45-.15-.64.15s-.74.94-.9 1.13c-.16.19-.32.21-.6.07a6.71 6.71 0 0 1-1.97-1.21 7.32 7.32 0 0 1-1.36-1.68c-.14-.25-.02-.38.11-.53.12-.12.26-.32.39-.48a.72.72 0 0 0 .11-.3.43.43 0 0 0-.06-.3c-.2-.45-.57-1.18-.8-1.6-.21-.4-.43-.34-.6-.34a1.36 1.36 0 0 0-.65.06c-.23.1-.89.86-.89 2.1s.91 2.43 1.03 2.6c.11.18 1.78 2.71 4.3 3.8a13.61 13.61 0 0 0 1.89.66c.8.27 1.53.23 2.11.14a6.69 6.69 0 0 0 2.03-.82 7.7 7.7 0 0 0 2.72-2.47 9.56 9.56 0 0 0-3.41-2.55z"/>
-    </svg>
+  <a href="https://instagram.com/weerteck" class="btn-instagram-flotante" target="_blank" rel="noopener" title="Ir al Instagram de WeerTeck" aria-label="Ir al Instagram de WeerTeck">
+    <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.584.012 4.847.07 1.17.055 1.796.24 2.216.403a4.292 4.292 0 0 1 1.593.924c.443.444.73.973.924 1.593.163.42.348 1.046.403 2.216.058 1.263.07 1.646.07 4.847 0 3.2-.012 3.584-.07 4.847-.055 1.17-.24 1.796-.403 2.216a4.292 4.292 0 0 1-.924 1.593 4.292 4.292 0 0 1-1.593.924c-.42.163-1.046.348-2.216.403-1.263.058-1.646.07-4.847.07-3.2 0-3.584-.012-4.847-.07-1.17-.055-1.796-.24-2.216-.403a4.292 4.292 0 0 1-1.593-.924 4.292 4.292 0 0 1-.924-1.593c-.163-.42-.348-1.046-.403-2.216C2.212 15.631 2.2 15.247 2.2 12.047c0-3.2.012-3.584.07-4.847.055-1.17.24-1.796.403-2.216A4.292 4.292 0 0 1 3.597 3.39 4.292 4.292 0 0 1 5.19 2.466c.42-.163 1.046-.348 2.216-.403C8.416 2.212 8.8 2.2 12 2.2zm0-2.2C8.74 0 8.332.014 7.052.072 5.73.13 4.684.325 3.81.637a6.492 6.492 0 0 0-2.36 1.547A6.492 6.492 0 0 0 .637 4.19c-.312.874-.507 1.92-.565 3.242C.014 8.332 0 8.74 0 12c0 3.26.014 3.668.072 4.948.058 1.322.253 2.368.565 3.242a6.492 6.492 0 0 0 1.547 2.36 6.492 6.492 0 0 0 2.36 1.547c.874.312 1.92.507 3.242.565C8.332 23.986 8.74 24 12 24c3.26 0 3.668-.014 4.948-.072 1.322-.058 2.368-.253 3.242-.565a6.492 6.492 0 0 0 2.36-1.547 6.492 6.492 0 0 0 1.547-2.36c.312-.874.507-1.92.565-3.242.058-1.28.072-1.688.072-4.948s-.014-3.668-.072-4.948c-.058-1.322-.253-2.368-.565-3.242a6.492 6.492 0 0 0-1.547-2.36A6.492 6.492 0 0 0 20.19.637c-.874-.312-1.92-.507-3.242-.565C15.668.014 15.26 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a3.999 3.999 0 1 1 0-7.998 3.999 3.999 0 0 1 0 7.998zm7.844-10.406a1.44 1.44 0 1 1-2.88 0 1.44 1.44 0 0 1 2.88 0z"/></svg>
   </a>
-
+  <footer>
+    <div class="footer-links">
+      <a href="#top">↑ Volver arriba</a>
+      <a href="mailto:weerteck@gmail.com">Contacto</a>
+      <a href="https://instagram.com/weerteck" target="_blank" rel="noopener">Instagram</a>
+    </div>
+    <div>
+      &copy; 2025 WeerTeck — Todos los derechos reservados<br>
+      <span style="font-size:.93em;color:var(--accent);">Página en revisión y mejora continua.</span>
+    </div>
+  </footer>
   <script>
-    // Animación contador numérico
-    function animarContador(element, numeroFinal, duracion = 2000) {
-      let start = 0;
-      if (numeroFinal <= 0) {
-        element.textContent = numeroFinal;
-        return;
-      }
-      const stepTime = Math.abs(Math.floor(duracion / numeroFinal));
-      const increment = 1;
-      const timer = setInterval(() => {
-        start += increment;
-        element.textContent = start;
-        if (start >= numeroFinal) {
-          clearInterval(timer);
-        }
-      }, stepTime);
-    }
-
+    // Comentarios públicos (localStorage)
     document.addEventListener('DOMContentLoaded', () => {
-      // Animar todos los contadores
-      const numeros = document.querySelectorAll('.numero');
-      numeros.forEach((numElem) => {
-        const numeroFinal = parseInt(numElem.getAttribute('data-numero'), 10);
-        animarContador(numElem, numeroFinal);
+      const commentsList = document.getElementById('comments-list');
+      function loadComments() {
+        commentsList.innerHTML = '';
+        let comments = [];
+        try {
+          comments = JSON.parse(localStorage.getItem('weer-comments') || '[]');
+        } catch {}
+        if (comments.length === 0) {
+          commentsList.innerHTML = "<li style='text-align:center;color:var(--accent);'>Sé el primero en dejar tu comentario.</li>";
+          return;
+        }
+        comments.slice().reverse().forEach(c => {
+          const li = document.createElement('li');
+          li.innerHTML = `<span class="comment-author">${c.author ? c.author : "Anónimo"}</span> <span class="comment-date">${c.date}</span><br>${c.text}`;
+          commentsList.appendChild(li);
+        });
+      }
+      loadComments();
+      document.getElementById('comment-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const author = document.getElementById('comment-author').value.trim();
+        const text = document.getElementById('comment-text').value.trim();
+        if (!text) return;
+        let comments = [];
+        try {
+          comments = JSON.parse(localStorage.getItem('weer-comments') || '[]');
+        } catch {}
+        comments.push({
+          author,
+          text,
+          date: new Date().toLocaleString('es-AR')
+        });
+        localStorage.setItem('weer-comments', JSON.stringify(comments));
+        document.getElementById('comment-author').value = '';
+        document.getElementById('comment-text').value = '';
+        loadComments();
       });
 
-      // Toggle modo oscuro/claro
-      const btnToggle = document.getElementById('toggleModo');
-      btnToggle.addEventListener('click', () => {
-        document.body.classList.toggle('light');
-      });
-      btnToggle.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          document.body.classList.toggle('light');
+      // Formulario sumate
+      const formSumate = document.getElementById('form-sumate');
+      const estadoSumate = document.getElementById('sumate-estado');
+      formSumate.addEventListener('submit', function(e){
+        e.preventDefault();
+        const nombre = document.getElementById('sumate-nombre').value.trim();
+        const email = document.getElementById('sumate-email').value.trim();
+        const tipo = document.getElementById('sumate-tipo').value;
+        const msg = document.getElementById('sumate-msg').value.trim();
+        if (!email || !/\S+@\S+\.\S+/.test(email)) {
+          estadoSumate.innerHTML = "<div class='msg-error'>Poné un email válido.</div>";
+          return;
         }
+        estadoSumate.innerHTML = "<div class='msg-exito'>¡Gracias por sumarte! Nos contactaremos a la brevedad.</div>";
+        formSumate.reset();
       });
     });
   </script>
