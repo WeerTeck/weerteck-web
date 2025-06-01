@@ -402,7 +402,6 @@
       text-shadow: var(--glow);
     }
     .ir-comentarios:hover {background:var(--primary); scale:1.03;}
-    /* ----------- Mini Chat Encuesta ----------- */
     .floating-btns {
       position: fixed;
       bottom: 22px;
@@ -538,7 +537,6 @@
     @media (max-width:390px) {
       .weerbot-chat.mini { width: 97vw !important; right: 1vw; }
     }
-    /* ----------- Footer ----------- */
     footer {
       background: linear-gradient(90deg, #18283b, #0a1018 90%);
       text-align: center;
@@ -569,9 +567,144 @@
   </style>
 </head>
 <body>
-  <!-- ...contenido principal igual que antes... -->
-  <!-- ...main, header, etc... -->
-  <!-- Botones flotantes actualizados -->
+  <div class="bg-futuristic">
+    <canvas id="bg-futuristic-canvas"></canvas>
+  </div>
+  <nav>
+    <div class="nav-logo">WeerTeck</div>
+    <ul>
+      <li><a href="#top">Inicio</a></li>
+      <li><a href="#quienes">Quiénes somos</a></li>
+      <li><a href="#patagonia">¿Por qué Patagonia?</a></li>
+      <li><a href="#quehacemos">¿Qué hacemos?</a></li>
+      <li><a href="#aliados">Aliados</a></li>
+      <li><a href="#novedades">Novedades</a></li>
+      <li><a href="#sumate">Sumate</a></li>
+      <li><a href="#comentarios">Opiniones</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="btn-ig" onclick="window.open('https://instagram.com/weerteck','_blank')" title="Seguinos en Instagram">
+        <svg viewBox="0 0 24 24" width="22" height="22"><path d="M12 2.2c3.2 0 3.584.012 4.847.07 1.17.055 1.796.24 2.216.403a4.292 4.292 0 0 1 1.593.924c.443.444.73.973.924 1.593.163.42.348 1.046.403 2.216.058 1.263.07 1.646.07 4.847 0 3.2-.012 3.584-.07 4.847-.055 1.17-.24 1.796-.403 2.216a4.292 4.292 0 0 1-.924 1.593 4.292 4.292 0 0 1-1.593.924c-.42.163-1.046.348-2.216.403-1.263.058-1.646.07-4.847.07-3.2 0-3.584-.012-4.847-.07-1.17-.055-1.796-.24-2.216-.403a4.292 4.292 0 0 1-1.593-.924 4.292 4.292 0 0 1-.924-1.593c-.163-.42-.348-1.046-.403-2.216C2.212 15.631 2.2 15.247 2.2 12.047c0-3.2.012-3.584.07-4.847.055-1.17.24-1.796.403-2.216A4.292 4.292 0 0 1 3.597 3.39 4.292 4.292 0 0 1 5.19 2.466c.42-.163 1.046-.348 2.216-.403C8.416 2.212 8.8 2.2 12 2.2zm0-2.2C8.74 0 8.332.014 7.052.072 5.73.13 4.684.325 3.81.637a6.492 6.492 0 0 0-2.36 1.547A6.492 6.492 0 0 0 .637 4.19c-.312.874-.507 1.92-.565 3.242C.014 8.332 0 8.74 0 12c0 3.26.014 3.668.072 4.948.058 1.322.253 2.368.565 3.242a6.492 6.492 0 0 0 1.547 2.36 6.492 6.492 0 0 0 2.36 1.547c.874.312 1.92.507 3.242.565C8.332 23.986 8.74 24 12 24c3.26 0 3.668-.014 4.948-.072 1.322-.058 2.368-.253 3.242-.565a6.492 6.492 0 0 0 2.36-1.547 6.492 6.492 0 0 0 1.547-2.36c.312-.874.507-1.92.565-3.242.058-1.28.072-1.688.072-4.948s-.014-3.668-.072-4.948c-.058-1.322-.253-2.368-.565-3.242a6.492 6.492 0 0 0-1.547-2.36A6.492 6.492 0 0 0 20.19.637c-.874-.312-1.92-.507-3.242-.565C15.668.014 15.26 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a3.999 3.999 0 1 1 0-7.998 3.999 3.999 0 0 1 0 7.998zm7.844-10.406a1.44 1.44 0 1 1-2.88 0 1.44 1.44 0 0 1 2.88 0z"/></svg>
+        Instagram
+      </button>
+    </div>
+  </nav>
+  <header>
+    <a id="top"></a>
+    <div class="hero">
+      <h1>Concientización contra incendios en Patagonia</h1>
+      <div class="subtitulo">
+        Prevenir y actuar juntos por nuestros bosques y comunidades.<br>
+        Tecnología, compromiso y acción desde la Patagonia para el país.
+      </div>
+      <button class="cta" onclick="document.getElementById('sumate').scrollIntoView({behavior:'smooth'})">
+        ¡Sumate a la campaña!
+      </button>
+    </div>
+    <div class="banner-revision">
+      🚀 Esta página está en constante revisión y mejora para ofrecerte la mejor experiencia y recursos actualizados. ¡Gracias por tu visita!
+    </div>
+  </header>
+  <main>
+    <section id="quienes">
+      <h2>¿Quiénes somos?</h2>
+      <ul class="team-list">
+        <li>
+          <div class="team-creator">Santiago Martinez</div>
+          <span>Creador del proyecto</span>
+        </li>
+        <li>
+          <div class="team-creator">Lucas De Cesare</div>
+          <span>Creador del proyecto, desarrollador de la página y de la cripto WeerCoin para financiar el proyecto</span>
+        </li>
+      </ul>
+      <p>
+        Somos un equipo comprometido en crear soluciones tecnológicas y comunitarias para enfrentar los incendios forestales, especialmente en la Patagonia, una de las zonas más afectadas de Argentina.
+      </p>
+    </section>
+    <section id="patagonia">
+      <h2>¿Por qué Patagonia?</h2>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/8/85/Mapa_de_la_Patagonia.svg" class="mapa-patagonia" alt="Mapa de la Patagonia Argentina" loading="lazy"/>
+      <p>
+        La Patagonia es uno de los territorios más golpeados por incendios forestales en el país. Cada año, miles de hectáreas de bosque y vida silvestre se pierden, afectando a comunidades, turismo y biodiversidad. 
+      </p>
+      <p>
+        Concientizar y actuar en esta región es clave para prevenir tragedias, proteger la naturaleza y asegurar un futuro sustentable.
+      </p>
+    </section>
+    <section id="quehacemos">
+      <h2>¿Qué hacemos?</h2>
+      <p>
+        Desarrollamos <strong>torres inteligentes</strong> y estrategias comunitarias para detectar incendios en etapas tempranas, enviar alertas a brigadas, municipios y vecinos, y facilitar la respuesta rápida.
+      </p>
+      <p>
+        Además, promovemos la educación y la acción colectiva para prevenir incendios y minimizar impactos.
+      </p>
+    </section>
+    <section class="acciones-box">
+      <h3>¿Qué podés hacer vos para prevenir incendios?</h3>
+      <ul>
+        <li>Informate y compartí recomendaciones sobre el uso responsable del fuego.</li>
+        <li>Participá en campañas y jornadas de concientización.</li>
+        <li>Alertá a las autoridades ante cualquier columna de humo o situación sospechosa.</li>
+        <li>No dejes basura ni vidrios en zonas naturales.</li>
+        <li>Sumate a proyectos y movimientos ambientales.</li>
+      </ul>
+    </section>
+    <section id="aliados">
+      <h2>Ranking de aliados y apoyos</h2>
+      <ul class="aliados-list">
+        <li class="aliados-nuevo"><strong>¿Tu ONG, municipio o grupo?</strong> <br><span style="color:#fff;">Sumate desde la sección <a href="#sumate" style="color:var(--accent);">Sumate</a></span></li>
+      </ul>
+    </section>
+    <section id="novedades">
+      <h2>Novedades y próximos eventos</h2>
+      <ul class="news-list">
+        <li>Próximamente — Demo para presentar el proyecto en la UDESA</li>
+      </ul>
+    </section>
+    <section id="sumate" class="sumate-section">
+      <h2>Sumate a la campaña</h2>
+      <p>
+        Si querés colaborar, hacer una campaña publicitaria, sumar tu ONG o tu municipio, o simplemente recibir novedades, completá este formulario. ¡Te contactamos!
+      </p>
+      <form id="form-sumate" autocomplete="off">
+        <label for="sumate-nombre">Nombre y apellido</label>
+        <input type="text" id="sumate-nombre" maxlength="60" placeholder="Tu nombre completo" />
+        <label for="sumate-email">Email de contacto <span style="color:var(--danger);">*</span></label>
+        <input type="email" id="sumate-email" required maxlength="60" placeholder="tunombre@email.com" />
+        <label for="sumate-tipo">¿Cómo querés sumarte?</label>
+        <select id="sumate-tipo">
+          <option value="Campaña publicitaria">Campaña publicitaria</option>
+          <option value="ONG / Municipio">ONG / Municipio</option>
+          <option value="Voluntario/a">Voluntario/a</option>
+          <option value="Otro">Otro</option>
+        </select>
+        <label for="sumate-msg">Mensaje</label>
+        <textarea id="sumate-msg" rows="3" maxlength="300" placeholder="Contanos tu idea o consulta"></textarea>
+        <button type="submit">Enviar</button>
+        <div id="sumate-estado"></div>
+      </form>
+      <div style="margin-top:1em;font-size:.98em;color:var(--muted);text-align:center;">
+        Creadores: <span style="color:var(--primary)">Santiago Martinez</span> y <span style="color:var(--primary)">Lucas De Cesare</span> — <span style="color:var(--accent);">weerteck@gmail.com</span>
+      </div>
+    </section>
+    <button class="ir-comentarios" onclick="document.getElementById('comentarios').scrollIntoView({behavior:'smooth'})">
+      Ir a opiniones de la comunidad
+    </button>
+    <section class="public-comments-section" id="comentarios">
+      <h2>Opiniones y recomendaciones</h2>
+      <form id="comment-form">
+        <input type="text" id="comment-author" placeholder="Tu nombre (opcional)" maxlength="40" autocomplete="off"/>
+        <textarea id="comment-text" placeholder="Escribí tu comentario, opinión o recomendación..." rows="3" required maxlength="400"></textarea>
+        <button type="submit">Publicar comentario</button>
+      </form>
+      <ul class="comments-list" id="comments-list"></ul>
+      <div style="text-align:center;margin-top:1em;color:var(--accent);">
+        También podés escribirnos por <a href="https://wa.me/541125216302?text=Hola%20WeerTeck%2C%20tengo%20una%20consulta%20o%20opinión" target="_blank" rel="noopener">WhatsApp</a> o <a href="https://instagram.com/weerteck" target="_blank" rel="noopener">Instagram</a>.
+      </div>
+    </section>
+  </main>
   <div class="floating-btns">
     <a href="https://instagram.com/weerteck" class="btn-floating btn-instagram" target="_blank" aria-label="Instagram WeerTeck">
       <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="8" fill="#fff"/><path d="M22.222 7.889a3.11 3.11 0 0 1 3.111 3.111v9.999a3.11 3.11 0 0 1-3.111 3.111h-9.999a3.11 3.11 0 0 1-3.111-3.111v-9.999a3.11 3.11 0 0 1 3.111-3.111h9.999zm-4.999 3.111a4.889 4.889 0 1 0 0 9.778 4.889 4.889 0 0 0 0-9.778zm0 1.333a3.556 3.556 0 1 1 0 7.111 3.556 3.556 0 0 1 0-7.111zm5.555-1.222a1.111 1.111 0 1 0 0 2.222 1.111 1.111 0 0 0 0-2.222z" fill="#E1306C"/></svg>
@@ -591,8 +724,158 @@
     <div id="weerbot-messages" class="weerbot-chat-messages"></div>
     <div id="weerbot-options" class="weerbot-chat-options"></div>
   </div>
-  <!-- ...footer igual que antes... -->
+  <footer>
+    <div class="footer-links">
+      <a href="#top">↑ Volver arriba</a>
+      <a href="mailto:weerteck@gmail.com">Contacto</a>
+      <a href="https://instagram.com/weerteck" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://wa.me/541125216302?text=Hola%20WeerTeck%2C%20tengo%20una%20consulta" target="_blank" rel="noopener">WhatsApp</a>
+    </div>
+    <div>
+      &copy; 2025 WeerTeck — Todos los derechos reservados<br>
+      <span style="font-size:.93em;color:var(--accent);">Página en revisión y mejora continua.</span>
+    </div>
+  </footer>
   <script>
+    // FONDO FUTURISTA: Partículas tecnológicas en red
+    (() => {
+      const canvas = document.getElementById('bg-futuristic-canvas');
+      let ctx, w, h, nodes = [], lines = [];
+      const NODE_COUNT = 32, SPEED = 0.24, LINK_DIST = 140, NODE_RADIUS = 2.6;
+      function resize() {
+        w = window.innerWidth;
+        h = window.innerHeight;
+        canvas.width = w;
+        canvas.height = h;
+      }
+      function randomColor() {
+        const palette = ['#00fff7', '#00d1ff', '#232e3a', '#fff'];
+        return palette[Math.floor(Math.random() * palette.length)];
+      }
+      function createNodes() {
+        nodes = [];
+        for(let i=0; i<NODE_COUNT; i++) {
+          nodes.push({
+            x: Math.random()*w,
+            y: Math.random()*h,
+            dx: SPEED*(-1 + Math.random()*2),
+            dy: SPEED*(-1 + Math.random()*2),
+            color: randomColor(),
+            radius: NODE_RADIUS + Math.random()*1.2
+          });
+        }
+      }
+      function draw() {
+        ctx.clearRect(0,0,w,h);
+        // DIBUJAR LÍNEAS
+        for (let i=0; i<nodes.length; i++) {
+          for (let j=i+1; j<nodes.length; j++) {
+            let dx = nodes[i].x - nodes[j].x, dy = nodes[i].y - nodes[j].y;
+            let dist = Math.sqrt(dx*dx + dy*dy);
+            if (dist < LINK_DIST) {
+              ctx.save();
+              ctx.globalAlpha = 0.09 + 0.23*(1 - dist/LINK_DIST);
+              ctx.beginPath();
+              ctx.strokeStyle = nodes[i].color;
+              ctx.moveTo(nodes[i].x, nodes[i].y);
+              ctx.lineTo(nodes[j].x, nodes[j].y);
+              ctx.shadowColor = nodes[i].color;
+              ctx.shadowBlur = 12;
+              ctx.lineWidth = 1.15;
+              ctx.stroke();
+              ctx.restore();
+            }
+          }
+        }
+        // DIBUJAR NODOS
+        for(let n of nodes) {
+          ctx.save();
+          ctx.beginPath();
+          ctx.arc(n.x, n.y, n.radius, 0, 2*Math.PI);
+          ctx.fillStyle = n.color;
+          ctx.shadowColor = n.color;
+          ctx.shadowBlur = 16;
+          ctx.globalAlpha = 0.85;
+          ctx.fill();
+          ctx.restore();
+        }
+        // MOVER
+        for(let n of nodes) {
+          n.x += n.dx;
+          n.y += n.dy;
+          if (n.x < 0 || n.x > w) n.dx *= -1;
+          if (n.y < 0 || n.y > h) n.dy *= -1;
+        }
+        requestAnimationFrame(draw);
+      }
+      function start() {
+        ctx = canvas.getContext('2d');
+        resize();
+        createNodes();
+        draw();
+      }
+      window.addEventListener('resize', () => { resize(); createNodes(); });
+      setTimeout(start, 100);
+    })();
+
+    // Comentarios públicos (localStorage)
+    document.addEventListener('DOMContentLoaded', () => {
+      const commentsList = document.getElementById('comments-list');
+      function loadComments() {
+        commentsList.innerHTML = '';
+        let comments = [];
+        try {
+          comments = JSON.parse(localStorage.getItem('weer-comments') || '[]');
+        } catch {}
+        if (comments.length === 0) {
+          commentsList.innerHTML = "<li style='text-align:center;color:var(--accent);'>Sé el primero en dejar tu comentario.</li>";
+          return;
+        }
+        comments.slice().reverse().forEach(c => {
+          const li = document.createElement('li');
+          li.innerHTML = `<span class="comment-author">${c.author ? c.author : "Anónimo"}</span> <span class="comment-date">${c.date}</span><br>${c.text}`;
+          commentsList.appendChild(li);
+        });
+      }
+      loadComments();
+      document.getElementById('comment-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const author = document.getElementById('comment-author').value.trim();
+        const text = document.getElementById('comment-text').value.trim();
+        if (!text) return;
+        let comments = [];
+        try {
+          comments = JSON.parse(localStorage.getItem('weer-comments') || '[]');
+        } catch {}
+        comments.push({
+          author,
+          text,
+          date: new Date().toLocaleString('es-AR')
+        });
+        localStorage.setItem('weer-comments', JSON.stringify(comments));
+        document.getElementById('comment-author').value = '';
+        document.getElementById('comment-text').value = '';
+        loadComments();
+      });
+
+      // Formulario sumate
+      const formSumate = document.getElementById('form-sumate');
+      const estadoSumate = document.getElementById('sumate-estado');
+      formSumate.addEventListener('submit', function(e){
+        e.preventDefault();
+        const nombre = document.getElementById('sumate-nombre').value.trim();
+        const email = document.getElementById('sumate-email').value.trim();
+        const tipo = document.getElementById('sumate-tipo').value;
+        const msg = document.getElementById('sumate-msg').value.trim();
+        if (!email || !/\S+@\S+\.\S+/.test(email)) {
+          estadoSumate.innerHTML = "<div class='msg-error'>Poné un email válido.</div>";
+          return;
+        }
+        estadoSumate.innerHTML = "<div class='msg-exito'>¡Gracias por sumarte! Nos contactaremos a la brevedad.</div>";
+        formSumate.reset();
+      });
+    });
+
     // Mini WeerBot tipo encuesta RAMIFICADA
     (() => {
       const weerbotBtn = document.getElementById('weerbot-button');
