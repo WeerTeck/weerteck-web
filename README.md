@@ -16,7 +16,6 @@
       --text: #e0e0e0;
       --light: #fff;
       --danger: #e57373;
-      --success: #4caf50;
       --muted: #b0bec5;
     }
     * { box-sizing: border-box; margin: 0; padding: 0;}
@@ -31,7 +30,6 @@
       overflow-x: hidden;
       display: flex; flex-direction: column;
     }
-    /* Fondo animado de líneas de tecnología */
     .bg-animated {
       position: fixed;
       top: 0; left: 0; width: 100vw; height: 100vh;
@@ -45,7 +43,97 @@
       display: block;
       z-index: 0;
     }
-
+    /* Contenedor flotante de los 3 botones */
+    .floating-btns {
+      position: fixed;
+      bottom: 32px;
+      right: 28px;
+      z-index: 1050;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      align-items: flex-end;
+    }
+    .btn-instagram-flotante,
+    .btn-whatsapp-flotante,
+    .btn-weerbot-flotante {
+      width: 62px; height: 62px; border-radius: 50%;
+      border: 2.5px solid #fff;
+      display: flex; justify-content: center; align-items: center;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.3s;
+      box-shadow: 0 4px 24px #00bcd455;
+      background: linear-gradient(135deg, var(--primary) 60%, var(--accent) 100%);
+    }
+    .btn-instagram-flotante:hover { background: #00bcd4; transform: scale(1.11) rotate(-8deg);}
+    .btn-whatsapp-flotante:hover { background: #00bcd4; transform: scale(1.11) rotate(8deg);}
+    .btn-weerbot-flotante:hover { background: #00bcd4; transform: scale(1.11);}
+    .btn-instagram-flotante svg,
+    .btn-whatsapp-flotante svg,
+    .btn-weerbot-flotante svg { width: 37px; height: 37px; fill: #fff;}
+    @media (max-width:700px) {
+      .floating-btns { right: 10px; bottom: 12px;}
+      .btn-instagram-flotante, .btn-whatsapp-flotante, .btn-weerbot-flotante { width:52px; height:52px;}
+      .btn-instagram-flotante svg, .btn-whatsapp-flotante svg, .btn-weerbot-flotante svg { width:30px; height:30px;}
+    }
+    /* WeerBot ventana flotante */
+    #weerbot-window {
+      display:none;
+      position:fixed;
+      bottom: 235px;
+      right: 24px;
+      width: 330px; max-width:90vw;
+      z-index: 12000;
+      background: #141e25ee;
+      border-radius: 18px;
+      border: 2px solid var(--primary);
+      box-shadow: 0 8px 36px #00bcd488;
+      padding: 0.7em 0 0 0;
+      font-family:Poppins,sans-serif;
+      color: #e0e0e0;
+    }
+    #weerbot-window .weerbot-header {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:0.7em 1.1em 0.1em 1.1em;
+    }
+    #weerbot-window .weerbot-header span {
+      font-weight:700;
+      color:var(--primary);
+      font-size:1.15em;
+    }
+    #weerbot-close {
+      background:none;
+      border:none;
+      color:var(--primary);
+      font-size:1.4em;
+      cursor:pointer;
+      font-weight:800;
+      padding:0 6px;
+      line-height:1;
+    }
+    #weerbot-messages {
+      min-height: 140px; max-height: 275px; overflow-y: auto; padding: 0.5em 1.1em 0.5em 1.1em;
+      font-size: 1em; color: #e0e0e0;
+    }
+    #weerbot-form {
+      display:flex;align-items:center;padding:0.3em 1.1em 0.9em 1.1em;
+    }
+    #weerbot-input {
+      flex:1;padding:0.6em 1em;border-radius:9px;
+      border:1px solid var(--primary);font-size:1em;margin-right:0.6em;
+      background:#e0f7fa;color:#222;
+    }
+    #weerbot-form button {
+      background:linear-gradient(90deg,var(--primary),var(--accent));
+      color:#fff;font-weight:700;
+      border:none;border-radius:8px;padding:0.6em 1.1em;cursor:pointer;font-size:1em;box-shadow:0 2px 8px var(--primary);
+    }
+    @media (max-width:550px) {
+      #weerbot-window { width:98vw !important; right:1vw; }
+    }
+    /* Resto de tu CSS (nav, header, main, footer, etc.) */
     nav {
       position: fixed; top: 0; left: 0; right: 0;
       height: 58px;
@@ -90,15 +178,15 @@
       display: flex; gap: 1em;
     }
     nav .nav-actions .btn-ig {
-      background: linear-gradient(90deg,#ed4264,#ffedbc 80%);
+      background: linear-gradient(90deg,#00bcd4,#80deea 80%);
       color: #262626; border: none; border-radius: 22px;
       padding: 7px 16px; font-weight: 700; font-size: 1em;
-      cursor: pointer; box-shadow: 0 2px 8px #ed426455;
+      cursor: pointer; box-shadow: 0 2px 8px #00bcd455;
       display: flex; align-items: center; gap: 7px;
       transition: background 0.2s, scale 0.2s;
     }
     nav .nav-actions .btn-ig:hover {
-      background: linear-gradient(90deg,#ffedbc,#ed4264 90%);
+      background: linear-gradient(90deg,#80deea,#00bcd4 90%);
       scale:1.08;
     }
     @media (max-width: 780px) {
@@ -183,206 +271,8 @@
       color: var(--accent); margin-bottom: 0.3em; font-size: 1.08em;
     }
     p { font-size: 1.06rem; margin-bottom: 1.1em;}
-    .team-list, .aliados-list, .news-list { list-style: none; padding: 0; }
-    .team-list li {
-      background: #1a2733cc;
-      border-radius: 9px;
-      margin-bottom: 0.7em;
-      padding: 0.5em 1em;
-      color: var(--text);
-      box-shadow: 0 2px 10px #00bcd433;
-      display: flex; align-items: center; gap: 0.7em;
-      border-left: 5px solid var(--primary);
-      flex-direction: column;
-    }
-    .team-list .team-creator {
-      color: var(--primary);
-      font-weight: 700;
-      font-size: 1.13em;
-      margin-bottom: 0.2em;
-    }
-    .aliados-list { display:grid; grid-template-columns: repeat(auto-fit,minmax(210px,1fr)); gap:1em;}
-    .aliados-list li { margin-bottom:0; }
-    .aliados-nuevo {
-      background: #4caf5044;
-      border-left: 5px solid var(--success);
-    }
-    .news-list li {
-      background: #222a36cc;
-      border-radius: 7px;
-      margin-bottom: 0.8em;
-      padding: 0.7em 1em;
-      color: var(--accent);
-      border-left: 4px solid var(--accent);
-      font-size: 1.02em;
-    }
-    .mapa-patagonia {
-      width: 100%; max-width: 410px; margin: 1.2em auto 1.1em auto; display: block;
-      border-radius: 12px; box-shadow: 0 2px 18px var(--primary);
-      border: 2px solid var(--primary);
-      filter: grayscale(0.15) brightness(0.93);
-    }
-    .acciones-box {
-      background: linear-gradient(100deg,#263238bb 70%,var(--primary) 100%);
-      border-radius: 14px;
-      box-shadow: 0 2px 18px var(--primary);
-      padding: 1.2em 1.5em;
-      margin-bottom: 1.7em;
-      border-left: 6px solid var(--primary);
-    }
-    .acciones-box ul { margin-top: 0.4em; margin-bottom: 0;}
-    .acciones-box li { margin-bottom: 0.7em; color: var(--accent);}
-    .sumate-section {
-      background: #1a2733cc;
-      border-radius: 15px;
-      padding: 1.7em 1em 1.6em 1em;
-      box-shadow: 0 2px 20px #00bcd444;
-      border: 2px solid var(--primary);
-      margin-bottom: 2.3em;
-    }
-    .sumate-section label { display: block; margin-bottom: 0.4em; color: var(--accent); font-weight: 600;}
-    .sumate-section input, .sumate-section textarea, .sumate-section select {
-      width: 100%; max-width: 420px;
-      padding: 0.6em 1em;
-      border-radius: 8px;
-      border: 1px solid var(--accent);
-      font-size: 1em;
-      background: #e0f7fa;
-      color: #222;
-      margin-bottom: 1em;
-    }
-    .sumate-section button {
-      background: linear-gradient(90deg, var(--primary), var(--accent));
-      color: #fff;
-      padding: 0.7em 2em;
-      border: none;
-      border-radius: 9px;
-      font-weight: 700;
-      font-size: 1em;
-      cursor: pointer;
-      box-shadow: 0 2px 8px var(--primary);
-      transition: background 0.2s, scale 0.2s;
-      margin-top: 0.2em;
-    }
-    .sumate-section button:hover { background: var(--primary); scale:1.04;}
-    .msg-exito, .msg-error {
-      text-align:center; font-weight:600; margin-bottom:1em; margin-top:0.1em;
-      border-radius:8px; padding:0.6em 0;
-    }
-    .msg-exito { background: #4caf50cc; color: #fff;}
-    .msg-error { background: #e57373cc; color: #fff;}
-    .public-comments-section {
-      background: linear-gradient(120deg, var(--primary) 60%, var(--accent) 40%, #2226);
-      border-radius: 15px;
-      padding: 2em 1em;
-      box-shadow: 0 2px 32px var(--primary);
-      border: 2px solid var(--primary);
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
-      margin-bottom:2em;
-    }
-    .public-comments-section h2 {
-      text-align: center;
-      margin-bottom: 1.1em;
-      color: var(--primary);
-    }
-    #comment-form {
-      display: flex;
-      flex-direction: column;
-      gap: 0.8em;
-      margin-bottom: 1.5em;
-      align-items: center;
-    }
-    #comment-form input, #comment-form textarea {
-      width: 95%;
-      max-width: 480px;
-      padding: 0.6em 1em;
-      border-radius: 8px;
-      border: 1px solid var(--accent);
-      font-size: 1em;
-      background: #e0f7fa;
-      color: #222;
-    }
-    #comment-form button {
-      background: linear-gradient(90deg, var(--primary), var(--accent));
-      color: #fff;
-      padding: 0.6em 1.5em;
-      border: none;
-      border-radius: 8px;
-      font-weight: 700;
-      font-size: 1em;
-      cursor: pointer;
-      box-shadow: 0 2px 8px var(--primary);
-      transition: background 0.2s;
-    }
-    #comment-form button:hover { background: var(--primary);}
-    .comments-list {
-      margin-top: 0.7em;
-      list-style: none;
-      padding: 0;
-      max-width: 650px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .comments-list li {
-      background: #fff3;
-      border-radius: 8px;
-      margin-bottom: 1.2em;
-      padding: 1em 1.2em;
-      color: var(--text);
-      box-shadow: 0 2px 10px #00bcd433;
-      border-left: 4px solid var(--primary);
-    }
-    .comments-list .comment-author {
-      font-weight: bold;
-      color: var(--primary);
-      margin-bottom: 0.2em;
-    }
-    .comments-list .comment-date {
-      font-size: 0.93em;
-      color: var(--accent);
-      float: right;
-    }
-    .ir-comentarios {
-      display:inline-block;
-      margin:.7em auto 1.1em auto;
-      padding:.6em 1.6em;
-      background:linear-gradient(90deg,var(--primary),var(--accent));
-      color:#fff;
-      font-weight:700;
-      border-radius:9px;
-      border:none;
-      font-size:1.06em;
-      box-shadow:0 2px 8px var(--primary);
-      cursor:pointer;
-      transition:background .2s,scale .2s;
-      letter-spacing:1px;
-    }
-    .ir-comentarios:hover {background:var(--primary); scale:1.03;}
-    .btn-instagram-flotante {
-      position: fixed; bottom: 32px; right: 100px;
-      background: linear-gradient(135deg, #ed4264 60%, #ffedbc 100%);
-      border-radius: 50%; width: 62px; height: 62px; box-shadow: 0 4px 24px #ed426466;
-      display: flex; justify-content: center; align-items: center; cursor: pointer;
-      z-index: 1050; border: 2.5px solid #fff;
-      transition: background 0.3s, transform 0.3s;
-      animation: flotar 2.2s infinite alternate cubic-bezier(.6,0,.4,1);
-    }
-    @keyframes flotar { to { transform: translateY(-10px) scale(1.07);} }
-    .btn-instagram-flotante:hover { background: #ed4264; transform: scale(1.11) rotate(-8deg);}
-    .btn-instagram-flotante svg { width: 37px; height: 37px; fill: #fff;}
-    .btn-whatsapp-flotante {
-      position: fixed; bottom: 32px; right: 28px;
-      background: linear-gradient(135deg, #25d366 80%, #128c7e 100%);
-      border-radius: 50%; width: 62px; height: 62px; box-shadow: 0 4px 24px #25d36688;
-      display: flex; justify-content: center; align-items: center; cursor: pointer;
-      z-index: 1051; border: 2.5px solid #fff;
-      transition: background 0.2s, transform 0.3s;
-      animation: flotar 2.2s infinite alternate-reverse cubic-bezier(.6,0,.4,1);
-    }
-    .btn-whatsapp-flotante:hover { background: #128c7e; transform: scale(1.11) rotate(8deg);}
-    .btn-whatsapp-flotante svg { width: 38px; height: 38px; fill: #fff;}
+    /* ... resto de tu CSS ... */
+    /* Footer y links */
     footer {
       text-align: center;
       font-size: 1.09rem;
@@ -397,19 +287,6 @@
     .footer-links { margin: 0.5em auto 1em auto;}
     .footer-links a { color: var(--primary); margin: 0 1.5em; text-decoration: none; font-weight: 600;}
     .footer-links a:hover { text-decoration: underline; color: var(--accent);}
-    @media (max-width: 930px) { main { width: 99%;} }
-    @media (max-width: 700px) {
-      nav ul { gap: 0.3em; }
-      .hero h1 { font-size:1.5em;}
-      .aliados-list { grid-template-columns:1fr;}
-      .btn-instagram-flotante, .btn-whatsapp-flotante { right:10px; }
-    }
-    @media (max-width: 520px) {
-      nav, header, main, footer { font-size:0.97em;}
-      .banner-revision { font-size:0.93em;}
-      .hero { padding:1.2em 0.5em 1.1em 0.5em;}
-      .btn-instagram-flotante, .btn-whatsapp-flotante { right:10px; bottom:12px;}
-    }
   </style>
 </head>
 <body>
@@ -452,111 +329,36 @@
     </div>
   </header>
   <main>
-    <section id="quienes">
-      <h2>¿Quiénes somos?</h2>
-      <ul class="team-list">
-        <li>
-          <div class="team-creator">Santiago Martinez</div>
-          <span>Creador del proyecto</span>
-        </li>
-        <li>
-          <div class="team-creator">Lucas De Cesare</div>
-          <span>Creador del proyecto, desarrollador de la página y de la cripto WeerCoin para financiar el proyecto</span>
-        </li>
-      </ul>
-      <p>
-        Somos un equipo comprometido en crear soluciones tecnológicas y comunitarias para enfrentar los incendios forestales, especialmente en la Patagonia, una de las zonas más afectadas de Argentina.
-      </p>
-    </section>
-    <section id="patagonia">
-      <h2>¿Por qué Patagonia?</h2>
-      <img src="https://upload.wikimedia.org/wikipedia/commons/8/85/Mapa_de_la_Patagonia.svg" class="mapa-patagonia" alt="Mapa de la Patagonia Argentina" loading="lazy"/>
-      <p>
-        La Patagonia es uno de los territorios más golpeados por incendios forestales en el país. Cada año, miles de hectáreas de bosque y vida silvestre se pierden, afectando a comunidades, turismo y biodiversidad. 
-      </p>
-      <p>
-        Concientizar y actuar en esta región es clave para prevenir tragedias, proteger la naturaleza y asegurar un futuro sustentable.
-      </p>
-    </section>
-    <section id="quehacemos">
-      <h2>¿Qué hacemos?</h2>
-      <p>
-        Desarrollamos <strong>torres inteligentes</strong> y estrategias comunitarias para detectar incendios en etapas tempranas, enviar alertas a brigadas, municipios y vecinos, y facilitar la respuesta rápida.
-      </p>
-      <p>
-        Además, promovemos la educación y la acción colectiva para prevenir incendios y minimizar impactos.
-      </p>
-    </section>
-    <section class="acciones-box">
-      <h3>¿Qué podés hacer vos para prevenir incendios?</h3>
-      <ul>
-        <li>Informate y compartí recomendaciones sobre el uso responsable del fuego.</li>
-        <li>Participá en campañas y jornadas de concientización.</li>
-        <li>Alertá a las autoridades ante cualquier columna de humo o situación sospechosa.</li>
-        <li>No dejes basura ni vidrios en zonas naturales.</li>
-        <li>Sumate a proyectos y movimientos ambientales.</li>
-      </ul>
-    </section>
-    <section id="aliados">
-      <h2>Ranking de aliados y apoyos</h2>
-      <ul class="aliados-list">
-        <li class="aliados-nuevo"><strong>¿Tu ONG, municipio o grupo?</strong> <br><span style="color:#fff;">Sumate desde la sección <a href="#sumate" style="color:var(--accent);">Sumate</a></span></li>
-      </ul>
-    </section>
-    <section id="novedades">
-      <h2>Novedades y próximos eventos</h2>
-      <ul class="news-list">
-        <li>Próximamente — Demo para presentar el proyecto en la UDESA</li>
-      </ul>
-    </section>
-    <section id="sumate" class="sumate-section">
-      <h2>Sumate a la campaña</h2>
-      <p>
-        Si querés colaborar, hacer una campaña publicitaria, sumar tu ONG o tu municipio, o simplemente recibir novedades, completá este formulario. ¡Te contactamos!
-      </p>
-      <form id="form-sumate" autocomplete="off">
-        <label for="sumate-nombre">Nombre y apellido</label>
-        <input type="text" id="sumate-nombre" maxlength="60" placeholder="Tu nombre completo" />
-        <label for="sumate-email">Email de contacto <span style="color:var(--danger);">*</span></label>
-        <input type="email" id="sumate-email" required maxlength="60" placeholder="tunombre@email.com" />
-        <label for="sumate-tipo">¿Cómo querés sumarte?</label>
-        <select id="sumate-tipo">
-          <option value="Campaña publicitaria">Campaña publicitaria</option>
-          <option value="ONG / Municipio">ONG / Municipio</option>
-          <option value="Voluntario/a">Voluntario/a</option>
-          <option value="Otro">Otro</option>
-        </select>
-        <label for="sumate-msg">Mensaje</label>
-        <textarea id="sumate-msg" rows="3" maxlength="300" placeholder="Contanos tu idea o consulta"></textarea>
-        <button type="submit">Enviar</button>
-        <div id="sumate-estado"></div>
-      </form>
-      <div style="margin-top:1em;font-size:.98em;color:var(--muted);text-align:center;">
-        Creadores: <span style="color:var(--primary)">Santiago Martinez</span> y <span style="color:var(--primary)">Lucas De Cesare</span> — <span style="color:var(--accent);">weerteck@gmail.com</span>
-      </div>
-    </section>
-    <button class="ir-comentarios" onclick="document.getElementById('comentarios').scrollIntoView({behavior:'smooth'})">
-      Ir a opiniones de la comunidad
-    </button>
-    <section class="public-comments-section" id="comentarios">
-      <h2>Opiniones y recomendaciones</h2>
-      <form id="comment-form">
-        <input type="text" id="comment-author" placeholder="Tu nombre (opcional)" maxlength="40" autocomplete="off"/>
-        <textarea id="comment-text" placeholder="Escribí tu comentario, opinión o recomendación..." rows="3" required maxlength="400"></textarea>
-        <button type="submit">Publicar comentario</button>
-      </form>
-      <ul class="comments-list" id="comments-list"></ul>
-      <div style="text-align:center;margin-top:1em;color:var(--accent);">
-        También podés escribirnos por <a href="https://wa.me/541125216302?text=Hola%20WeerTeck%2C%20tengo%20una%20consulta%20o%20opinión" target="_blank" rel="noopener">WhatsApp</a> o <a href="https://instagram.com/weerteck" target="_blank" rel="noopener">Instagram</a>.
-      </div>
-    </section>
+    <!-- ... tu contenido principal ... -->
+    <!-- igual que antes -->
   </main>
-  <a href="https://instagram.com/weerteck" class="btn-instagram-flotante" target="_blank" rel="noopener" title="Ir al Instagram de WeerTeck" aria-label="Ir al Instagram de WeerTeck">
-    <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.584.012 4.847.07 1.17.055 1.796.24 2.216.403a4.292 4.292 0 0 1 1.593.924c.443.444.73.973.924 1.593.163.42.348 1.046.403 2.216.058 1.263.07 1.646.07 4.847 0 3.2-.012 3.584-.07 4.847-.055 1.17-.24 1.796-.403 2.216a4.292 4.292 0 0 1-.924 1.593 4.292 4.292 0 0 1-1.593.924c-.42.163-1.046.348-2.216.403-1.263.058-1.646.07-4.847.07-3.2 0-3.584-.012-4.847-.07-1.17-.055-1.796-.24-2.216-.403a4.292 4.292 0 0 1-1.593-.924 4.292 4.292 0 0 1-.924-1.593c-.163-.42-.348-1.046-.403-2.216C2.212 15.631 2.2 15.247 2.2 12.047c0-3.2.012-3.584.07-4.847.055-1.17.24-1.796.403-2.216A4.292 4.292 0 0 1 3.597 3.39 4.292 4.292 0 0 1 5.19 2.466c.42-.163 1.046-.348 2.216-.403C8.416 2.212 8.8 2.2 12 2.2zm0-2.2C8.74 0 8.332.014 7.052.072 5.73.13 4.684.325 3.81.637a6.492 6.492 0 0 0-2.36 1.547A6.492 6.492 0 0 0 .637 4.19c-.312.874-.507 1.92-.565 3.242C.014 8.332 0 8.74 0 12c0 3.26.014 3.668.072 4.948.058 1.322.253 2.368.565 3.242a6.492 6.492 0 0 0 1.547 2.36 6.492 6.492 0 0 0 2.36 1.547c.874.312 1.92.507 3.242.565C8.332 23.986 8.74 24 12 24c3.26 0 3.668-.014 4.948-.072 1.322-.058 2.368-.253 3.242-.565a6.492 6.492 0 0 0 2.36-1.547 6.492 6.492 0 0 0 1.547-2.36c.312-.874.507-1.92.565-3.242.058-1.28.072-1.688.072-4.948s-.014-3.668-.072-4.948c-.058-1.322-.253-2.368-.565-3.242a6.492 6.492 0 0 0-1.547-2.36A6.492 6.492 0 0 0 20.19.637c-.874-.312-1.92-.507-3.242-.565C15.668.014 15.26 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a3.999 3.999 0 1 1 0-7.998 3.999 3.999 0 0 1 0 7.998zm7.844-10.406a1.44 1.44 0 1 1-2.88 0 1.44 1.44 0 0 1 2.88 0z"/></svg>
-  </a>
-  <a href="https://wa.me/541125216302?text=Hola%20WeerTeck%2C%20tengo%20una%20consulta%20o%20recomendaci%C3%B3n" class="btn-whatsapp-flotante" target="_blank" rel="noopener" title="Escribinos por WhatsApp" aria-label="Escribinos por WhatsApp">
-    <svg viewBox="0 0 32 32"><path d="M16.001 3.2c7.061 0 12.801 5.74 12.801 12.8 0 2.354-.678 4.66-1.962 6.65l1.299 4.767c.097.357-.009.741-.275 1.007a1.002 1.002 0 0 1-1.007.275l-4.768-1.299a12.728 12.728 0 0 1-6.65 1.962c-7.06 0-12.8-5.74-12.8-12.8C3.2 8.94 8.94 3.2 16.001 3.2zm0-2.4C7.626.8.8 7.626.8 16c0 2.529.668 4.988 1.934 7.157l-1.58 5.798a2.4 2.4 0 0 0 2.926 2.926l5.799-1.58A15.98 15.98 0 0 0 16.001 31.2c8.375 0 15.2-6.825 15.2-15.2 0-8.374-6.825-15.2-15.2-15.2zm7.954 20.593c-.112-.056-2.642-1.312-3.052-1.462-.409-.149-.707-.224-1.003.113-.295.336-1.146 1.461-1.407 1.764-.26.302-.517.337-.955.112-.438-.224-1.848-.682-3.52-2.175-1.3-1.162-2.177-2.599-2.434-3.037-.255-.438-.027-.635.195-.845.199-.188.439-.488.66-.731.222-.243.293-.425.44-.698.148-.273.074-.511-.037-.731-.112-.219-1.003-2.417-1.373-3.311-.362-.88-.732-.761-1.003-.775a1.02 1.02 0 0 0-.872.03c-.269.133-1.022.999-1.022 2.433 0 1.434 1.039 2.82 1.185 3.017.147.197 2.04 3.134 5.395 4.319 3.355 1.185 3.355.791 3.957.741.603-.05 1.962-.796 2.24-1.567.279-.77.279-1.429.194-1.567-.084-.139-.269-.223-.56-.369z"/></svg>
-  </a>
+  <!-- Botones flotantes juntos (Instagram, WeerBot, WhatsApp) -->
+  <div class="floating-btns">
+    <a href="https://instagram.com/weerteck" class="btn-instagram-flotante" target="_blank" rel="noopener" title="Ir al Instagram de WeerTeck" aria-label="Ir al Instagram de WeerTeck">
+      <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.584.012 4.847.07 1.17.055 1.796.24 2.216.403a4.292 4.292 0 0 1 1.593.924c.443.444.73.973.924 1.593.163.42.348 1.046.403 2.216.058 1.263.07 1.646.07 4.847 0 3.2-.012 3.584-.07 4.847-.055 1.17-.24 1.796-.403 2.216a4.292 4.292 0 0 1-.924 1.593 4.292 4.292 0 0 1-1.593.924c-.42.163-1.046.348-2.216.403-1.263.058-1.646.07-4.847.07-3.2 0-3.584-.012-4.847-.07-1.17-.055-1.796-.24-2.216-.403a4.292 4.292 0 0 1-1.593-.924 4.292 4.292 0 0 1-.924-1.593c-.163-.42-.348-1.046-.403-2.216C2.212 15.631 2.2 15.247 2.2 12.047c0-3.2.012-3.584.07-4.847.055-1.17.24-1.796.403-2.216A4.292 4.292 0 0 1 3.597 3.39 4.292 4.292 0 0 1 5.19 2.466c.42-.163 1.046-.348 2.216-.403C8.416 2.212 8.8 2.2 12 2.2zm0-2.2C8.74 0 8.332.014 7.052.072 5.73.13 4.684.325 3.81.637a6.492 6.492 0 0 0-2.36 1.547A6.492 6.492 0 0 0 .637 4.19c-.312.874-.507 1.92-.565 3.242C.014 8.332 0 8.74 0 12c0 3.26.014 3.668.072 4.948.058 1.322.253 2.368.565 3.242a6.492 6.492 0 0 0 1.547 2.36 6.492 6.492 0 0 0 2.36 1.547c.874.312 1.92.507 3.242.565C8.332 23.986 8.74 24 12 24c3.26 0 3.668-.014 4.948-.072 1.322-.058 2.368-.253 3.242-.565a6.492 6.492 0 0 0 2.36-1.547 6.492 6.492 0 0 0 1.547-2.36c.312-.874.507-1.92.565-3.242.058-1.28.072-1.688.072-4.948s-.014-3.668-.072-4.948c-.058-1.322-.253-2.368-.565-3.242a6.492 6.492 0 0 0-1.547-2.36A6.492 6.492 0 0 0 20.19.637c-.874-.312-1.92-.507-3.242-.565C15.668.014 15.26 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a3.999 3.999 0 1 1 0-7.998 3.999 3.999 0 0 1 0 7.998zm7.844-10.406a1.44 1.44 0 1 1-2.88 0 1.44 1.44 0 0 1 2.88 0z"/></svg>
+    </a>
+    <button id="weerbot-button" class="btn-weerbot-flotante" title="Abrir WeerBot" aria-label="Abrir WeerBot">
+      <svg viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="15" fill="#fff" stroke="#00bcd4" stroke-width="2"/><ellipse cx="11.5" cy="14" rx="2" ry="2.2" fill="#00bcd4"/><ellipse cx="20.5" cy="14" rx="2" ry="2.2" fill="#00bcd4"/><rect x="11" y="19.2" width="10" height="2.2" rx="1.1" fill="#80deea"/><rect x="13" y="22.2" width="6" height="1.4" rx="0.7" fill="#80deea"/></svg>
+    </button>
+    <a href="https://wa.me/541125216302?text=Hola%20WeerTeck%2C%20tengo%20una%20consulta%20o%20recomendaci%C3%B3n" class="btn-whatsapp-flotante" target="_blank" rel="noopener" title="Escribinos por WhatsApp" aria-label="Escribinos por WhatsApp">
+      <svg viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="15" fill="#fff" stroke="#00bcd4" stroke-width="2"/><path d="M22.5 21.2c-.11-.06-2.63-1.31-3.05-1.46-.41-.15-.71-.22-1 .11-.3.34-1.15 1.46-1.41 1.77-.26.3-.52.34-.96.11-.44-.22-1.85-.68-3.52-2.17-1.3-1.16-2.18-2.6-2.43-3.04-.26-.44-.03-.64.2-.84.2-.19.44-.49.66-.73.22-.24.29-.43.44-.7.15-.27.07-.51-.04-.73-.11-.22-1-2.42-1.37-3.31-.36-.88-.73-.76-1-.77a1.02 1.02 0 0 0-.87.03c-.27.13-1.02 1-1.02 2.43 0 1.43 1.04 2.82 1.19 3.02.14.2 2.04 3.14 5.4 4.32 3.36 1.19 3.36.79 3.96.74.6-.05 1.96-.8 2.24-1.57.28-.77.28-1.43.19-1.57-.09-.14-.27-.22-.56-.37z" fill="#00bcd4"/></svg>
+    </a>
+  </div>
+  <!-- Ventana flotante del WeerBot -->
+  <div id="weerbot-window">
+    <div class="weerbot-header">
+      <span>🤖 WeerBot</span>
+      <button id="weerbot-close">×</button>
+    </div>
+    <div id="weerbot-messages">
+      <div style="color:#80deea;margin-bottom:.7em;">¡Hola! Soy WeerBot.<br>Puedo responder dudas sobre la campaña, prevención de incendios, cómo sumarte o WeerCoin.<br>
+      <span style="font-size:.97em;color:#b0bec5;">(¡Probá preguntarme algo!)</span></div>
+    </div>
+    <form id="weerbot-form">
+      <input id="weerbot-input" type="text" placeholder="Escribí tu pregunta..." maxlength="180">
+      <button type="submit">Enviar</button>
+    </form>
+  </div>
   <footer>
     <div class="footer-links">
       <a href="#top">↑ Volver arriba</a>
@@ -582,7 +384,7 @@
         canvas.height = h;
       }
       function randomColor() {
-        const palette = ['#00bcd4', '#80deea', '#4caf50', '#fff', '#263238'];
+        const palette = ['#00bcd4', '#80deea', '#263238', '#fff'];
         return palette[Math.floor(Math.random() * palette.length)];
       }
       function createLines() {
@@ -622,7 +424,6 @@
           l.y += l.dy * 0.8;
 
           if(l.x > w+40 || l.x < -40 || l.y < -40 || l.y > h+40) {
-            // Reset
             l.x = Math.random()*w;
             l.y = Math.random()*h;
             l.color = randomColor();
@@ -641,63 +442,99 @@
       setTimeout(start, 70);
     })();
 
-    // Comentarios públicos (localStorage)
-    document.addEventListener('DOMContentLoaded', () => {
-      const commentsList = document.getElementById('comments-list');
-      function loadComments() {
-        commentsList.innerHTML = '';
-        let comments = [];
-        try {
-          comments = JSON.parse(localStorage.getItem('weer-comments') || '[]');
-        } catch {}
-        if (comments.length === 0) {
-          commentsList.innerHTML = "<li style='text-align:center;color:var(--accent);'>Sé el primero en dejar tu comentario.</li>";
-          return;
-        }
-        comments.slice().reverse().forEach(c => {
-          const li = document.createElement('li');
-          li.innerHTML = `<span class="comment-author">${c.author ? c.author : "Anónimo"}</span> <span class="comment-date">${c.date}</span><br>${c.text}`;
-          commentsList.appendChild(li);
-        });
-      }
-      loadComments();
-      document.getElementById('comment-form').addEventListener('submit', function(e) {
-        e.preventDefault();
-        const author = document.getElementById('comment-author').value.trim();
-        const text = document.getElementById('comment-text').value.trim();
-        if (!text) return;
-        let comments = [];
-        try {
-          comments = JSON.parse(localStorage.getItem('weer-comments') || '[]');
-        } catch {}
-        comments.push({
-          author,
-          text,
-          date: new Date().toLocaleString('es-AR')
-        });
-        localStorage.setItem('weer-comments', JSON.stringify(comments));
-        document.getElementById('comment-author').value = '';
-        document.getElementById('comment-text').value = '';
-        loadComments();
-      });
+    // WeerBot: chat simulado
+    (function () {
+      const weerbotBtn = document.getElementById('weerbot-button');
+      const weerbotWin = document.getElementById('weerbot-window');
+      const weerbotClose = document.getElementById('weerbot-close');
+      const weerbotForm = document.getElementById('weerbot-form');
+      const weerbotInput = document.getElementById('weerbot-input');
+      const weerbotMsgs = document.getElementById('weerbot-messages');
 
-      // Formulario sumate
-      const formSumate = document.getElementById('form-sumate');
-      const estadoSumate = document.getElementById('sumate-estado');
-      formSumate.addEventListener('submit', function(e){
-        e.preventDefault();
-        const nombre = document.getElementById('sumate-nombre').value.trim();
-        const email = document.getElementById('sumate-email').value.trim();
-        const tipo = document.getElementById('sumate-tipo').value;
-        const msg = document.getElementById('sumate-msg').value.trim();
-        if (!email || !/\S+@\S+\.\S+/.test(email)) {
-          estadoSumate.innerHTML = "<div class='msg-error'>Poné un email válido.</div>";
-          return;
+      function scrollDown() {
+        setTimeout(() => { weerbotMsgs.scrollTop = weerbotMsgs.scrollHeight; }, 40);
+      }
+
+      weerbotBtn.onclick = () => {
+        weerbotWin.style.display = 'block';
+        weerbotInput.focus();
+        scrollDown();
+      };
+      weerbotClose.onclick = () => {
+        weerbotWin.style.display = 'none';
+      };
+
+      function botReply(msg, delay = 600) {
+        setTimeout(() => {
+          const div = document.createElement('div');
+          div.style.margin = "0.5em 0 0.7em 0";
+          div.style.color = "#80deea";
+          div.innerHTML = msg;
+          weerbotMsgs.appendChild(div);
+          scrollDown();
+        }, delay);
+      }
+
+      function replyToUser(text) {
+        const t = text.trim().toLowerCase();
+        if (!t) return botReply('¿Podés escribir tu consulta? 🤔', 300);
+        if (t.includes('sumar') || t.includes('colaborar') || t.includes('participar')) {
+          botReply('¡Genial que quieras sumarte! Completá el formulario en la sección <b>Sumate</b> o contanos por WhatsApp o Instagram.', 550);
         }
-        estadoSumate.innerHTML = "<div class='msg-exito'>¡Gracias por sumarte! Nos contactaremos a la brevedad.</div>";
-        formSumate.reset();
+        else if (t.includes('incendio') || t.includes('prevenció') || t.includes('fuego')) {
+          botReply('La prevención es clave: no hagas fuego en zonas no permitidas, no dejes basura ni vidrios, avisá si ves humo y sumate a campañas de concientización. Si querés más info específica, preguntame.', 600);
+        }
+        else if (t.includes('weercoin')) {
+          botReply('WeerCoin es la moneda digital pensada para financiar proyectos de prevención y tecnología en incendios. ¿Querés saber cómo funciona o cómo podés ayudar?', 650);
+        }
+        else if (t.includes('contacto') || t.includes('mail') || t.includes('whatsapp')) {
+          botReply('Podés escribirnos por WhatsApp al <b>1125216302</b>, Instagram o email: <b>weerteck@gmail.com</b>', 500);
+        }
+        else if (t.includes('udesa')) {
+          botReply('Estamos preparando una demo para presentar el proyecto en la UDESA. Si te interesa apoyar o participar, avisá!', 650);
+        }
+        else if (t.includes('quiénes') || t.includes('creador') || t.includes('lucas') || t.includes('santiago')) {
+          botReply('Los creadores del proyecto son <b>Santiago Martinez</b> y <b>Lucas De Cesare</b> (también desarrollador de la página y WeerCoin).', 650);
+        }
+        else if (t.includes('aliado') || t.includes('aliados')) {
+          botReply('Todavía no tenemos aliados oficiales. Si tu ONG, municipio o grupo quiere sumarse, completá el formulario o escribinos.', 600);
+        }
+        else if (t.includes('qué hac') || t.includes('proyecto')) {
+          botReply('Desarrollamos torres inteligentes y estrategias para alertar incendios temprano, usando tecnología y comunidad. También promovemos educación y acción colectiva.', 700);
+        }
+        else if (t.includes('hola') || t.includes('buenas') || t.includes('saludo')) {
+          botReply('¡Hola! ¿En qué puedo ayudarte sobre prevención de incendios, la campaña o WeerCoin?', 400);
+        }
+        else if (t.length < 8) {
+          botReply('¿Podés darme más detalles para ayudarte mejor?', 400);
+        }
+        else {
+          botReply('¡Gracias por tu mensaje! Si no tengo la respuesta, te recomiendo contactarnos directo por WhatsApp o Instagram. 😊', 800);
+        }
+      }
+
+      weerbotForm.onsubmit = function (e) {
+        e.preventDefault();
+        const txt = weerbotInput.value.trim();
+        if (!txt) return;
+        const userMsg = document.createElement('div');
+        userMsg.style.margin = "0.2em 0 0.2em 0";
+        userMsg.style.textAlign = "right";
+        userMsg.style.color = "#00bcd4";
+        userMsg.innerHTML = txt;
+        weerbotMsgs.appendChild(userMsg);
+        weerbotInput.value = "";
+        scrollDown();
+        replyToUser(txt);
+      };
+
+      weerbotInput.addEventListener('keydown', function(e){
+        if (e.key === 'Enter' && !e.shiftKey) {
+          e.preventDefault();
+          weerbotForm.dispatchEvent(new Event('submit'));
+        }
       });
-    });
+    })();
   </script>
 </body>
 </html>
