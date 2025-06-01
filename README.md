@@ -23,7 +23,7 @@
     html { scroll-behavior: smooth;}
     body {
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, var(--dark) 60%, var(--secondary) 100%);
+      background: #121a23;
       color: var(--text);
       min-height: 100vh;
       line-height: 1.6;
@@ -31,6 +31,21 @@
       overflow-x: hidden;
       display: flex; flex-direction: column;
     }
+    /* Fondo animado de líneas de tecnología */
+    .bg-animated {
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .bg-animated-canvas {
+      position: absolute;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      display: block;
+      z-index: 0;
+    }
+
     nav {
       position: fixed; top: 0; left: 0; right: 0;
       height: 58px;
@@ -169,7 +184,7 @@
     }
     p { font-size: 1.06rem; margin-bottom: 1.1em;}
     .team-list, .aliados-list, .news-list { list-style: none; padding: 0; }
-    .team-list li, .aliados-list li {
+    .team-list li {
       background: #1a2733cc;
       border-radius: 9px;
       margin-bottom: 0.7em;
@@ -178,6 +193,13 @@
       box-shadow: 0 2px 10px #00bcd433;
       display: flex; align-items: center; gap: 0.7em;
       border-left: 5px solid var(--primary);
+      flex-direction: column;
+    }
+    .team-list .team-creator {
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 1.13em;
+      margin-bottom: 0.2em;
     }
     .aliados-list { display:grid; grid-template-columns: repeat(auto-fit,minmax(210px,1fr)); gap:1em;}
     .aliados-list li { margin-bottom:0; }
@@ -339,7 +361,7 @@
     }
     .ir-comentarios:hover {background:var(--primary); scale:1.03;}
     .btn-instagram-flotante {
-      position: fixed; bottom: 32px; right: 28px;
+      position: fixed; bottom: 32px; right: 100px;
       background: linear-gradient(135deg, #ed4264 60%, #ffedbc 100%);
       border-radius: 50%; width: 62px; height: 62px; box-shadow: 0 4px 24px #ed426466;
       display: flex; justify-content: center; align-items: center; cursor: pointer;
@@ -350,6 +372,17 @@
     @keyframes flotar { to { transform: translateY(-10px) scale(1.07);} }
     .btn-instagram-flotante:hover { background: #ed4264; transform: scale(1.11) rotate(-8deg);}
     .btn-instagram-flotante svg { width: 37px; height: 37px; fill: #fff;}
+    .btn-whatsapp-flotante {
+      position: fixed; bottom: 32px; right: 28px;
+      background: linear-gradient(135deg, #25d366 80%, #128c7e 100%);
+      border-radius: 50%; width: 62px; height: 62px; box-shadow: 0 4px 24px #25d36688;
+      display: flex; justify-content: center; align-items: center; cursor: pointer;
+      z-index: 1051; border: 2.5px solid #fff;
+      transition: background 0.2s, transform 0.3s;
+      animation: flotar 2.2s infinite alternate-reverse cubic-bezier(.6,0,.4,1);
+    }
+    .btn-whatsapp-flotante:hover { background: #128c7e; transform: scale(1.11) rotate(8deg);}
+    .btn-whatsapp-flotante svg { width: 38px; height: 38px; fill: #fff;}
     footer {
       text-align: center;
       font-size: 1.09rem;
@@ -369,16 +402,20 @@
       nav ul { gap: 0.3em; }
       .hero h1 { font-size:1.5em;}
       .aliados-list { grid-template-columns:1fr;}
+      .btn-instagram-flotante, .btn-whatsapp-flotante { right:10px; }
     }
     @media (max-width: 520px) {
       nav, header, main, footer { font-size:0.97em;}
       .banner-revision { font-size:0.93em;}
       .hero { padding:1.2em 0.5em 1.1em 0.5em;}
-      .btn-instagram-flotante { right:10px; bottom:12px;}
+      .btn-instagram-flotante, .btn-whatsapp-flotante { right:10px; bottom:12px;}
     }
   </style>
 </head>
 <body>
+  <div class="bg-animated">
+    <canvas class="bg-animated-canvas" id="bg-animated-canvas"></canvas>
+  </div>
   <nav>
     <div class="nav-logo">WeerTeck</div>
     <ul>
@@ -418,8 +455,14 @@
     <section id="quienes">
       <h2>¿Quiénes somos?</h2>
       <ul class="team-list">
-        <li><strong>Lucas De Cesare</strong> — CEO y cofundador</li>
-        <li><strong>Santiago Martinez</strong> — Cofundador</li>
+        <li>
+          <div class="team-creator">Santiago Martinez</div>
+          <span>Creador del proyecto</span>
+        </li>
+        <li>
+          <div class="team-creator">Lucas De Cesare</div>
+          <span>Creador del proyecto, desarrollador de la página y de la cripto WeerCoin para financiar el proyecto</span>
+        </li>
       </ul>
       <p>
         Somos un equipo comprometido en crear soluciones tecnológicas y comunitarias para enfrentar los incendios forestales, especialmente en la Patagonia, una de las zonas más afectadas de Argentina.
@@ -457,17 +500,13 @@
     <section id="aliados">
       <h2>Ranking de aliados y apoyos</h2>
       <ul class="aliados-list">
-        <li><strong>Municipio de San Isidro</strong> <span style="color:var(--success);font-weight:600;">(Próximo a sumarse)</span></li>
-        <li><strong>EcoJóvenes ONG</strong></li>
         <li class="aliados-nuevo"><strong>¿Tu ONG, municipio o grupo?</strong> <br><span style="color:#fff;">Sumate desde la sección <a href="#sumate" style="color:var(--accent);">Sumate</a></span></li>
       </ul>
     </section>
     <section id="novedades">
       <h2>Novedades y próximos eventos</h2>
       <ul class="news-list">
-        <li>01/06/2025 — Lanzamiento de la campaña "Patagonia sin fuego" 🚒</li>
-        <li>18/05/2025 — Charla en UDESA sobre tecnología y prevención de incendios.</li>
-        <li>10/05/2025 — Alianza con EcoJóvenes ONG para difusión digital.</li>
+        <li>Próximamente — Demo para presentar el proyecto en la UDESA</li>
       </ul>
     </section>
     <section id="sumate" class="sumate-section">
@@ -493,7 +532,7 @@
         <div id="sumate-estado"></div>
       </form>
       <div style="margin-top:1em;font-size:.98em;color:var(--muted);text-align:center;">
-        CEO: Lucas De Cesare — <span style="color:var(--accent);">weerteck@gmail.com</span>
+        Creadores: <span style="color:var(--primary)">Santiago Martinez</span> y <span style="color:var(--primary)">Lucas De Cesare</span> — <span style="color:var(--accent);">weerteck@gmail.com</span>
       </div>
     </section>
     <button class="ir-comentarios" onclick="document.getElementById('comentarios').scrollIntoView({behavior:'smooth'})">
@@ -515,11 +554,15 @@
   <a href="https://instagram.com/weerteck" class="btn-instagram-flotante" target="_blank" rel="noopener" title="Ir al Instagram de WeerTeck" aria-label="Ir al Instagram de WeerTeck">
     <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.584.012 4.847.07 1.17.055 1.796.24 2.216.403a4.292 4.292 0 0 1 1.593.924c.443.444.73.973.924 1.593.163.42.348 1.046.403 2.216.058 1.263.07 1.646.07 4.847 0 3.2-.012 3.584-.07 4.847-.055 1.17-.24 1.796-.403 2.216a4.292 4.292 0 0 1-.924 1.593 4.292 4.292 0 0 1-1.593.924c-.42.163-1.046.348-2.216.403-1.263.058-1.646.07-4.847.07-3.2 0-3.584-.012-4.847-.07-1.17-.055-1.796-.24-2.216-.403a4.292 4.292 0 0 1-1.593-.924 4.292 4.292 0 0 1-.924-1.593c-.163-.42-.348-1.046-.403-2.216C2.212 15.631 2.2 15.247 2.2 12.047c0-3.2.012-3.584.07-4.847.055-1.17.24-1.796.403-2.216A4.292 4.292 0 0 1 3.597 3.39 4.292 4.292 0 0 1 5.19 2.466c.42-.163 1.046-.348 2.216-.403C8.416 2.212 8.8 2.2 12 2.2zm0-2.2C8.74 0 8.332.014 7.052.072 5.73.13 4.684.325 3.81.637a6.492 6.492 0 0 0-2.36 1.547A6.492 6.492 0 0 0 .637 4.19c-.312.874-.507 1.92-.565 3.242C.014 8.332 0 8.74 0 12c0 3.26.014 3.668.072 4.948.058 1.322.253 2.368.565 3.242a6.492 6.492 0 0 0 1.547 2.36 6.492 6.492 0 0 0 2.36 1.547c.874.312 1.92.507 3.242.565C8.332 23.986 8.74 24 12 24c3.26 0 3.668-.014 4.948-.072 1.322-.058 2.368-.253 3.242-.565a6.492 6.492 0 0 0 2.36-1.547 6.492 6.492 0 0 0 1.547-2.36c.312-.874.507-1.92.565-3.242.058-1.28.072-1.688.072-4.948s-.014-3.668-.072-4.948c-.058-1.322-.253-2.368-.565-3.242a6.492 6.492 0 0 0-1.547-2.36A6.492 6.492 0 0 0 20.19.637c-.874-.312-1.92-.507-3.242-.565C15.668.014 15.26 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a3.999 3.999 0 1 1 0-7.998 3.999 3.999 0 0 1 0 7.998zm7.844-10.406a1.44 1.44 0 1 1-2.88 0 1.44 1.44 0 0 1 2.88 0z"/></svg>
   </a>
+  <a href="https://wa.me/541125216302?text=Hola%20WeerTeck%2C%20tengo%20una%20consulta%20o%20recomendaci%C3%B3n" class="btn-whatsapp-flotante" target="_blank" rel="noopener" title="Escribinos por WhatsApp" aria-label="Escribinos por WhatsApp">
+    <svg viewBox="0 0 32 32"><path d="M16.001 3.2c7.061 0 12.801 5.74 12.801 12.8 0 2.354-.678 4.66-1.962 6.65l1.299 4.767c.097.357-.009.741-.275 1.007a1.002 1.002 0 0 1-1.007.275l-4.768-1.299a12.728 12.728 0 0 1-6.65 1.962c-7.06 0-12.8-5.74-12.8-12.8C3.2 8.94 8.94 3.2 16.001 3.2zm0-2.4C7.626.8.8 7.626.8 16c0 2.529.668 4.988 1.934 7.157l-1.58 5.798a2.4 2.4 0 0 0 2.926 2.926l5.799-1.58A15.98 15.98 0 0 0 16.001 31.2c8.375 0 15.2-6.825 15.2-15.2 0-8.374-6.825-15.2-15.2-15.2zm7.954 20.593c-.112-.056-2.642-1.312-3.052-1.462-.409-.149-.707-.224-1.003.113-.295.336-1.146 1.461-1.407 1.764-.26.302-.517.337-.955.112-.438-.224-1.848-.682-3.52-2.175-1.3-1.162-2.177-2.599-2.434-3.037-.255-.438-.027-.635.195-.845.199-.188.439-.488.66-.731.222-.243.293-.425.44-.698.148-.273.074-.511-.037-.731-.112-.219-1.003-2.417-1.373-3.311-.362-.88-.732-.761-1.003-.775a1.02 1.02 0 0 0-.872.03c-.269.133-1.022.999-1.022 2.433 0 1.434 1.039 2.82 1.185 3.017.147.197 2.04 3.134 5.395 4.319 3.355 1.185 3.355.791 3.957.741.603-.05 1.962-.796 2.24-1.567.279-.77.279-1.429.194-1.567-.084-.139-.269-.223-.56-.369z"/></svg>
+  </a>
   <footer>
     <div class="footer-links">
       <a href="#top">↑ Volver arriba</a>
       <a href="mailto:weerteck@gmail.com">Contacto</a>
       <a href="https://instagram.com/weerteck" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://wa.me/541125216302?text=Hola%20WeerTeck%2C%20tengo%20una%20consulta" target="_blank" rel="noopener">WhatsApp</a>
     </div>
     <div>
       &copy; 2025 WeerTeck — Todos los derechos reservados<br>
@@ -527,6 +570,77 @@
     </div>
   </footer>
   <script>
+    // Fondo animado de líneas tecnológicas
+    (() => {
+      const canvas = document.getElementById('bg-animated-canvas');
+      let ctx, w, h, lines = [];
+      const lineCount = 22;
+      function resize() {
+        w = window.innerWidth;
+        h = window.innerHeight;
+        canvas.width = w;
+        canvas.height = h;
+      }
+      function randomColor() {
+        const palette = ['#00bcd4', '#80deea', '#4caf50', '#fff', '#263238'];
+        return palette[Math.floor(Math.random() * palette.length)];
+      }
+      function createLines() {
+        lines = [];
+        for(let i=0; i<lineCount; i++) {
+          let y = Math.random()*h;
+          let speed = 0.6 + Math.random()*1.3;
+          let len = 160 + Math.random()*220;
+          lines.push({
+            x: Math.random()*w,
+            y,
+            len,
+            width: 1.2 + Math.random()*1.7,
+            dx: -0.8 + Math.random()*1.6,
+            dy: -0.2 + Math.random()*0.4,
+            color: randomColor(),
+            alpha: 0.32 + Math.random()*0.46
+          });
+        }
+      }
+      function draw() {
+        ctx.clearRect(0,0,w,h);
+        for(let l of lines) {
+          ctx.save();
+          ctx.globalAlpha = l.alpha;
+          ctx.strokeStyle = l.color;
+          ctx.shadowColor = l.color;
+          ctx.shadowBlur = 8;
+          ctx.lineWidth = l.width;
+          ctx.beginPath();
+          ctx.moveTo(l.x, l.y);
+          ctx.lineTo(l.x + l.dx * l.len, l.y + l.dy * l.len);
+          ctx.stroke();
+          ctx.restore();
+
+          l.x += l.dx * 0.8;
+          l.y += l.dy * 0.8;
+
+          if(l.x > w+40 || l.x < -40 || l.y < -40 || l.y > h+40) {
+            // Reset
+            l.x = Math.random()*w;
+            l.y = Math.random()*h;
+            l.color = randomColor();
+            l.alpha = 0.32 + Math.random()*0.46;
+          }
+        }
+        requestAnimationFrame(draw);
+      }
+      function start() {
+        ctx = canvas.getContext('2d');
+        resize();
+        createLines();
+        draw();
+      }
+      window.addEventListener('resize', () => { resize(); createLines(); });
+      setTimeout(start, 70);
+    })();
+
     // Comentarios públicos (localStorage)
     document.addEventListener('DOMContentLoaded', () => {
       const commentsList = document.getElementById('comments-list');
