@@ -3,556 +3,463 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>WeerTeck | Concientización contra incendios en Patagonia</title>
-  <meta name="description" content="Concientización y acción contra incendios forestales en Patagonia. Tecnología, comunidad y prevención. Sumate a la campaña.">
+  <title>WeerTeck | Tecnología ambiental contra incendios</title>
+  
+  <!-- Fuente moderna Poppins -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet" />
-  <link rel="icon" type="image/png" href="img/logo.png">
+  
   <style>
-    :root {
-      --primary: #5fd1f9;
-      --accent: #4eb9e5;
-      --secondary: #222934;
-      --dark: #181b22;
-      --text: #e0e0e0;
-      --light: #fff;
-      --danger: #e57373;
-      --success: #4caf50;
-      --muted: #b0bec5;
+    /* Reset básico */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
-    html, body { height:100%; }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: 'Poppins', sans-serif;
+      background-color: #000;
+      color: #e0e0e0;
+      line-height: 1.6;
       min-height: 100vh;
-      color: var(--text);
-      background: #181b22;
-      position: relative;
-      overflow-x: hidden;
-      margin: 0; padding: 0;
+      display: flex;
+      flex-direction: column;
     }
-    #bg-canvas {
-      position: fixed;
-      z-index: 0;
-      left: 0; top: 0; width: 100vw; height: 100vh;
-      pointer-events: none;
-      background: #181b22;
-    }
-    main, nav, header, footer, .flotantes-columna, #chatbot-box {
-      position: relative;
-      z-index: 3;
-    }
-    nav {
-      position: fixed; top: 0; left: 0; right: 0;
-      height: 58px;
-      z-index: 2002;
-      background: rgba(18, 26, 35, 0.95);
-      border-bottom: 2px solid var(--primary);
-      box-shadow: 0 3px 18px var(--primary);
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 2vw;
-      font-size: 1.1em;
-      backdrop-filter: blur(5px);
-    }
-    nav .nav-logo {
-      font-weight: 900;
-      font-size: 1.38em;
-      letter-spacing: 2px;
-      background: linear-gradient(90deg, var(--primary), var(--accent) 70%, transparent);
-      background-clip: text; -webkit-background-clip: text;
-      color: transparent; -webkit-text-fill-color: transparent;
-      animation: logoHue 4s linear infinite alternate;
-      display: flex; align-items: center;
-    }
-    @keyframes logoHue {
-      0% { filter: hue-rotate(0deg);}
-      100%{ filter: hue-rotate(40deg);}
-    }
-    nav ul { list-style: none; display: flex; gap: 1.7em;}
-    nav ul li a {
-      color: var(--text);
+
+    a {
+      color: #4dd0e1;
       text-decoration: none;
-      font-weight: 600;
-      padding: 6px 13px;
-      border-radius: 8px;
-      transition: background 0.2s, color 0.2s;
+      transition: color 0.3s ease;
     }
-    nav ul li a:hover, nav ul li a:focus {
-      background: linear-gradient(90deg,var(--accent) 30%,var(--primary));
-      color: #fff;
-      box-shadow: 0 0 8px var(--primary);
+
+    a:hover,
+    a:focus {
+      color: #81d4fa;
+      text-decoration: underline;
+      outline: none;
     }
-    nav .nav-actions {
-      display: flex; gap: 1em;
+
+    header, main, footer {
+      max-width: 900px;
+      width: 90%;
+      margin: auto;
+      padding: 1.5rem 0;
     }
-    nav .nav-actions .btn-ig {
-      background: linear-gradient(90deg,#ed4264,#ffedbc 80%);
-      color: #262626; border: none; border-radius: 22px;
-      padding: 7px 16px; font-weight: 700; font-size: 1em;
-      cursor: pointer; box-shadow: 0 2px 8px #ed426455;
-      display: flex; align-items: center; gap: 7px;
-      transition: background 0.2s, scale 0.2s;
-    }
-    nav .nav-actions .btn-ig:hover {
-      background: linear-gradient(90deg,#ffedbc,#ed4264 90%);
-      scale:1.08;
-    }
-    @media (max-width: 780px) {
-      nav ul { gap: 0.7em; font-size: 0.92em;}
-      nav .nav-logo { font-size: 1em; }
-    }
-    @media (max-width: 500px){
-      nav { font-size: 0.91em; padding: 0 1vw;}
-      nav ul { gap: 0.4em;}
-    }
-    header { margin-top: 58px; text-align: center; padding: 2.2em 0 1.2em 0;}
-    .hero {
-      background: linear-gradient(100deg, #242d39 80%, #263248 100%);
-      border-radius: 16px;
-      box-shadow: 0 2px 28px #5fd1f933;
-      margin: 1.6em auto 1.3em auto;
-      max-width: 750px;
-      padding: 2.3em 1.5em 2em 1.5em;
-      position: relative;
-      z-index: 2;
-      border: 2px solid var(--primary);
-    }
-    .hero h1 {
-      font-weight: 900;
-      font-size: 2.6rem;
-      color: var(--primary);
-      text-shadow: 0 0 18px var(--primary), 0 0 6px #5fd1f988;
-      letter-spacing: 2px;
-      background: linear-gradient(90deg,var(--primary), var(--accent) 80%,#fff0);
-      background-clip: text; -webkit-background-clip: text;
-      color: transparent; -webkit-text-fill-color: transparent;
-      filter: drop-shadow(0 0 30px var(--primary));
-      margin-bottom: 0.4rem;
-    }
-    .hero .subtitulo {
-      font-weight: 600;
-      font-size: 1.25rem;
-      color: var(--accent);
-      margin-bottom: 1.5em;
-      text-shadow: 0 0 6px var(--accent);
-      letter-spacing: 1px;
-    }
-    .hero .cta {
-      display: inline-block;
-      margin-top: 1em;
-      font-weight: 700;
-      padding: 0.8em 2em;
-      background: linear-gradient(90deg,var(--primary),var(--accent));
-      color: #fff;
-      border: none;
-      border-radius: 20px;
-      font-size: 1.04em;
-      box-shadow: 0 2px 12px var(--primary);
-      transition: background 0.2s, scale 0.2s;
-      cursor: pointer;
-      letter-spacing: 1px;
-    }
-    .hero .cta:hover { background: linear-gradient(90deg,var(--accent),var(--primary) 70%); scale:1.06;}
-    .banner-revision {
-      background: linear-gradient(90deg,var(--primary) 20%,var(--accent) 80%,#fff0);
-      color: #01343a;
-      font-weight: bold;
+
+    header {
       text-align: center;
-      padding: 0.7em 0.2em;
-      margin: 0.5em 0 1.3em 0;
-      border-radius: 7px;
-      font-size: 1em;
-      box-shadow: 0 2px 18px var(--primary);
-      letter-spacing: 1px;
     }
-    main { max-width: 820px; width: 97%; margin: auto; padding-bottom: 2em; position:relative; z-index:2;}
-    section { margin-bottom: 2em;}
+
+    .logo {
+      max-width: 120px;
+      margin-bottom: 1rem;
+      filter: drop-shadow(0 0 5px #00bcd4);
+    }
+
+    h1 {
+      font-weight: 800;
+      font-size: 2.8rem;
+      color: #00bcd4;
+      margin-bottom: 0.3rem;
+      text-shadow: 0 0 8px #00bcd4aa;
+    }
+
+    .subtitulo {
+      font-weight: 600;
+      font-size: 1.2rem;
+      color: #80deea;
+      margin-bottom: 3rem;
+      text-shadow: 0 0 6px #80deea88;
+    }
+
     h2 {
-      color: var(--primary);
-      font-size: 1.5em;
-      margin-bottom: 0.7em;
+      color: #00bcd4;
+      margin-bottom: 1rem;
       font-weight: 700;
-      letter-spacing: 1px;
-      text-shadow: 0 0 6px var(--primary);
+      font-size: 1.8rem;
+      text-shadow: 0 0 6px #00bcd4bb;
     }
-    h3 {
-      color: var(--accent); margin-bottom: 0.3em; font-size: 1.08em;
+
+    p {
+      font-weight: 400;
+      font-size: 1rem;
+      margin-bottom: 1.25rem;
+      max-width: 800px;
     }
-    p { font-size: 1.06rem; margin-bottom: 1.1em;}
-    .team-list, .aliados-list, .news-list { list-style: none; padding: 0; }
-    .team-list li, .aliados-list li {
-      background: #212a35cc;
-      border-radius: 9px;
-      margin-bottom: 0.7em;
-      padding: 0.5em 1em;
-      color: var(--text);
-      box-shadow: 0 2px 10px #5fd1f933;
-      display: flex; align-items: center; gap: 0.7em;
-      border-left: 5px solid var(--primary);
+
+    strong {
+      color: #4dd0e1;
     }
-    .aliados-list { display:grid; grid-template-columns: repeat(auto-fit,minmax(210px,1fr)); gap:1em;}
-    .aliados-list li { margin-bottom:0; }
-    .aliados-nuevo {
-      background: #4caf5044;
-      border-left: 5px solid var(--success);
-    }
-    .news-list li {
-      background: #242d39cc;
-      border-radius: 7px;
-      margin-bottom: 0.8em;
-      padding: 0.7em 1em;
-      color: var(--accent);
-      border-left: 4px solid var(--accent);
-      font-size: 1.02em;
-    }
-    .mapa-patagonia {
-      width: 100%; max-width: 410px; margin: 1.2em auto 1.1em auto; display: block;
-      border-radius: 12px; box-shadow: 0 2px 18px var(--primary);
-      border: 2px solid var(--primary);
-      filter: grayscale(0.15) brightness(0.93);
-    }
-    .acciones-box {
-      background: linear-gradient(100deg,#263238bb 70%,var(--primary) 100%);
-      border-radius: 14px;
-      box-shadow: 0 2px 18px var(--primary);
-      padding: 1.2em 1.5em;
-      margin-bottom: 1.7em;
-      border-left: 6px solid var(--primary);
-    }
-    .acciones-box ul { margin-top: 0.4em; margin-bottom: 0;}
-    .acciones-box li { margin-bottom: 0.7em; color: var(--accent);}
-    .sumate-section {
-      background: #212a35cc;
-      border-radius: 15px;
-      padding: 1.7em 1em 1.6em 1em;
-      box-shadow: 0 2px 20px #5fd1f944;
-      border: 2px solid var(--primary);
-      margin-bottom: 2.3em;
-    }
-    .sumate-section label { display: block; margin-bottom: 0.4em; color: var(--accent); font-weight: 600;}
-    .sumate-section input, .sumate-section textarea, .sumate-section select {
-      width: 100%; max-width: 420px;
-      padding: 0.6em 1em;
-      border-radius: 8px;
-      border: 1px solid var(--accent);
-      font-size: 1em;
-      background: #fff;
-      color: #222;
-      margin-bottom: 1em;
-    }
-    .sumate-section button {
-      background: linear-gradient(90deg, var(--primary), var(--accent));
-      color: #fff;
-      padding: 0.7em 2em;
-      border: none;
-      border-radius: 9px;
-      font-weight: 700;
-      font-size: 1em;
-      cursor: pointer;
-      box-shadow: 0 2px 8px var(--primary);
-      transition: background 0.2s, scale 0.2s;
-      margin-top: 0.2em;
-    }
-    .sumate-section button:hover { background: var(--primary); scale:1.04;}
-    .msg-exito, .msg-error {
-      text-align:center; font-weight:600; margin-bottom:1em; margin-top:0.1em;
-      border-radius:8px; padding:0.6em 0;
-    }
-    .msg-exito { background: #4caf50cc; color: #fff;}
-    .msg-error { background: #e57373cc; color: #fff;}
-    .public-comments-section {
-      background: linear-gradient(120deg, var(--primary) 60%, var(--accent) 40%, #2226);
-      border-radius: 15px;
-      padding: 2em 1em;
-      box-shadow: 0 2px 32px var(--primary);
-      border: 2px solid var(--primary);
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
-      margin-bottom:2em;
-    }
-    .public-comments-section h2 {
-      text-align: center;
-      margin-bottom: 1.1em;
-      color: var(--primary);
-    }
-    .comments-counter {
-      text-align: center;
-      color: var(--accent);
-      margin: 0 0 1.3em 0;
-      font-size: 1.09em;
-      letter-spacing: 1px;
-      font-weight: 600;
-    }
-    #comment-form {
+
+    /* Galería de imágenes */
+    .galeria {
       display: flex;
-      flex-direction: column;
-      gap: 0.8em;
-      margin-bottom: 1.5em;
-      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
     }
-    #comment-form input, #comment-form textarea {
-      width: 95%;
-      max-width: 480px;
-      padding: 0.6em 1em;
+
+    .galeria img {
+      width: 32%;
       border-radius: 8px;
-      border: 1px solid var(--accent);
-      font-size: 1em;
-      background: #fff;
-      color: #222;
-    }
-    #comment-form button {
-      background: linear-gradient(90deg, var(--primary), var(--accent));
-      color: #fff;
-      padding: 0.6em 1.5em;
-      border: none;
-      border-radius: 8px;
-      font-weight: 700;
-      font-size: 1em;
+      box-shadow: 0 0 10px #00bcd4aa;
       cursor: pointer;
-      box-shadow: 0 2px 8px var(--primary);
-      transition: background 0.2s;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 2px solid transparent;
+      filter: brightness(0.95);
+      border-radius: 10px;
     }
-    #comment-form button:hover { background: var(--primary);}
-    .comments-list {
-      margin-top: 0.7em;
-      list-style: none;
-      padding: 0;
-      max-width: 650px;
-      margin-left: auto;
-      margin-right: auto;
+
+    .galeria img:hover,
+    .galeria img:focus {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px #00bcd4ff;
+      filter: brightness(1);
+      border-color: #00bcd4;
+      outline: none;
     }
-    .comments-list li {
-      background: #fff3;
-      border-radius: 8px;
-      margin-bottom: 1.2em;
-      padding: 1em 1.2em;
-      color: var(--text);
-      box-shadow: 0 2px 10px #5fd1f933;
-      border-left: 4px solid var(--primary);
+
+    /* Contacto con íconos SVG */
+    .contacto {
+      font-size: 1rem;
+      line-height: 1.6;
     }
-    .comments-list .comment-author {
-      font-weight: bold;
-      color: var(--primary);
-      margin-bottom: 0.2em;
+
+    .contacto svg {
+      vertical-align: middle;
+      margin-right: 0.5rem;
+      fill: #4dd0e1;
+      width: 20px;
+      height: 20px;
+      filter: drop-shadow(0 0 2px #4dd0e1);
     }
-    .comments-list .comment-date {
-      font-size: 0.93em;
-      color: var(--accent);
-      float: right;
+
+    /* Footer */
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #555;
+      padding: 1.5rem 0;
+      border-top: 1px solid #222;
+      margin-top: auto;
     }
-    .ir-comentarios {
-      display:inline-block;
-      margin:.7em auto 1.1em auto;
-      padding:.6em 1.6em;
-      background:linear-gradient(90deg,var(--primary),var(--accent));
-      color:#fff;
-      font-weight:700;
-      border-radius:9px;
-      border:none;
-      font-size:1.06em;
-      box-shadow:0 2px 8px var(--primary);
-      cursor:pointer;
-      transition:background .2s,scale .2s;
-      letter-spacing:1px;
-    }
-    .ir-comentarios:hover {background:var(--primary); scale:1.03;}
-    .flotantes-columna {
+
+    /* Botón flotante WhatsApp */
+    #btnWhatsApp {
       position: fixed;
-      bottom: 26px;
-      right: 24px;
-      display: flex;
-      flex-direction: column;
-      gap: 17px;
-      z-index: 1050;
-      align-items: flex-end;
-    }
-    .flotante-btn {
+      bottom: 25px;
+      right: 25px;
+      background-color: #25d366;
       border-radius: 50%;
-      width: 56px; height: 56px;
-      border: 2.5px solid #fff;
-      box-shadow: 0 4px 22px #0007, 0 1px 12px #fff3;
-      display: flex; justify-content: center; align-items: center;
+      width: 60px;
+      height: 60px;
+      box-shadow: 0 4px 10px rgba(37, 211, 102, 0.6);
+      display: flex;
+      justify-content: center;
+      align-items: center;
       cursor: pointer;
-      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
-      animation: flotar 2.1s infinite alternate cubic-bezier(.6,0,.4,1);
-      will-change: transform;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      z-index: 1000;
     }
-    .flotante-btn svg { width: 32px; height: 32px; display: block;}
-    .flotante-btn.whatsapp {
-      background: linear-gradient(135deg, var(--wa) 60%, var(--wa-dark) 100%);
+
+    #btnWhatsApp:hover {
+      background-color: #1ebe5b;
+      transform: scale(1.1);
     }
-    .flotante-btn.whatsapp:hover { background: var(--wa);}
-    .flotante-btn.instagram {
-      background: linear-gradient(135deg, var(--ig-grad1) 60%, var(--ig-grad2) 100%);
+
+    #btnWhatsApp svg {
+      width: 30px;
+      height: 30px;
+      fill: white;
     }
-    .flotante-btn.instagram:hover { background: var(--ig-grad1);}
-    .flotante-btn.weerbot {
-      background: linear-gradient(135deg, var(--bot-grad1) 70%, var(--bot-grad2) 100%);
+
+    /* Contadores animados */
+    .contadores {
+      display: flex;
+      justify-content: space-around;
+      margin: 3rem 0;
+      gap: 2rem;
+      flex-wrap: wrap;
     }
-    .flotante-btn.weerbot:hover { background: var(--bot-grad2);}
-    @keyframes flotar { to { transform: translateY(-8px) scale(1.05);} }
-    #chatbot-box {
-      display: none; position: fixed; bottom: 95px; right: 30px; width: 340px; max-width: 96vw;
-      background: rgba(0, 188, 212, 0.99); border-radius: 20px; box-shadow: 0 8px 60px #00bcd4cc, 0 2px 16px #0008;
-      padding: 0.7em 0.9em 1em 0.9em; z-index: 2103; flex-direction: column; animation: fadeIn 0.2s;
-      backdrop-filter: blur(6px);
-      border: 1.5px solid #fff;
-      min-height: 340px;
-      max-height: 88vh;
+
+    .contador {
+      background: #111;
+      border: 2px solid #00bcd4;
+      border-radius: 15px;
+      padding: 1rem 2rem;
+      text-align: center;
+      flex: 1 1 150px;
+      box-shadow: 0 0 10px #00bcd4aa;
+      transition: box-shadow 0.3s ease;
     }
-    #chatbot-box.active { display: flex; }
-    #chatbot-header {
-      display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.7em;
-      position: sticky; top: 0; z-index: 3;
+
+    .contador:hover {
+      box-shadow: 0 0 20px #00bcd4ff;
     }
-    #chatbot-header span { font-weight: 700; color: #fff; font-size: 1.12em; letter-spacing: 0.7px; }
-    #chatbot-close {
-      background: transparent; border: none; color: #fff; font-size: 1.6em; cursor: pointer; line-height: 1; transition: color 0.2s;
-      margin-left: 1em;
-      margin-top: 0.1em;
-      z-index: 4;
+
+    .numero {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: #00bcd4;
+      margin-bottom: 0.5rem;
     }
-    #chatbot-close:hover { color: #263238; }
-    #chatbot-messages {
-      flex: 1; overflow-y: auto; max-height: 270px; margin-bottom: 0.7em; scrollbar-width: thin;
-      background: linear-gradient(108deg,#fff4,#00bcd422);
-      border-radius: 12px;
-      padding: 0.4em 0.2em;
+
+    .descripcion {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #80deea;
     }
-    .chatbot-message {
-      margin-bottom: 0.6em; padding: 0.5em 0.8em; border-radius: 15px; background: #fff; color: #222; font-size: 0.98em;
-      max-width: 90%; align-self: flex-start; box-shadow: 0 2px 8px #00bcd466;
-      animation: fadeIn 0.39s;
+
+    /* Toggle modo oscuro/claro */
+    #toggleModo {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #00bcd4;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      box-shadow: 0 0 10px #00bcd4aa;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1001;
+      transition: background-color 0.3s ease;
     }
-    .chatbot-message.user { background: #00bcd4; color: #fff; align-self: flex-end; box-shadow: 0 2px 8px #004d4066; }
-    #chatbot-input-box { display: flex; align-items: center; }
-    #chatbot-select {
-      width: 100%; padding: 0.7em 1em; border-radius: 8px; font-size: 1em;
-      margin-bottom: 0.5em; background: #e0f7fa; color: #222; border: 1px solid #00bcd4aa;
+
+    #toggleModo:hover {
+      background: #26c6da;
     }
-    #chatbot-send {
-      background: #004d40; color: #fff; border: none; border-radius: 12px;
-      padding: 0.6em 1.2em; cursor: pointer; font-weight: 700; font-size: 1em; transition: background 0.2s;
+
+    #toggleModo svg {
+      fill: #000;
+      width: 22px;
+      height: 22px;
     }
-    #chatbot-send:hover { background: #00796b; }
-    @media (max-width: 560px) {
-      #chatbot-box {
-        right: 0; left: 0; width: 100vw; border-radius: 0; min-height: 60vh; max-height: 94vh;
+
+    /* Modo claro */
+    body.light {
+      background-color: #f5f5f5;
+      color: #222;
+    }
+
+    body.light h1,
+    body.light h2,
+    body.light strong {
+      color: #00796b;
+      text-shadow: none;
+    }
+
+    body.light .subtitulo {
+      color: #004d40;
+    }
+
+    body.light a {
+      color: #00796b;
+    }
+
+    body.light a:hover {
+      color: #004d40;
+    }
+
+    body.light header,
+    body.light main,
+    body.light footer {
+      color: #222;
+    }
+
+    body.light footer {
+      border-top-color: #ccc;
+      color: #555;
+    }
+
+    body.light .galeria img {
+      box-shadow: 0 0 10px #00796baa;
+      filter: brightness(1);
+      border-color: transparent;
+    }
+
+    body.light .galeria img:hover,
+    body.light .galeria img:focus {
+      box-shadow: 0 0 15px #00796bff;
+      border-color: #00796b;
+    }
+
+    body.light .contador {
+      background: #e0f2f1;
+      border-color: #00796b;
+      box-shadow: 0 0 10px #00796baa;
+      color: #004d40;
+    }
+
+    body.light .contador:hover {
+      box-shadow: 0 0 20px #00796bff;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .galeria img {
+        width: 48%;
+        margin-bottom: 1rem;
       }
-      .flotantes-columna { right:10px; bottom:10px; }
+      .contadores {
+        flex-direction: column;
+        align-items: center;
+      }
+      .contador {
+        width: 80%;
+        margin-bottom: 1.5rem;
+      }
+      h1 {
+        font-size: 2.2rem;
+      }
+      h2 {
+        font-size: 1.5rem;
+      }
     }
+
+    @media (max-width: 480px) {
+      .galeria img {
+        width: 100%;
+      }
+    }
+
   </style>
 </head>
 <body>
-  <!-- FONDO DINÁMICO CON CANVAS -->
-  <canvas id="bg-canvas"></canvas>
-  <!-- CONTENIDO PRINCIPAL (igual que antes) -->
-  <!-- ...todo el contenido anterior, ya incluido arriba... -->
+  <div id="toggleModo" aria-label="Cambiar modo oscuro/claro" role="button" tabindex="0" title="Cambiar modo oscuro/claro">
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M12 3a9 9 0 0 0 0 18 9 9 0 0 1 0-18z"/>
+    </svg>
+  </div>
 
-  <!-- SONIDO DE NOTIFICACIÓN PARA WEERBOT -->
-  <audio id="bot-sound" preload="auto">
-    <source src="data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YZAAAAAAAgAAgAAAgAAgICAAkAAgACAAIABgAIAAIABgAIAAIABgAIAAIABgAIAAIABgAIAAIABgAIAAIABgAIAAIABgAIAAIABgAIAAIABgAIAAIABgAIAAIABgAIAAIABgAIAAIABgAIAAIABgAIAAIABgAIAAIABgAIAAIABgAIAAIABgAIAAIABgAIAAIABgAIAAA==" type="audio/wav">
-  </audio>
+  <header>
+    <img src="img/logo.png" alt="Logo WeerTeck" class="logo" />
+    <h1>WeerTeck</h1>
+    <p class="subtitulo">Tecnología accesible para proteger nuestros bosques</p>
+  </header>
+
+  <main>
+    <section>
+      <h2>¿Quiénes somos?</h2>
+      <p>
+        Somos un grupo de jóvenes desarrolladores y emprendedores comprometidos con la protección del medio ambiente. Creamos soluciones tecnológicas accesibles para anticiparnos a los incendios forestales y reducir su impacto en la Patagonia argentina.
+      </p>
+    </section>
+
+    <section>
+      <h2>¿Qué hacemos?</h2>
+      <p>
+        Diseñamos <strong>torres inteligentes autosustentables</strong> equipadas con sensores de humo, gases inflamables y temperatura, capaces de detectar incendios en su fase inicial. Al identificar riesgo, envían <strong>alertas automáticas por WhatsApp</strong> a brigadas y vecinos de la zona.
+      </p>
+      <p>
+        Estas torres también pueden contar con un sistema de <strong>rociado ecológico preventivo</strong>, que libera una solución biodegradable para contener el fuego antes de que se propague.
+      </p>
+    </section>
+
+    <section class="contadores" aria-label="Estadísticas de WeerTeck">
+      <div class="contador">
+        <div class="numero" data-numero="0">0</div>
+        <div class="descripcion">Torres instaladas</div>
+      </div>
+      <div class="contador">
+        <div class="numero" data-numero="0">0</div>
+        <div class="descripcion">Municipios adheridos</div>
+      </div>
+      <div class="contador">
+        <div class="numero" data-numero="0">0</div>
+        <div class="descripcion">Alertas activadas</div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Galería</h2>
+      <div class="galeria" aria-label="Galería de imágenes de WeerTeck">
+        <img src="img/torre1.jpg" alt="Torre inteligente en el bosque" loading="lazy" tabindex="0" />
+        <img src="img/sensor.jpg" alt="Sensor de humo instalado en la torre" loading="lazy" tabindex="0" />
+        <img src="img/brigada.jpg" alt="Brigada recibiendo alerta y actuando" loading="lazy" tabindex="0" />
+      </div>
+    </section>
+
+    <section>
+      <h2>Contacto</h2>
+      <p class="contacto">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M6.62 10.79a15.091 15.091 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.11-.21 11.36 11.36 0 0 0 3.58.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.36 11.36 0 0 0 .57 3.58 1 1 0 0 1-.21 1.11l-2.24 2.1z"/>
+        </svg>
+        Teléfono: <a href="tel:+5491125216302">+54 9 11 2521-6302</a>
+      </p>
+      <p class="contacto">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 2l-8 5-8-5h16z"/>
+        </svg>
+        Email: <a href="mailto:weerteck@gmail.com">weerteck@gmail.com</a>
+      </p>
+      <p class="contacto">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M7 10l5 5 5-5H7z"/>
+        </svg>
+        Dirección: San Isidro, Buenos Aires, Argentina
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 WeerTeck - Todos los derechos reservados</p>
+  </footer>
+
+  <!-- BOTÓN FLOTANTE WHATSAPP con número corregido -->
+  <a href="https://wa.me/5491125216302?text=Hola%20WeerTeck%2C%20quiero%20m%C3%A1s%20info" target="_blank" rel="noopener" id="btnWhatsApp" aria-label="Contactar por WhatsApp">
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M20.52 3.48A11.86 11.86 0 0 0 12 0C5.37 0 0 5.37 0 12a11.93 11.93 0 0 0 2.07 6.57L0 24l5.6-2.07A11.9 11.9 0 0 0 12 24c6.63 0 12-5.37 12-12a11.84 11.84 0 0 0-3.48-8.52zM12 21.4a9.4 9.4 0 0 1-4.78-1.41l-.34-.21-3.32 1.23 1.2-3.23-.22-.34A9.44 9.44 0 1 1 21.4 12a9.37 9.37 0 0 1-9.4 9.4zm5.32-7.21c-.29-.15-1.71-.84-1.97-.94-.26-.11-.45-.15-.64.15s-.74.94-.9 1.13c-.16.19-.32.21-.6.07a6.71 6.71 0 0 1-1.97-1.21 7.32 7.32 0 0 1-1.36-1.68c-.14-.25-.02-.38.11-.53.12-.12.26-.32.39-.48a.72.72 0 0 0 .11-.3.43.43 0 0 0-.06-.3c-.2-.45-.57-1.18-.8-1.6-.21-.4-.43-.34-.6-.34a1.36 1.36 0 0 0-.65.06c-.23.1-.89.86-.89 2.1s.91 2.43 1.03 2.6c.11.18 1.78 2.71 4.3 3.8a13.61 13.61 0 0 0 1.89.66c.8.27 1.53.23 2.11.14a6.69 6.69 0 0 0 2.03-.82 7.7 7.7 0 0 0 2.72-2.47 9.56 9.56 0 0 0-3.41-2.55z"/>
+    </svg>
+  </a>
+
   <script>
-    // FONDO CANVAS DINÁMICO: líneas y partículas animadas
-    const canvas = document.getElementById("bg-canvas");
-    const ctx = canvas.getContext("2d");
-    let w = window.innerWidth, h = window.innerHeight;
-    function resize() {
-      w = window.innerWidth;
-      h = window.innerHeight;
-      canvas.width = w;
-      canvas.height = h;
+    // Animación contador numérico
+    function animarContador(element, numeroFinal, duracion = 2000) {
+      let start = 0;
+      if (numeroFinal <= 0) {
+        element.textContent = numeroFinal;
+        return;
+      }
+      const stepTime = Math.abs(Math.floor(duracion / numeroFinal));
+      const increment = 1;
+      const timer = setInterval(() => {
+        start += increment;
+        element.textContent = start;
+        if (start >= numeroFinal) {
+          clearInterval(timer);
+        }
+      }, stepTime);
     }
-    resize();
-    window.addEventListener("resize", resize);
 
-    // Líneas animadas
-    const lines = [];
-    const nLines = 24;
-    for (let i = 0; i < nLines; i++) {
-      lines.push({
-        x: Math.random() * w,
-        y: Math.random() * h,
-        len: 60 + Math.random() * 180,
-        speed: 0.1 + Math.random() * 0.23,
-        angle: Math.PI/2 + (Math.random()-0.5)*0.15, // Casi vertical
-        width: 1 + Math.random()*1.2,
-        alpha: 0.08 + Math.random()*0.07
+    document.addEventListener('DOMContentLoaded', () => {
+      // Animar todos los contadores
+      const numeros = document.querySelectorAll('.numero');
+      numeros.forEach((numElem) => {
+        const numeroFinal = parseInt(numElem.getAttribute('data-numero'), 10);
+        animarContador(numElem, numeroFinal);
       });
-    }
 
-    // Partículas animadas (puntos)
-    const particles = [];
-    const nParticles = 36;
-    for (let i = 0; i < nParticles; i++) {
-      particles.push({
-        x: Math.random() * w,
-        y: Math.random() * h,
-        r: 1.2 + Math.random()*2.8,
-        dx: (Math.random()-0.5)*0.07,
-        dy: 0.02 + Math.random()*0.12,
-        alpha: 0.07 + Math.random()*0.09
+      // Toggle modo oscuro/claro
+      const btnToggle = document.getElementById('toggleModo');
+      btnToggle.addEventListener('click', () => {
+        document.body.classList.toggle('light');
       });
-    }
-
-    function animateBG() {
-      ctx.clearRect(0,0,w,h);
-
-      // Líneas
-      for (let l of lines) {
-        ctx.save();
-        ctx.globalAlpha = l.alpha;
-        ctx.strokeStyle = "rgba(95,209,249,1)";
-        ctx.lineWidth = l.width;
-        ctx.beginPath();
-        ctx.moveTo(l.x, l.y);
-        ctx.lineTo(l.x + Math.cos(l.angle)*l.len, l.y + Math.sin(l.angle)*l.len);
-        ctx.stroke();
-        ctx.restore();
-        l.y += l.speed;
-        if (l.y > h+40) {
-          l.x = Math.random() * w;
-          l.y = -60;
+      btnToggle.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          document.body.classList.toggle('light');
         }
-      }
-      // Partículas
-      for (let p of particles) {
-        ctx.save();
-        ctx.globalAlpha = p.alpha;
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, 2*Math.PI);
-        ctx.fillStyle = "#5fd1f9";
-        ctx.shadowColor = "#5fd1f9";
-        ctx.shadowBlur = 12;
-        ctx.fill();
-        ctx.restore();
-        p.x += p.dx;
-        p.y += p.dy;
-        if (p.y > h+4) {
-          p.x = Math.random() * w;
-          p.y = -8;
-        }
-        if (p.x < -10 || p.x > w+10) {
-          p.x = Math.random() * w;
-          p.y = Math.random() * h;
-        }
-      }
-      requestAnimationFrame(animateBG);
-    }
-    animateBG();
-
-    // SONIDO WeerBot: función para reproducir cuando el bot responde
-    function playBotSound() {
-      const audio = document.getElementById('bot-sound');
-      if(audio) {
-        audio.currentTime = 0;
-        audio.volume = 0.18; // Sutil
-        audio.play();
-      }
-    }
-    // ...el resto de tu JS (comentarios, weerbot, etc) ya está aquí arriba y abajo, todo funciona igual...
+      });
+    });
   </script>
 </body>
 </html>
-
-      background: linear-gradient(90deg,var(--primary),var(--accent));
