@@ -29,7 +29,7 @@
     html { scroll-behavior: smooth;}
     body {
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, var(--dark) 60%, var(--secondary) 100%);
+      background: transparent;
       color: var(--text);
       min-height: 100vh;
       line-height: 1.6;
@@ -37,6 +37,50 @@
       overflow-x: hidden;
       display: flex; flex-direction: column;
     }
+    /* Fondo animado estilo tecnología */
+    .bg-animated {
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .lines {
+      position: absolute;
+      width: 100vw; height: 100vh;
+      overflow: hidden;
+    }
+    .line {
+      position: absolute;
+      width: 2px;
+      height: 100%;
+      background: linear-gradient(180deg, #00bcd4cc 0%, #121a23 100%);
+      opacity: 0.13;
+      animation: moveLine 7s linear infinite;
+    }
+    @keyframes moveLine {
+      0% {transform: translateY(-100px);}
+      100% {transform: translateY(120px);}
+    }
+    .dots {
+      position: absolute;
+      width: 100vw; height: 100vh;
+      pointer-events: none;
+      z-index: 1;
+    }
+    .dot {
+      position: absolute;
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #00bcd4 60%, #80deea 100%);
+      opacity: 0.21;
+      animation: moveDot 18s linear infinite;
+    }
+    @keyframes moveDot {
+      0% {transform: translateY(0);}
+      100% {transform: translateY(80vh);}
+    }
+    /* CONTENIDO PRINCIPAL */
     nav {
       position: fixed; top: 0; left: 0; right: 0;
       height: 58px;
@@ -160,7 +204,7 @@
       box-shadow: 0 2px 18px var(--primary);
       letter-spacing: 1px;
     }
-    main { max-width: 820px; width: 97%; margin: auto; padding-bottom: 2em;}
+    main { max-width: 820px; width: 97%; margin: auto; padding-bottom: 2em; position:relative; z-index:2;}
     section { margin-bottom: 2em;}
     h2 {
       color: var(--primary);
@@ -432,7 +476,12 @@
   </style>
 </head>
 <body>
-  <!-- ======= NAVEGACIÓN, HERO, Y CONTENIDO PRINCIPAL IGUAL QUE ANTES ======= -->
+  <!-- Fondo animado tecnología -->
+  <div class="bg-animated" aria-hidden="true">
+    <div class="lines"></div>
+    <div class="dots"></div>
+  </div>
+  <!-- CONTENIDO PRINCIPAL -->
   <nav>
     <div class="nav-logo">WeerTeck</div>
     <ul>
@@ -473,8 +522,8 @@
     <section id="quienes">
       <h2>¿Quiénes somos?</h2>
       <ul class="team-list">
-        <li><strong>Lucas De Cesare</strong> — Creador del proyecto, programador y creador de la criptomoneda WeerCoin.</li>
-        <li><strong>Santiago Martinez</strong> — Creador del proyecto.</li>
+        <li><strong>Lucas De Cesare</strong> — Creador del proyecto, programador y desarrollador de la criptomoneda WeerCoin.</li>
+        <li><strong>Santiago Martinez</strong> — Creador del proyecto y Director de Expansión y Alianzas Estratégicas. Responsable de relaciones institucionales y vinculación con medios (contacto con referentes como TN Patagonia).</li>
       </ul>
       <p>
         Somos dos jóvenes comprometidos en crear soluciones tecnológicas y comunitarias para enfrentar los incendios forestales, especialmente en la Patagonia, una de las zonas más afectadas de Argentina.
@@ -611,7 +660,32 @@
       <span style="font-size:.93em;color:var(--accent);">Página en revisión y mejora continua.</span>
     </div>
   </footer>
+  <!-- FONDO TECNOLÓGICO ANIMADO -->
   <script>
+    // Fondo animado líneas y dots
+    function randomInt(a,b){return Math.floor(Math.random()*(b-a+1))+a;}
+    // Líneas
+    const linesContainer = document.querySelector('.lines');
+    for(let i=0;i<15;i++){
+      let line=document.createElement('div');
+      line.className='line';
+      line.style.left=randomInt(4,96)+'vw';
+      line.style.height=randomInt(78,100)+'vh';
+      line.style.animationDelay = (Math.random()*7)+'s';
+      line.style.width = randomInt(1,3)+'px';
+      linesContainer.appendChild(line);
+    }
+    // Dots
+    const dotsContainer = document.querySelector('.dots');
+    for(let i=0;i<18;i++){
+      let dot=document.createElement('div');
+      dot.className='dot';
+      dot.style.left=randomInt(2,97)+'vw';
+      dot.style.top=randomInt(2,85)+'vh';
+      dot.style.animationDelay = (Math.random()*10)+'s';
+      dot.style.width = dot.style.height = randomInt(6,13)+'px';
+      dotsContainer.appendChild(dot);
+    }
     // Comentarios públicos (localStorage)
     document.addEventListener('DOMContentLoaded', () => {
       const commentsList = document.getElementById('comments-list');
