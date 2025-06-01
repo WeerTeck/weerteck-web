@@ -43,7 +43,7 @@
       display: block;
       z-index: 0;
     }
-    /* Contenedor flotante de los 3 botones */
+    /* Botones flotantes: uno arriba del otro */
     .floating-btns {
       position: fixed;
       bottom: 32px;
@@ -76,7 +76,6 @@
       .btn-instagram-flotante, .btn-whatsapp-flotante, .btn-weerbot-flotante { width:52px; height:52px;}
       .btn-instagram-flotante svg, .btn-whatsapp-flotante svg, .btn-weerbot-flotante svg { width:30px; height:30px;}
     }
-    /* WeerBot ventana flotante */
     #weerbot-window {
       display:none;
       position:fixed;
@@ -134,159 +133,7 @@
       #weerbot-window { width:98vw !important; right:1vw; }
     }
     /* Resto de tu CSS (nav, header, main, footer, etc.) */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0;
-      height: 58px;
-      z-index: 2002;
-      background: rgba(18, 26, 35, 0.95);
-      border-bottom: 2px solid var(--primary);
-      box-shadow: 0 3px 18px var(--primary);
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 2vw;
-      font-size: 1.1em;
-      backdrop-filter: blur(5px);
-    }
-    nav .nav-logo {
-      font-weight: 900;
-      font-size: 1.38em;
-      letter-spacing: 2px;
-      background: linear-gradient(90deg, var(--primary), var(--accent) 70%, transparent);
-      background-clip: text; -webkit-background-clip: text;
-      color: transparent; -webkit-text-fill-color: transparent;
-      animation: logoHue 4s linear infinite alternate;
-      display: flex; align-items: center;
-    }
-    @keyframes logoHue {
-      0% { filter: hue-rotate(0deg);}
-      100%{ filter: hue-rotate(40deg);}
-    }
-    nav ul { list-style: none; display: flex; gap: 1.7em;}
-    nav ul li a {
-      color: var(--text);
-      text-decoration: none;
-      font-weight: 600;
-      padding: 6px 13px;
-      border-radius: 8px;
-      transition: background 0.2s, color 0.2s;
-    }
-    nav ul li a:hover, nav ul li a:focus {
-      background: linear-gradient(90deg,var(--accent) 30%,var(--primary));
-      color: #fff;
-      box-shadow: 0 0 8px var(--primary);
-    }
-    nav .nav-actions {
-      display: flex; gap: 1em;
-    }
-    nav .nav-actions .btn-ig {
-      background: linear-gradient(90deg,#00bcd4,#80deea 80%);
-      color: #262626; border: none; border-radius: 22px;
-      padding: 7px 16px; font-weight: 700; font-size: 1em;
-      cursor: pointer; box-shadow: 0 2px 8px #00bcd455;
-      display: flex; align-items: center; gap: 7px;
-      transition: background 0.2s, scale 0.2s;
-    }
-    nav .nav-actions .btn-ig:hover {
-      background: linear-gradient(90deg,#80deea,#00bcd4 90%);
-      scale:1.08;
-    }
-    @media (max-width: 780px) {
-      nav ul { gap: 0.7em; font-size: 0.92em;}
-      nav .nav-logo { font-size: 1em; }
-    }
-    @media (max-width: 500px){
-      nav { font-size: 0.91em; padding: 0 1vw;}
-      nav ul { gap: 0.4em;}
-    }
-    header { margin-top: 58px; text-align: center; padding: 2.2em 0 1.2em 0;}
-    .hero {
-      background: linear-gradient(100deg, #222a36 80%, #004d4044 100%);
-      border-radius: 16px;
-      box-shadow: 0 2px 28px #00bcd444;
-      margin: 1.6em auto 1.3em auto;
-      max-width: 750px;
-      padding: 2.3em 1.5em 2em 1.5em;
-      position: relative;
-      z-index: 2;
-      border: 2px solid var(--primary);
-    }
-    .hero h1 {
-      font-weight: 900;
-      font-size: 2.6rem;
-      color: var(--primary);
-      text-shadow: 0 0 18px var(--primary), 0 0 6px #00bcd466;
-      letter-spacing: 2px;
-      background: linear-gradient(90deg,var(--primary), var(--accent) 80%,#fff0);
-      background-clip: text; -webkit-background-clip: text;
-      color: transparent; -webkit-text-fill-color: transparent;
-      filter: drop-shadow(0 0 30px var(--primary));
-      margin-bottom: 0.4rem;
-    }
-    .hero .subtitulo {
-      font-weight: 600;
-      font-size: 1.25rem;
-      color: var(--accent);
-      margin-bottom: 1.5em;
-      text-shadow: 0 0 6px var(--accent);
-      letter-spacing: 1px;
-    }
-    .hero .cta {
-      display: inline-block;
-      margin-top: 1em;
-      font-weight: 700;
-      padding: 0.8em 2em;
-      background: linear-gradient(90deg,var(--primary),var(--accent));
-      color: #fff;
-      border: none;
-      border-radius: 20px;
-      font-size: 1.04em;
-      box-shadow: 0 2px 12px var(--primary);
-      transition: background 0.2s, scale 0.2s;
-      cursor: pointer;
-      letter-spacing: 1px;
-    }
-    .hero .cta:hover { background: linear-gradient(90deg,var(--accent),var(--primary) 70%); scale:1.06;}
-    .banner-revision {
-      background: linear-gradient(90deg,var(--primary) 20%,var(--accent) 80%,#fff0);
-      color: #01343a;
-      font-weight: bold;
-      text-align: center;
-      padding: 0.7em 0.2em;
-      margin: 0.5em 0 1.3em 0;
-      border-radius: 7px;
-      font-size: 1em;
-      box-shadow: 0 2px 18px var(--primary);
-      letter-spacing: 1px;
-    }
-    main { max-width: 820px; width: 97%; margin: auto; padding-bottom: 2em;}
-    section { margin-bottom: 2em;}
-    h2 {
-      color: var(--primary);
-      font-size: 1.5em;
-      margin-bottom: 0.7em;
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-shadow: 0 0 6px var(--primary);
-    }
-    h3 {
-      color: var(--accent); margin-bottom: 0.3em; font-size: 1.08em;
-    }
-    p { font-size: 1.06rem; margin-bottom: 1.1em;}
-    /* ... resto de tu CSS ... */
-    /* Footer y links */
-    footer {
-      text-align: center;
-      font-size: 1.09rem;
-      color: var(--muted);
-      padding: 1.5rem 0 0.7rem 0;
-      border-top: 2px solid var(--primary);
-      background: linear-gradient(90deg, #24243e, #0f2027);
-      letter-spacing: 1px;
-      margin-top: auto;
-      box-shadow: 0 -3px 18px var(--primary);
-    }
-    .footer-links { margin: 0.5em auto 1em auto;}
-    .footer-links a { color: var(--primary); margin: 0 1.5em; text-decoration: none; font-weight: 600;}
-    .footer-links a:hover { text-decoration: underline; color: var(--accent);}
+    /* ... Puedes dejar aquí todo tu CSS de antes ... */
   </style>
 </head>
 <body>
@@ -329,8 +176,104 @@
     </div>
   </header>
   <main>
-    <!-- ... tu contenido principal ... -->
-    <!-- igual que antes -->
+    <section id="quienes">
+      <h2>¿Quiénes somos?</h2>
+      <ul class="team-list">
+        <li>
+          <div class="team-creator">Santiago Martinez</div>
+          <span>Creador del proyecto</span>
+        </li>
+        <li>
+          <div class="team-creator">Lucas De Cesare</div>
+          <span>Creador del proyecto, desarrollador de la página y de la cripto WeerCoin para financiar el proyecto</span>
+        </li>
+      </ul>
+      <p>
+        Somos un equipo comprometido en crear soluciones tecnológicas y comunitarias para enfrentar los incendios forestales, especialmente en la Patagonia, una de las zonas más afectadas de Argentina.
+      </p>
+    </section>
+    <section id="patagonia">
+      <h2>¿Por qué Patagonia?</h2>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/8/85/Mapa_de_la_Patagonia.svg" class="mapa-patagonia" alt="Mapa de la Patagonia Argentina" loading="lazy"/>
+      <p>
+        La Patagonia es uno de los territorios más golpeados por incendios forestales en el país. Cada año, miles de hectáreas de bosque y vida silvestre se pierden, afectando a comunidades, turismo y biodiversidad. 
+      </p>
+      <p>
+        Concientizar y actuar en esta región es clave para prevenir tragedias, proteger la naturaleza y asegurar un futuro sustentable.
+      </p>
+    </section>
+    <section id="quehacemos">
+      <h2>¿Qué hacemos?</h2>
+      <p>
+        Desarrollamos <strong>torres inteligentes</strong> y estrategias comunitarias para detectar incendios en etapas tempranas, enviar alertas a brigadas, municipios y vecinos, y facilitar la respuesta rápida.
+      </p>
+      <p>
+        Además, promovemos la educación y la acción colectiva para prevenir incendios y minimizar impactos.
+      </p>
+    </section>
+    <section class="acciones-box">
+      <h3>¿Qué podés hacer vos para prevenir incendios?</h3>
+      <ul>
+        <li>Informate y compartí recomendaciones sobre el uso responsable del fuego.</li>
+        <li>Participá en campañas y jornadas de concientización.</li>
+        <li>Alertá a las autoridades ante cualquier columna de humo o situación sospechosa.</li>
+        <li>No dejes basura ni vidrios en zonas naturales.</li>
+        <li>Sumate a proyectos y movimientos ambientales.</li>
+      </ul>
+    </section>
+    <section id="aliados">
+      <h2>Ranking de aliados y apoyos</h2>
+      <ul class="aliados-list">
+        <li class="aliados-nuevo"><strong>¿Tu ONG, municipio o grupo?</strong> <br><span style="color:#fff;">Sumate desde la sección <a href="#sumate" style="color:var(--accent);">Sumate</a></span></li>
+      </ul>
+    </section>
+    <section id="novedades">
+      <h2>Novedades y próximos eventos</h2>
+      <ul class="news-list">
+        <li>Próximamente — Demo para presentar el proyecto en la UDESA</li>
+      </ul>
+    </section>
+    <section id="sumate" class="sumate-section">
+      <h2>Sumate a la campaña</h2>
+      <p>
+        Si querés colaborar, hacer una campaña publicitaria, sumar tu ONG o tu municipio, o simplemente recibir novedades, completá este formulario. ¡Te contactamos!
+      </p>
+      <form id="form-sumate" autocomplete="off">
+        <label for="sumate-nombre">Nombre y apellido</label>
+        <input type="text" id="sumate-nombre" maxlength="60" placeholder="Tu nombre completo" />
+        <label for="sumate-email">Email de contacto <span style="color:var(--danger);">*</span></label>
+        <input type="email" id="sumate-email" required maxlength="60" placeholder="tunombre@email.com" />
+        <label for="sumate-tipo">¿Cómo querés sumarte?</label>
+        <select id="sumate-tipo">
+          <option value="Campaña publicitaria">Campaña publicitaria</option>
+          <option value="ONG / Municipio">ONG / Municipio</option>
+          <option value="Voluntario/a">Voluntario/a</option>
+          <option value="Otro">Otro</option>
+        </select>
+        <label for="sumate-msg">Mensaje</label>
+        <textarea id="sumate-msg" rows="3" maxlength="300" placeholder="Contanos tu idea o consulta"></textarea>
+        <button type="submit">Enviar</button>
+        <div id="sumate-estado"></div>
+      </form>
+      <div style="margin-top:1em;font-size:.98em;color:var(--muted);text-align:center;">
+        Creadores: <span style="color:var(--primary)">Santiago Martinez</span> y <span style="color:var(--primary)">Lucas De Cesare</span> — <span style="color:var(--accent);">weerteck@gmail.com</span>
+      </div>
+    </section>
+    <button class="ir-comentarios" onclick="document.getElementById('comentarios').scrollIntoView({behavior:'smooth'})">
+      Ir a opiniones de la comunidad
+    </button>
+    <section class="public-comments-section" id="comentarios">
+      <h2>Opiniones y recomendaciones</h2>
+      <form id="comment-form">
+        <input type="text" id="comment-author" placeholder="Tu nombre (opcional)" maxlength="40" autocomplete="off"/>
+        <textarea id="comment-text" placeholder="Escribí tu comentario, opinión o recomendación..." rows="3" required maxlength="400"></textarea>
+        <button type="submit">Publicar comentario</button>
+      </form>
+      <ul class="comments-list" id="comments-list"></ul>
+      <div style="text-align:center;margin-top:1em;color:var(--accent);">
+        También podés escribirnos por <a href="https://wa.me/541125216302?text=Hola%20WeerTeck%2C%20tengo%20una%20consulta%20o%20opinión" target="_blank" rel="noopener">WhatsApp</a> o <a href="https://instagram.com/weerteck" target="_blank" rel="noopener">Instagram</a>.
+      </div>
+    </section>
   </main>
   <!-- Botones flotantes juntos (Instagram, WeerBot, WhatsApp) -->
   <div class="floating-btns">
@@ -441,6 +384,64 @@
       window.addEventListener('resize', () => { resize(); createLines(); });
       setTimeout(start, 70);
     })();
+
+    // Comentarios públicos (localStorage)
+    document.addEventListener('DOMContentLoaded', () => {
+      const commentsList = document.getElementById('comments-list');
+      function loadComments() {
+        commentsList.innerHTML = '';
+        let comments = [];
+        try {
+          comments = JSON.parse(localStorage.getItem('weer-comments') || '[]');
+        } catch {}
+        if (comments.length === 0) {
+          commentsList.innerHTML = "<li style='text-align:center;color:var(--accent);'>Sé el primero en dejar tu comentario.</li>";
+          return;
+        }
+        comments.slice().reverse().forEach(c => {
+          const li = document.createElement('li');
+          li.innerHTML = `<span class="comment-author">${c.author ? c.author : "Anónimo"}</span> <span class="comment-date">${c.date}</span><br>${c.text}`;
+          commentsList.appendChild(li);
+        });
+      }
+      loadComments();
+      document.getElementById('comment-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const author = document.getElementById('comment-author').value.trim();
+        const text = document.getElementById('comment-text').value.trim();
+        if (!text) return;
+        let comments = [];
+        try {
+          comments = JSON.parse(localStorage.getItem('weer-comments') || '[]');
+        } catch {}
+        comments.push({
+          author,
+          text,
+          date: new Date().toLocaleString('es-AR')
+        });
+        localStorage.setItem('weer-comments', JSON.stringify(comments));
+        document.getElementById('comment-author').value = '';
+        document.getElementById('comment-text').value = '';
+        loadComments();
+      });
+
+      // Formulario sumate
+      const formSumate = document.getElementById('form-sumate');
+      const estadoSumate = document.getElementById('sumate-estado');
+      formSumate.addEventListener('submit', function(e){
+        e.preventDefault();
+        const nombre = document.getElementById('sumate-nombre').value.trim();
+        const email = document.getElementById('sumate-email').value.trim();
+        const tipo = document.getElementById('sumate-tipo').value;
+        const msg = document.getElementById('sumate-msg').value.trim();
+        if (!email || !/\S+@\S+\.\S+/.test(email)) {
+          estadoSumate.innerHTML = "<div class='msg-error'>Poné un email válido.</div>";
+          return;
+        }
+        estadoSumate.innerHTML = "<div class='msg-exito'>¡Gracias por sumarte! Nos contactaremos a la brevedad.</div>";
+        formSumate.reset();
+      });
+    });
 
     // WeerBot: chat simulado
     (function () {
