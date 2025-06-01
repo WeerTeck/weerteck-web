@@ -412,6 +412,7 @@
         gap: 0.7em;
       }
     }
+    /* ====== Íconos flotantes y chat mejorado ====== */
     .floating-btns {
       position: fixed;
       bottom: 28px;
@@ -426,72 +427,127 @@
     .floating-btns > * {
       pointer-events: auto;
     }
-    @media (max-width:700px) {
-      .floating-btns { right: 10px; bottom: 12px;}
+    .btn-floating {
+      background: #fff;
+      box-shadow: 0 2px 18px #00fff744;
+      border-radius: 50%;
+      width: 48px;
+      height: 48px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 6px;
+      border: 2px solid #00fff7;
+      transition: box-shadow 0.18s, border-color 0.18s, transform 0.14s;
+      cursor: pointer;
+      outline: none;
     }
-    #weerbot-window {
-      display:none;
-      position:fixed;
-      bottom: 235px;
-      right: 24px;
-      width: 340px; max-width:90vw;
+    .btn-floating:hover, .btn-floating:focus {
+      box-shadow: 0 0 20px #00fff7cc;
+      border-color: #00d1ff;
+      transform: scale(1.11);
+    }
+    .btn-instagram svg { filter: none; }
+    .btn-whatsapp svg  { filter: none; }
+    .btn-weerbot svg   { filter: drop-shadow(0 0 12px #00fff7cc); }
+
+    /* Nuevo chat */
+    .weerbot-chat {
+      display: none;
+      position: fixed;
       z-index: 12000;
-      background: #0e1825f3;
-      border-radius: 22px;
-      border: 2.5px solid var(--primary);
+      bottom: 100px;
+      right: 24px;
+      width: 340px;
+      max-width: 95vw;
+      background: #11202aee;
+      border-radius: 18px;
       box-shadow: 0 8px 36px #00fff799;
-      padding: 0.7em 0 0 0;
-      font-family:Poppins,sans-serif;
-      color: #e0e0e0;
+      overflow: hidden;
+      border: 2.5px solid var(--primary);
+      animation: slideInBot 0.22s cubic-bezier(.7,1.4,.8,.94);
+      font-family: 'Poppins', sans-serif;
     }
-    #weerbot-window .weerbot-header {
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      padding:0.9em 1.3em 0.3em 1.3em;
+    @keyframes slideInBot {
+      0% { transform: translateY(80px) scale(0.93); opacity:0; }
+      100%{ transform: translateY(0) scale(1); opacity:1; }
     }
-    #weerbot-window .weerbot-header span {
-      font-weight:800;
-      color:var(--primary);
-      font-size:1.18em;
-      text-shadow: var(--glow);
+    .weerbot-chat-header {
+      background: linear-gradient(90deg,#00fff7 0%,#00d1ff 100%);
+      color: #232e3a;
+      font-weight: 800;
+      font-size: 1.1em;
+      padding: 0.7em 1.2em;
+      display: flex; justify-content: space-between; align-items: center;
     }
-    #weerbot-close {
-      background:none;
-      border:none;
-      color:var(--primary);
-      font-size:1.4em;
-      cursor:pointer;
-      font-weight:900;
-      padding:0 8px;
-      line-height:1;
-    }
-    #weerbot-messages {
-      min-height: 120px; max-height: 260px; overflow-y: auto; padding: 0.7em 1.1em 0.7em 1.1em;
-      font-size: 1em; color: #e0e0e0;
-    }
-    #weerbot-options {padding:0.7em 1.1em 1.3em 1.1em;}
-    #weerbot-options button {
-      display: block;
-      margin: 0.4em 0;
-      width: 100%;
-      background: linear-gradient(90deg,var(--primary),var(--accent));
-      color: #fff;
+    .weerbot-chat-header button {
+      background: none;
       border: none;
-      border-radius: 10px;
+      color: #232e3a;
+      font-size: 1.35em;
+      cursor: pointer;
+      font-weight: bold;
+      transition: color .16s;
+      padding: 0 8px;
+    }
+    .weerbot-chat-header button:hover { color: #e57373;}
+    .weerbot-chat-messages {
+      max-height: 250px;
+      min-height: 90px;
+      overflow-y: auto;
+      padding: 1em;
+      background: #0e1825e6;
+      color: #e0e0e0;
+      font-size: 1em;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7em;
+    }
+    .weerbot-chat-bubble {
+      padding: .7em 1em;
+      border-radius: 14px 14px 14px 5px;
+      margin-bottom: .3em;
+      background: #00fff722;
+      color: #00fff7;
+      font-weight: 600;
+      box-shadow: 0 2px 8px #00fff744;
+      max-width: 90%;
+      word-break: break-word;
+    }
+    .weerbot-chat-bubble.user {
+      background: #23354c;
+      color: #fff;
+      align-self: flex-end;
+      border-radius: 14px 14px 5px 14px;
+    }
+    .weerbot-chat-options {
+      padding: 1em;
+      background: #11202aee;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5em;
+    }
+    .weerbot-chat-options button {
+      background: linear-gradient(90deg,#00fff7,#00d1ff 90%);
+      color: #232e3a;
+      border: none;
+      border-radius: 9px;
       font-weight: 700;
-      padding: 0.75em 1em;
+      padding: 0.8em 1em;
       font-size: 1em;
       cursor: pointer;
-      box-shadow: 0 2px 8px var(--primary);
-      transition: background 0.2s, scale 0.15s;
+      box-shadow: 0 2px 12px #00fff733;
+      transition: background 0.15s, transform 0.12s;
       outline: none;
-      text-shadow: var(--glow);
     }
-    #weerbot-options button:hover {background: var(--primary); scale:1.03;}
-    #weerbot-options button:focus {outline: 2.5px solid var(--accent);}
+    .weerbot-chat-options button:hover {
+      background: linear-gradient(90deg,#00d1ff,#00fff7 90%);
+      transform: scale(1.04);
+    }
+    @media (max-width:700px) {
+      .floating-btns { right: 10px; bottom: 12px;}
+      .weerbot-chat { right: 0; width: 99vw !important; border-radius: 0; }
+    }
     @media (max-width:550px) {
-      #weerbot-window { width:98vw !important; right:1vw; }
+      .weerbot-chat { width:98vw !important; right:1vw; }
     }
     footer {
       background: linear-gradient(90deg, #18283b, #0a1018 90%);
@@ -661,27 +717,28 @@
       </div>
     </section>
   </main>
+  <!-- Botones flotantes actualizados -->
   <div class="floating-btns">
-    <a href="https://instagram.com/weerteck" class="btn-instagram-flotante" target="_blank" rel="noopener" title="Ir al Instagram de WeerTeck" aria-label="Ir al Instagram de WeerTeck">
-      <svg viewBox="0 0 24 24" width="37" height="37"><path d="M12 2.2c3.2 0 3.584.012 4.847.07 1.17.055 1.796.24 2.216.403a4.292 4.292 0 0 1 1.593.924c.443.444.73.973.924 1.593.163.42.348 1.046.403 2.216.058 1.263.07 1.646.07 4.847 0 3.2-.012 3.584-.07 4.847-.055 1.17-.24 1.796-.403 2.216a4.292 4.292 0 0 1-.924 1.593 4.292 4.292 0 0 1-1.593.924c-.42.163-1.046.348-2.216.403-1.263.058-1.646.07-4.847.07-3.2 0-3.584-.012-4.847-.07-1.17-.055-1.796-.24-2.216-.403a4.292 4.292 0 0 1-1.593-.924 4.292 4.292 0 0 1-.924-1.593c-.163-.42-.348-1.046-.403-2.216C2.212 15.631 2.2 15.247 2.2 12.047c0-3.2.012-3.584.07-4.847.055-1.17.24-1.796.403-2.216A4.292 4.292 0 0 1 3.597 3.39 4.292 4.292 0 0 1 5.19 2.466c.42-.163 1.046-.348 2.216-.403C8.416 2.212 8.8 2.2 12 2.2zm0-2.2C8.74 0 8.332.014 7.052.072 5.73.13 4.684.325 3.81.637a6.492 6.492 0 0 0-2.36 1.547A6.492 6.492 0 0 0 .637 4.19c-.312.874-.507 1.92-.565 3.242C.014 8.332 0 8.74 0 12c0 3.26.014 3.668.072 4.948.058 1.322.253 2.368.565 3.242a6.492 6.492 0 0 0 1.547 2.36 6.492 6.492 0 0 0 2.36 1.547c.874.312 1.92.507 3.242.565C8.332 23.986 8.74 24 12 24c3.26 0 3.668-.014 4.948-.072 1.322-.058 2.368-.253 3.242-.565a6.492 6.492 0 0 0 2.36-1.547 6.492 6.492 0 0 0 1.547-2.36c.312-.874.507-1.92.565-3.242.058-1.28.072-1.688.072-4.948s-.014-3.668-.072-4.948c-.058-1.322-.253-2.368-.565-3.242a6.492 6.492 0 0 0-1.547-2.36A6.492 6.492 0 0 0 20.19.637c-.874-.312-1.92-.507-3.242-.565C15.668.014 15.26 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a3.999 3.999 0 1 1 0-7.998 3.999 3.999 0 0 1 0 7.998zm7.844-10.406a1.44 1.44 0 1 1-2.88 0 1.44 1.44 0 0 1 2.88 0z"/></svg>
+    <a href="https://instagram.com/weerteck" class="btn-floating btn-instagram" target="_blank" aria-label="Instagram WeerTeck">
+      <svg width="36" height="36" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="8" fill="#fff"/><path d="M22.222 7.889a3.11 3.11 0 0 1 3.111 3.111v9.999a3.11 3.11 0 0 1-3.111 3.111h-9.999a3.11 3.11 0 0 1-3.111-3.111v-9.999a3.11 3.11 0 0 1 3.111-3.111h9.999zm-4.999 3.111a4.889 4.889 0 1 0 0 9.778 4.889 4.889 0 0 0 0-9.778zm0 1.333a3.556 3.556 0 1 1 0 7.111 3.556 3.556 0 0 1 0-7.111zm5.555-1.222a1.111 1.111 0 1 0 0 2.222 1.111 1.111 0 0 0 0-2.222z" fill="#E1306C"/></svg>
     </a>
-    <button id="weerbot-button" class="btn-weerbot-flotante" title="Abrir WeerBot" aria-label="Abrir WeerBot">
-      <svg viewBox="0 0 32 32" fill="none" width="37" height="37"><circle cx="16" cy="16" r="15" fill="#fff" stroke="#00fff7" stroke-width="2"/><ellipse cx="11.5" cy="14" rx="2" ry="2.2" fill="#00fff7"/><ellipse cx="20.5" cy="14" rx="2" ry="2.2" fill="#00fff7"/><rect x="11" y="19.2" width="10" height="2.2" rx="1.1" fill="#00d1ff"/><rect x="13" y="22.2" width="6" height="1.4" rx="0.7" fill="#00d1ff"/></svg>
+    <button id="weerbot-button" class="btn-floating btn-weerbot" title="Abrir WeerBot" aria-label="Abrir WeerBot">
+      <svg width="36" height="36" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="8" fill="#fff"/><ellipse cx="16" cy="15" rx="5" ry="5.5" fill="#00fff7"/><ellipse cx="13.5" cy="14.5" rx="1.2" ry="1.5" fill="#232e3a"/><ellipse cx="18.5" cy="14.5" rx="1.2" ry="1.5" fill="#232e3a"/><rect x="13" y="18" width="6" height="1.7" rx="0.85" fill="#00d1ff"/></svg>
     </button>
-    <a href="https://wa.me/541125216302?text=Hola%20WeerTeck%2C%20tengo%20una%20consulta%20o%20recomendaci%C3%B3n" class="btn-whatsapp-flotante" target="_blank" rel="noopener" title="Escribinos por WhatsApp" aria-label="Escribinos por WhatsApp">
-      <svg viewBox="0 0 32 32" fill="none" width="37" height="37"><circle cx="16" cy="16" r="15" fill="#fff" stroke="#00fff7" stroke-width="2"/><path d="M22.5 21.2c-.11-.06-2.63-1.31-3.05-1.46-.41-.15-.71-.22-1 .11-.3.34-1.15 1.46-1.41 1.77-.26.3-.52.34-.96.11-.44-.22-1.85-.68-3.52-2.17-1.3-1.16-2.18-2.6-2.43-3.04-.26-.44-.03-.64.2-.84.2-.19.44-.49.66-.73.22-.24.29-.43.44-.7.15-.27.07-.51-.04-.73-.11-.22-1-2.42-1.37-3.31-.36-.88-.73-.76-1-.77a1.02 1.02 0 0 0-.87.03c-.27.13-1.02 1-1.02 2.43 0 1.43 1.04 2.82 1.19 3.02.14.2 2.04 3.14 5.4 4.32 3.36 1.19 3.36.79 3.96.74.6-.05 1.96-.8 2.24-1.57.28-.77.28-1.43.19-1.57-.09-.14-.27-.22-.56-.37z" fill="#00fff7"/></svg>
+    <a href="https://wa.me/541125216302?text=Hola%20WeerTeck%2C%20tengo%20una%20consulta" class="btn-floating btn-whatsapp" target="_blank" aria-label="WhatsApp WeerTeck">
+      <svg width="36" height="36" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="8" fill="#fff"/><path fill="#25D366" d="M16 6.67A9.32 9.32 0 0 0 6.67 16c0 1.54.38 3.02 1.12 4.34L6 26l5.8-1.53A9.29 9.29 0 0 0 16 25.34c5.13 0 9.33-4.2 9.33-9.34S21.13 6.67 16 6.67zm0 16.67c-1.37 0-2.71-.36-3.88-1.06l-.28-.16-3.44.91.92-3.35-.18-.28A7.68 7.68 0 0 1 8.33 16a7.66 7.66 0 1 1 7.67 7.34zm4.2-5.54c-.23-.11-1.37-.67-1.58-.74-.21-.08-.36-.11-.5.11-.15.21-.57.74-.7.89-.13.15-.25.17-.46.06a6.29 6.29 0 0 1-1.85-1.14 6.98 6.98 0 0 1-1.29-1.59c-.13-.22-.01-.34.1-.45.11-.11.24-.29.36-.43.12-.14.16-.25.24-.42.08-.17.04-.32-.02-.44-.06-.11-.5-1.21-.68-1.66-.18-.44-.37-.38-.5-.39-.13 0-.28-.01-.44-.01-.15 0-.4.06-.61.29-.21.24-.8.79-.8 1.93 0 1.13.82 2.23.93 2.38.11.15 1.62 2.49 4.06 3.39.57.2 1 .32 1.34.41.56.14 1.07.12 1.47.07.45-.07 1.37-.56 1.56-1.1.19-.54.19-1 .14-1.1z"/></svg>
     </a>
   </div>
-  <div id="weerbot-window">
-    <div class="weerbot-header">
+  <!-- Nuevo chat flotante -->
+  <div id="weerbot-chat" class="weerbot-chat">
+    <div class="weerbot-chat-header">
       <span>🤖 WeerBot</span>
-      <button id="weerbot-close">×</button>
+      <button id="weerbot-close" title="Cerrar Chat">&times;</button>
     </div>
-    <div id="weerbot-messages">
-      <div style="color:#00d1ff;margin-bottom:1em;">¡Hola! Soy WeerBot.<br>Elegí una opción para informarte sobre el proyecto, prevención o sumarte.<br>
-      <span style="font-size:.97em;color:#b0bec5;">(¡Tocá una pregunta para empezar!)</span></div>
+    <div id="weerbot-messages" class="weerbot-chat-messages">
+      <div class="weerbot-chat-bubble bot">¡Hola! Soy WeerBot. ¿Sobre qué tema querés saber?</div>
     </div>
-    <div id="weerbot-options"></div>
+    <div id="weerbot-options" class="weerbot-chat-options"></div>
   </div>
   <footer>
     <div class="footer-links">
@@ -835,24 +892,14 @@
       });
     });
 
-    // WeerBot: cuestionario interactivo
-    (function () {
+    // WeerBot Mejorado
+    (() => {
       const weerbotBtn = document.getElementById('weerbot-button');
-      const weerbotWin = document.getElementById('weerbot-window');
+      const weerbotChat = document.getElementById('weerbot-chat');
       const weerbotClose = document.getElementById('weerbot-close');
       const weerbotMsgs = document.getElementById('weerbot-messages');
       const weerbotOptions = document.getElementById('weerbot-options');
-      function scrollDown() {
-        setTimeout(() => { weerbotMsgs.scrollTop = weerbotMsgs.scrollHeight; }, 40);
-      }
-      weerbotBtn.onclick = () => {
-        weerbotWin.style.display = 'block';
-        showStep('start');
-        scrollDown();
-      };
-      weerbotClose.onclick = () => {
-        weerbotWin.style.display = 'none';
-      };
+
       const steps = {
         start: {
           text: "¿Sobre qué tema querés saber?",
@@ -928,22 +975,31 @@
           ]
         }
       };
-      function showStep(stepKey) {
-        const step = steps[stepKey];
-        weerbotMsgs.innerHTML = `<div style="color:#00d1ff;margin-bottom:.8em;">${step.text}</div>`;
-        weerbotOptions.innerHTML = '';
-        for (const opt of step.options) {
-          const btn = document.createElement('button');
+
+      function showStep(key) {
+        weerbotMsgs.innerHTML = `<div class="weerbot-chat-bubble bot">${steps[key].text}</div>`;
+        weerbotOptions.innerHTML = "";
+        for (const opt of steps[key].options) {
+          const btn = document.createElement("button");
           btn.textContent = opt.label;
           if (opt.next) {
             btn.onclick = () => showStep(opt.next);
           } else if (opt.url) {
-            btn.onclick = () => window.open(opt.url, '_blank');
+            btn.onclick = () => window.open(opt.url, "_blank");
           }
           weerbotOptions.appendChild(btn);
         }
-        scrollDown();
+        setTimeout(() => { weerbotMsgs.scrollTop = weerbotMsgs.scrollHeight; }, 50);
       }
+
+      weerbotBtn.addEventListener("click", () => {
+        weerbotChat.style.display = "block";
+        showStep("start");
+        setTimeout(() => { weerbotMsgs.scrollTop = weerbotMsgs.scrollHeight; }, 80);
+      });
+      weerbotClose.addEventListener("click", () => {
+        weerbotChat.style.display = "none";
+      });
     })();
   </script>
 </body>
