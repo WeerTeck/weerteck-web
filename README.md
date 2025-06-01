@@ -412,12 +412,117 @@
         gap: 0.7em;
       }
     }
-    /* Floating buttons & WeerBot ... ya incluido arriba ... */
-    /* ... Footer ... */
+    .floating-btns {
+      position: fixed;
+      bottom: 28px;
+      right: 22px;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      align-items: flex-end;
+      pointer-events: none;
+    }
+    .floating-btns > * {
+      pointer-events: auto;
+    }
+    @media (max-width:700px) {
+      .floating-btns { right: 10px; bottom: 12px;}
+    }
+    #weerbot-window {
+      display:none;
+      position:fixed;
+      bottom: 235px;
+      right: 24px;
+      width: 340px; max-width:90vw;
+      z-index: 12000;
+      background: #0e1825f3;
+      border-radius: 22px;
+      border: 2.5px solid var(--primary);
+      box-shadow: 0 8px 36px #00fff799;
+      padding: 0.7em 0 0 0;
+      font-family:Poppins,sans-serif;
+      color: #e0e0e0;
+    }
+    #weerbot-window .weerbot-header {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:0.9em 1.3em 0.3em 1.3em;
+    }
+    #weerbot-window .weerbot-header span {
+      font-weight:800;
+      color:var(--primary);
+      font-size:1.18em;
+      text-shadow: var(--glow);
+    }
+    #weerbot-close {
+      background:none;
+      border:none;
+      color:var(--primary);
+      font-size:1.4em;
+      cursor:pointer;
+      font-weight:900;
+      padding:0 8px;
+      line-height:1;
+    }
+    #weerbot-messages {
+      min-height: 120px; max-height: 260px; overflow-y: auto; padding: 0.7em 1.1em 0.7em 1.1em;
+      font-size: 1em; color: #e0e0e0;
+    }
+    #weerbot-options {padding:0.7em 1.1em 1.3em 1.1em;}
+    #weerbot-options button {
+      display: block;
+      margin: 0.4em 0;
+      width: 100%;
+      background: linear-gradient(90deg,var(--primary),var(--accent));
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-weight: 700;
+      padding: 0.75em 1em;
+      font-size: 1em;
+      cursor: pointer;
+      box-shadow: 0 2px 8px var(--primary);
+      transition: background 0.2s, scale 0.15s;
+      outline: none;
+      text-shadow: var(--glow);
+    }
+    #weerbot-options button:hover {background: var(--primary); scale:1.03;}
+    #weerbot-options button:focus {outline: 2.5px solid var(--accent);}
+    @media (max-width:550px) {
+      #weerbot-window { width:98vw !important; right:1vw; }
+    }
+    footer {
+      background: linear-gradient(90deg, #18283b, #0a1018 90%);
+      text-align: center;
+      font-size: 1.09rem;
+      color: var(--muted);
+      padding: 1.5rem 0 4.5rem 0;
+      border-top: 2px solid var(--primary);
+      letter-spacing: 1px;
+      margin-top: auto;
+      box-shadow: 0 -4px 18px var(--primary);
+      border-radius: 20px 20px 0 0;
+    }
+    .footer-links { margin: 0.5em auto 1em auto;}
+    .footer-links a {
+      color: var(--primary);
+      font-weight: 600;
+      border-radius: 8px;
+      padding: 4px 12px;
+      transition: background 0.13s, color 0.13s;
+      margin: 0 1.5em;
+      text-decoration: none;
+    }
+    .footer-links a:hover, .footer-links a:focus {
+      background: var(--primary);
+      color: #232e3a;
+      text-decoration: none;
+    }
   </style>
 </head>
 <body>
-  <!-- FONDO TECNOLÓGICO -->
   <div class="bg-futuristic">
     <canvas id="bg-futuristic-canvas"></canvas>
   </div>
@@ -435,7 +540,7 @@
     </ul>
     <div class="nav-actions">
       <button class="btn-ig" onclick="window.open('https://instagram.com/weerteck','_blank')" title="Seguinos en Instagram">
-        <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.584.012 4.847.07 ..."/></svg>
+        <svg viewBox="0 0 24 24" width="22" height="22"><path d="M12 2.2c3.2 0 3.584.012 4.847.07 1.17.055 1.796.24 2.216.403a4.292 4.292 0 0 1 1.593.924c.443.444.73.973.924 1.593.163.42.348 1.046.403 2.216.058 1.263.07 1.646.07 4.847 0 3.2-.012 3.584-.07 4.847-.055 1.17-.24 1.796-.403 2.216a4.292 4.292 0 0 1-.924 1.593 4.292 4.292 0 0 1-1.593.924c-.42.163-1.046.348-2.216.403-1.263.058-1.646.07-4.847.07-3.2 0-3.584-.012-4.847-.07-1.17-.055-1.796-.24-2.216-.403a4.292 4.292 0 0 1-1.593-.924 4.292 4.292 0 0 1-.924-1.593c-.163-.42-.348-1.046-.403-2.216C2.212 15.631 2.2 15.247 2.2 12.047c0-3.2.012-3.584.07-4.847.055-1.17.24-1.796.403-2.216A4.292 4.292 0 0 1 3.597 3.39 4.292 4.292 0 0 1 5.19 2.466c.42-.163 1.046-.348 2.216-.403C8.416 2.212 8.8 2.2 12 2.2zm0-2.2C8.74 0 8.332.014 7.052.072 5.73.13 4.684.325 3.81.637a6.492 6.492 0 0 0-2.36 1.547A6.492 6.492 0 0 0 .637 4.19c-.312.874-.507 1.92-.565 3.242C.014 8.332 0 8.74 0 12c0 3.26.014 3.668.072 4.948.058 1.322.253 2.368.565 3.242a6.492 6.492 0 0 0 1.547 2.36 6.492 6.492 0 0 0 2.36 1.547c.874.312 1.92.507 3.242.565C8.332 23.986 8.74 24 12 24c3.26 0 3.668-.014 4.948-.072 1.322-.058 2.368-.253 3.242-.565a6.492 6.492 0 0 0 2.36-1.547 6.492 6.492 0 0 0 1.547-2.36c.312-.874.507-1.92.565-3.242.058-1.28.072-1.688.072-4.948s-.014-3.668-.072-4.948c-.058-1.322-.253-2.368-.565-3.242a6.492 6.492 0 0 0-1.547-2.36A6.492 6.492 0 0 0 20.19.637c-.874-.312-1.92-.507-3.242-.565C15.668.014 15.26 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a3.999 3.999 0 1 1 0-7.998 3.999 3.999 0 0 1 0 7.998zm7.844-10.406a1.44 1.44 0 1 1-2.88 0 1.44 1.44 0 0 1 2.88 0z"/></svg>
         Instagram
       </button>
     </div>
@@ -558,13 +663,13 @@
   </main>
   <div class="floating-btns">
     <a href="https://instagram.com/weerteck" class="btn-instagram-flotante" target="_blank" rel="noopener" title="Ir al Instagram de WeerTeck" aria-label="Ir al Instagram de WeerTeck">
-      <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.584.012 4.847.07 ..."/></svg>
+      <svg viewBox="0 0 24 24" width="37" height="37"><path d="M12 2.2c3.2 0 3.584.012 4.847.07 1.17.055 1.796.24 2.216.403a4.292 4.292 0 0 1 1.593.924c.443.444.73.973.924 1.593.163.42.348 1.046.403 2.216.058 1.263.07 1.646.07 4.847 0 3.2-.012 3.584-.07 4.847-.055 1.17-.24 1.796-.403 2.216a4.292 4.292 0 0 1-.924 1.593 4.292 4.292 0 0 1-1.593.924c-.42.163-1.046.348-2.216.403-1.263.058-1.646.07-4.847.07-3.2 0-3.584-.012-4.847-.07-1.17-.055-1.796-.24-2.216-.403a4.292 4.292 0 0 1-1.593-.924 4.292 4.292 0 0 1-.924-1.593c-.163-.42-.348-1.046-.403-2.216C2.212 15.631 2.2 15.247 2.2 12.047c0-3.2.012-3.584.07-4.847.055-1.17.24-1.796.403-2.216A4.292 4.292 0 0 1 3.597 3.39 4.292 4.292 0 0 1 5.19 2.466c.42-.163 1.046-.348 2.216-.403C8.416 2.212 8.8 2.2 12 2.2zm0-2.2C8.74 0 8.332.014 7.052.072 5.73.13 4.684.325 3.81.637a6.492 6.492 0 0 0-2.36 1.547A6.492 6.492 0 0 0 .637 4.19c-.312.874-.507 1.92-.565 3.242C.014 8.332 0 8.74 0 12c0 3.26.014 3.668.072 4.948.058 1.322.253 2.368.565 3.242a6.492 6.492 0 0 0 1.547 2.36 6.492 6.492 0 0 0 2.36 1.547c.874.312 1.92.507 3.242.565C8.332 23.986 8.74 24 12 24c3.26 0 3.668-.014 4.948-.072 1.322-.058 2.368-.253 3.242-.565a6.492 6.492 0 0 0 2.36-1.547 6.492 6.492 0 0 0 1.547-2.36c.312-.874.507-1.92.565-3.242.058-1.28.072-1.688.072-4.948s-.014-3.668-.072-4.948c-.058-1.322-.253-2.368-.565-3.242a6.492 6.492 0 0 0-1.547-2.36A6.492 6.492 0 0 0 20.19.637c-.874-.312-1.92-.507-3.242-.565C15.668.014 15.26 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a3.999 3.999 0 1 1 0-7.998 3.999 3.999 0 0 1 0 7.998zm7.844-10.406a1.44 1.44 0 1 1-2.88 0 1.44 1.44 0 0 1 2.88 0z"/></svg>
     </a>
     <button id="weerbot-button" class="btn-weerbot-flotante" title="Abrir WeerBot" aria-label="Abrir WeerBot">
-      <svg viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="15" fill="#fff" stroke="#00fff7" stroke-width="2"/><ellipse cx="11.5" cy="14" rx="2" ry="2.2" fill="#00fff7"/><ellipse cx="20.5" cy="14" rx="2" ry="2.2" fill="#00fff7"/><rect x="11" y="19.2" width="10" height="2.2" rx="1.1" fill="#00d1ff"/><rect x="13" y="22.2" width="6" height="1.4" rx="0.7" fill="#00d1ff"/></svg>
+      <svg viewBox="0 0 32 32" fill="none" width="37" height="37"><circle cx="16" cy="16" r="15" fill="#fff" stroke="#00fff7" stroke-width="2"/><ellipse cx="11.5" cy="14" rx="2" ry="2.2" fill="#00fff7"/><ellipse cx="20.5" cy="14" rx="2" ry="2.2" fill="#00fff7"/><rect x="11" y="19.2" width="10" height="2.2" rx="1.1" fill="#00d1ff"/><rect x="13" y="22.2" width="6" height="1.4" rx="0.7" fill="#00d1ff"/></svg>
     </button>
     <a href="https://wa.me/541125216302?text=Hola%20WeerTeck%2C%20tengo%20una%20consulta%20o%20recomendaci%C3%B3n" class="btn-whatsapp-flotante" target="_blank" rel="noopener" title="Escribinos por WhatsApp" aria-label="Escribinos por WhatsApp">
-      <!-- ... icono WhatsApp ... -->
+      <svg viewBox="0 0 32 32" fill="none" width="37" height="37"><circle cx="16" cy="16" r="15" fill="#fff" stroke="#00fff7" stroke-width="2"/><path d="M22.5 21.2c-.11-.06-2.63-1.31-3.05-1.46-.41-.15-.71-.22-1 .11-.3.34-1.15 1.46-1.41 1.77-.26.3-.52.34-.96.11-.44-.22-1.85-.68-3.52-2.17-1.3-1.16-2.18-2.6-2.43-3.04-.26-.44-.03-.64.2-.84.2-.19.44-.49.66-.73.22-.24.29-.43.44-.7.15-.27.07-.51-.04-.73-.11-.22-1-2.42-1.37-3.31-.36-.88-.73-.76-1-.77a1.02 1.02 0 0 0-.87.03c-.27.13-1.02 1-1.02 2.43 0 1.43 1.04 2.82 1.19 3.02.14.2 2.04 3.14 5.4 4.32 3.36 1.19 3.36.79 3.96.74.6-.05 1.96-.8 2.24-1.57.28-.77.28-1.43.19-1.57-.09-.14-.27-.22-.56-.37z" fill="#00fff7"/></svg>
     </a>
   </div>
   <div id="weerbot-window">
@@ -843,4 +948,3 @@
   </script>
 </body>
 </html>
-
