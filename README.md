@@ -344,8 +344,6 @@
       letter-spacing:1px;
     }
     .ir-comentarios:hover {background:var(--primary); scale:1.03;}
-
-    /* Flotantes: contenedor y botones */
     .flotantes-columna {
       position: fixed;
       bottom: 26px;
@@ -381,7 +379,6 @@
     }
     .flotante-btn.weerbot:hover { background: var(--bot-grad2);}
     @keyframes flotar { to { transform: translateY(-8px) scale(1.05);} }
-    /* Chatbot */
     #chatbot-box {
       display: none; position: fixed; bottom: 95px; right: 30px; width: 340px; max-width: 96vw;
       background: rgba(0, 188, 212, 0.99); border-radius: 20px; box-shadow: 0 8px 60px #00bcd4cc, 0 2px 16px #0008;
@@ -435,24 +432,161 @@
   </style>
 </head>
 <body>
-  <!-- ...[todo el contenido principal igual que antes]... -->
-
-  <!-- Botones flotantes abajo a la derecha -->
+  <nav>
+    <div class="nav-logo">WeerTeck</div>
+    <ul>
+      <li><a href="#top">Inicio</a></li>
+      <li><a href="#quienes">Quiénes somos</a></li>
+      <li><a href="#patagonia">¿Por qué Patagonia?</a></li>
+      <li><a href="#quehacemos">¿Qué hacemos?</a></li>
+      <li><a href="#weercoin">WeerCoin</a></li>
+      <li><a href="#aliados">Aliados</a></li>
+      <li><a href="#novedades">Novedades</a></li>
+      <li><a href="#sumate">Sumate</a></li>
+      <li><a href="#comentarios">Opiniones</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="btn-ig" onclick="window.open('https://instagram.com/weerteck','_blank')" title="Seguinos en Instagram">
+        <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.584.012 4.847.07 1.17.055 1.796.24 2.216.403a4.292 4.292 0 0 1 1.593.924c.443.444.73.973.924 1.593.163.42.348 1.046.403 2.216.058 1.263.07 1.646.07 4.847 0 3.2-.012 3.584-.07 4.847-.055 1.17-.24 1.796-.403 2.216a4.292 4.292 0 0 1-.924 1.593 4.292 4.292 0 0 1-1.593.924c-.42.163-1.046.348-2.216.403-1.263.058-1.646.07-4.847.07-3.2 0-3.584-.012-4.847-.07-1.17-.055-1.796-.24-2.216-.403a4.292 4.292 0 0 1-1.593-.924 4.292 4.292 0 0 1-.924-1.593c-.163-.42-.348-1.046-.403-2.216C2.212 15.631 2.2 15.247 2.2 12.047c0-3.2.012-3.584.07-4.847.055-1.17.24-1.796.403-2.216A4.292 4.292 0 0 1 3.597 3.39 4.292 4.292 0 0 1 5.19 2.466c.42-.163 1.046-.348 2.216-.403C8.416 2.212 8.8 2.2 12 2.2zm0-2.2C8.74 0 8.332.014 7.052.072 5.73.13 4.684.325 3.81.637a6.492 6.492 0 0 0-2.36 1.547A6.492 6.492 0 0 0 .637 4.19c-.312.874-.507 1.92-.565 3.242C.014 8.332 0 8.74 0 12c0 3.26.014 3.668.072 4.948.058 1.322.253 2.368.565 3.242a6.492 6.492 0 0 0 1.547 2.36 6.492 6.492 0 0 0 2.36 1.547c.874.312 1.92.507 3.242.565C8.332 23.986 8.74 24 12 24c3.26 0 3.668-.014 4.948-.072 1.322-.058 2.368-.253 3.242-.565a6.492 6.492 0 0 0 2.36-1.547 6.492 6.492 0 0 0 1.547-2.36c.312-.874.507-1.92.565-3.242.058-1.28.072-1.688.072-4.948s-.014-3.668-.072-4.948c-.058-1.322-.253-2.368-.565-3.242a6.492 6.492 0 0 0-1.547-2.36A6.492 6.492 0 0 0 20.19.637c-.874-.312-1.92-.507-3.242-.565C15.668.014 15.26 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a3.999 3.999 0 1 1 0-7.998 3.999 3.999 0 0 1 0 7.998zm7.844-10.406a1.44 1.44 0 1 1-2.88 0 1.44 1.44 0 0 1 2.88 0z"/></svg>
+        Instagram
+      </button>
+    </div>
+  </nav>
+  <header>
+    <a id="top"></a>
+    <div class="hero">
+      <h1>Concientización contra incendios en Patagonia</h1>
+      <div class="subtitulo">
+        Prevenir y actuar juntos por nuestros bosques y comunidades.<br>
+        Tecnología, compromiso y acción desde la Patagonia para el país.
+      </div>
+      <button class="cta" onclick="document.getElementById('sumate').scrollIntoView({behavior:'smooth'})">
+        ¡Sumate a la campaña!
+      </button>
+    </div>
+    <div class="banner-revision">
+      🚀 Esta página está en constante revisión y mejora para ofrecerte la mejor experiencia y recursos actualizados. ¡Gracias por tu visita!
+    </div>
+  </header>
+  <main>
+    <section id="quienes">
+      <h2>¿Quiénes somos?</h2>
+      <ul class="team-list">
+        <li><strong>Lucas De Cesare</strong> — Creador del proyecto, programador y creador de la criptomoneda WeerCoin.</li>
+        <li><strong>Santiago Martinez</strong> — Creador del proyecto.</li>
+      </ul>
+      <p>
+        Somos dos jóvenes comprometidos en crear soluciones tecnológicas y comunitarias para enfrentar los incendios forestales, especialmente en la Patagonia, una de las zonas más afectadas de Argentina.
+      </p>
+    </section>
+    <section id="patagonia">
+      <h2>¿Por qué Patagonia?</h2>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/8/85/Mapa_de_la_Patagonia.svg" class="mapa-patagonia" alt="Mapa de la Patagonia Argentina" loading="lazy"/>
+      <p>
+        La Patagonia es uno de los territorios más golpeados por incendios forestales en el país. Cada año, miles de hectáreas de bosque y vida silvestre se pierden, afectando a comunidades, turismo y biodiversidad. 
+      </p>
+      <p>
+        Concientizar y actuar en esta región es clave para prevenir tragedias, proteger la naturaleza y asegurar un futuro sustentable.
+      </p>
+    </section>
+    <section id="quehacemos">
+      <h2>¿Qué hacemos?</h2>
+      <p>
+        Desarrollamos <strong>torres inteligentes</strong> y estrategias comunitarias para detectar incendios en etapas tempranas, enviar alertas a brigadas, municipios y vecinos, y facilitar la respuesta rápida.
+      </p>
+      <p>
+        Además, promovemos la educación y la acción colectiva para prevenir incendios y minimizar impactos.
+      </p>
+    </section>
+    <section id="weercoin">
+      <h2>WeerCoin: nuestra criptomoneda para financiar las torres</h2>
+      <p>
+        Creamos <strong>WeerCoin</strong>, una criptomoneda pensada como herramienta de financiación colectiva para la instalación de torres inteligentes en la Patagonia y otras regiones de riesgo.
+      </p>
+      <ul>
+        <li>Cualquier persona, ONG o municipio puede sumarse y aportar comprando WeerCoin.</li>
+        <li>La recaudación se usará íntegramente para fabricar e instalar más torres de prevención de incendios.</li>
+        <li>Transparencia total: vas a poder ver el avance del proyecto y el destino de los fondos.</li>
+        <li>¡Próximamente más info y cómo participar!</li>
+      </ul>
+      <p style="font-size:0.98em;color:var(--accent);margin-top:0.7em;">
+        ¿Querés ser de los primeros en enterarte? <a href="#sumate" style="color:var(--primary);">Sumate a la campaña</a> y te avisamos.
+      </p>
+    </section>
+    <section class="acciones-box">
+      <h3>¿Qué podés hacer vos para prevenir incendios?</h3>
+      <ul>
+        <li>Informate y compartí recomendaciones sobre el uso responsable del fuego.</li>
+        <li>Participá en campañas y jornadas de concientización.</li>
+        <li>Alertá a las autoridades ante cualquier columna de humo o situación sospechosa.</li>
+        <li>No dejes basura ni vidrios en zonas naturales.</li>
+        <li>Sumate a proyectos y movimientos ambientales.</li>
+      </ul>
+    </section>
+    <section id="aliados">
+      <h2>Ranking de aliados y apoyos</h2>
+      <ul class="aliados-list">
+        <li class="aliados-nuevo"><strong>¿Tu ONG, municipio o grupo?</strong> <br><span style="color:#fff;">Sumate desde la sección <a href="#sumate" style="color:var(--accent);">Sumate</a></span></li>
+      </ul>
+    </section>
+    <section id="novedades">
+      <h2>Novedades y próximos eventos</h2>
+      <p style="color:var(--muted);margin:1.2em 0 0.8em 0;">No hay novedades ni eventos disponibles por el momento.</p>
+    </section>
+    <section id="sumate" class="sumate-section">
+      <h2>Sumate a la campaña</h2>
+      <p>
+        Si querés colaborar, hacer una campaña publicitaria, sumar tu ONG o tu municipio, o simplemente recibir novedades, completá este formulario. ¡Te contactamos!
+      </p>
+      <form id="form-sumate" autocomplete="off">
+        <label for="sumate-nombre">Nombre y apellido</label>
+        <input type="text" id="sumate-nombre" maxlength="60" placeholder="Tu nombre completo" />
+        <label for="sumate-email">Email de contacto <span style="color:var(--danger);">*</span></label>
+        <input type="email" id="sumate-email" required maxlength="60" placeholder="tunombre@email.com" />
+        <label for="sumate-tipo">¿Cómo querés sumarte?</label>
+        <select id="sumate-tipo">
+          <option value="Campaña publicitaria">Campaña publicitaria</option>
+          <option value="ONG / Municipio">ONG / Municipio</option>
+          <option value="Voluntario/a">Voluntario/a</option>
+          <option value="WeerCoin">Aportar con WeerCoin</option>
+          <option value="Otro">Otro</option>
+        </select>
+        <label for="sumate-msg">Mensaje</label>
+        <textarea id="sumate-msg" rows="3" maxlength="300" placeholder="Contanos tu idea o consulta"></textarea>
+        <button type="submit">Enviar</button>
+        <div id="sumate-estado"></div>
+      </form>
+      <div style="margin-top:1em;font-size:.98em;color:var(--muted);text-align:center;">
+        Contacto: <span style="color:var(--accent);">weerteck@gmail.com</span>
+      </div>
+    </section>
+    <button class="ir-comentarios" onclick="document.getElementById('comentarios').scrollIntoView({behavior:'smooth'})">
+      Ir a opiniones de la comunidad
+    </button>
+    <section class="public-comments-section" id="comentarios">
+      <h2>Opiniones y recomendaciones</h2>
+      <form id="comment-form">
+        <input type="text" id="comment-author" placeholder="Tu nombre (opcional)" maxlength="40" autocomplete="off"/>
+        <textarea id="comment-text" placeholder="Escribí tu comentario, opinión o recomendación..." rows="3" required maxlength="400"></textarea>
+        <button type="submit">Publicar comentario</button>
+      </form>
+      <ul class="comments-list" id="comments-list"></ul>
+      <div style="text-align:center;margin-top:1em;color:var(--accent);">
+        También podés escribirnos por <a href="https://wa.me/541125216302?text=Hola%20WeerTeck%2C%20tengo%20una%20consulta%20o%20opinión" target="_blank" rel="noopener">WhatsApp</a> o <a href="https://instagram.com/weerteck" target="_blank" rel="noopener">Instagram</a>.
+      </div>
+    </section>
+  </main>
   <div class="flotantes-columna">
-    <!-- WhatsApp -->
     <a href="https://wa.me/541125216302?text=Hola%20WeerTeck%2C%20quiero%20más%20info" class="flotante-btn whatsapp" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.52 3.48A11.86 11.86 0 0 0 12 0C5.37 0 0 5.37 0 12a11.93 11.93 0 0 0 2.07 6.57L0 24l5.6-2.07A11.9 11.9 0 0 0 12 24c6.63 0 12-5.37 12-12a11.84 11.84 0 0 0-3.48-8.52zM12 21.4a9.4 9.4 0 0 1-4.78-1.41l-.34-.21-3.32 1.23 1.2-3.23-.22-.34A9.44 9.44 0 1 1 21.4 12a9.37 9.37 0 0 1-9.4 9.4zm5.32-7.21c-.29-.15-1.71-.84-1.97-.94-.26-.11-.45-.15-.64.15s-.74.94-.9 1.13c-.16.19-.32.21-.6.07a6.71 6.71 0 0 1-1.97-1.21 7.32 7.32 0 0 1-1.36-1.68c-.14-.25-.02-.38.11-.53.12-.12.26-.32.39-.48a.72.72 0 0 0 .11-.3.43.43 0 0 0-.06-.3c-.2-.45-.57-1.18-.8-1.6-.21-.4-.43-.34-.6-.34a1.36 1.36 0 0 0-.65.06c-.23.1-.89.86-.89 2.1s.91 2.43 1.03 2.6c.11.18 1.78 2.71 4.3 3.8a13.61 13.61 0 0 0 1.89.66c.8.27 1.53.23 2.11.14a6.69 6.69 0 0 0 2.03-.82 7.7 7.7 0 0 0 2.72-2.47 9.56 9.56 0 0 0-3.41-2.55z"/></svg>
     </a>
-    <!-- Instagram -->
     <a href="https://instagram.com/weerteck" class="flotante-btn instagram" target="_blank" rel="noopener" title="Instagram WeerTeck" aria-label="Ir al Instagram de WeerTeck">
       <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.584.012 4.847.07 1.17.055 1.796.24 2.216.403a4.292 4.292 0 0 1 1.593.924c.443.444.73.973.924 1.593.163.42.348 1.046.403 2.216.058 1.263.07 1.646.07 4.847 0 3.2-.012 3.584-.07 4.847-.055 1.17-.24 1.796-.403 2.216a4.292 4.292 0 0 1-.924 1.593 4.292 4.292 0 0 1-1.593.924c-.42.163-1.046.348-2.216.403-1.263.058-1.646.07-4.847.07-3.2 0-3.584-.012-4.847-.07-1.17-.055-1.796-.24-2.216-.403a4.292 4.292 0 0 1-1.593-.924 4.292 4.292 0 0 1-.924-1.593c-.163-.42-.348-1.046-.403-2.216C2.212 15.631 2.2 15.247 2.2 12.047c0-3.2.012-3.584.07-4.847.055-1.17.24-1.796.403-2.216A4.292 4.292 0 0 1 3.597 3.39 4.292 4.292 0 0 1 5.19 2.466c.42-.163 1.046-.348 2.216-.403C8.416 2.212 8.8 2.2 12 2.2zm0-2.2C8.74 0 8.332.014 7.052.072 5.73.13 4.684.325 3.81.637a6.492 6.492 0 0 0-2.36 1.547A6.492 6.492 0 0 0 .637 4.19c-.312.874-.507 1.92-.565 3.242C.014 8.332 0 8.74 0 12c0 3.26.014 3.668.072 4.948.058 1.322.253 2.368.565 3.242a6.492 6.492 0 0 0 1.547 2.36 6.492 6.492 0 0 0 2.36 1.547c.874.312 1.92.507 3.242.565C8.332 23.986 8.74 24 12 24c3.26 0 3.668-.014 4.948-.072 1.322-.058 2.368-.253 3.242-.565a6.492 6.492 0 0 0 2.36-1.547 6.492 6.492 0 0 0 1.547-2.36c.312-.874.507-1.92.565-3.242.058-1.28.072-1.688.072-4.948s-.014-3.668-.072-4.948c-.058-1.322-.253-2.368-.565-3.242a6.492 6.492 0 0 0-1.547-2.36A6.492 6.492 0 0 0 20.19.637c-.874-.312-1.92-.507-3.242-.565C15.668.014 15.26 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a3.999 3.999 0 1 1 0-7.998 3.999 3.999 0 0 1 0 7.998zm7.844-10.406a1.44 1.44 0 1 1-2.88 0 1.44 1.44 0 0 1 2.88 0z"/></svg>
     </a>
-    <!-- WeerBot -->
     <button id="chatbot-btn" class="flotante-btn weerbot" aria-label="Abrir chat con WeerBot" title="¿Necesitás ayuda?">
       <svg viewBox="0 0 32 32"><path d="M16 3C8.27 3 2 8.48 2 15c0 2.94 1.47 5.63 4 7.76V29a1 1 0 0 0 1.51.86l5.1-3.06c.42.05.85.08 1.39.08 7.73 0 14-5.48 14-12S23.73 3 16 3zm0 22c-.61 0-1.19-.04-1.77-.11a1 1 0 0 0-.62.13L7 27.13V24.7a1 1 0 0 0-.39-.79C4.44 21.95 3 18.63 3 15c0-5.52 5.82-10 13-10s13 4.48 13 10-5.82 10-13 10z"/></svg>
     </button>
   </div>
-  <!-- Caja de WeerBot -->
   <div id="chatbot-box" role="dialog" aria-modal="true" aria-label="Chatbot WeerBot">
     <div id="chatbot-header">
       <span>WeerBot 🤖</span>
@@ -464,8 +598,17 @@
       <button id="chatbot-send" type="submit">Siguiente</button>
     </form>
   </div>
-  <!-- Tu contenido principal, footer y scripts como antes -->
-
+  <footer>
+    <div class="footer-links">
+      <a href="#top">↑ Volver arriba</a>
+      <a href="mailto:weerteck@gmail.com">Contacto</a>
+      <a href="https://instagram.com/weerteck" target="_blank" rel="noopener">Instagram</a>
+    </div>
+    <div>
+      &copy; 2025 WeerTeck — Todos los derechos reservados<br>
+      <span style="font-size:.93em;color:var(--accent);">Página en revisión y mejora continua.</span>
+    </div>
+  </footer>
   <script>
     // Comentarios públicos (localStorage)
     document.addEventListener('DOMContentLoaded', () => {
@@ -646,4 +789,3 @@
   </script>
 </body>
 </html>
-
