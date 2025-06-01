@@ -37,14 +37,21 @@
     .bg-futuristic {
       position: fixed;
       inset: 0;
-      pointer-events: none;
+      width: 100vw;
+      height: 100vh;
       z-index: 0;
-      width: 100vw; height: 100vh;
-      overflow: hidden;
+      pointer-events: none;
       background: none;
-      /* fallback */
     }
-    /* Nav y Header */
+    #bg-futuristic-canvas {
+      width: 100vw;
+      height: 100vh;
+      display: block;
+    }
+    header, main, nav, footer, .hero, .acciones-box, .sumate-section, .public-comments-section {
+      position: relative;
+      z-index: 1;
+    }
     nav {
       position: fixed; top: 0; left: 0; right: 0;
       height: 60px;
@@ -124,10 +131,9 @@
       max-width: 750px;
       padding: 2.5em 1.7em 2.2em 1.7em;
       position: relative;
-      z-index: 2;
+      z-index: 1;
       border: 2.5px solid var(--primary);
       overflow: hidden;
-      /* backdrop-filter: blur(1px); */
     }
     .hero h1 {
       font-weight: 900;
@@ -181,243 +187,9 @@
       backdrop-filter: blur(1.2px);
     }
     main { max-width: 820px; width: 97%; margin: auto; padding-bottom: 2em;}
-    section {
-      margin-bottom: 2.8em;
-      padding: 1.2em 0.7em;
-    }
-    h1, h2, h3 {
-      letter-spacing: 1.2px;
-      font-weight: 800;
-      margin-bottom: 0.2em;
-      text-shadow: var(--glow);
-    }
-    h1 {
-      font-size: 2.8rem;
-      margin-bottom: 0.5em;
-    }
-    h2 {
-      color: var(--primary);
-      font-size: 1.55em;
-      margin-bottom: 0.6em;
-    }
-    h3 {
-      color: var(--accent);
-      margin-bottom: 0.3em;
-      font-size: 1.1em;
-    }
-    p { font-size: 1.07rem; margin-bottom: 1.1em;}
-    .team-list, .aliados-list, .news-list { list-style: none; padding: 0; }
-    .team-list li {
-      background: linear-gradient(90deg, #17293a 95%, #00fff722);
-      border-radius: var(--radius);
-      margin-bottom: 1.2em;
-      padding: 1.1em 2em;
-      color: var(--text);
-      box-shadow: var(--shadow);
-      display: flex; align-items: center; gap: 2em;
-      border-left: 7px solid var(--primary);
-      flex-direction: row;
-      transition: box-shadow 0.22s, background 0.3s;
-    }
-    .team-list .team-creator {
-      color: var(--primary);
-      font-weight: 700;
-      font-size: 1.13em;
-      margin-bottom: 0.2em;
-      text-shadow: var(--glow);
-    }
-    .aliados-list { display:grid; grid-template-columns: repeat(auto-fit,minmax(210px,1fr)); gap:1em;}
-    .aliados-list li {
-      background: linear-gradient(90deg, #15202e 60%, #00d1ff11 100%);
-      border-radius: var(--radius);
-      border-left: 5px solid var(--accent);
-      box-shadow: var(--shadow);
-      padding: 1.1em 1.2em;
-      transition: box-shadow 0.22s;
-    }
-    .aliados-nuevo {
-      background: #4caf5044;
-      border-left: 5px solid var(--success);
-    }
-    .news-list li {
-      background: linear-gradient(90deg, #232e3aee 80%, #00d1ff11 100%);
-      border-radius: var(--radius);
-      margin-bottom: 0.8em;
-      padding: 0.7em 1.2em;
-      color: var(--accent);
-      border-left: 4px solid var(--accent);
-      font-size: 1.05em;
-      box-shadow: var(--shadow);
-      transition: box-shadow 0.22s;
-    }
-    .mapa-patagonia {
-      width: 100%; max-width: 410px; margin: 1.2em auto 1.1em auto; display: block;
-      border-radius: 13px; box-shadow: 0 2px 18px var(--primary);
-      border: 2px solid var(--primary);
-      filter: grayscale(0.15) brightness(0.93);
-    }
-    .acciones-box {
-      background: linear-gradient(100deg,#232e3add 70%,var(--primary) 100%);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 1.2em 1.5em;
-      margin-bottom: 1.7em;
-      border-left: 7px solid var(--primary);
-      transition: box-shadow 0.22s, background 0.3s;
-    }
-    .acciones-box ul { margin-top: 0.4em; margin-bottom: 0;}
-    .acciones-box li { margin-bottom: 0.7em; color: var(--accent);}
-    .sumate-section {
-      background: linear-gradient(120deg, #18283b 90%, #00fff71a);
-      border-radius: var(--radius);
-      padding: 2em 1em 2em 1em;
-      box-shadow: var(--shadow);
-      border: 2.5px solid var(--primary);
-      margin-bottom: 2.3em;
-      transition: box-shadow 0.22s, background 0.3s;
-    }
-    .sumate-section label { display: block; margin-bottom: 0.4em; color: var(--accent); font-weight: 600;}
-    .sumate-section input, .sumate-section textarea, .sumate-section select {
-      width: 100%; max-width: 420px;
-      padding: 0.7em 1.2em;
-      border-radius: 11px;
-      border: 1.7px solid var(--accent);
-      font-size: 1em;
-      background: #e0f7fa;
-      color: #18283b;
-      margin-bottom: 1em;
-      transition: border-color 0.18s, box-shadow 0.18s;
-    }
-    .sumate-section input:focus, .sumate-section textarea:focus, .sumate-section select:focus {
-      border-color: var(--primary);
-      box-shadow: 0 0 0 2.5px #00fff75a;
-      outline: none;
-    }
-    .sumate-section button {
-      background: linear-gradient(90deg, var(--primary), var(--accent));
-      color: #fff;
-      padding: 0.8em 2.1em;
-      border: none;
-      border-radius: 11px;
-      font-weight: 700;
-      font-size: 1em;
-      cursor: pointer;
-      box-shadow: 0 2px 12px var(--primary);
-      transition: background 0.2s, scale 0.2s, box-shadow 0.22s;
-      margin-top: 0.2em;
-      outline: none;
-    }
-    .sumate-section button:hover { background: var(--primary); scale:1.04;}
-    .msg-exito, .msg-error {
-      text-align:center; font-weight:600; margin-bottom:1em; margin-top:0.1em;
-      border-radius:10px; padding:0.6em 0;
-    }
-    .msg-exito { background: #4caf50cc; color: #fff;}
-    .msg-error { background: #e57373cc; color: #fff;}
-    .public-comments-section {
-      background: linear-gradient(120deg, var(--primary) 60%, var(--accent) 40%, #232e3a88);
-      border-radius: var(--radius);
-      padding: 2.3em 1em;
-      box-shadow: var(--shadow);
-      border: 2.5px solid var(--primary);
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
-      margin-bottom:2em;
-      transition: box-shadow 0.22s, background 0.3s;
-    }
-    .public-comments-section h2 {
-      text-align: center;
-      margin-bottom: 1.1em;
-      color: var(--primary);
-    }
-    #comment-form {
-      display: flex;
-      flex-direction: column;
-      gap: 0.8em;
-      margin-bottom: 1.5em;
-      align-items: center;
-    }
-    #comment-form input, #comment-form textarea {
-      width: 95%;
-      max-width: 480px;
-      padding: 0.7em 1.2em;
-      border-radius: 11px;
-      border: 1.7px solid var(--accent);
-      font-size: 1em;
-      background: #e0f7fa;
-      color: #18283b;
-      transition: border-color 0.18s, box-shadow 0.18s;
-    }
-    #comment-form input:focus, #comment-form textarea:focus {
-      border-color: var(--primary);
-      box-shadow: 0 0 0 2.5px #00fff75a;
-      outline: none;
-    }
-    #comment-form button {
-      background: linear-gradient(90deg, var(--primary), var(--accent));
-      color: #fff;
-      padding: 0.7em 1.8em;
-      border: none;
-      border-radius: 10px;
-      font-weight: 700;
-      font-size: 1em;
-      cursor: pointer;
-      box-shadow: 0 2px 10px var(--primary);
-      transition: background 0.2s, box-shadow 0.22s;
-      outline: none;
-    }
-    #comment-form button:hover { background: var(--primary);}
-    .comments-list {
-      margin-top: 0.7em;
-      list-style: none;
-      padding: 0;
-      max-width: 650px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .comments-list li {
-      background: #13202eaa;
-      border-radius: 12px;
-      margin-bottom: 1.7em;
-      padding: 1em 1.2em;
-      color: var(--text);
-      box-shadow: var(--shadow);
-      border-left: 4px solid var(--primary);
-      transition: box-shadow 0.15s;
-    }
-    .comments-list li:hover {
-      box-shadow: 0 4px 20px #00fff744;
-    }
-    .comments-list .comment-author {
-      font-weight: bold;
-      color: var(--primary);
-      margin-bottom: 0.2em;
-    }
-    .comments-list .comment-date {
-      font-size: 0.93em;
-      color: var(--accent);
-      float: right;
-    }
-    .ir-comentarios {
-      display:inline-block;
-      margin:.7em auto 1.1em auto;
-      padding:.7em 1.7em;
-      background:linear-gradient(90deg,var(--primary),var(--accent));
-      color:#fff;
-      font-weight:700;
-      border-radius:99px;
-      border:none;
-      font-size:1.06em;
-      box-shadow:0 2px 18px #00fff744;
-      cursor:pointer;
-      transition:background .2s,scale .2s, box-shadow 0.22s;
-      letter-spacing:1.1px;
-      outline:none;
-      text-shadow: var(--glow);
-    }
-    .ir-comentarios:hover {background:var(--primary); scale:1.03;}
-    /* Botones flotantes: uno arriba del otro */
+    /* ... El resto de tu CSS de contenido ... */
+    /* ... Mantén los estilos visuales que ya tienes ... */
+    /* Botones flotantes y WeerBot */
     .floating-btns {
       position: fixed;
       bottom: 32px;
@@ -521,52 +293,16 @@
     @media (max-width:550px) {
       #weerbot-window { width:98vw !important; right:1vw; }
     }
-    /* Footer y links */
-    footer {
-      text-align: center;
-      font-size: 1.09rem;
-      color: var(--muted);
-      padding: 1.5rem 0 2.5rem 0;
-      border-top: 2px solid var(--primary);
-      background: linear-gradient(90deg, #18283b, #0a1018 90%);
-      letter-spacing: 1px;
-      margin-top: auto;
-      box-shadow: 0 -4px 18px var(--primary);
-      border-radius: 20px 20px 0 0;
-    }
-    .footer-links { margin: 0.5em auto 1em auto;}
-    .footer-links a {
-      color: var(--primary);
-      font-weight: 600;
-      border-radius: 8px;
-      padding: 4px 12px;
-      transition: background 0.13s, color 0.13s;
-      margin: 0 1.5em;
-      text-decoration: none;
-    }
-    .footer-links a:hover, .footer-links a:focus {
-      background: var(--primary);
-      color: #232e3a;
-      text-decoration: none;
-    }
-    @media (max-width: 700px) {
-      .hero, .acciones-box, .sumate-section, .public-comments-section {
-        padding: 1.2em 0.6em;
-      }
-      .team-list li {
-        flex-direction: column;
-        padding: 1em 1em;
-        gap: 0.7em;
-      }
-    }
+    /* Footer y links ... tu CSS de footer ... */
   </style>
 </head>
 <body>
-  <!-- FONDO TECNO FUTURISTA -->
+  <!-- FONDO TECNOLÓGICO -->
   <div class="bg-futuristic">
     <canvas id="bg-futuristic-canvas"></canvas>
   </div>
   <nav>
+    <!-- ... nav igual que tu código ... -->
     <div class="nav-logo">WeerTeck</div>
     <ul>
       <li><a href="#top">Inicio</a></li>
@@ -580,8 +316,7 @@
     </ul>
     <div class="nav-actions">
       <button class="btn-ig" onclick="window.open('https://instagram.com/weerteck','_blank')" title="Seguinos en Instagram">
-        <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.584.012 4.847.07 1.17.055 1.796.24 2.216.403a4.292 4.292 0 0 1 1.593.924c.443.444.73.973.924 1.593.163.42.348 1.046.403 2.216.058 1.263.07 1.646.07 4.847 0 3.2-.012 3.584-.07 4.847-.055 1.17-.24 1.796-.403 2.216a4.292 4.292 0 0 1-.924 1.593 4.292 4.292 0 0 1-1.593.924c-.42.163-1.046.348-2.216.403-1.263.058-1.646.07-4.847.07-3.2 0-3.584-.012-4.847-.07-1.17-.055-1.796-.24-2.216-.403a4.292 4.292 0 0 1-1.593-.924 4.292 4.292 0 0 1-.924-1.593c-.163-.42-.348-1.046-.403-2.216C2.212 15.631 2.2 15.247 2.2 12.047c0-3.2.012-3.584.07-4.847.055-1.17.24-1.796.403-2.216A4.292 4.292 0 0 1 3.597 3.39 4.292 4.292 0 0 1 5.19 2.466c.42-.163 1.046-.348 2.216-.403C8.416 2.212 8.8 2.2 12 2.2zm0-2.2C8.74 0 8.332.014 7.052.072 5.73.13 4.684.325 3.81.637a6.492 6.492 0 0 0-2.36 1.547A6.492 6.492 0 0 0 .637 4.19c-.312.874-.507 1.92-.565 3.242C.014 8.332 0 8.74 0 12c0 3.26.014 3.668.072 4.948.058 1.322.253 2.368.565 3.242a6.492 6.492 0 0 0 1.547 2.36 6.492 6.492 0 0 0 2.36 1.547c.874.312 1.92.507 3.242.565C8.332 23.986 8.74 24 12 24c3.26 0 3.668-.014 4.948-.072 1.322-.058 2.368-.253 3.242-.565a6.492 6.492 0 0 0 2.36-1.547 6.492 6.492 0 0 0 1.547-2.36c.312-.874.507-1.92.565-3.242.058-1.28.072-1.688.072-4.948s-.014-3.668-.072-4.948c-.058-1.322-.253-2.368-.565-3.242a6.492 6.492 0 0 0-1.547-2.36A6.492 6.492 0 0 0 20.19.637c-.874-.312-1.92-.507-3.242-.565C15.668.014 15.26 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a3.999 3.999 0 1 1 0-7.998 3.999 3.999 0 0 1 0 7.998zm7.844-10.406a1.44 1.44 0 1 1-2.88 0 1.44 1.44 0 0 1 2.88 0z"/></svg>
-        Instagram
+        <svg viewBox="0 0 24 24" style="width:1.25em;height:1.25em;"><path d="M12 2.2c3.2 0 3.584.012 4.847.07 1.17.055 1.796.24 2.216.403a4.292 4.292 0 0 1 1.593.924c.443.444.73.973.924 1.593.163.42.348 1.046.403 2.216.058 1.263.07 1.646.07 4.847 0 3.2-.012 3.584-.07 4.847-.055 1.17-.24 1.796-.403 2.216a4.292 4.292 0 0 1-.924 1.593 4.292 4.292 0 0 1-1.593.924c-.42.163-1.046.348-2.216.403-1.263.058-1.646.07-4.847.07-3.2 0-3.584-.012-4.847-.07-1.17-.055-1.796-.24-2.216-.403a4.292 4.292 0 0 1-1.593-.924 4.292 4.292 0 0 1-.924-1.593c-.163-.42-.348-1.046-.403-2.216C2.212 15.631 2.2 15.247 2.2 12.047c0-3.2.012-3.584.07-4.847.055-1.17.24-1.796.403-2.216A4.292 4.292 0 0 1 3.597 3.39 4.292 4.292 0 0 1 5.19 2.466c.42-.163 1.046-.348 2.216-.403C8.416 2.212 8.8 2.2 12 2.2zm0-2.2C8.74 0 8.332.014 7.052.072 5.73.13 4.684.325 3.81.637a6.492 6.492 0 0 0-2.36 1.547A6.492 6.492 0 0 0 .637 4.19c-.312.874-.507 1.92-.565 3.242C.014 8.332 0 8.74 0 12c0 3.26.014 3.668.072 4.948.058 1.322.253 2.368.565 3.242a6.492 6.492 0 0 0 1.547 2.36 6.492 6.492 0 0 0 2.36 1.547c.874.312 1.92.507 3.242.565C8.332 23.986 8.74 24 12 24c3.26 0 3.668-.014 4.948-.072 1.322-.058 2.368-.253 3.242-.565a6.492 6.492 0 0 0 2.36-1.547 6.492 6.492 0 0 0 1.547-2.36c.312-.874.507-1.92.565-3.242.058-1.28.072-1.688.072-4.948s-.014-3.668-.072-4.948c-.058-1.322-.253-2.368-.565-3.242a6.492 6.492 0 0 0-1.547-2.36A6.492 6.492 0 0 0 20.19.637c-.874-.312-1.92-.507-3.242-.565C15.668.014 15.26 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a3.999 3.999 0 1 1 0-7.998 3.999 3.999 0 0 1 0 7.998zm7.844-10.406a1.44 1.44 0 1 1-2.88 0 1.44 1.44 0 0 1 2.88 0z"/></svg> Instagram
       </button>
     </div>
   </nav>
@@ -602,30 +337,19 @@
     </div>
   </header>
   <main>
-    <!-- ... El resto de tu contenido queda igual ... -->
-    <!-- OMITIDO POR BREVEDAD, puedes pegar tu HTML de main aquí tal cual -->
-    <!-- ... -->
-    <section id="sumate" class="sumate-section">
-      <!-- ... tu formulario ... -->
-    </section>
-    <button class="ir-comentarios" onclick="document.getElementById('comentarios').scrollIntoView({behavior:'smooth'})">
-      Ir a opiniones de la comunidad
-    </button>
-    <section class="public-comments-section" id="comentarios">
-      <!-- ... opiniones ... -->
-    </section>
+    <!-- ... tu contenido de main ... -->
+    <!-- Pega aquí todas tus secciones, formulario, comentarios, etc. -->
   </main>
   <!-- Botones flotantes juntos (Instagram, WeerBot, WhatsApp) -->
   <div class="floating-btns">
     <a href="https://instagram.com/weerteck" class="btn-instagram-flotante" target="_blank" rel="noopener" title="Ir al Instagram de WeerTeck" aria-label="Ir al Instagram de WeerTeck">
-      <!-- ... icono ... -->
+      <!-- ... icono Instagram ... -->
     </a>
-    <!-- WeerBot: solo este bloque cambiado -->
     <button id="weerbot-button" class="btn-weerbot-flotante" title="Abrir WeerBot" aria-label="Abrir WeerBot">
       <svg viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="15" fill="#fff" stroke="#00fff7" stroke-width="2"/><ellipse cx="11.5" cy="14" rx="2" ry="2.2" fill="#00fff7"/><ellipse cx="20.5" cy="14" rx="2" ry="2.2" fill="#00fff7"/><rect x="11" y="19.2" width="10" height="2.2" rx="1.1" fill="#00d1ff"/><rect x="13" y="22.2" width="6" height="1.4" rx="0.7" fill="#00d1ff"/></svg>
     </button>
     <a href="https://wa.me/541125216302?text=Hola%20WeerTeck%2C%20tengo%20una%20consulta%20o%20recomendaci%C3%B3n" class="btn-whatsapp-flotante" target="_blank" rel="noopener" title="Escribinos por WhatsApp" aria-label="Escribinos por WhatsApp">
-      <!-- ... icono ... -->
+      <!-- ... icono WhatsApp ... -->
     </a>
   </div>
   <!-- Ventana flotante del WeerBot (nuevo) -->
@@ -641,7 +365,7 @@
     <div id="weerbot-options"></div>
   </div>
   <footer>
-    <!-- ... tu footer ... -->
+    <!-- ... tu footer aquí ... -->
   </footer>
   <script>
     // FONDO FUTURISTA: Partículas tecnológicas en red
@@ -724,11 +448,6 @@
       window.addEventListener('resize', () => { resize(); createNodes(); });
       setTimeout(start, 100);
     })();
-
-    // Comentarios públicos (localStorage)
-    document.addEventListener('DOMContentLoaded', () => {
-      // ... tu sistema de comentarios ...
-    });
 
     // WeerBot: cuestionario interactivo
     (function () {
@@ -843,3 +562,4 @@
   </script>
 </body>
 </html>
+
