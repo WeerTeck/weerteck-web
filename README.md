@@ -9,10 +9,10 @@
   <link rel="icon" type="image/png" href="img/logo.png">
   <style>
     :root {
-      --primary: #00bcd4;
-      --accent: #80deea;
-      --secondary: #263238;
-      --dark: #121a23;
+      --primary: #0ff1ce;
+      --accent: #0e9cfb;
+      --secondary: #222934;
+      --dark: #171c23;
       --text: #e0e0e0;
       --light: #fff;
       --danger: #e57373;
@@ -26,61 +26,48 @@
       --bot-grad2: #80deea;
     }
     * { box-sizing: border-box; margin: 0; padding: 0;}
-    html { scroll-behavior: smooth;}
+    html, body { height: 100%; }
     body {
       font-family: 'Poppins', sans-serif;
-      background: transparent;
-      color: var(--text);
       min-height: 100vh;
       line-height: 1.6;
       position: relative;
       overflow-x: hidden;
       display: flex; flex-direction: column;
+      background: linear-gradient(120deg, #15181e 0%, #263248 100%);
     }
-    /* Fondo animado estilo tecnología */
+    /* Fondo animado líneas sutiles */
     .bg-animated {
       position: fixed;
       top: 0; left: 0; width: 100vw; height: 100vh;
       z-index: 0;
       pointer-events: none;
       overflow: hidden;
+      background: linear-gradient(120deg, #1a1e23 0%, #263248 100%);
+      animation: bgmove 22s linear infinite alternate;
+    }
+    @keyframes bgmove {
+      from { filter: hue-rotate(0deg);}
+      to   { filter: hue-rotate(40deg);}
     }
     .lines {
-      position: absolute;
-      width: 100vw; height: 100vh;
-      overflow: hidden;
+      position: absolute; width: 100vw; height: 100vh; top: 0; left: 0;
+      overflow: hidden; pointer-events: none;
     }
     .line {
       position: absolute;
-      width: 2px;
-      height: 100%;
-      background: linear-gradient(180deg, #00bcd4cc 0%, #121a23 100%);
+      width: 1.5px;
+      height: 120vh;
+      background: linear-gradient(180deg, #356cf9 0%, #0ff1ce 50%, #171c23 100%);
       opacity: 0.13;
       animation: moveLine 7s linear infinite;
+      border-radius: 6px;
+      filter: blur(0.3px);
     }
     @keyframes moveLine {
-      0% {transform: translateY(-100px);}
-      100% {transform: translateY(120px);}
+      0% {transform: translateY(-120px);}
+      100% {transform: translateY(60px);}
     }
-    .dots {
-      position: absolute;
-      width: 100vw; height: 100vh;
-      pointer-events: none;
-      z-index: 1;
-    }
-    .dot {
-      position: absolute;
-      width: 7px; height: 7px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #00bcd4 60%, #80deea 100%);
-      opacity: 0.21;
-      animation: moveDot 18s linear infinite;
-    }
-    @keyframes moveDot {
-      0% {transform: translateY(0);}
-      100% {transform: translateY(80vh);}
-    }
-    /* CONTENIDO PRINCIPAL */
     nav {
       position: fixed; top: 0; left: 0; right: 0;
       height: 58px;
@@ -146,9 +133,9 @@
     }
     header { margin-top: 58px; text-align: center; padding: 2.2em 0 1.2em 0;}
     .hero {
-      background: linear-gradient(100deg, #222a36 80%, #004d4044 100%);
+      background: linear-gradient(100deg, #242d39 80%, #263248 100%);
       border-radius: 16px;
-      box-shadow: 0 2px 28px #00bcd444;
+      box-shadow: 0 2px 28px #0e9cfb33;
       margin: 1.6em auto 1.3em auto;
       max-width: 750px;
       padding: 2.3em 1.5em 2em 1.5em;
@@ -160,7 +147,7 @@
       font-weight: 900;
       font-size: 2.6rem;
       color: var(--primary);
-      text-shadow: 0 0 18px var(--primary), 0 0 6px #00bcd466;
+      text-shadow: 0 0 18px var(--primary), 0 0 6px #0e9cfb88;
       letter-spacing: 2px;
       background: linear-gradient(90deg,var(--primary), var(--accent) 80%,#fff0);
       background-clip: text; -webkit-background-clip: text;
@@ -220,12 +207,12 @@
     p { font-size: 1.06rem; margin-bottom: 1.1em;}
     .team-list, .aliados-list, .news-list { list-style: none; padding: 0; }
     .team-list li, .aliados-list li {
-      background: #1a2733cc;
+      background: #212a35cc;
       border-radius: 9px;
       margin-bottom: 0.7em;
       padding: 0.5em 1em;
       color: var(--text);
-      box-shadow: 0 2px 10px #00bcd433;
+      box-shadow: 0 2px 10px #0e9cfb33;
       display: flex; align-items: center; gap: 0.7em;
       border-left: 5px solid var(--primary);
     }
@@ -236,7 +223,7 @@
       border-left: 5px solid var(--success);
     }
     .news-list li {
-      background: #222a36cc;
+      background: #242d39cc;
       border-radius: 7px;
       margin-bottom: 0.8em;
       padding: 0.7em 1em;
@@ -261,10 +248,10 @@
     .acciones-box ul { margin-top: 0.4em; margin-bottom: 0;}
     .acciones-box li { margin-bottom: 0.7em; color: var(--accent);}
     .sumate-section {
-      background: #1a2733cc;
+      background: #212a35cc;
       border-radius: 15px;
       padding: 1.7em 1em 1.6em 1em;
-      box-shadow: 0 2px 20px #00bcd444;
+      box-shadow: 0 2px 20px #0e9cfb44;
       border: 2px solid var(--primary);
       margin-bottom: 2.3em;
     }
@@ -315,6 +302,14 @@
       margin-bottom: 1.1em;
       color: var(--primary);
     }
+    .comments-counter {
+      text-align: center;
+      color: var(--accent);
+      margin: 0 0 1.3em 0;
+      font-size: 1.09em;
+      letter-spacing: 1px;
+      font-weight: 600;
+    }
     #comment-form {
       display: flex;
       flex-direction: column;
@@ -359,7 +354,7 @@
       margin-bottom: 1.2em;
       padding: 1em 1.2em;
       color: var(--text);
-      box-shadow: 0 2px 10px #00bcd433;
+      box-shadow: 0 2px 10px #0e9cfb33;
       border-left: 4px solid var(--primary);
     }
     .comments-list .comment-author {
@@ -479,7 +474,6 @@
   <!-- Fondo animado tecnología -->
   <div class="bg-animated" aria-hidden="true">
     <div class="lines"></div>
-    <div class="dots"></div>
   </div>
   <!-- CONTENIDO PRINCIPAL -->
   <nav>
@@ -610,11 +604,14 @@
         Contacto: <span style="color:var(--accent);">weerteck@gmail.com</span>
       </div>
     </section>
-    <button class="ir-comentarios" onclick="document.getElementById('comentarios').scrollIntoView({behavior:'smooth'})">
-      Ir a opiniones de la comunidad
+    <button class="ir-comentarios" id="btn-comentarios" onclick="document.getElementById('comentarios').scrollIntoView({behavior:'smooth'})">
+      Ir a opiniones de la comunidad (<span id="comments-count-btn">0</span>)
     </button>
     <section class="public-comments-section" id="comentarios">
       <h2>Opiniones y recomendaciones</h2>
+      <div class="comments-counter">
+        Comentarios publicados: <span id="comments-count">0</span>
+      </div>
       <form id="comment-form">
         <input type="text" id="comment-author" placeholder="Tu nombre (opcional)" maxlength="40" autocomplete="off"/>
         <textarea id="comment-text" placeholder="Escribí tu comentario, opinión o recomendación..." rows="3" required maxlength="400"></textarea>
@@ -660,33 +657,27 @@
       <span style="font-size:.93em;color:var(--accent);">Página en revisión y mejora continua.</span>
     </div>
   </footer>
-  <!-- FONDO TECNOLÓGICO ANIMADO -->
+  <!-- Fondo líneas animadas -->
   <script>
-    // Fondo animado líneas y dots
-    function randomInt(a,b){return Math.floor(Math.random()*(b-a+1))+a;}
-    // Líneas
+    // Fondo animado líneas
     const linesContainer = document.querySelector('.lines');
-    for(let i=0;i<15;i++){
+    for(let i=0;i<16;i++){
       let line=document.createElement('div');
       line.className='line';
-      line.style.left=randomInt(4,96)+'vw';
-      line.style.height=randomInt(78,100)+'vh';
+      line.style.left=(6+i*6.1)+'vw';
+      line.style.height=(80+Math.random()*20)+'vh';
       line.style.animationDelay = (Math.random()*7)+'s';
-      line.style.width = randomInt(1,3)+'px';
+      line.style.width = (1+Math.random()*1.5)+'px';
       linesContainer.appendChild(line);
     }
-    // Dots
-    const dotsContainer = document.querySelector('.dots');
-    for(let i=0;i<18;i++){
-      let dot=document.createElement('div');
-      dot.className='dot';
-      dot.style.left=randomInt(2,97)+'vw';
-      dot.style.top=randomInt(2,85)+'vh';
-      dot.style.animationDelay = (Math.random()*10)+'s';
-      dot.style.width = dot.style.height = randomInt(6,13)+'px';
-      dotsContainer.appendChild(dot);
+    // Comentarios públicos (localStorage) + contador
+    function updateCommentsCount() {
+      let comments = [];
+      try { comments = JSON.parse(localStorage.getItem('weer-comments') || '[]'); } catch {}
+      let n = comments.length;
+      document.getElementById('comments-count').textContent = n;
+      document.getElementById('comments-count-btn').textContent = n;
     }
-    // Comentarios públicos (localStorage)
     document.addEventListener('DOMContentLoaded', () => {
       const commentsList = document.getElementById('comments-list');
       function loadComments() {
@@ -697,13 +688,14 @@
         } catch {}
         if (comments.length === 0) {
           commentsList.innerHTML = "<li style='text-align:center;color:var(--accent);'>Sé el primero en dejar tu comentario.</li>";
-          return;
+        } else {
+          comments.slice().reverse().forEach(c => {
+            const li = document.createElement('li');
+            li.innerHTML = `<span class="comment-author">${c.author ? c.author : "Anónimo"}</span> <span class="comment-date">${c.date}</span><br>${c.text}`;
+            commentsList.appendChild(li);
+          });
         }
-        comments.slice().reverse().forEach(c => {
-          const li = document.createElement('li');
-          li.innerHTML = `<span class="comment-author">${c.author ? c.author : "Anónimo"}</span> <span class="comment-date">${c.date}</span><br>${c.text}`;
-          commentsList.appendChild(li);
-        });
+        updateCommentsCount();
       }
       loadComments();
       document.getElementById('comment-form').addEventListener('submit', function(e) {
