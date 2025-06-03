@@ -21,6 +21,8 @@
       --shadow: 0 6px 32px 0 #00fff755;
       --radius: 22px;
       --glow: 0 0 12px #00fff7cc, 0 0 32px #00fff733;
+      --pulse: 0 0 0 0 #00fff755;
+      --gold: #ffd700;
     }
     * { box-sizing: border-box; margin: 0; padding: 0;}
     html { scroll-behavior: smooth;}
@@ -52,6 +54,7 @@
       position: relative;
       z-index: 1;
     }
+    /* --- NAVBAR con sección activa --- */
     nav {
       position: fixed; top: 0; left: 0; right: 0;
       height: 60px;
@@ -91,7 +94,14 @@
       transition: background 0.18s, color 0.18s, box-shadow 0.13s;
       position: relative;
     }
-    nav ul li a:hover, nav ul li a:focus {
+    nav ul li a.active, nav ul li a:focus {
+      background: linear-gradient(90deg,var(--accent) 30%,var(--primary));
+      color: #fff;
+      box-shadow: 0 0 12px var(--primary);
+      text-shadow: var(--glow);
+      border-bottom: 3px solid var(--primary);
+    }
+    nav ul li a:hover {
       background: linear-gradient(90deg,var(--accent) 30%,var(--primary));
       color: #fff;
       box-shadow: 0 0 12px var(--primary);
@@ -135,26 +145,7 @@
       border: 2.5px solid var(--primary);
       overflow: hidden;
     }
-    .hero h1 {
-      font-weight: 900;
-      font-size: 2.9rem;
-      color: var(--primary);
-      text-shadow: 0 0 18px var(--primary), 0 0 30px #00fff733;
-      letter-spacing: 2.2px;
-      background: linear-gradient(90deg,var(--primary), var(--accent) 80%,#fff0);
-      background-clip: text; -webkit-background-clip: text;
-      color: transparent; -webkit-text-fill-color: transparent;
-      filter: drop-shadow(0 0 32px var(--primary));
-      margin-bottom: 0.5rem;
-    }
-    .hero .subtitulo {
-      font-weight: 600;
-      font-size: 1.25rem;
-      color: var(--accent);
-      margin-bottom: 1.9em;
-      text-shadow: 0 0 10px var(--accent);
-      letter-spacing: 1.2px;
-    }
+    /* --- CTA mejorada con animación pulse --- */
     .hero .cta {
       display: inline-block;
       margin-top: 1em;
@@ -171,6 +162,14 @@
       letter-spacing: 1.2px;
       outline: none;
       text-shadow: var(--glow);
+      animation: pulse 1.7s infinite;
+      position: relative;
+      z-index: 2;
+    }
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 #00fff755; }
+      70% { box-shadow: 0 0 0 20px #00fff700; }
+      100% { box-shadow: 0 0 0 0 #00fff700; }
     }
     .hero .cta:hover { background: linear-gradient(90deg,var(--accent),var(--primary) 70%); scale:1.09;}
     .banner-revision {
@@ -187,6 +186,20 @@
       backdrop-filter: blur(1.2px);
     }
     main { max-width: 820px; width: 97%; margin: auto; padding-bottom: 2em;}
+    /* --- Iconos en títulos de sección --- */
+    section[id] > h2::before {
+      display: inline-block;
+      margin-right: 0.4em;
+      font-size: 1.1em;
+      vertical-align: middle;
+    }
+    #quienes > h2::before { content:'👥'; }
+    #patagonia > h2::before { content:'🗺️'; }
+    #quehacemos > h2::before { content:'💡'; }
+    #aliados > h2::before { content:'🤝'; }
+    #novedades > h2::before { content:'📰'; }
+    #sumate > h2::before { content:'🚀'; }
+    #comentarios > h2::before { content:'💬'; }
     section { margin-bottom: 2.8em; padding: 1.2em 0.7em;}
     h2 { color: var(--primary); font-size: 1.55em; margin-bottom: 0.6em; text-shadow: var(--glow);}
     h3 { color: var(--accent); margin-bottom: 0.3em; font-size: 1.1em; }
@@ -211,6 +224,7 @@
       margin-bottom: 0.2em;
       text-shadow: var(--glow);
     }
+    /* --- Aliados dummy y “próximamente” --- */
     .aliados-list { display:grid; grid-template-columns: repeat(auto-fit,minmax(210px,1fr)); gap:1em;}
     .aliados-list li {
       background: linear-gradient(90deg, #15202e 60%, #00d1ff11 100%);
@@ -219,10 +233,38 @@
       box-shadow: var(--shadow);
       padding: 1.1em 1.2em;
       transition: box-shadow 0.22s;
+      display: flex; flex-direction: column; align-items: flex-start;
+      min-height: 80px;
     }
     .aliados-nuevo {
       background: #4caf5044;
       border-left: 5px solid var(--success);
+    }
+    .aliado-dummy {
+      background: #232e3acc;
+      border-left: 5px solid var(--gold);
+      color: #ffd700;
+      font-weight: bold;
+      display: flex; align-items: center; gap: 0.7em;
+      position: relative;
+    }
+    .aliado-dummy img {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: #fff;
+      border: 2px solid #ffd700;
+      margin-right: 0.8em;
+      object-fit: cover;
+      box-shadow: 0 1px 6px #ffd70077;
+    }
+    .aliado-dummy .badge-prox {
+      font-size: 0.93em;
+      color: #fff;
+      background: var(--primary);
+      border-radius: 8px;
+      padding: 2px 10px;
+      margin-left: 0.8em;
     }
     .news-list li {
       background: linear-gradient(90deg, #232e3aee 80%, #00d1ff11 100%);
@@ -252,6 +294,7 @@
     }
     .acciones-box ul { margin-top: 0.4em; margin-bottom: 0;}
     .acciones-box li { margin-bottom: 0.7em; color: var(--accent);}
+    /* --- Formulario sumate mejoras visuales y feedback --- */
     .sumate-section {
       background: linear-gradient(120deg, #18283b 90%, #00fff71a);
       border-radius: var(--radius);
@@ -260,6 +303,7 @@
       border: 2.5px solid var(--primary);
       margin-bottom: 2.3em;
       transition: box-shadow 0.22s, background 0.3s;
+      position: relative;
     }
     .sumate-section label { display: block; margin-bottom: 0.4em; color: var(--accent); font-weight: 600;}
     .sumate-section input, .sumate-section textarea, .sumate-section select {
@@ -278,6 +322,11 @@
       box-shadow: 0 0 0 2.5px #00fff75a;
       outline: none;
     }
+    .sumate-section input.invalid, .sumate-section textarea.invalid {
+      border-color: var(--danger);
+      box-shadow: 0 0 0 2.5px #e5737366;
+      background: #ffeaea;
+    }
     .sumate-section button {
       background: linear-gradient(90deg, var(--primary), var(--accent));
       color: #fff;
@@ -291,14 +340,34 @@
       transition: background 0.2s, scale 0.2s, box-shadow 0.22s;
       margin-top: 0.2em;
       outline: none;
+      animation: buttonBounce 1.8s infinite alternate;
+    }
+    @keyframes buttonBounce {
+      0% { transform: translateY(0);}
+      60% { transform: translateY(-2px);}
+      100% { transform: translateY(0);}
     }
     .sumate-section button:hover { background: var(--primary); scale:1.04;}
     .msg-exito, .msg-error {
       text-align:center; font-weight:600; margin-bottom:1em; margin-top:0.1em;
       border-radius:10px; padding:0.6em 0;
+      display: flex; align-items: center; justify-content: center; gap: 0.6em;
+      font-size: 1.08em;
     }
     .msg-exito { background: #4caf50cc; color: #fff;}
     .msg-error { background: #e57373cc; color: #fff;}
+    .msg-exito::before { content: "✔️"; }
+    .msg-error::before { content: "❌"; }
+    /* --- Contador de personas sumadas --- */
+    .sumate-contador {
+      text-align: center;
+      color: var(--primary);
+      font-weight: bold;
+      margin-bottom: .6em;
+      font-size: 1.12em;
+      letter-spacing: 1px;
+    }
+    /* --- Comentarios público con avatar inicial, gamificación, contador, destacados --- */
     .public-comments-section {
       background: linear-gradient(120deg, var(--primary) 60%, var(--accent) 40%, #232e3a88);
       border-radius: var(--radius);
@@ -310,6 +379,7 @@
       margin-right: auto;
       margin-bottom:2em;
       transition: box-shadow 0.22s, background 0.3s;
+      position: relative;
     }
     .public-comments-section h2 {
       text-align: center;
@@ -339,6 +409,11 @@
       box-shadow: 0 0 0 2.5px #00fff75a;
       outline: none;
     }
+    #comment-form input.invalid, #comment-form textarea.invalid {
+      border-color: var(--danger);
+      box-shadow: 0 0 0 2.5px #e5737366;
+      background: #ffeaea;
+    }
     #comment-form button {
       background: linear-gradient(90deg, var(--primary), var(--accent));
       color: #fff;
@@ -351,8 +426,16 @@
       box-shadow: 0 2px 10px var(--primary);
       transition: background 0.2s, box-shadow 0.22s;
       outline: none;
+      animation: buttonBounce 2s infinite alternate;
     }
     #comment-form button:hover { background: var(--primary);}
+    .comments-header {
+      text-align: center;
+      margin-bottom: 0.6em;
+      color: var(--accent);
+      font-size: 1.1em;
+      font-weight: 600;
+    }
     .comments-list {
       margin-top: 0.7em;
       list-style: none;
@@ -370,19 +453,52 @@
       box-shadow: var(--shadow);
       border-left: 4px solid var(--primary);
       transition: box-shadow 0.15s;
+      display: flex; gap: 0.9em; align-items: flex-start;
+      position: relative;
     }
     .comments-list li:hover {
       box-shadow: 0 4px 20px #00fff744;
     }
-    .comments-list .comment-author {
+    .comment-avatar {
+      width: 38px; height: 38px; border-radius: 50%;
+      background: #00fff733; color: var(--primary);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: bold; font-size: 1.15em; margin-right: 0.8em;
+      border: 2.5px solid var(--primary);
+      flex-shrink: 0;
+      box-shadow: 0 1px 6px #00fff755;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .comment-author {
       font-weight: bold;
       color: var(--primary);
       margin-bottom: 0.2em;
+      display: inline-block;
+      vertical-align: middle;
     }
-    .comments-list .comment-date {
+    .comment-date {
       font-size: 0.93em;
       color: var(--accent);
       float: right;
+      margin-left: 1em;
+    }
+    .comment-badge {
+      background: var(--gold);
+      color: #232e3a;
+      font-size: 0.91em;
+      border-radius: 8px;
+      padding: 2px 8px;
+      margin-left: 0.5em;
+      font-weight: 700;
+      display: inline-block;
+      vertical-align: middle;
+      box-shadow: 0 1px 6px #ffd70077;
+    }
+    .comment-highlight {
+      border: 2.5px solid var(--accent);
+      background: #00fff711;
+      box-shadow: 0 2px 18px #00d1ff55;
     }
     .ir-comentarios {
       display:inline-block;
@@ -400,6 +516,7 @@
       letter-spacing:1.1px;
       outline:none;
       text-shadow: var(--glow);
+      animation: pulse 1.7s infinite;
     }
     .ir-comentarios:hover {background:var(--primary); scale:1.03;}
     .floating-btns {
@@ -573,14 +690,14 @@
   <nav>
     <div class="nav-logo">WeerTeck</div>
     <ul>
-      <li><a href="#top">Inicio</a></li>
-      <li><a href="#quienes">Quiénes somos</a></li>
-      <li><a href="#patagonia">¿Por qué Patagonia?</a></li>
-      <li><a href="#quehacemos">¿Qué hacemos?</a></li>
-      <li><a href="#aliados">Aliados</a></li>
-      <li><a href="#novedades">Novedades</a></li>
-      <li><a href="#sumate">Sumate</a></li>
-      <li><a href="#comentarios">Opiniones</a></li>
+      <li><a href="#top" class="nav-link">Inicio</a></li>
+      <li><a href="#quienes" class="nav-link">Quiénes somos</a></li>
+      <li><a href="#patagonia" class="nav-link">¿Por qué Patagonia?</a></li>
+      <li><a href="#quehacemos" class="nav-link">¿Qué hacemos?</a></li>
+      <li><a href="#aliados" class="nav-link">Aliados</a></li>
+      <li><a href="#novedades" class="nav-link">Novedades</a></li>
+      <li><a href="#sumate" class="nav-link">Sumate</a></li>
+      <li><a href="#comentarios" class="nav-link">Opiniones</a></li>
     </ul>
     <div class="nav-actions">
       <button class="btn-ig" onclick="window.open('https://instagram.com/weerteck','_blank')" title="Seguinos en Instagram">
@@ -655,6 +772,8 @@
       <h2>Ranking de aliados y apoyos</h2>
       <ul class="aliados-list">
         <li class="aliados-nuevo"><strong>¿Tu ONG, municipio o grupo?</strong> <br><span style="color:#fff;">Sumate desde la sección <a href="#sumate" style="color:var(--accent);">Sumate</a></span></li>
+        <li class="aliado-dummy"><img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Próximo aliado"/><span>Fundación Patagonia Viva</span> <span class="badge-prox">¡Próximamente!</span></li>
+        <li class="aliado-dummy"><img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Próximo aliado"/><span>Municipio Ejemplo</span> <span class="badge-prox">¡Próximamente!</span></li>
       </ul>
     </section>
     <section id="novedades">
@@ -665,6 +784,7 @@
     </section>
     <section id="sumate" class="sumate-section">
       <h2>Sumate a la campaña</h2>
+      <div class="sumate-contador" id="sumate-contador"></div>
       <p>
         Si querés colaborar, hacer una campaña publicitaria, sumar tu ONG o tu municipio, o simplemente recibir novedades, completá este formulario. ¡Te contactamos!
       </p>
@@ -694,6 +814,7 @@
     </button>
     <section class="public-comments-section" id="comentarios">
       <h2>Opiniones y recomendaciones</h2>
+      <div class="comments-header" id="comments-header"></div>
       <form id="comment-form">
         <input type="text" id="comment-author" placeholder="Tu nombre (opcional)" maxlength="40" autocomplete="off"/>
         <textarea id="comment-text" placeholder="Escribí tu comentario, opinión o recomendación..." rows="3" required maxlength="400"></textarea>
@@ -818,60 +939,128 @@
       setTimeout(start, 100);
     })();
 
-    // Comentarios públicos (localStorage)
+    // NAV: Resaltar sección activa
+    (() => {
+      const sections = document.querySelectorAll("section[id], header");
+      const navLinks = document.querySelectorAll(".nav-link");
+      function highlightNav() {
+        let scroll = window.scrollY + 80;
+        let chosen = null;
+        sections.forEach(sec => {
+          if (scroll >= sec.offsetTop) chosen = sec;
+        });
+        navLinks.forEach(link => link.classList.remove("active"));
+        if (chosen) {
+          let id = chosen.id || "top";
+          let link = document.querySelector(`.nav-link[href="#${id}"]`);
+          if (link) link.classList.add("active");
+        }
+      }
+      window.addEventListener("scroll", highlightNav);
+      highlightNav();
+    })();
+
+    // Comentarios públicos (localStorage) + gamificación + avatar + contador + destacados
     document.addEventListener('DOMContentLoaded', () => {
       const commentsList = document.getElementById('comments-list');
+      const commentsHeader = document.getElementById('comments-header');
+      let destacadoIdx = Math.floor(Math.random()*3); // Para destacar uno de los primeros 3
+      function getAvatar(name) {
+        const letter = name && name.trim() ? name.trim()[0].toUpperCase() : "A";
+        return `<div class="comment-avatar">${letter}</div>`;
+      }
       function loadComments() {
         commentsList.innerHTML = '';
         let comments = [];
-        try {
-          comments = JSON.parse(localStorage.getItem('weer-comments') || '[]');
-        } catch {}
+        try { comments = JSON.parse(localStorage.getItem('weer-comments') || '[]'); } catch {}
+        // Header con contador
+        commentsHeader.innerHTML = comments.length > 0
+          ? `Ya hay <span style="color:var(--primary);font-weight:bold">${comments.length}</span> opiniones de la comunidad`
+          : "Sé el primero en dejar tu comentario.";
+        // Mostrar comentarios
         if (comments.length === 0) {
           commentsList.innerHTML = "<li style='text-align:center;color:var(--accent);'>Sé el primero en dejar tu comentario.</li>";
           return;
         }
-        comments.slice().reverse().forEach(c => {
+        comments.slice().reverse().forEach((c,idx,arr) => {
           const li = document.createElement('li');
-          li.innerHTML = `<span class="comment-author">${c.author ? c.author : "Anónimo"}</span> <span class="comment-date">${c.date}</span><br>${c.text}`;
+          li.innerHTML = `
+            ${getAvatar(c.author)}
+            <div style="flex:1;">
+              <span class="comment-author">${c.author ? c.author : "Anónimo"}</span>
+              <span class="comment-date">${c.date}</span>
+              ${arr.length-idx-1 < 3 ? '<span class="comment-badge">🔥 Nuevo</span>' : ""}
+              ${arr.length-idx-1 === destacadoIdx ? '<span class="comment-badge" style="background:var(--success);color:#fff;">Destacado</span>' : ""}
+              <br>${c.text}
+            </div>
+          `;
+          if (arr.length-idx-1 === destacadoIdx) li.classList.add("comment-highlight");
           commentsList.appendChild(li);
         });
       }
       loadComments();
+      // Form comentarios con feedback visual
       document.getElementById('comment-form').addEventListener('submit', function(e) {
         e.preventDefault();
-        const author = document.getElementById('comment-author').value.trim();
-        const text = document.getElementById('comment-text').value.trim();
-        if (!text) return;
+        const authorInput = document.getElementById('comment-author');
+        const textInput = document.getElementById('comment-text');
+        const author = authorInput.value.trim();
+        const text = textInput.value.trim();
+        let ok = true;
+        if (!text) { textInput.classList.add("invalid"); ok = false; } else textInput.classList.remove("invalid");
+        if (!ok) return;
         let comments = [];
-        try {
-          comments = JSON.parse(localStorage.getItem('weer-comments') || '[]');
-        } catch {}
+        try { comments = JSON.parse(localStorage.getItem('weer-comments') || '[]'); } catch {}
         comments.push({
           author,
           text,
           date: new Date().toLocaleString('es-AR')
         });
         localStorage.setItem('weer-comments', JSON.stringify(comments));
-        document.getElementById('comment-author').value = '';
-        document.getElementById('comment-text').value = '';
+        authorInput.value = '';
+        textInput.value = '';
         loadComments();
       });
 
-      // Formulario sumate
+      // Formulario sumate con feedback visual y contador
       const formSumate = document.getElementById('form-sumate');
       const estadoSumate = document.getElementById('sumate-estado');
+      const sumateContador = document.getElementById('sumate-contador');
+      function updateSumateContador() {
+        let n = 0;
+        try { n = JSON.parse(localStorage.getItem('weer-sumate') || '[]').length; } catch {}
+        sumateContador.innerHTML = n > 0 ? `¡<span style="color:var(--success);">${n} persona${n>1?'s':''}</span> ya se sumaron!` : "";
+      }
+      updateSumateContador();
       formSumate.addEventListener('submit', function(e){
         e.preventDefault();
-        const nombre = document.getElementById('sumate-nombre').value.trim();
-        const email = document.getElementById('sumate-email').value.trim();
+        const nombreInput = document.getElementById('sumate-nombre');
+        const emailInput = document.getElementById('sumate-email');
         const tipo = document.getElementById('sumate-tipo').value;
-        const msg = document.getElementById('sumate-msg').value.trim();
+        const msgInput = document.getElementById('sumate-msg');
+        const nombre = nombreInput.value.trim();
+        const email = emailInput.value.trim();
+        const msg = msgInput.value.trim();
+        let ok = true;
+        // Validación visual
         if (!email || !/\S+@\S+\.\S+/.test(email)) {
-          estadoSumate.innerHTML = "<div class='msg-error'>Poné un email válido.</div>";
+          emailInput.classList.add("invalid"); ok = false;
+        } else { emailInput.classList.remove("invalid"); }
+        if (nombre.length > 0 && nombre.length < 3) {
+          nombreInput.classList.add("invalid"); ok = false;
+        } else { nombreInput.classList.remove("invalid"); }
+        if (!ok) {
+          estadoSumate.innerHTML = "<div class='msg-error'>Poné un email válido y nombre si querés (mínimo 3 letras).</div>";
           return;
         }
         estadoSumate.innerHTML = "<div class='msg-exito'>¡Gracias por sumarte! Nos contactaremos a la brevedad.</div>";
+        // Gamificación: guardar y contar sumados (solo local)
+        let sumados = [];
+        try { sumados = JSON.parse(localStorage.getItem('weer-sumate') || '[]'); } catch {}
+        sumados.push({nombre,email,tipo,msg,date: new Date().toLocaleString('es-AR')});
+        localStorage.setItem('weer-sumate', JSON.stringify(sumados));
+        updateSumateContador();
+        setTimeout(() => { estadoSumate.innerHTML = ""; }, 4500);
         formSumate.reset();
       });
     });
@@ -888,7 +1077,7 @@
       // Estructura ramificada de encuestas
       const flow = {
         start: {
-          msg: "¡Hola! ¿Sobre qué te gustaría contactarnos?",
+          msg: "¡Hola! ¿Sobre qué te gustaría contactarnos?<br><span style='font-size:.97em;color:var(--muted);'>WeerBot funciona como menú de opciones rápidas.<br>Para preguntas abiertas, contactanos directo.</span>",
           options: [
             { label: "Quiero colaborar", next: "colaborar" },
             { label: "Tengo una duda", next: "duda" },
