@@ -772,6 +772,13 @@
       <h2>Ranking de aliados y apoyos</h2>
       <ul class="aliados-list">
         <li class="aliados-nuevo"><strong>¿Tu ONG, municipio o grupo?</strong> <br><span style="color:#fff;">Sumate desde la sección <a href="#sumate" style="color:var(--accent);">Sumate</a></span></li>
+        <li>
+          <strong>Rodrigo Silva</strong><br>
+          <span style="color:#fff;">Periodista TN Patagonia</span><br>
+          <a href="https://instagram.com/rodrigosalivaarg" target="_blank" rel="noopener" style="color:var(--accent);font-weight:600;">
+            @rodrigosalivaarg
+          </a>
+        </li>
         <li class="aliado-dummy"><img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Próximo aliado"/><span>Fundación Patagonia Viva</span> <span class="badge-prox">¡Próximamente!</span></li>
         <li class="aliado-dummy"><img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Próximo aliado"/><span>Municipio Ejemplo</span> <span class="badge-prox">¡Próximamente!</span></li>
       </ul>
